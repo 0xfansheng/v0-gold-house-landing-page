@@ -661,8 +661,15 @@ export default function GoldHouseLanding() {
               <div className={`absolute inset-0 ${
                 isDark 
                   ? "bg-gradient-to-b from-gray-900/70 via-gray-900/50 to-gray-900" 
-                  : "bg-gradient-to-b from-black/40 via-black/30 to-white"
+                  : "bg-gradient-to-b from-black/50 via-black/40 to-white"
               }`} />
+              
+              {/* Futuristic glow effects */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px] animate-pulse" />
+                <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-500/15 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#3370FF]/10 rounded-full blur-[150px]" />
+              </div>
             </motion.div>
             
             <motion.div
@@ -673,14 +680,14 @@ export default function GoldHouseLanding() {
                 {/* Left content */}
                 <div className="space-y-8">
                   <motion.div
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-lg"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
                   >
                     <motion.div
-                      className="w-2 h-2 rounded-full bg-green-400"
-                      animate={{ scale: [1, 1.2, 1] }}
+                      className="w-2 h-2 rounded-full bg-green-400 shadow-lg shadow-green-400/50"
+                      animate={{ scale: [1, 1.2, 1], boxShadow: ['0 0 10px rgba(74,222,128,0.5)', '0 0 20px rgba(74,222,128,0.8)', '0 0 10px rgba(74,222,128,0.5)'] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     />
                     <span className="text-sm font-medium text-white">
@@ -689,12 +696,12 @@ export default function GoldHouseLanding() {
                   </motion.div>
                   
                   <motion.h1
-                    className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white"
+                    className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight text-white drop-shadow-2xl"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
                   >
-                    <span className="text-gradient">{t("世界在你掌中", "The World in Your Hands")}</span>
+                    <span className="text-gradient drop-shadow-lg">{t("世界在你掌中", "The World in Your Hands")}</span>
                   </motion.h1>
                   
                   {/* Product tags */}
@@ -705,17 +712,22 @@ export default function GoldHouseLanding() {
                     transition={{ delay: 0.25 }}
                   >
                     {[
-                      t("万人群聊", "10K+ Group Chat"),
-                      t("万人会议", "10K+ Meeting"),
-                      t("极速通讯", "Lightning Fast"),
-                      t("极致安全", "Ultimate Security"),
+                      { text: t("万人群聊", "10K+ Group Chat"), icon: Users },
+                      { text: t("万人会议", "10K+ Meeting"), icon: Video },
+                      { text: t("极速通讯", "Lightning Fast"), icon: Zap },
+                      { text: t("极致安全", "Ultimate Security"), icon: Shield },
                     ].map((tag, i) => (
-                      <span
+                      <motion.span
                         key={i}
-                        className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white/90 text-sm font-medium border border-white/20"
+                        className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md text-white text-sm font-medium border border-white/20 shadow-lg hover:bg-white/20 transition-all cursor-default"
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 + i * 0.1 }}
                       >
-                        {tag}
-                      </span>
+                        <tag.icon className="w-4 h-4 text-[#3370FF]" />
+                        {tag.text}
+                      </motion.span>
                     ))}
                   </motion.div>
                   
@@ -732,15 +744,18 @@ export default function GoldHouseLanding() {
                   </motion.p>
                   
                   <motion.div
-                    className="flex flex-wrap gap-3"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                  >
-                    <DownloadButton icon={Apple} title="App Store" subtitle={t("下载于", "Download on")} />
-                    <DownloadButton icon={Play} title="Google Play" subtitle={t("下载于", "Get it on")} />
-                    <DownloadButton icon={Globe} title="Web App" subtitle={t("在浏览器打开", "Open in browser")} />
-                  </motion.div>
+735	                    className="flex flex-wrap gap-3"
+736	                    initial={{ opacity: 0, y: 20 }}
+737	                    animate={{ opacity: 1, y: 0 }}
+738	                    transition={{ delay: 0.4 }}
+739	                  >
+740	                    <DownloadButton icon={Apple} title="App Store" subtitle={t("下载于", "Download on")} />
+741	                    <DownloadButton icon={Play} title="Google Play" subtitle={t("下载于", "Get it on")} />
+742	                    <DownloadButton icon={Download} title="APK" subtitle={t("直接下载", "Direct")} />
+743	                    <DownloadButton icon={Monitor} title="Windows" subtitle={t("桌面应用", "Desktop")} />
+744	                    <DownloadButton icon={TestTube} title="TestFlight" subtitle={t("测试版", "Beta")} />
+745	                    <DownloadButton icon={Globe} title="Web App" subtitle={t("在浏览器打开", "Browser")} />
+746	                  </motion.div>
                 </div>
                 
                 {/* Right content - Phone mockup */}
@@ -768,23 +783,41 @@ export default function GoldHouseLanding() {
           </section>
 
           {/* Statistics Section */}
-          <section className={`py-20 ${isDark ? "bg-gray-800/30" : "bg-gradient-to-r from-blue-50 via-white to-cyan-50"}`}>
+          <section className={`py-24 ${isDark ? "bg-gray-800/30" : "bg-gradient-to-r from-blue-50 via-white to-cyan-50"}`}>
             <div className="max-w-7xl mx-auto px-6">
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                 {[
-                  { value: "100,000+", label: t("群组容量", "Group Capacity"), color: "#3370FF" },
-                  { value: "10,000+", label: t("会议容量", "Meeting Capacity"), color: "#10B981" },
-                  { value: "99.99%", label: t("稳定性", "Uptime"), color: "#F5A623" },
-                  { value: "200+", label: t("全球节点", "Global Nodes"), color: "#6366F1" },
+                  { value: "100,000+", label: t("群组容量", "Group Capacity"), color: "#3370FF", icon: Users },
+                  { value: "10,000+", label: t("会议容量", "Meeting Capacity"), color: "#10B981", icon: Video },
+                  { value: "99.99%", label: t("稳定性", "Uptime"), color: "#F5A623", icon: Zap },
+                  { value: "200+", label: t("全球节点", "Global Nodes"), color: "#6366F1", icon: Globe2 },
                 ].map((stat, i) => (
                   <motion.div
                     key={i}
-                    className="text-center"
+                    className={`relative text-center p-8 rounded-3xl border transition-all duration-300 ${
+                      isDark 
+                        ? "bg-gray-800/50 border-gray-700 hover:border-gray-600" 
+                        : "bg-white border-gray-100 shadow-lg hover:shadow-xl"
+                    }`}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
+                    whileHover={{ y: -5 }}
                   >
+                    {/* Glow effect */}
+                    <div 
+                      className="absolute inset-0 rounded-3xl opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                      style={{ boxShadow: `0 0 60px ${stat.color}20` }}
+                    />
+                    
+                    <div 
+                      className="w-14 h-14 rounded-2xl mx-auto mb-4 flex items-center justify-center"
+                      style={{ background: `${stat.color}15` }}
+                    >
+                      <stat.icon className="w-7 h-7" style={{ color: stat.color }} />
+                    </div>
+                    
                     <motion.div
                       className="text-4xl md:text-5xl font-bold mb-2"
                       style={{ color: stat.color }}
@@ -864,35 +897,64 @@ export default function GoldHouseLanding() {
                 <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>
                   {t("我们的理念", "Our Philosophy")}
                 </h2>
+                <p className={`text-lg ${isDark ? "text-gray-400" : "text-gray-500"}`}>
+                  {t("以创新为驱动，以安全为基石，链接全球用户", "Driven by innovation, built on security, connecting users worldwide")}
+                </p>
               </motion.div>
               
               <div className="grid md:grid-cols-3 gap-8">
                 {brandValues.map((item, i) => (
                   <motion.div
                     key={i}
-                    className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${item.bgColor} p-8`}
+                    className={`relative overflow-hidden rounded-3xl p-8 border transition-all duration-500 group ${
+                      isDark 
+                        ? `bg-gradient-to-br ${item.bgColor} border-gray-700 hover:border-gray-600` 
+                        : `bg-gradient-to-br ${item.bgColor} border-gray-100 hover:shadow-2xl`
+                    }`}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    whileHover={{ y: -5 }}
+                    transition={{ delay: i * 0.15 }}
+                    whileHover={{ y: -8, scale: 1.02 }}
                   >
-                    <div 
-                      className="absolute top-0 left-0 w-1 h-full"
-                      style={{ background: item.color }}
+                    {/* Animated accent bar */}
+                    <motion.div 
+                      className="absolute top-0 left-0 w-full h-1"
+                      style={{ background: `linear-gradient(90deg, transparent, ${item.color}, transparent)` }}
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.15 + 0.3, duration: 0.8 }}
                     />
+                    
+                    {/* Glow effect on hover */}
+                    <div 
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                      style={{ boxShadow: `inset 0 0 80px ${item.color}15` }}
+                    />
+                    
                     <span 
-                      className="text-sm font-semibold uppercase tracking-wider"
+                      className="text-sm font-bold uppercase tracking-widest"
                       style={{ color: item.color }}
                     >
                       {item.title}
                     </span>
-                    <h3 className={`text-2xl font-bold mt-2 mb-3 ${isDark ? "text-white" : "text-gray-900"}`}>
+                    <h3 className={`text-3xl font-bold mt-3 mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>
                       {item.chinese}
                     </h3>
-                    <p className={`leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+                    <p className={`text-lg leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}>
                       {item.description}
                     </p>
+                    
+                    {/* Decorative icon */}
+                    <div 
+                      className="absolute bottom-6 right-6 w-16 h-16 rounded-2xl flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity"
+                      style={{ background: item.color }}
+                    >
+                      {i === 0 && <Sparkles className="w-8 h-8 text-white" />}
+                      {i === 1 && <Shield className="w-8 h-8 text-white" />}
+                      {i === 2 && <Globe2 className="w-8 h-8 text-white" />}
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -991,6 +1053,7 @@ export default function GoldHouseLanding() {
                 <div className={`flex flex-wrap justify-center gap-8 text-sm ${isDark ? "text-gray-400" : "text-gray-500"}`}>
                   <a href="/privacy" className={`transition-colors ${isDark ? "hover:text-white" : "hover:text-gray-900"}`}>{t("隐私政策", "Privacy Policy")}</a>
                   <a href="/terms" className={`transition-colors ${isDark ? "hover:text-white" : "hover:text-gray-900"}`}>{t("服务条款", "Terms of Service")}</a>
+                  <a href="#" className={`transition-colors ${isDark ? "hover:text-white" : "hover:text-gray-900"}`}>Web App</a>
                   <a href="#" className={`transition-colors ${isDark ? "hover:text-white" : "hover:text-gray-900"}`}>{t("联系我们", "Contact Us")}</a>
                   <a href="#" className={`transition-colors ${isDark ? "hover:text-white" : "hover:text-gray-900"}`}>{t("帮助支持", "Support")}</a>
                 </div>
