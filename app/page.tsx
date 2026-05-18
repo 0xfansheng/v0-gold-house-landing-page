@@ -872,7 +872,7 @@ export default function GoldHouseLanding() {
           </section>
 
           {/* Download Section */}
-          <section id="download" className="py-24 bg-gradient-to-br from-[#1a1f36] to-[#0f1219] text-white">
+          <section id="download" className={`py-24 ${isDark ? "bg-gradient-to-br from-[#1a1f36] to-[#0f1219]" : "bg-gradient-to-br from-gray-50 to-white"}`}>
             <div className="max-w-7xl mx-auto px-6">
               <motion.div
                 className="text-center max-w-2xl mx-auto mb-16"
@@ -880,11 +880,11 @@ export default function GoldHouseLanding() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>
                   {t("获取 ", "Get ")}
                   <span className="text-gradient">Gold House</span>
                 </h2>
-                <p className="text-gray-400 text-lg">
+                <p className={`text-lg ${isDark ? "text-gray-400" : "text-gray-600"}`}>
                   {t("全平台支持，立即下载开始连接世界", "Available on all platforms. Download now and start connecting.")}
                 </p>
               </motion.div>
@@ -900,21 +900,25 @@ export default function GoldHouseLanding() {
                 ].map((item, i) => (
                   <motion.div
                     key={i}
-                    className="group relative flex items-center gap-4 p-5 rounded-2xl transition-all duration-300 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 cursor-pointer"
+                    className={`group relative flex items-center gap-4 p-5 rounded-2xl transition-all duration-300 cursor-pointer border ${
+                      isDark 
+                        ? "bg-white/5 hover:bg-white/10 border-white/10 hover:border-white/20" 
+                        : "bg-white hover:bg-gray-50 border-gray-200 hover:border-[#3370FF]/30 shadow-sm hover:shadow-md"
+                    }`}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.05 }}
                     whileHover={{ scale: 1.02 }}
                   >
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#3370FF]/20">
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#3370FF]/10">
                       <item.icon className="w-6 h-6 text-[#3370FF]" />
                     </div>
                     <div className="flex-1">
-                      <p className="font-semibold text-white">{item.name}</p>
-                      <p className="text-sm text-gray-400">{item.desc}</p>
+                      <p className={`font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>{item.name}</p>
+                      <p className={`text-sm ${isDark ? "text-gray-400" : "text-gray-500"}`}>{item.desc}</p>
                     </div>
-                    <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                    <ArrowRight className={`w-5 h-5 group-hover:translate-x-1 transition-all ${isDark ? "text-gray-500 group-hover:text-white" : "text-gray-400 group-hover:text-[#3370FF]"}`} />
                   </motion.div>
                 ))}
               </div>
@@ -926,12 +930,12 @@ export default function GoldHouseLanding() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
               >
-                <div className="w-32 h-32 bg-white rounded-2xl p-3 mb-4">
+                <div className={`w-32 h-32 rounded-2xl p-3 mb-4 ${isDark ? "bg-white" : "bg-white border border-gray-200 shadow-sm"}`}>
                   <div className="w-full h-full bg-gray-100 rounded-xl flex items-center justify-center">
                     <QrCode className="w-16 h-16 text-gray-400" />
                   </div>
                 </div>
-                <p className="text-gray-400 text-sm">{t("扫码下载", "Scan to download")}</p>
+                <p className={`text-sm ${isDark ? "text-gray-400" : "text-gray-500"}`}>{t("扫码下载", "Scan to download")}</p>
               </motion.div>
             </div>
           </section>
@@ -957,8 +961,8 @@ export default function GoldHouseLanding() {
                 </div>
                 
                 <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-400">
-                  <a href="#" className="hover:text-white transition-colors">{t("隐私政策", "Privacy Policy")}</a>
-                  <a href="#" className="hover:text-white transition-colors">{t("服务条款", "Terms of Service")}</a>
+                  <a href="/privacy" className="hover:text-white transition-colors">{t("隐私政策", "Privacy Policy")}</a>
+                  <a href="/terms" className="hover:text-white transition-colors">{t("服务条款", "Terms of Service")}</a>
                   <a href="#" className="hover:text-white transition-colors">{t("联系我们", "Contact Us")}</a>
                   <a href="#" className="hover:text-white transition-colors">{t("帮助支持", "Support")}</a>
                 </div>
