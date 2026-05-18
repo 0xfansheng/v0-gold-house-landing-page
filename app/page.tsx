@@ -744,18 +744,18 @@ export default function GoldHouseLanding() {
                   </motion.p>
                   
                   <motion.div
-735	                    className="flex flex-wrap gap-3"
-736	                    initial={{ opacity: 0, y: 20 }}
-737	                    animate={{ opacity: 1, y: 0 }}
-738	                    transition={{ delay: 0.4 }}
-739	                  >
-740	                    <DownloadButton icon={Apple} title="App Store" subtitle={t("下载于", "Download on")} />
-741	                    <DownloadButton icon={Play} title="Google Play" subtitle={t("下载于", "Get it on")} />
-742	                    <DownloadButton icon={Download} title="APK" subtitle={t("直接下载", "Direct")} />
-743	                    <DownloadButton icon={Monitor} title="Windows" subtitle={t("桌面应用", "Desktop")} />
-744	                    <DownloadButton icon={TestTube} title="TestFlight" subtitle={t("测试版", "Beta")} />
-745	                    <DownloadButton icon={Globe} title="Web App" subtitle={t("在浏览器打开", "Browser")} />
-746	                  </motion.div>
+                    className="flex flex-wrap gap-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    <DownloadButton icon={Apple} title="App Store" subtitle={t("下载于", "Download on")} />
+                    <DownloadButton icon={Play} title="Google Play" subtitle={t("下载于", "Get it on")} />
+                    <DownloadButton icon={Download} title="APK" subtitle={t("直接下载", "Direct")} />
+                    <DownloadButton icon={Monitor} title="Windows" subtitle={t("桌面应用", "Desktop")} />
+                    <DownloadButton icon={TestTube} title="TestFlight" subtitle={t("测试版", "Beta")} />
+                    <DownloadButton icon={Globe} title="Web App" subtitle={t("在浏览器打开", "Browser")} />
+                  </motion.div>
                 </div>
                 
                 {/* Right content - Phone mockup */}
