@@ -631,13 +631,13 @@ export default function GoldHouseLanding() {
               </div>
               
               <div className="hidden md:flex items-center gap-8">
-                <a href="#features" className={`transition-colors ${isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900"}`}>
+                <a href="#features" className="px-4 py-2 rounded-full bg-[#3370FF] text-white text-sm font-medium hover:bg-[#2860E0] transition-colors">
                   {t("功能", "Features")}
                 </a>
-                <a href="#download" className={`transition-colors ${isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900"}`}>
+                <a href="#download" className="px-4 py-2 rounded-full bg-[#3370FF] text-white text-sm font-medium hover:bg-[#2860E0] transition-colors">
                   {t("下载", "Download")}
                 </a>
-                <a href="#about" className={`transition-colors ${isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900"}`}>
+                <a href="#about" className="px-4 py-2 rounded-full bg-[#3370FF] text-white text-sm font-medium hover:bg-[#2860E0] transition-colors">
                   {t("关于", "About")}
                 </a>
               </div>
