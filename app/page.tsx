@@ -505,56 +505,56 @@ export default function GoldHouseLanding() {
 
   const features = [
     {
-      icon: MessageCircle,
-      title: "即时通讯",
-      titleEn: "Instant Messaging",
-      description: "支持万人群组，消息实时同步，多端无缝切换",
-      descriptionEn: "Support 10K+ group chats, real-time sync, seamless multi-device",
+      icon: Users,
+      title: "超大群组",
+      titleEn: "Massive Groups",
+      description: "支持10万+成员的超大群组，消息实时同步，多端无缝切换",
+      descriptionEn: "Support 100K+ member groups, real-time sync, seamless multi-device",
       color: "#3370FF",
       bgColor: "#EBF2FF",
     },
     {
       icon: Video,
-      title: "高清会议",
-      titleEn: "HD Meetings",
-      description: "万人同时在线，高清稳定，智能降噪",
-      descriptionEn: "10K+ participants, HD quality, AI noise cancellation",
+      title: "万人会议",
+      titleEn: "10K+ Meetings",
+      description: "万人同时在线会议，高清稳定，智能降噪",
+      descriptionEn: "10K+ participants online, HD quality, AI noise cancellation",
       color: "#10B981",
       bgColor: "#D1FAE5",
     },
     {
-      icon: Shield,
-      title: "端到端加密",
-      titleEn: "E2E Encryption",
-      description: "军事级加密技术，保护每一条消息安全",
-      descriptionEn: "Military-grade encryption protects every message",
-      color: "#6366F1",
-      bgColor: "#E0E7FF",
-    },
-    {
-      icon: Wallet,
-      title: "数字钱包",
-      titleEn: "Digital Wallet",
-      description: "安全便捷的数字资产管理，一键转账收款",
-      descriptionEn: "Secure digital asset management, instant transfers",
+      icon: Zap,
+      title: "极速通讯",
+      titleEn: "Lightning Fast",
+      description: "全球200+节点，消息毫秒级送达，超低延迟",
+      descriptionEn: "200+ global nodes, millisecond delivery, ultra-low latency",
       color: "#F5A623",
       bgColor: "#FEF3C7",
     },
     {
-      icon: Bot,
-      title: "AI 智能助手",
-      titleEn: "AI Assistant",
-      description: "内置 MBot 机器人，智能回复，效率翻倍",
-      descriptionEn: "Built-in MBot for smart replies and productivity",
+      icon: Shield,
+      title: "极致安全",
+      titleEn: "Ultimate Security",
+      description: "军事级端到端加密，保护每一条消息安全",
+      descriptionEn: "Military-grade E2E encryption protects every message",
+      color: "#6366F1",
+      bgColor: "#E0E7FF",
+    },
+    {
+      icon: Sparkles,
+      title: "无感交互",
+      titleEn: "Seamless UX",
+      description: "极简设计，零学习成本，自然流畅体验",
+      descriptionEn: "Minimalist design, zero learning curve, natural experience",
       color: "#EC4899",
       bgColor: "#FCE7F3",
     },
     {
       icon: Globe2,
-      title: "全球网络",
-      titleEn: "Global Network",
-      description: "200+ 节点覆盖全球，超低延迟体验",
-      descriptionEn: "200+ nodes worldwide, ultra-low latency",
+      title: "全球生态",
+      titleEn: "Global Ecosystem",
+      description: "链接全球用户，打造无界通讯生态",
+      descriptionEn: "Connect global users, build boundless ecosystem",
       color: "#14B8A6",
       bgColor: "#CCFBF1",
     },
@@ -697,6 +697,28 @@ export default function GoldHouseLanding() {
                     <span className="text-gradient">{t("世界在你掌中", "The World in Your Hands")}</span>
                   </motion.h1>
                   
+                  {/* Product tags */}
+                  <motion.div
+                    className="flex flex-wrap gap-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.25 }}
+                  >
+                    {[
+                      t("万人群聊", "10K+ Group Chat"),
+                      t("万人会议", "10K+ Meeting"),
+                      t("极速通讯", "Lightning Fast"),
+                      t("极致安全", "Ultimate Security"),
+                    ].map((tag, i) => (
+                      <span
+                        key={i}
+                        className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-white/90 text-sm font-medium border border-white/20"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </motion.div>
+                  
                   <motion.p
                     className="text-lg max-w-lg leading-relaxed text-white/90"
                     initial={{ opacity: 0, y: 20 }}
@@ -743,6 +765,43 @@ export default function GoldHouseLanding() {
                 />
               </div>
             </motion.div>
+          </section>
+
+          {/* Statistics Section */}
+          <section className={`py-20 ${isDark ? "bg-gray-800/30" : "bg-gradient-to-r from-blue-50 via-white to-cyan-50"}`}>
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                {[
+                  { value: "100,000+", label: t("群组容量", "Group Capacity"), color: "#3370FF" },
+                  { value: "10,000+", label: t("会议容量", "Meeting Capacity"), color: "#10B981" },
+                  { value: "99.99%", label: t("稳定性", "Uptime"), color: "#F5A623" },
+                  { value: "200+", label: t("全球节点", "Global Nodes"), color: "#6366F1" },
+                ].map((stat, i) => (
+                  <motion.div
+                    key={i}
+                    className="text-center"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    <motion.div
+                      className="text-4xl md:text-5xl font-bold mb-2"
+                      style={{ color: stat.color }}
+                      initial={{ scale: 0.5 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 + 0.2, type: "spring", stiffness: 200 }}
+                    >
+                      {stat.value}
+                    </motion.div>
+                    <p className={`text-sm font-medium ${isDark ? "text-gray-400" : "text-gray-500"}`}>
+                      {stat.label}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </section>
 
           {/* Features Section */}
