@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, createContext, useContext } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
@@ -26,49 +26,142 @@ import {
   Bot,
   Wallet,
   QrCode,
+  Sun,
+  Moon,
+  Languages,
+  ChevronDown,
 } from "lucide-react";
 
-// Floating shapes background
-function FloatingShapes() {
+// Language context
+type Language = "zh" | "en";
+const LanguageContext = createContext<{
+  lang: Language;
+  setLang: (lang: Language) => void;
+  t: (zh: string, en: string) => string;
+}>({
+  lang: "zh",
+  setLang: () => {},
+  t: (zh) => zh,
+});
+
+function useLanguage() {
+  return useContext(LanguageContext);
+}
+
+// Theme context
+const ThemeContext = createContext<{
+  isDark: boolean;
+  toggleTheme: () => void;
+}>({
+  isDark: false,
+  toggleTheme: () => {},
+});
+
+function useTheme() {
+  return useContext(ThemeContext);
+}
+
+// Language selector component
+function LanguageSelector() {
+  const { lang, setLang } = useLanguage();
+  const { isDark } = useTheme();
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Large gradient orbs */}
-      <motion.div
-        className="absolute -top-40 -right-40 w-96 h-96 rounded-full opacity-40"
-        style={{
-          background: "radial-gradient(circle, rgba(51, 112, 255, 0.3) 0%, transparent 70%)",
-        }}
-        animate={{
-          scale: [1, 1.2, 1],
-          x: [0, 30, 0],
-          y: [0, -20, 0],
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute top-1/3 -left-32 w-80 h-80 rounded-full opacity-30"
-        style={{
-          background: "radial-gradient(circle, rgba(245, 166, 35, 0.3) 0%, transparent 70%)",
-        }}
-        animate={{
-          scale: [1, 1.15, 1],
-          x: [0, 20, 0],
-          y: [0, 30, 0],
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-      />
-      <motion.div
-        className="absolute bottom-20 right-1/4 w-64 h-64 rounded-full opacity-25"
-        style={{
-          background: "radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%)",
-        }}
-        animate={{
-          scale: [1, 1.1, 1],
-          y: [0, -25, 0],
-        }}
-        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-      />
+    <div className="relative">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
+          isDark 
+            ? "text-gray-300 hover:bg-white/10" 
+            : "text-gray-600 hover:bg-gray-100"
+        }`}
+      >
+        <Languages className="w-4 h-4" />
+        <span className="text-sm font-medium">{lang === "zh" ? "中文" : "EN"}</span>
+        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
+      </button>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className={`absolute right-0 top-full mt-2 rounded-xl shadow-lg border overflow-hidden z-50 ${
+              isDark 
+                ? "bg-gray-800 border-gray-700" 
+                : "bg-white border-gray-200"
+            }`}
+          >
+            <button
+              onClick={() => { setLang("zh"); setIsOpen(false); }}
+              className={`w-full px-4 py-2.5 text-left text-sm flex items-center gap-2 transition-colors ${
+                lang === "zh" 
+                  ? isDark ? "bg-blue-500/20 text-blue-400" : "bg-blue-50 text-blue-600"
+                  : isDark ? "text-gray-300 hover:bg-white/5" : "text-gray-700 hover:bg-gray-50"
+              }`}
+            >
+              中文
+              {lang === "zh" && <Check className="w-4 h-4 ml-auto" />}
+            </button>
+            <button
+              onClick={() => { setLang("en"); setIsOpen(false); }}
+              className={`w-full px-4 py-2.5 text-left text-sm flex items-center gap-2 transition-colors ${
+                lang === "en" 
+                  ? isDark ? "bg-blue-500/20 text-blue-400" : "bg-blue-50 text-blue-600"
+                  : isDark ? "text-gray-300 hover:bg-white/5" : "text-gray-700 hover:bg-gray-50"
+              }`}
+            >
+              English
+              {lang === "en" && <Check className="w-4 h-4 ml-auto" />}
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
+  );
+}
+
+// Theme toggle component
+function ThemeToggle() {
+  const { isDark, toggleTheme } = useTheme();
+
+  return (
+    <motion.button
+      onClick={toggleTheme}
+      className={`p-2.5 rounded-lg transition-colors ${
+        isDark 
+          ? "text-yellow-400 hover:bg-white/10" 
+          : "text-gray-600 hover:bg-gray-100"
+      }`}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <AnimatePresence mode="wait">
+        {isDark ? (
+          <motion.div
+            key="sun"
+            initial={{ rotate: -90, opacity: 0 }}
+            animate={{ rotate: 0, opacity: 1 }}
+            exit={{ rotate: 90, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Sun className="w-5 h-5" />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="moon"
+            initial={{ rotate: 90, opacity: 0 }}
+            animate={{ rotate: 0, opacity: 1 }}
+            exit={{ rotate: -90, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Moon className="w-5 h-5" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.button>
   );
 }
 
@@ -86,9 +179,13 @@ function IconBadge({
   label: string;
   delay?: number;
 }) {
+  const { isDark } = useTheme();
+  
   return (
     <motion.div
-      className="flex items-center gap-2 px-3 py-2 rounded-xl shadow-lg bg-white"
+      className={`flex items-center gap-2 px-3 py-2 rounded-xl shadow-lg ${
+        isDark ? "bg-gray-800/90 backdrop-blur-sm" : "bg-white"
+      }`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, type: "spring", stiffness: 200 }}
@@ -97,17 +194,19 @@ function IconBadge({
       <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: bgColor }}>
         <Icon className="w-4 h-4" style={{ color }} />
       </div>
-      <span className="text-sm font-medium text-gray-700">{label}</span>
+      <span className={`text-sm font-medium ${isDark ? "text-gray-200" : "text-gray-700"}`}>{label}</span>
     </motion.div>
   );
 }
 
 // Hero phone mockup with chat UI
 function PhoneMockup() {
+  const { t } = useLanguage();
+  
   const messages = [
-    { id: 1, type: "received", text: "Hey! Welcome to Gold House", avatar: "A", time: "10:30" },
-    { id: 2, type: "sent", text: "Thanks! The encryption looks great", time: "10:31" },
-    { id: 3, type: "received", text: "End-to-end encrypted by default", avatar: "A", time: "10:31" },
+    { id: 1, type: "received", text: t("嘿！欢迎来到 Gold House", "Hey! Welcome to Gold House"), avatar: "A", time: "10:30" },
+    { id: 2, type: "sent", text: t("谢谢！加密功能真棒", "Thanks! The encryption looks great"), time: "10:31" },
+    { id: 3, type: "received", text: t("默认端到端加密保护", "End-to-end encrypted by default"), avatar: "A", time: "10:31" },
   ];
 
   return (
@@ -151,7 +250,7 @@ function PhoneMockup() {
                   animate={{ opacity: [1, 0.5, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
                 />
-                <span className="text-xs text-green-600">Online</span>
+                <span className="text-xs text-green-600">{t("在线", "Online")}</span>
               </div>
             </div>
             <div className="flex items-center gap-2">
@@ -220,7 +319,7 @@ function PhoneMockup() {
           {/* Input bar */}
           <div className="bg-white border-t px-4 py-3 flex items-center gap-3">
             <div className="flex-1 bg-gray-100 rounded-full px-4 py-2.5 text-sm text-gray-400">
-              Message...
+              {t("输入消息...", "Message...")}
             </div>
             <motion.div
               className="w-10 h-10 rounded-full bg-[#3370FF] flex items-center justify-center"
@@ -239,48 +338,23 @@ function PhoneMockup() {
         animate={{ y: [0, -8, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
       >
-        <IconBadge icon={Shield} color="#10B981" bgColor="#D1FAE5" label="E2E Encrypted" delay={0.5} />
+        <IconBadge icon={Shield} color="#10B981" bgColor="#D1FAE5" label={t("端到端加密", "E2E Encrypted")} delay={0.5} />
       </motion.div>
       <motion.div
         className="absolute -right-20 top-32 hidden lg:block"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
       >
-        <IconBadge icon={Zap} color="#F5A623" bgColor="#FEF3C7" label="Lightning Fast" delay={0.7} />
+        <IconBadge icon={Zap} color="#F5A623" bgColor="#FEF3C7" label={t("极速传输", "Lightning Fast")} delay={0.7} />
       </motion.div>
       <motion.div
         className="absolute -left-12 bottom-24 hidden lg:block"
         animate={{ y: [0, -6, 0] }}
         transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
       >
-        <IconBadge icon={Globe2} color="#3370FF" bgColor="#DBEAFE" label="Global Network" delay={0.9} />
+        <IconBadge icon={Globe2} color="#3370FF" bgColor="#DBEAFE" label={t("全球网络", "Global Network")} delay={0.9} />
       </motion.div>
     </motion.div>
-  );
-}
-
-// Company logos marquee
-function LogoMarquee() {
-  const logos = [
-    "ByteDance", "Xiaomi", "7-Eleven", "Traveloka", "GOTO", "PopMart", "Haidilao", "MR.DIY"
-  ];
-  
-  return (
-    <div className="relative overflow-hidden py-8">
-      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
-      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
-      <motion.div
-        className="flex gap-16 items-center"
-        animate={{ x: [0, -800] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-      >
-        {[...logos, ...logos].map((logo, i) => (
-          <div key={i} className="text-gray-300 text-xl font-bold whitespace-nowrap">
-            {logo}
-          </div>
-        ))}
-      </motion.div>
-    </div>
   );
 }
 
@@ -288,21 +362,32 @@ function LogoMarquee() {
 function FeatureCard({ 
   icon: Icon, 
   title, 
+  titleEn,
   description, 
+  descriptionEn,
   color, 
   bgColor,
   index 
 }: { 
   icon: React.ElementType;
   title: string;
+  titleEn: string;
   description: string;
+  descriptionEn: string;
   color: string;
   bgColor: string;
   index: number;
 }) {
+  const { t } = useLanguage();
+  const { isDark } = useTheme();
+  
   return (
     <motion.div
-      className="group relative bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-xl hover:border-gray-200 transition-all duration-300"
+      className={`group relative rounded-2xl p-6 shadow-sm border transition-all duration-300 ${
+        isDark 
+          ? "bg-gray-800/50 border-gray-700 hover:bg-gray-800 hover:border-gray-600" 
+          : "bg-white border-gray-100 hover:shadow-xl hover:border-gray-200"
+      }`}
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -312,22 +397,26 @@ function FeatureCard({
       {/* Icon */}
       <div 
         className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
-        style={{ background: bgColor }}
+        style={{ background: isDark ? `${color}20` : bgColor }}
       >
         <Icon className="w-7 h-7" style={{ color }} />
       </div>
       
       {/* Content */}
-      <h3 className="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
-      <p className="text-gray-500 text-sm leading-relaxed">{description}</p>
+      <h3 className={`text-lg font-semibold mb-2 ${isDark ? "text-white" : "text-gray-900"}`}>
+        {t(title, titleEn)}
+      </h3>
+      <p className={`text-sm leading-relaxed ${isDark ? "text-gray-400" : "text-gray-500"}`}>
+        {t(description, descriptionEn)}
+      </p>
       
       {/* Hover arrow */}
       <motion.div
-        className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity"
-        initial={{ x: -10 }}
-        whileHover={{ x: 0 }}
+        className={`absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity ${
+          isDark ? "text-gray-500" : "text-gray-400"
+        }`}
       >
-        <ArrowRight className="w-5 h-5 text-gray-400" />
+        <ArrowRight className="w-5 h-5" />
       </motion.div>
     </motion.div>
   );
@@ -335,10 +424,12 @@ function FeatureCard({
 
 // App showcase mockup
 function AppShowcase() {
+  const { t } = useLanguage();
+  
   const screens = [
-    { title: "Chat", color: "#3370FF", icon: MessageCircle },
-    { title: "Meeting", color: "#10B981", icon: Video },
-    { title: "Wallet", color: "#F5A623", icon: Wallet },
+    { title: t("聊天", "Chat"), color: "#3370FF", icon: MessageCircle },
+    { title: t("会议", "Meeting"), color: "#10B981", icon: Video },
+    { title: t("钱包", "Wallet"), color: "#F5A623", icon: Wallet },
   ];
   
   return (
@@ -388,32 +479,26 @@ function DownloadButton({
   title, 
   subtitle, 
   primary = false,
-  comingSoon = false,
 }: { 
   icon: React.ElementType;
   title: string;
   subtitle: string;
   primary?: boolean;
-  comingSoon?: boolean;
 }) {
   return (
     <motion.button
       className={`flex items-center gap-3 px-5 py-3 rounded-xl transition-all duration-300 ${
-        comingSoon
-          ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-          : primary
+        primary
           ? "bg-[#3370FF] text-white hover:bg-[#2860E0] shadow-lg shadow-blue-500/25"
-          : "bg-white text-gray-800 border border-gray-200 hover:border-gray-300 hover:shadow-md"
+          : "bg-white/10 text-white border border-white/20 hover:bg-white/20"
       }`}
-      whileHover={comingSoon ? {} : { scale: 1.02 }}
-      whileTap={comingSoon ? {} : { scale: 0.98 }}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
     >
-      <Icon className={`w-6 h-6 ${comingSoon ? "opacity-50" : ""}`} />
+      <Icon className="w-6 h-6" />
       <div className="text-left">
-        <p className={`text-xs ${comingSoon ? "text-gray-400" : primary ? "text-blue-100" : "text-gray-500"}`}>
-          {comingSoon ? "Coming Soon" : subtitle}
-        </p>
-        <p className={`font-semibold ${comingSoon ? "text-gray-400" : ""}`}>{title}</p>
+        <p className={`text-xs ${primary ? "text-blue-100" : "text-white/60"}`}>{subtitle}</p>
+        <p className="font-semibold">{title}</p>
       </div>
     </motion.button>
   );
@@ -422,6 +507,8 @@ function DownloadButton({
 // Main component
 export default function GoldHouseLanding() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+  const [lang, setLang] = useState<Language>("zh");
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -429,7 +516,7 @@ export default function GoldHouseLanding() {
   });
   
   const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const heroY = useTransform(scrollYProgress, [0, 0.5], [0, -50]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.5], [1, 1.1]);
   
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -437,404 +524,469 @@ export default function GoldHouseLanding() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const toggleTheme = () => setIsDark(!isDark);
+  const t = (zh: string, en: string) => lang === "zh" ? zh : en;
+
   const features = [
     {
       icon: MessageCircle,
       title: "即时通讯",
-      description: "支持万人群组,消息实时同步,多端无缝切换",
+      titleEn: "Instant Messaging",
+      description: "支持万人群组，消息实时同步，多端无缝切换",
+      descriptionEn: "Support 10K+ group chats, real-time sync, seamless multi-device",
       color: "#3370FF",
       bgColor: "#EBF2FF",
     },
     {
       icon: Video,
       title: "高清会议",
-      description: "万人同时在线,高清稳定,智能降噪",
+      titleEn: "HD Meetings",
+      description: "万人同时在线，高清稳定，智能降噪",
+      descriptionEn: "10K+ participants, HD quality, AI noise cancellation",
       color: "#10B981",
       bgColor: "#D1FAE5",
     },
     {
       icon: Shield,
       title: "端到端加密",
-      description: "军事级加密技术,保护每一条消息安全",
+      titleEn: "E2E Encryption",
+      description: "军事级加密技术，保护每一条消息安全",
+      descriptionEn: "Military-grade encryption protects every message",
       color: "#6366F1",
       bgColor: "#E0E7FF",
     },
     {
       icon: Wallet,
       title: "数字钱包",
-      description: "安全便捷的数字资产管理,一键转账收款",
+      titleEn: "Digital Wallet",
+      description: "安全便捷的数字资产管理，一键转账收款",
+      descriptionEn: "Secure digital asset management, instant transfers",
       color: "#F5A623",
       bgColor: "#FEF3C7",
     },
     {
       icon: Bot,
       title: "AI 智能助手",
-      description: "内置 MBot 机器人,智能回复,效率翻倍",
+      titleEn: "AI Assistant",
+      description: "内置 MBot 机器人，智能回复，效率翻倍",
+      descriptionEn: "Built-in MBot for smart replies and productivity",
       color: "#EC4899",
       bgColor: "#FCE7F3",
     },
     {
       icon: Globe2,
       title: "全球网络",
-      description: "200+ 节点覆盖全球,超低延迟体验",
+      titleEn: "Global Network",
+      description: "200+ 节点覆盖全球，超低延迟体验",
+      descriptionEn: "200+ nodes worldwide, ultra-low latency",
       color: "#14B8A6",
       bgColor: "#CCFBF1",
     },
   ];
 
+  const brandValues = [
+    { 
+      title: "Culture", 
+      chinese: t("文化", "Culture"), 
+      description: t("坚持前进  拥抱创新", "Keep Moving Forward, Embrace Innovation"),
+      color: "#3370FF",
+      bgColor: isDark ? "from-blue-900/30 to-cyan-900/30" : "from-blue-50 to-cyan-50"
+    },
+    { 
+      title: "Mission", 
+      chinese: t("使命", "Mission"), 
+      description: t("极致安全  无感交互", "Ultimate Security, Seamless Interaction"),
+      color: "#F5A623",
+      bgColor: isDark ? "from-orange-900/30 to-yellow-900/30" : "from-orange-50 to-yellow-50"
+    },
+    { 
+      title: "Vision", 
+      chinese: t("愿景", "Vision"), 
+      description: t("链接全球，打造无界生态", "Connect Globally, Build Boundless Ecosystem"),
+      color: "#10B981",
+      bgColor: isDark ? "from-green-900/30 to-emerald-900/30" : "from-green-50 to-emerald-50"
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-white overflow-hidden">
-      {/* Navigation */}
-      <motion.nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white/80 backdrop-blur-xl shadow-sm" : ""
-        }`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Image 
-              src="/logo.png" 
-              alt="Gold House Logo" 
-              width={40} 
-              height={40} 
-              className="rounded-xl"
-            />
-            <span className="text-xl font-bold text-gray-900">
-              Gold<span className="text-[#F5A623]">House</span>
-            </span>
-          </div>
-          
-          <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">Features</a>
-            <a href="#download" className="text-gray-600 hover:text-gray-900 transition-colors">Download</a>
-            <a href="#about" className="text-gray-600 hover:text-gray-900 transition-colors">About</a>
-          </div>
-          
-          <motion.button
-            className="px-5 py-2.5 bg-[#3370FF] text-white rounded-full font-medium text-sm hover:bg-[#2860E0] transition-colors shadow-lg shadow-blue-500/25"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+      <LanguageContext.Provider value={{ lang, setLang, t }}>
+        <div className={`min-h-screen overflow-hidden transition-colors duration-500 ${
+          isDark ? "bg-gray-900" : "bg-white"
+        }`}>
+          {/* Navigation */}
+          <motion.nav
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+              isScrolled 
+                ? isDark 
+                  ? "bg-gray-900/80 backdrop-blur-xl shadow-lg shadow-black/20" 
+                  : "bg-white/80 backdrop-blur-xl shadow-sm"
+                : ""
+            }`}
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.5 }}
           >
-            立即下载
-          </motion.button>
-        </div>
-      </motion.nav>
-
-      {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen pt-24 pb-16 overflow-hidden">
-        <FloatingShapes />
-        
-        <motion.div
-          className="max-w-7xl mx-auto px-6 pt-16 md:pt-24"
-          style={{ opacity: heroOpacity, y: heroY }}
-        >
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Left content */}
-            <div className="space-y-8">
-              <motion.div
-                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 rounded-full"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-              >
-                <motion.div
-                  className="w-2 h-2 rounded-full bg-green-500"
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+            <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <Image 
+                  src="/logo.png" 
+                  alt="Gold House Logo" 
+                  width={40} 
+                  height={40} 
+                  className="rounded-xl"
                 />
-                <span className="text-sm text-blue-700 font-medium">新一代超级通讯应用</span>
-              </motion.div>
-              
-              <motion.h1
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
-                <span className="text-gradient">世界在你掌中</span>
-                <br />
-                <span className="text-gray-400 text-3xl sm:text-4xl lg:text-5xl">The World in Your Hands</span>
-              </motion.h1>
-              
-              <motion.p
-                className="text-lg text-gray-600 max-w-lg leading-relaxed"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                集即时通讯、高清会议、数字钱包于一体。
-                <br />
-                <span className="text-gray-400">端到端加密,全球畅连,随时随地高效沟通。</span>
-              </motion.p>
-              
-              <motion.div
-                className="flex flex-wrap gap-3"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-              >
-                <DownloadButton icon={Apple} title="App Store" subtitle="Download on the" primary />
-                <DownloadButton icon={Play} title="Google Play" subtitle="Get it on" />
-                <DownloadButton icon={Globe} title="Web App" subtitle="Open in browser" />
-              </motion.div>
-              
-              {/* Rating */}
-              <motion.div
-                className="flex items-center gap-4 pt-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-              >
-                <div className="flex">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                  ))}
-                </div>
-                <span className="text-gray-600">
-                  <span className="font-semibold text-gray-900">4.9</span> | Based on 10,000+ reviews
+                <span className={`text-xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}>
+                  Gold<span className="text-[#F5A623]">House</span>
                 </span>
-              </motion.div>
+              </div>
+              
+              <div className="hidden md:flex items-center gap-8">
+                <a href="#features" className={`transition-colors ${isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900"}`}>
+                  {t("功能", "Features")}
+                </a>
+                <a href="#download" className={`transition-colors ${isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900"}`}>
+                  {t("下载", "Download")}
+                </a>
+                <a href="#about" className={`transition-colors ${isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900"}`}>
+                  {t("关于", "About")}
+                </a>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <ThemeToggle />
+                <LanguageSelector />
+                <motion.button
+                  className="hidden sm:block px-5 py-2.5 bg-[#3370FF] text-white rounded-full font-medium text-sm hover:bg-[#2860E0] transition-colors shadow-lg shadow-blue-500/25"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {t("立即下载", "Download")}
+                </motion.button>
+              </div>
             </div>
+          </motion.nav>
+
+          {/* Hero Section with Background Image */}
+          <section ref={heroRef} className="relative min-h-screen overflow-hidden">
+            {/* Background Image */}
+            <motion.div 
+              className="absolute inset-0 z-0"
+              style={{ scale: heroScale }}
+            >
+              <Image
+                src="/hero-bg.png"
+                alt="City Skyline"
+                fill
+                className="object-cover"
+                priority
+              />
+              {/* Overlay for readability */}
+              <div className={`absolute inset-0 ${
+                isDark 
+                  ? "bg-gradient-to-b from-gray-900/70 via-gray-900/50 to-gray-900" 
+                  : "bg-gradient-to-b from-white/60 via-white/40 to-white"
+              }`} />
+            </motion.div>
             
-            {/* Right content - Phone mockup */}
-            <div className="flex justify-center lg:justify-end">
-              <PhoneMockup />
-            </div>
-          </div>
-        </motion.div>
-        
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 8, 0] }}
-          transition={{ opacity: { delay: 1 }, y: { duration: 2, repeat: Infinity } }}
-        >
-          <div className="w-6 h-10 rounded-full border-2 border-gray-300 flex justify-center pt-2">
             <motion.div
-              className="w-1.5 h-1.5 rounded-full bg-gray-400"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            />
-          </div>
-        </motion.div>
-      </section>
+              className="relative z-10 max-w-7xl mx-auto px-6 pt-32 md:pt-40 pb-24"
+              style={{ opacity: heroOpacity }}
+            >
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                {/* Left content */}
+                <div className="space-y-8">
+                  <motion.div
+                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${
+                      isDark ? "bg-blue-500/20" : "bg-blue-50"
+                    }`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 }}
+                  >
+                    <motion.div
+                      className="w-2 h-2 rounded-full bg-green-500"
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    />
+                    <span className={`text-sm font-medium ${isDark ? "text-blue-400" : "text-blue-700"}`}>
+                      {t("新一代超级通讯应用", "Next-Gen Super Communication App")}
+                    </span>
+                  </motion.div>
+                  
+                  <motion.h1
+                    className={`text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight ${
+                      isDark ? "text-white" : "text-gray-900"
+                    }`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                  >
+                    <span className="text-gradient">{t("世界在你掌中", "The World in Your Hands")}</span>
+                  </motion.h1>
+                  
+                  <motion.p
+                    className={`text-lg max-w-lg leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                  >
+                    {t(
+                      "集即时通讯、高清会议、数字钱包于一体。端到端加密，全球畅连，随时随地高效沟通。",
+                      "All-in-one platform for messaging, HD meetings, and digital wallet. End-to-end encrypted, globally connected."
+                    )}
+                  </motion.p>
+                  
+                  <motion.div
+                    className="flex flex-wrap gap-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    <DownloadButton icon={Apple} title="App Store" subtitle={t("下载于", "Download on")} primary />
+                    <DownloadButton icon={Play} title="Google Play" subtitle={t("下载于", "Get it on")} />
+                    <DownloadButton icon={Globe} title="Web App" subtitle={t("在浏览器打开", "Open in browser")} />
+                  </motion.div>
+                  
+                  {/* Rating */}
+                  <motion.div
+                    className="flex items-center gap-4 pt-4"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                  >
+                    <div className="flex">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                      ))}
+                    </div>
+                    <span className={isDark ? "text-gray-300" : "text-gray-600"}>
+                      <span className={`font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>4.9</span> | {t("基于 10,000+ 评价", "Based on 10,000+ reviews")}
+                    </span>
+                  </motion.div>
+                </div>
+                
+                {/* Right content - Phone mockup */}
+                <div className="flex justify-center lg:justify-end">
+                  <PhoneMockup />
+                </div>
+              </div>
+            </motion.div>
+            
+            {/* Scroll indicator */}
+            <motion.div
+              className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, y: [0, 8, 0] }}
+              transition={{ opacity: { delay: 1 }, y: { duration: 2, repeat: Infinity } }}
+            >
+              <div className={`w-6 h-10 rounded-full border-2 flex justify-center pt-2 ${
+                isDark ? "border-gray-500" : "border-gray-300"
+              }`}>
+                <motion.div
+                  className={`w-1.5 h-1.5 rounded-full ${isDark ? "bg-gray-400" : "bg-gray-400"}`}
+                  animate={{ y: [0, 12, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                />
+              </div>
+            </motion.div>
+          </section>
 
-      {/* Logo marquee */}
-      <section className="border-y border-gray-100 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <LogoMarquee />
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section id="features" className="py-24 bg-gradient-to-b from-white to-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            className="text-center max-w-2xl mx-auto mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              One platform. <span className="text-gradient">Fully integrated.</span>
-            </h2>
-            <p className="text-gray-500 text-lg">
-              Gold House 将通讯、会议、钱包集成于一体,让沟通更高效
-            </p>
-          </motion.div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, i) => (
-              <FeatureCard key={i} {...feature} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* App showcase */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            className="text-center max-w-2xl mx-auto mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              All-in-one <span className="text-gradient-gold">Superapp</span>
-            </h2>
-            <p className="text-gray-500 text-lg">
-              Chat, Meet, Pay - 一个应用满足所有需求
-            </p>
-          </motion.div>
-          
-          <AppShowcase />
-        </div>
-      </section>
-
-      {/* Brand values section */}
-      <section id="about" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { 
-                title: "Culture", 
-                chinese: "文化", 
-                description: "传承华人文化精髓,以科技赋能全球华人社区",
-                color: "#3370FF",
-                bgColor: "from-blue-50 to-cyan-50"
-              },
-              { 
-                title: "Mission", 
-                chinese: "使命", 
-                description: "让每一位用户享受安全、便捷、高效的数字生活",
-                color: "#F5A623",
-                bgColor: "from-orange-50 to-yellow-50"
-              },
-              { 
-                title: "Vision", 
-                chinese: "愿景", 
-                description: "成为全球华人首选的超级应用生态平台",
-                color: "#10B981",
-                bgColor: "from-green-50 to-emerald-50"
-              },
-            ].map((item, i) => (
+          {/* Features Section */}
+          <section id="features" className={`py-24 ${isDark ? "bg-gray-900" : "bg-white"}`}>
+            <div className="max-w-7xl mx-auto px-6">
               <motion.div
-                key={i}
-                className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${item.bgColor} p-8`}
+                className="text-center max-w-2xl mx-auto mb-16"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                whileHover={{ y: -5 }}
               >
-                <div 
-                  className="absolute top-0 left-0 w-1 h-full"
-                  style={{ background: item.color }}
-                />
-                <span 
-                  className="text-sm font-semibold uppercase tracking-wider"
-                  style={{ color: item.color }}
-                >
-                  {item.title}
-                </span>
-                <h3 className="text-2xl font-bold text-gray-900 mt-2 mb-3">{item.chinese}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>
+                  {t("一个平台，", "One platform. ")}
+                  <span className="text-gradient">{t("全面集成", "Fully integrated.")}</span>
+                </h2>
+                <p className={`text-lg ${isDark ? "text-gray-400" : "text-gray-500"}`}>
+                  {t("Gold House 将通讯、会议、钱包集成于一体，让沟通更高效", "Gold House integrates messaging, meetings, and wallet for efficient communication")}
+                </p>
               </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+              
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {features.map((feature, i) => (
+                  <FeatureCard key={i} {...feature} index={i} />
+                ))}
+              </div>
+            </div>
+          </section>
 
-      {/* Download Section */}
-      <section id="download" className="py-24 bg-gradient-to-br from-[#1a1f36] to-[#0f1219] text-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            className="text-center max-w-2xl mx-auto mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Get <span className="text-gradient">Gold House</span>
-            </h2>
-            <p className="text-gray-400 text-lg">
-              Available on all platforms. Download now and start connecting.
-            </p>
-          </motion.div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {[
-              { icon: Apple, name: "iOS", desc: "App Store", available: true },
-              { icon: Play, name: "Android", desc: "Google Play", available: true },
-              { icon: Download, name: "APK", desc: "Direct Download", available: true },
-              { icon: Monitor, name: "Windows", desc: "Desktop App", available: true },
-              { icon: TestTube, name: "TestFlight", desc: "Beta Testing", available: true },
-              { icon: Globe, name: "Web", desc: "Browser App", available: true },
-            ].map((item, i) => (
+          {/* App showcase */}
+          <section className={`py-24 ${isDark ? "bg-gray-800/50" : "bg-gray-50"}`}>
+            <div className="max-w-7xl mx-auto px-6">
               <motion.div
-                key={i}
-                className={`group relative flex items-center gap-4 p-5 rounded-2xl transition-all duration-300 ${
-                  item.available
-                    ? "bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 cursor-pointer"
-                    : "bg-white/[0.02] border border-white/5 opacity-50"
-                }`}
-                initial={{ opacity: 0, y: 20 }}
+                className="text-center max-w-2xl mx-auto mb-12"
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                whileHover={item.available ? { scale: 1.02 } : {}}
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
-                  item.available ? "bg-[#3370FF]/20" : "bg-white/5"
-                }`}>
-                  <item.icon className={`w-6 h-6 ${item.available ? "text-[#3370FF]" : "text-gray-500"}`} />
-                </div>
-                <div className="flex-1">
-                  <p className="font-semibold text-white">{item.name}</p>
-                  <p className="text-sm text-gray-400">{item.available ? item.desc : "Coming Soon"}</p>
-                </div>
-                {item.available && (
-                  <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-white group-hover:translate-x-1 transition-all" />
-                )}
+                <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>
+                  {t("一体化 ", "All-in-one ")}
+                  <span className="text-gradient-gold">{t("超级应用", "Superapp")}</span>
+                </h2>
+                <p className={`text-lg ${isDark ? "text-gray-400" : "text-gray-500"}`}>
+                  {t("聊天、会议、支付 - 一个应用满足所有需求", "Chat, Meet, Pay - One app for all your needs")}
+                </p>
               </motion.div>
-            ))}
-          </div>
-          
-          {/* QR Code section */}
-          <motion.div
-            className="mt-16 flex flex-col items-center"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <div className="w-32 h-32 bg-white rounded-2xl p-3 mb-4">
-              <div className="w-full h-full bg-gray-100 rounded-xl flex items-center justify-center">
-                <QrCode className="w-16 h-16 text-gray-400" />
-              </div>
+              
+              <AppShowcase />
             </div>
-            <p className="text-gray-400 text-sm">Scan to download</p>
-          </motion.div>
-        </div>
-      </section>
+          </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex items-center gap-3">
-              <Image 
-                src="/logo.png" 
-                alt="Gold House Logo" 
-                width={40} 
-                height={40} 
-                className="rounded-xl"
-              />
-              <div>
-                <span className="text-lg font-bold">
-                  Gold<span className="text-[#F5A623]">House</span>
-                </span>
-                <p className="text-gray-500 text-sm">世界在你掌中</p>
+          {/* Brand values section */}
+          <section id="about" className={`py-24 ${isDark ? "bg-gray-900" : "bg-white"}`}>
+            <div className="max-w-7xl mx-auto px-6">
+              <motion.div
+                className="text-center max-w-2xl mx-auto mb-16"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>
+                  {t("我们的理念", "Our Philosophy")}
+                </h2>
+              </motion.div>
+              
+              <div className="grid md:grid-cols-3 gap-8">
+                {brandValues.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${item.bgColor} p-8`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    whileHover={{ y: -5 }}
+                  >
+                    <div 
+                      className="absolute top-0 left-0 w-1 h-full"
+                      style={{ background: item.color }}
+                    />
+                    <span 
+                      className="text-sm font-semibold uppercase tracking-wider"
+                      style={{ color: item.color }}
+                    >
+                      {item.title}
+                    </span>
+                    <h3 className={`text-2xl font-bold mt-2 mb-3 ${isDark ? "text-white" : "text-gray-900"}`}>
+                      {item.chinese}
+                    </h3>
+                    <p className={`leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+                      {item.description}
+                    </p>
+                  </motion.div>
+                ))}
               </div>
             </div>
-            
-            <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-white transition-colors">Contact Us</a>
-              <a href="#" className="hover:text-white transition-colors">Support</a>
+          </section>
+
+          {/* Download Section */}
+          <section id="download" className="py-24 bg-gradient-to-br from-[#1a1f36] to-[#0f1219] text-white">
+            <div className="max-w-7xl mx-auto px-6">
+              <motion.div
+                className="text-center max-w-2xl mx-auto mb-16"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  {t("获取 ", "Get ")}
+                  <span className="text-gradient">Gold House</span>
+                </h2>
+                <p className="text-gray-400 text-lg">
+                  {t("全平台支持，立即下载开始连接世界", "Available on all platforms. Download now and start connecting.")}
+                </p>
+              </motion.div>
+              
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                {[
+                  { icon: Apple, name: "iOS", desc: "App Store" },
+                  { icon: Play, name: "Android", desc: "Google Play" },
+                  { icon: Download, name: "APK", desc: t("直接下载", "Direct Download") },
+                  { icon: Monitor, name: "Windows", desc: t("桌面应用", "Desktop App") },
+                  { icon: TestTube, name: "TestFlight", desc: t("测试版", "Beta Testing") },
+                  { icon: Globe, name: "Web", desc: t("网页版", "Browser App") },
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    className="group relative flex items-center gap-4 p-5 rounded-2xl transition-all duration-300 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 cursor-pointer"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.05 }}
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#3370FF]/20">
+                      <item.icon className="w-6 h-6 text-[#3370FF]" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-semibold text-white">{item.name}</p>
+                      <p className="text-sm text-gray-400">{item.desc}</p>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                  </motion.div>
+                ))}
+              </div>
+              
+              {/* QR Code section */}
+              <motion.div
+                className="mt-16 flex flex-col items-center"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+              >
+                <div className="w-32 h-32 bg-white rounded-2xl p-3 mb-4">
+                  <div className="w-full h-full bg-gray-100 rounded-xl flex items-center justify-center">
+                    <QrCode className="w-16 h-16 text-gray-400" />
+                  </div>
+                </div>
+                <p className="text-gray-400 text-sm">{t("扫码下载", "Scan to download")}</p>
+              </motion.div>
             </div>
-          </div>
-          
-          <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
-            &copy; 2024 Gold House. All rights reserved.
-          </div>
+          </section>
+
+          {/* Footer */}
+          <footer className={`py-16 ${isDark ? "bg-gray-950" : "bg-gray-900"} text-white`}>
+            <div className="max-w-7xl mx-auto px-6">
+              <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div className="flex items-center gap-3">
+                  <Image 
+                    src="/logo.png" 
+                    alt="Gold House Logo" 
+                    width={40} 
+                    height={40} 
+                    className="rounded-xl"
+                  />
+                  <div>
+                    <span className="text-lg font-bold">
+                      Gold<span className="text-[#F5A623]">House</span>
+                    </span>
+                    <p className="text-gray-500 text-sm">{t("世界在你掌中", "The World in Your Hands")}</p>
+                  </div>
+                </div>
+                
+                <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-400">
+                  <a href="#" className="hover:text-white transition-colors">{t("隐私政策", "Privacy Policy")}</a>
+                  <a href="#" className="hover:text-white transition-colors">{t("服务条款", "Terms of Service")}</a>
+                  <a href="#" className="hover:text-white transition-colors">{t("联系我们", "Contact Us")}</a>
+                  <a href="#" className="hover:text-white transition-colors">{t("帮助支持", "Support")}</a>
+                </div>
+              </div>
+              
+              <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                &copy; 2024 Gold House. {t("保留所有权利", "All rights reserved.")}
+              </div>
+            </div>
+          </footer>
         </div>
-      </footer>
-    </div>
+      </LanguageContext.Provider>
+    </ThemeContext.Provider>
   );
 }
