@@ -4,38 +4,40 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.08 0.02 260);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.12 0.02 260);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.12 0.02 260);
-  --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.65 0.2 250);
+  --background: oklch(0.98 0.005 260);
+  --foreground: oklch(0.15 0.02 260);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.02 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.02 260);
+  --primary: oklch(0.58 0.22 250);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.18 0.02 260);
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.18 0.02 260);
-  --muted-foreground: oklch(0.65 0 0);
-  --accent: oklch(0.82 0.15 85);
+  --secondary: oklch(0.96 0.01 260);
+  --secondary-foreground: oklch(0.15 0.02 260);
+  --muted: oklch(0.96 0.01 260);
+  --muted-foreground: oklch(0.45 0.02 260);
+  --accent: oklch(0.75 0.15 85);
   --accent-foreground: oklch(0.15 0.02 260);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: oklch(0.25 0.02 260);
-  --input: oklch(0.25 0.02 260);
-  --ring: oklch(0.65 0.2 250);
+  --border: oklch(0.92 0.01 260);
+  --input: oklch(0.92 0.01 260);
+  --ring: oklch(0.58 0.22 250);
   --radius: 0.75rem;
 
-  /* Custom Gold House colors */
-  --ios-blue: #007AFF;
-  --gold: #F5C15C;
-  --deep-navy: #0A0F1C;
-  --glass-bg: rgba(255, 255, 255, 0.05);
-  --glass-border: rgba(255, 255, 255, 0.1);
+  /* Gold House colors */
+  --ios-blue: #3370FF;
+  --gold: #F5A623;
+  --navy: #1a1f36;
+  --soft-blue: #E8F0FE;
+  --soft-orange: #FFF4E6;
+  --soft-green: #E6F7F0;
+  --soft-purple: #F0E8FF;
 }
 
 @theme inline {
-  --font-sans: 'Geist', 'Geist Fallback', system-ui, sans-serif;
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback', monospace;
+  --font-sans: 'Inter', 'Geist', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -73,70 +75,104 @@
 /* Custom animations */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-12px); }
 }
 
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(2deg); }
 }
 
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
 }
 
 .animate-float {
-  animation: float 6s ease-in-out infinite;
+  animation: float 5s ease-in-out infinite;
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
 }
 
-.animate-gradient {
+.animate-shine {
+  animation: shine 3s ease-in-out infinite;
+}
+
+.animate-gradient-x {
   background-size: 200% 200%;
-  animation: gradient-shift 8s ease infinite;
+  animation: gradient-x 4s ease infinite;
 }
 
-/* Glassmorphism */
-.glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
+.animate-marquee {
+  animation: marquee 30s linear infinite;
 }
 
-.glass-card {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+.animate-pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
 }
 
-/* Grid background */
-.grid-bg {
-  background-image: 
-    linear-gradient(rgba(0, 122, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 122, 255, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+/* Soft gradient backgrounds */
+.gradient-blue {
+  background: linear-gradient(135deg, #E8F4FD 0%, #D0E8FF 50%, #E8F4FD 100%);
+}
+
+.gradient-orange {
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFE8D0 50%, #FFF8F0 100%);
+}
+
+.gradient-mesh {
+  background: 
+    radial-gradient(at 20% 20%, rgba(51, 112, 255, 0.08) 0%, transparent 50%),
+    radial-gradient(at 80% 80%, rgba(245, 166, 35, 0.08) 0%, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.05) 0%, transparent 50%);
 }
 
 /* Scrollbar styling */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--deep-navy);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 122, 255, 0.3);
-  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 122, 255, 0.5);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Text gradient */
+.text-gradient {
+  background: linear-gradient(135deg, #3370FF 0%, #00C4B4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #F5A623 0%, #FF6B35 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Inter, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const geist = Geist({ 
+const inter = Inter({ 
   subsets: ["latin"],
-  variable: '--font-geist-sans',
+  variable: '--font-inter',
 })
 
 const geistMono = Geist_Mono({ 
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0A0F1C',
+  themeColor: '#ffffff',
   width: 'device-width',
   initialScale: 1,
 }
@@ -37,8 +37,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="zh-CN" className="bg-[#0A0F1C]">
-      <body className={`${geist.variable} ${geistMono.variable} font-sans antialiased`}>
+    <html lang="zh-CN" className="bg-white">
+      <body className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
