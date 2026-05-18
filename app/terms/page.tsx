@@ -71,15 +71,15 @@ export default function TermsOfService() {
       {
         title: t("8. 服务变更与终止", "8. Service Changes and Termination"),
         content: t(
-          "• 我们保留随时修改、暂停或终止任何服务的权利。\n• 如有重大变更，我们将提前通知用户。\n• 如果您违反这些条款（包括零容忍政策），我们可能会立即暂停或终止您的帐户。\n• 服务终止后，您仍然可以通过您的DID导出您的身份和数据。",
+          "• 我们保留随时修改、暂停或终止任何服务的权利。\n• 如有重大变更，我们将提前通知用户。\n• 如果您违反这些条款（包括零容忍政策），我们可能会立即暂停或终止您的帐户���\n• 服务终止后，您仍然可以通过您的DID导出您的身份和数据。",
           "• We reserve the right to modify, suspend, or terminate any service at any time.\n• For significant changes, we will notify users in advance.\n• If you violate these terms (including the zero-tolerance policy), we may immediately suspend or terminate your account.\n• After service termination, you can still export your identity and data through your DID."
         ),
       },
       {
         title: t("9. 免责声明", "9. Disclaimer"),
         content: t(
-          "• 所有服务均按"现状"和"现有"方式提供，不提供任何形式的担保。\n• 对于因使用或无法使用服务而造成的任何损失，我们概不负责。\n• 区块链网络延迟、拥塞或故障超出我们的控制范围。\n• AI代理的输出仅供参考，不应作为决策的唯一依据。",
-          "• All services are provided \"as is\" and \"as available\" without any warranties of any kind.\n• We are not liable for any losses arising from the use or inability to use the services.\n• Blockchain network delays, congestion, or failures are beyond our control.\n• AI agent outputs are for reference only and should not be used as the sole basis for decision-making."
+          '• 所有服务均按"现状"和"现有"方式提供，不提供任何形式的担保。\n• 对于因使用或无法使用服务而造成的任何损失，我们概不负责。\n• 区块链网络延迟、拥塞或故障超出我们的控制范围。\n• AI代理的输出仅供参考，不应作为决策的唯一依据。',
+          '• All services are provided "as is" and "as available" without any warranties of any kind.\n• We are not liable for any losses arising from the use or inability to use the services.\n• Blockchain network delays, congestion, or failures are beyond our control.\n• AI agent outputs are for reference only and should not be used as the sole basis for decision-making.'
         ),
       },
       {
