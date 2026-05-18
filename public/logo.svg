@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_1" data-name="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1920 1080">
+  <!-- Generator: Adobe Illustrator 30.0.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 123)  -->
+  <defs>
+    <style>
+      .st0 {
+        filter: url(#drop-shadow-1);
+      }
+
+      .st1 {
+        fill: url(#_未命名的渐变_102);
+      }
+
+      .st2 {
+        fill: url(#_未命名的渐变_100);
+      }
+
+      .st3 {
+        fill: #fff;
+      }
+    </style>
+    <linearGradient id="_未命名的渐变_102" data-name="未命名的渐变 102" x1="922.5" y1="1037.9" x2="922.5" y2="13.9" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#007aff"/>
+      <stop offset=".9" stop-color="#4fbffa"/>
+      <stop offset="1" stop-color="#5ac8fa"/>
+    </linearGradient>
+    <linearGradient id="_未命名的渐变_100" data-name="未命名的渐变 100" x1="922.5" y1="815.3" x2="922.5" y2="556.8" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff8500"/>
+      <stop offset="1" stop-color="#ffd60a"/>
+    </linearGradient>
+    <filter id="drop-shadow-1" x="600.9" y="238.2" width="645" height="631" filterUnits="userSpaceOnUse">
+      <feOffset dx="0" dy="13.2"/>
+      <feGaussianBlur result="blur" stdDeviation="13.2"/>
+      <feFlood flood-color="#000" flood-opacity=".4"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <rect class="st1" x="410.5" y="28" width="1024" height="1024" rx="265.8" ry="265.8"/>
+  <g>
+    <rect class="st2" x="872.5" y="556.8" width="100" height="258.5" rx="50" ry="50"/>
+    <g class="st0">
+      <path class="st3" d="M1155,815.3c-27.3,0-49.5-22.1-49.5-49.4v-269.5c0-.1-.3-1.2-1.9-2.3l-162.9-124c-11.2-8.5-28.7-8.5-39.8.1l-159.8,123.7c-1.5,1.2-1.8,2.2-1.8,2.3v269.7c0,27.3-22.1,49.4-49.5,49.4s-49.5-22.1-49.5-49.4v-269.7c0-31.4,14.7-60.7,40.2-80.5l159.8-123.7c22.5-17.4,50.9-27.1,80-27.2.2,0,.3,0,.5,0,28.9,0,57.2,9.4,79.7,26.6l162.9,124c26,19.8,40.9,49.3,40.9,81v269.5c0,27.3-22.1,49.4-49.5,49.4Z"/>
+    </g>
+  </g>
+</svg>

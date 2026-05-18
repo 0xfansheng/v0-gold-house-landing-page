@@ -18,7 +18,6 @@ import {
   Sparkles,
   ChevronRight,
   ArrowRight,
-  Star,
   Check,
   Smartphone,
   Lock,
@@ -498,7 +497,7 @@ function DownloadButton({
 export default function GoldHouseLanding() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDark, setIsDark] = useState(false);
-  const [lang, setLang] = useState<Language>("zh");
+  const [lang, setLang] = useState<Language>("en");
   const heroRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -618,14 +617,14 @@ export default function GoldHouseLanding() {
             transition={{ duration: 0.5 }}
           >
             <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Image 
-                  src="/logo.png" 
-                  alt="Gold House Logo" 
-                  width={40} 
-                  height={40} 
-                  className="rounded-xl"
-                />
+<div className="flex items-center gap-2">
+            <Image 
+              src="/logo.svg" 
+              alt="Gold House Logo" 
+              width={40} 
+              height={40} 
+              className="rounded-xl"
+            />
                 <span className={`text-xl font-bold ${isDark ? "text-white" : "text-gray-900"}`}>
                   Gold<span className="text-[#F5A623]">House</span>
                 </span>
@@ -732,23 +731,6 @@ export default function GoldHouseLanding() {
                     <DownloadButton icon={Apple} title="App Store" subtitle={t("下载于", "Download on")} />
                     <DownloadButton icon={Play} title="Google Play" subtitle={t("下载于", "Get it on")} />
                     <DownloadButton icon={Globe} title="Web App" subtitle={t("在浏览器打开", "Open in browser")} />
-                  </motion.div>
-                  
-                  {/* Rating */}
-                  <motion.div
-                    className="flex items-center gap-4 pt-4"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    <div className="flex">
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                      ))}
-                    </div>
-                    <span className="text-white/80">
-                      <span className="font-semibold text-white">4.9</span> | {t("基于 10,000+ 评价", "Based on 10,000+ reviews")}
-                    </span>
                   </motion.div>
                 </div>
                 
@@ -941,34 +923,34 @@ export default function GoldHouseLanding() {
           </section>
 
           {/* Footer */}
-          <footer className={`py-16 ${isDark ? "bg-gray-950" : "bg-gray-900"} text-white`}>
+          <footer className={`py-16 ${isDark ? "bg-gray-950 text-white" : "bg-gray-50 text-gray-900"}`}>
             <div className="max-w-7xl mx-auto px-6">
               <div className="flex flex-col md:flex-row justify-between items-center gap-8">
                 <div className="flex items-center gap-3">
                   <Image 
-                    src="/logo.png" 
+                    src="/logo.svg" 
                     alt="Gold House Logo" 
                     width={40} 
                     height={40} 
                     className="rounded-xl"
                   />
                   <div>
-                    <span className="text-lg font-bold">
+                    <span className={`text-lg font-bold ${isDark ? "text-white" : "text-gray-900"}`}>
                       Gold<span className="text-[#F5A623]">House</span>
                     </span>
-                    <p className="text-gray-500 text-sm">{t("世界在你掌中", "The World in Your Hands")}</p>
+                    <p className={`text-sm ${isDark ? "text-gray-500" : "text-gray-500"}`}>{t("世界在你掌中", "The World in Your Hands")}</p>
                   </div>
                 </div>
                 
-                <div className="flex flex-wrap justify-center gap-8 text-sm text-gray-400">
-                  <a href="/privacy" className="hover:text-white transition-colors">{t("隐私政策", "Privacy Policy")}</a>
-                  <a href="/terms" className="hover:text-white transition-colors">{t("服务条款", "Terms of Service")}</a>
-                  <a href="#" className="hover:text-white transition-colors">{t("联系我们", "Contact Us")}</a>
-                  <a href="#" className="hover:text-white transition-colors">{t("帮助支持", "Support")}</a>
+                <div className={`flex flex-wrap justify-center gap-8 text-sm ${isDark ? "text-gray-400" : "text-gray-500"}`}>
+                  <a href="/privacy" className={`transition-colors ${isDark ? "hover:text-white" : "hover:text-gray-900"}`}>{t("隐私政策", "Privacy Policy")}</a>
+                  <a href="/terms" className={`transition-colors ${isDark ? "hover:text-white" : "hover:text-gray-900"}`}>{t("服务条款", "Terms of Service")}</a>
+                  <a href="#" className={`transition-colors ${isDark ? "hover:text-white" : "hover:text-gray-900"}`}>{t("联系我们", "Contact Us")}</a>
+                  <a href="#" className={`transition-colors ${isDark ? "hover:text-white" : "hover:text-gray-900"}`}>{t("帮助支持", "Support")}</a>
                 </div>
               </div>
               
-              <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+              <div className={`mt-12 pt-8 border-t text-center text-sm ${isDark ? "border-gray-800 text-gray-500" : "border-gray-200 text-gray-400"}`}>
                 &copy; 2024 Gold House. {t("保留所有权利", "All rights reserved.")}
               </div>
             </div>
