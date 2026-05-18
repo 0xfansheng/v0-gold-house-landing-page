@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import {
   Apple,
   Play,
@@ -494,9 +495,13 @@ export default function GoldHouseLanding() {
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3370FF] to-[#00C4B4] flex items-center justify-center">
-              <span className="text-white font-bold text-lg">金</span>
-            </div>
+            <Image 
+              src="/logo.png" 
+              alt="Gold House Logo" 
+              width={40} 
+              height={40} 
+              className="rounded-xl"
+            />
             <span className="text-xl font-bold text-gray-900">
               Gold<span className="text-[#F5A623]">House</span>
             </span>
@@ -802,9 +807,13 @@ export default function GoldHouseLanding() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#3370FF] to-[#00C4B4] flex items-center justify-center">
-                <span className="text-white font-bold">金</span>
-              </div>
+              <Image 
+                src="/logo.png" 
+                alt="Gold House Logo" 
+                width={40} 
+                height={40} 
+                className="rounded-xl"
+              />
               <div>
                 <span className="text-lg font-bold">
                   Gold<span className="text-[#F5A623]">House</span>
