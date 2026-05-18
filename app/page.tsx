@@ -1,7 +1,7 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { motion, useInView } from "framer-motion"
+import { useEffect, useRef, useState } from "react"
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion"
 import {
   Users,
   Video,
@@ -17,98 +17,188 @@ import {
   MessageCircle,
   Play,
   Download,
-  QrCode,
+  ChevronRight,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-// Animated counter component
-function AnimatedCounter({ value, suffix = "" }: { value: string; suffix?: string }) {
-  const ref = useRef(null)
-  const isInView = useInView(ref, { once: true })
+// Magnetic button effect
+function MagneticButton({ children, className }: { children: React.ReactNode; className?: string }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const springX = useSpring(x, { stiffness: 300, damping: 20 })
+  const springY = useSpring(y, { stiffness: 300, damping: 20 })
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return
+    const rect = ref.current.getBoundingClientRect()
+    const centerX = rect.left + rect.width / 2
+    const centerY = rect.top + rect.height / 2
+    x.set((e.clientX - centerX) * 0.2)
+    y.set((e.clientY - centerY) * 0.2)
+  }
+
+  const handleMouseLeave = () => {
+    x.set(0)
+    y.set(0)
+  }
 
   return (
-    <motion.span
+    <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-[#007AFF] to-[#F5C15C] bg-clip-text text-transparent"
+      style={{ x: springX, y: springY }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={className}
     >
-      {value}{suffix}
-    </motion.span>
+      {children}
+    </motion.div>
   )
 }
 
-// Mouse glow effect component
-function MouseGlow() {
-  const glowRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (glowRef.current) {
-        glowRef.current.style.left = `${e.clientX}px`
-        glowRef.current.style.top = `${e.clientY}px`
-      }
-    }
-
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [])
-
+// Animated gradient orbs
+function GradientOrbs() {
   return (
-    <div
-      ref={glowRef}
-      className="pointer-events-none fixed w-[500px] h-[500px] rounded-full opacity-20 blur-[100px] -translate-x-1/2 -translate-y-1/2 z-0"
-      style={{
-        background: "radial-gradient(circle, rgba(0,122,255,0.3) 0%, rgba(245,193,92,0.1) 50%, transparent 70%)",
-      }}
-    />
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+      <motion.div
+        animate={{
+          x: [0, 100, 0],
+          y: [0, -50, 0],
+          scale: [1, 1.2, 1],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-[#007AFF]/10 blur-[150px]"
+      />
+      <motion.div
+        animate={{
+          x: [0, -80, 0],
+          y: [0, 80, 0],
+          scale: [1, 0.8, 1],
+        }}
+        transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-[#F5C15C]/8 blur-[120px]"
+      />
+      <motion.div
+        animate={{
+          x: [0, 60, 0],
+          y: [0, 60, 0],
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/2 right-1/3 w-[400px] h-[400px] rounded-full bg-[#00C6FF]/5 blur-[100px]"
+      />
+    </div>
   )
 }
 
-// Floating particles background
+// Floating particles with trails
 function ParticlesBackground() {
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
-      {[...Array(20)].map((_, i) => (
+      {[...Array(30)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 bg-[#007AFF]/30 rounded-full"
+          className="absolute"
           initial={{
-            x: Math.random() * (typeof window !== "undefined" ? window.innerWidth : 1000),
-            y: Math.random() * (typeof window !== "undefined" ? window.innerHeight : 1000),
+            x: `${Math.random() * 100}%`,
+            y: `${Math.random() * 100}%`,
           }}
           animate={{
-            y: [null, -20, 20],
-            opacity: [0.2, 0.5, 0.2],
+            y: [`${Math.random() * 100}%`, `${Math.random() * 100}%`],
+            x: [`${Math.random() * 100}%`, `${Math.random() * 100}%`],
+            opacity: [0, 0.6, 0],
           }}
           transition={{
-            duration: 5 + Math.random() * 5,
+            duration: 10 + Math.random() * 10,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: "linear",
           }}
-        />
+        >
+          <div
+            className="w-1 h-1 rounded-full"
+            style={{
+              background: i % 2 === 0 ? "#007AFF" : "#F5C15C",
+              boxShadow: `0 0 ${10 + Math.random() * 10}px ${i % 2 === 0 ? "#007AFF" : "#F5C15C"}`,
+            }}
+          />
+        </motion.div>
       ))}
     </div>
   )
 }
 
+// Animated text reveal
+function AnimatedText({ text, className }: { text: string; className?: string }) {
+  return (
+    <motion.span className={className}>
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: i * 0.05, duration: 0.5 }}
+          className="inline-block"
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </motion.span>
+  )
+}
+
+// Glowing border card
+function GlowCard({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    setMousePosition({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    })
+  }
+
+  return (
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay }}
+      onMouseMove={handleMouseMove}
+      className={`relative group ${className}`}
+    >
+      <div
+        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{
+          background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(0,122,255,0.15), transparent 40%)`,
+        }}
+      />
+      <div className="relative glass-card rounded-2xl h-full overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          style={{
+            background: `radial-gradient(200px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(245,193,92,0.1), transparent 40%)`,
+          }}
+        />
+        {children}
+      </div>
+    </motion.div>
+  )
+}
+
 // Hero Section
 function HeroSection() {
-  const features = [
-    { icon: Users, label: "10M+ Users" },
-    { icon: MessageCircle, label: "Real-time" },
-    { icon: Shield, label: "Encrypted" },
-  ]
+  const { scrollY } = useScroll()
+  const y = useTransform(scrollY, [0, 500], [0, 150])
+  const opacity = useTransform(scrollY, [0, 300], [1, 0])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20 overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1C] via-[#0D1425] to-[#0A0F1C]" />
-      
-      {/* Subtle radial glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-[#007AFF]/5 rounded-full blur-[150px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-[#F5C15C]/5 rounded-full blur-[100px]" />
+      <motion.div style={{ y, opacity }} className="absolute inset-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1C] via-[#0D1425] to-[#0A0F1C]" />
+      </motion.div>
 
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
@@ -119,106 +209,135 @@ function HeroSection() {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-center lg:text-left"
           >
-            {/* Badge */}
+            {/* Animated badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, type: "spring" }}
+              className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full glass-card border border-[#007AFF]/30"
+            >
+              <motion.span
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="w-2 h-2 bg-[#007AFF] rounded-full"
+              />
+              <span className="text-sm text-white/80">Next-Gen Communication</span>
+              <ChevronRight className="w-4 h-4 text-[#007AFF]" />
+            </motion.div>
+
+            {/* Main headline with glow */}
+            <div className="relative mb-6">
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                transition={{ delay: 0.5 }}
+                className="absolute -inset-4 bg-gradient-to-r from-[#007AFF]/20 to-[#F5C15C]/20 blur-3xl rounded-full"
+              />
+              <h1 className="relative text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                <AnimatedText
+                  text="世界在你掌中"
+                  className="bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent"
+                />
+              </h1>
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="text-lg md:text-xl text-white/60 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+            >
+              Gold House connects the world through secure, fast, and scalable communication.
+            </motion.p>
+
+            {/* CTA Buttons with magnetic effect */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full glass-card"
+              transition={{ delay: 1 }}
+              className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8"
             >
-              <span className="w-2 h-2 bg-[#007AFF] rounded-full animate-pulse" />
-              <span className="text-sm text-white/80">Next-Gen Communication</span>
+              <MagneticButton>
+                <Button
+                  asChild
+                  className="bg-[#007AFF] hover:bg-[#007AFF]/90 text-white px-6 py-6 rounded-xl font-medium transition-all hover:shadow-[0_0_40px_rgba(0,122,255,0.4)]"
+                >
+                  <a href="#">
+                    <Apple className="w-5 h-5 mr-2" />
+                    App Store
+                  </a>
+                </Button>
+              </MagneticButton>
+              <MagneticButton>
+                <Button
+                  asChild
+                  className="bg-white/10 hover:bg-white/20 text-white px-6 py-6 rounded-xl font-medium backdrop-blur-sm border border-white/10 transition-all hover:border-[#007AFF]/50"
+                >
+                  <a href="#">
+                    <Play className="w-5 h-5 mr-2" />
+                    Google Play
+                  </a>
+                </Button>
+              </MagneticButton>
+              <MagneticButton>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-white/20 text-white hover:bg-white/10 px-6 py-6 rounded-xl font-medium transition-all hover:border-[#F5C15C]/50"
+                >
+                  <a href="#">
+                    <Download className="w-5 h-5 mr-2" />
+                    Android APK
+                  </a>
+                </Button>
+              </MagneticButton>
             </motion.div>
 
-            {/* Main headline */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              <span className="bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
-                世界在你掌中
-              </span>
-            </h1>
-
-            <p className="text-lg md:text-xl text-white/60 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Gold House connects the world through secure, fast, and scalable communication.
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-3 justify-center lg:justify-start mb-8">
-              <Button
-                asChild
-                className="bg-[#007AFF] hover:bg-[#007AFF]/90 text-white px-6 py-6 rounded-xl font-medium transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(0,122,255,0.3)]"
-              >
-                <a href="#">
-                  <Apple className="w-5 h-5 mr-2" />
-                  App Store
-                </a>
-              </Button>
-              <Button
-                asChild
-                className="bg-white/10 hover:bg-white/20 text-white px-6 py-6 rounded-xl font-medium backdrop-blur-sm border border-white/10 transition-all hover:scale-105"
-              >
-                <a href="#">
-                  <Play className="w-5 h-5 mr-2" />
-                  Google Play
-                </a>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                className="border-white/20 text-white hover:bg-white/10 px-6 py-6 rounded-xl font-medium transition-all hover:scale-105"
-              >
-                <a href="#">
-                  <Smartphone className="w-5 h-5 mr-2" />
-                  Android APK
-                </a>
-              </Button>
-            </div>
-
-            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
-              <Button
-                asChild
-                variant="ghost"
-                className="text-white/70 hover:text-white hover:bg-white/5 px-4 py-2"
-              >
-                <a href="#">
-                  <Monitor className="w-4 h-4 mr-2" />
-                  Windows
-                </a>
-              </Button>
-              <Button
-                asChild
-                variant="ghost"
-                className="text-white/70 hover:text-white hover:bg-white/5 px-4 py-2"
-              >
-                <a href="#">
-                  <TestTube className="w-4 h-4 mr-2" />
-                  TestFlight
-                </a>
-              </Button>
-              <Button
-                asChild
-                variant="ghost"
-                className="text-white/70 hover:text-white hover:bg-white/5 px-4 py-2"
-              >
-                <a href="#">
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Web App
-                </a>
-              </Button>
-            </div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2 }}
+              className="flex flex-wrap gap-3 justify-center lg:justify-start"
+            >
+              {[
+                { icon: Monitor, label: "Windows" },
+                { icon: TestTube, label: "TestFlight" },
+                { icon: ExternalLink, label: "Web App" },
+              ].map((item) => (
+                <Button
+                  key={item.label}
+                  asChild
+                  variant="ghost"
+                  className="text-white/70 hover:text-white hover:bg-white/5 px-4 py-2 group"
+                >
+                  <a href="#">
+                    <item.icon className="w-4 h-4 mr-2 group-hover:text-[#007AFF] transition-colors" />
+                    {item.label}
+                  </a>
+                </Button>
+              ))}
+            </motion.div>
           </motion.div>
 
-          {/* Right mockup */}
+          {/* Right mockup with 3D effect */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="relative"
+            initial={{ opacity: 0, x: 50, rotateY: -15 }}
+            animate={{ opacity: 1, x: 0, rotateY: 0 }}
+            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+            className="relative perspective-1000"
           >
             {/* Phone mockup */}
-            <div className="relative mx-auto w-[280px] md:w-[320px] animate-float">
+            <motion.div
+              animate={{ y: [-10, 10, -10] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="relative mx-auto w-[280px] md:w-[320px]"
+            >
+              {/* Glow behind phone */}
+              <div className="absolute inset-0 bg-gradient-to-b from-[#007AFF]/30 to-[#F5C15C]/20 blur-[60px] rounded-full scale-110" />
+
               {/* Phone frame */}
-              <div className="relative rounded-[3rem] bg-gradient-to-b from-[#1a1f35] to-[#0d1220] p-3 shadow-2xl shadow-[#007AFF]/20">
-                <div className="rounded-[2.5rem] bg-[#0A0F1C] overflow-hidden">
+              <div className="relative rounded-[3rem] bg-gradient-to-b from-[#1a1f35] to-[#0d1220] p-3 shadow-2xl">
+                <div className="rounded-[2.5rem] bg-[#0A0F1C] overflow-hidden border border-white/5">
                   {/* Screen content */}
                   <div className="p-4 space-y-4">
                     {/* Status bar */}
@@ -230,11 +349,20 @@ function HeroSection() {
                     </div>
 
                     {/* App header */}
-                    <div className="glass-card rounded-2xl p-4">
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.8 }}
+                      className="glass-card rounded-2xl p-4"
+                    >
                       <div className="flex items-center gap-3 mb-3">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#007AFF] to-[#F5C15C] flex items-center justify-center">
+                        <motion.div
+                          animate={{ rotate: [0, 5, -5, 0] }}
+                          transition={{ duration: 4, repeat: Infinity }}
+                          className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#007AFF] to-[#F5C15C] flex items-center justify-center"
+                        >
                           <span className="text-white font-bold text-sm">GH</span>
-                        </div>
+                        </motion.div>
                         <div>
                           <h3 className="text-white font-semibold text-sm">Gold House</h3>
                           <p className="text-white/50 text-xs">Online Meeting</p>
@@ -242,8 +370,11 @@ function HeroSection() {
                       </div>
                       <div className="flex gap-2">
                         {[1, 2, 3, 4, 5, 6].map((i) => (
-                          <div
+                          <motion.div
                             key={i}
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ delay: 1 + i * 0.1 }}
                             className="w-8 h-8 rounded-full bg-gradient-to-br from-[#007AFF]/50 to-[#F5C15C]/50"
                           />
                         ))}
@@ -251,68 +382,62 @@ function HeroSection() {
                           +99
                         </div>
                       </div>
-                    </div>
+                    </motion.div>
 
-                    {/* Chat bubbles */}
+                    {/* Chat bubbles with stagger */}
                     <div className="space-y-3">
-                      <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 1 }}
-                        className="flex gap-2"
-                      >
-                        <div className="w-8 h-8 rounded-full bg-[#007AFF]/30" />
-                        <div className="bg-white/10 rounded-2xl rounded-tl-sm px-4 py-2 max-w-[70%]">
-                          <p className="text-white/90 text-sm">Welcome to Gold House! 🎉</p>
-                        </div>
-                      </motion.div>
-
-                      <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 1.3 }}
-                        className="flex gap-2 justify-end"
-                      >
-                        <div className="bg-[#007AFF] rounded-2xl rounded-tr-sm px-4 py-2 max-w-[70%]">
-                          <p className="text-white text-sm">This is amazing! 🚀</p>
-                        </div>
-                      </motion.div>
-
-                      <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 1.6 }}
-                        className="flex gap-2"
-                      >
-                        <div className="w-8 h-8 rounded-full bg-[#F5C15C]/30" />
-                        <div className="bg-white/10 rounded-2xl rounded-tl-sm px-4 py-2 max-w-[70%]">
-                          <p className="text-white/90 text-sm">10,000+ people online now</p>
-                        </div>
-                      </motion.div>
+                      {[
+                        { text: "Welcome to Gold House!", delay: 1.2, align: "left", color: "bg-white/10" },
+                        { text: "This is amazing!", delay: 1.5, align: "right", color: "bg-[#007AFF]" },
+                        { text: "10,000+ people online", delay: 1.8, align: "left", color: "bg-white/10" },
+                      ].map((msg, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, x: msg.align === "left" ? -20 : 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: msg.delay }}
+                          className={`flex gap-2 ${msg.align === "right" ? "justify-end" : ""}`}
+                        >
+                          {msg.align === "left" && (
+                            <div className="w-8 h-8 rounded-full bg-[#007AFF]/30" />
+                          )}
+                          <div className={`${msg.color} rounded-2xl ${msg.align === "left" ? "rounded-tl-sm" : "rounded-tr-sm"} px-4 py-2 max-w-[70%]`}>
+                            <p className="text-white/90 text-sm">{msg.text}</p>
+                          </div>
+                        </motion.div>
+                      ))}
                     </div>
 
-                    {/* Active users indicator */}
+                    {/* Typing indicator */}
                     <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 2 }}
-                      className="glass-card rounded-xl p-3 flex items-center justify-between"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 2.2 }}
+                      className="flex gap-2"
                     >
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                        <span className="text-white/70 text-xs">Active Users</span>
+                      <div className="w-8 h-8 rounded-full bg-[#F5C15C]/30" />
+                      <div className="bg-white/10 rounded-2xl rounded-tl-sm px-4 py-2">
+                        <div className="flex gap-1">
+                          {[0, 1, 2].map((i) => (
+                            <motion.div
+                              key={i}
+                              animate={{ y: [0, -5, 0] }}
+                              transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.15 }}
+                              className="w-2 h-2 bg-white/40 rounded-full"
+                            />
+                          ))}
+                        </div>
                       </div>
-                      <span className="text-[#007AFF] font-semibold text-sm">12,847</span>
                     </motion.div>
                   </div>
                 </div>
               </div>
 
-              {/* Floating elements */}
+              {/* Floating badges */}
               <motion.div
-                animate={{ y: [-5, 5, -5] }}
+                animate={{ y: [-5, 5, -5], x: [-2, 2, -2] }}
                 transition={{ duration: 4, repeat: Infinity }}
-                className="absolute -right-4 top-1/4 glass-card rounded-xl p-3 shadow-lg"
+                className="absolute -right-4 top-1/4 glass-card rounded-xl p-3 shadow-lg border border-[#007AFF]/20"
               >
                 <div className="flex items-center gap-2">
                   <Shield className="w-4 h-4 text-[#007AFF]" />
@@ -321,40 +446,55 @@ function HeroSection() {
               </motion.div>
 
               <motion.div
-                animate={{ y: [5, -5, 5] }}
+                animate={{ y: [5, -5, 5], x: [2, -2, 2] }}
                 transition={{ duration: 5, repeat: Infinity }}
-                className="absolute -left-4 bottom-1/3 glass-card rounded-xl p-3 shadow-lg"
+                className="absolute -left-4 bottom-1/3 glass-card rounded-xl p-3 shadow-lg border border-[#F5C15C]/20"
               >
                 <div className="flex items-center gap-2">
                   <Zap className="w-4 h-4 text-[#F5C15C]" />
                   <span className="text-white/80 text-xs">Ultra Fast</span>
                 </div>
               </motion.div>
-            </div>
 
-            {/* Feature pills */}
-            <div className="flex justify-center gap-4 mt-8">
-              {features.map((feature, i) => (
-                <motion.div
-                  key={feature.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5 + i * 0.1 }}
-                  className="glass-card rounded-full px-4 py-2 flex items-center gap-2"
-                >
-                  <feature.icon className="w-4 h-4 text-[#007AFF]" />
-                  <span className="text-white/70 text-sm">{feature.label}</span>
-                </motion.div>
-              ))}
-            </div>
+              <motion.div
+                animate={{ y: [-3, 3, -3] }}
+                transition={{ duration: 3.5, repeat: Infinity }}
+                className="absolute right-8 -bottom-2 glass-card rounded-xl p-3 shadow-lg border border-white/10"
+              >
+                <div className="flex items-center gap-2">
+                  <Users className="w-4 h-4 text-[#00C6FF]" />
+                  <span className="text-white/80 text-xs">10K+ Online</span>
+                </div>
+              </motion.div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      >
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="w-6 h-10 rounded-full border-2 border-white/20 flex items-start justify-center p-2"
+        >
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-1.5 h-1.5 bg-[#007AFF] rounded-full"
+          />
+        </motion.div>
+      </motion.div>
     </section>
   )
 }
 
-// Feature Cards Section
+// Feature Cards Section with interactive hover
 function FeaturesSection() {
   const features = [
     {
@@ -362,42 +502,51 @@ function FeaturesSection() {
       title: "超大群组",
       subtitle: "Massive Groups",
       description: "支持超大规模社区和群组，轻松管理百万级成员",
+      color: "#007AFF",
     },
     {
       icon: Video,
       title: "万人会议",
       subtitle: "10K+ Meetings",
       description: "支持万人级别在线视频/音频会议，高清流畅",
+      color: "#F5C15C",
     },
     {
       icon: Zap,
       title: "极速通讯",
       subtitle: "Lightning Fast",
       description: "超低延迟消息传递，实时同步，毫秒级响应",
+      color: "#00C6FF",
     },
     {
       icon: Shield,
       title: "极致安全",
       subtitle: "Secure & Private",
       description: "端到端加密，军事级安全保护您的每一次通信",
+      color: "#10B981",
     },
     {
       icon: Sparkles,
       title: "无感交互",
       subtitle: "Seamless UX",
       description: "简洁自然的用户体验，流畅丝滑的交互设计",
+      color: "#8B5CF6",
     },
     {
       icon: Globe,
       title: "全球生态",
       subtitle: "Global Network",
       description: "链接全球用户，打造无国界的社交网络生态",
+      color: "#EC4899",
     },
   ]
 
   return (
     <section className="relative py-24 px-4">
-      <div className="max-w-7xl mx-auto">
+      {/* Section background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#007AFF]/5 to-transparent" />
+
+      <div className="max-w-7xl mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -405,6 +554,14 @@ function FeaturesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <motion.span
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-1.5 mb-4 rounded-full bg-[#007AFF]/10 border border-[#007AFF]/20 text-[#007AFF] text-sm font-medium"
+          >
+            Core Features
+          </motion.span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             核心优势
           </h2>
@@ -415,30 +572,40 @@ function FeaturesSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative"
-            >
-              <div className="glass-card rounded-2xl p-8 h-full transition-all duration-500 hover:bg-white/[0.08] hover:border-[#007AFF]/30 hover:shadow-[0_0_40px_rgba(0,122,255,0.15)]">
-                {/* Icon */}
+            <GlowCard key={feature.title} delay={index * 0.1}>
+              <div className="p-8 h-full relative z-10">
+                {/* Icon with animated ring */}
                 <div className="relative mb-6">
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#007AFF]/20 to-[#F5C15C]/10 flex items-center justify-center group-hover:from-[#007AFF]/30 group-hover:to-[#F5C15C]/20 transition-all duration-500">
-                    <feature.icon className="w-7 h-7 text-[#007AFF] group-hover:text-[#F5C15C] transition-colors duration-500" />
-                  </div>
-                  {/* Glow effect */}
-                  <div className="absolute inset-0 w-14 h-14 rounded-xl bg-[#007AFF]/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="w-14 h-14 rounded-xl flex items-center justify-center relative"
+                    style={{ background: `linear-gradient(135deg, ${feature.color}20, transparent)` }}
+                  >
+                    <feature.icon className="w-7 h-7" style={{ color: feature.color }} />
+                  </motion.div>
+                  <motion.div
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileHover={{ scale: 1.5, opacity: 0.3 }}
+                    className="absolute inset-0 rounded-xl"
+                    style={{ background: feature.color }}
+                  />
                 </div>
 
                 {/* Content */}
                 <h3 className="text-2xl font-bold text-white mb-1">{feature.title}</h3>
-                <p className="text-[#007AFF] text-sm font-medium mb-3">{feature.subtitle}</p>
+                <p className="text-sm font-medium mb-3" style={{ color: feature.color }}>{feature.subtitle}</p>
                 <p className="text-white/60 leading-relaxed">{feature.description}</p>
+
+                {/* Hover arrow */}
+                <motion.div
+                  initial={{ opacity: 0, x: -10 }}
+                  whileHover={{ opacity: 1, x: 0 }}
+                  className="absolute bottom-8 right-8"
+                >
+                  <ChevronRight className="w-5 h-5 text-white/40" />
+                </motion.div>
               </div>
-            </motion.div>
+            </GlowCard>
           ))}
         </div>
       </div>
@@ -446,7 +613,7 @@ function FeaturesSection() {
   )
 }
 
-// Brand Philosophy Section
+// Brand Philosophy Section with animated cards
 function BrandSection() {
   const philosophy = [
     {
@@ -454,26 +621,43 @@ function BrandSection() {
       chinese: "文化",
       value: "坚持前进 · 拥抱创新",
       gradient: "from-[#007AFF] to-[#00C6FF]",
+      icon: "🚀",
     },
     {
       label: "Mission",
       chinese: "使命",
       value: "极致安全 · 无感交互",
       gradient: "from-[#F5C15C] to-[#FF9500]",
+      icon: "🎯",
     },
     {
       label: "Vision",
       chinese: "愿景",
       value: "链接全球，打造无界生态",
-      gradient: "from-[#8B5CF6] to-[#007AFF]",
+      gradient: "from-[#8B5CF6] to-[#EC4899]",
+      icon: "🌍",
     },
   ]
 
   return (
-    <section className="relative py-24 px-4">
-      {/* Background decoration */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#007AFF]/5 rounded-full blur-[150px]" />
+    <section className="relative py-24 px-4 overflow-hidden">
+      {/* Animated background lines */}
+      <div className="absolute inset-0">
+        {[...Array(5)].map((_, i) => (
+          <motion.div
+            key={i}
+            initial={{ x: "-100%", opacity: 0.1 }}
+            animate={{ x: "100%", opacity: [0.1, 0.3, 0.1] }}
+            transition={{
+              duration: 8 + i * 2,
+              repeat: Infinity,
+              delay: i * 1.5,
+              ease: "linear",
+            }}
+            className="absolute h-px bg-gradient-to-r from-transparent via-[#007AFF]/30 to-transparent"
+            style={{ top: `${20 + i * 15}%`, width: "100%" }}
+          />
+        ))}
       </div>
 
       <div className="max-w-6xl mx-auto relative">
@@ -484,30 +668,59 @@ function BrandSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
+          <motion.span
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-1.5 mb-4 rounded-full bg-[#F5C15C]/10 border border-[#F5C15C]/20 text-[#F5C15C] text-sm font-medium"
+          >
+            Our Philosophy
+          </motion.span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             品牌理念
           </h2>
-          <p className="text-white/60 text-lg">Our Philosophy</p>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6">
           {philosophy.map((item, index) => (
             <motion.div
               key={item.label}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
+              whileHover={{ y: -10 }}
               className="group"
             >
-              <div className="glass-card rounded-2xl p-8 h-full text-center transition-all duration-500 hover:bg-white/[0.08]">
-                <div className={`inline-block px-4 py-1.5 rounded-full bg-gradient-to-r ${item.gradient} mb-6`}>
-                  <span className="text-white/90 text-sm font-medium">{item.label}</span>
+              <div className="glass-card rounded-2xl p-8 h-full text-center relative overflow-hidden">
+                {/* Background glow on hover */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileHover={{ opacity: 1 }}
+                  className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-5`}
+                />
+
+                {/* Animated border */}
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} style={{ padding: "1px" }}>
+                  <div className="w-full h-full rounded-2xl bg-[#0A0F1C]" />
                 </div>
-                <p className="text-white/50 text-sm mb-2">{item.chinese}</p>
-                <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight">
-                  {item.value}
-                </h3>
+
+                <div className="relative z-10">
+                  <motion.div
+                    whileHover={{ scale: 1.1, rotate: [0, -10, 10, 0] }}
+                    transition={{ duration: 0.5 }}
+                    className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r ${item.gradient} mb-6`}
+                  >
+                    <span className="text-2xl">{item.icon}</span>
+                  </motion.div>
+                  <div className={`inline-block px-4 py-1.5 rounded-full bg-gradient-to-r ${item.gradient} mb-4`}>
+                    <span className="text-white/90 text-sm font-medium">{item.label}</span>
+                  </div>
+                  <p className="text-white/50 text-sm mb-2">{item.chinese}</p>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white leading-tight">
+                    {item.value}
+                  </h3>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -517,194 +730,174 @@ function BrandSection() {
   )
 }
 
-// Stats Section
-function StatsSection() {
-  const stats = [
-    { value: "1,000,000", suffix: "+", label: "Global Users" },
-    { value: "10,000", suffix: "+", label: "Meeting Capacity" },
-    { value: "99.99", suffix: "%", label: "Stability" },
-    { value: "200", suffix: "+", label: "Global Nodes" },
-  ]
-
-  return (
-    <section className="relative py-24 px-4">
-      {/* Gradient line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-[#007AFF]/30 to-transparent" />
-
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            数据说话
-          </h2>
-          <p className="text-white/60 text-lg">Numbers that matter</p>
-        </motion.div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center"
-            >
-              <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-              <p className="text-white/60 mt-3 text-sm md:text-base">{stat.label}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* Gradient line */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[80%] h-px bg-gradient-to-r from-transparent via-[#F5C15C]/30 to-transparent" />
-    </section>
-  )
-}
-
-// Download Section
+// Download Section - Consolidated
 function DownloadSection() {
   const platforms = [
-    {
-      icon: Apple,
-      name: "iOS",
-      description: "iPhone & iPad",
-      button: "App Store",
-      href: "#",
-    },
-    {
-      icon: Smartphone,
-      name: "Android",
-      description: "Google Play & APK",
-      button: "Download",
-      href: "#",
-    },
-    {
-      icon: Monitor,
-      name: "Windows",
-      description: "Windows 10/11",
-      button: "Download",
-      href: "#",
-    },
-    {
-      icon: ExternalLink,
-      name: "Web",
-      description: "Browser App",
-      button: "Open",
-      href: "#",
-    },
-    {
-      icon: TestTube,
-      name: "TestFlight",
-      description: "Beta Testing",
-      button: "Join Beta",
-      href: "#",
-    },
+    { icon: Apple, name: "iOS", description: "App Store", color: "#007AFF" },
+    { icon: Play, name: "Android", description: "Google Play", color: "#34A853" },
+    { icon: Smartphone, name: "APK", description: "Direct Download", color: "#F5C15C" },
+    { icon: Monitor, name: "Windows", description: "Desktop App", color: "#00C6FF" },
+    { icon: TestTube, name: "TestFlight", description: "Beta", color: "#8B5CF6" },
+    { icon: ExternalLink, name: "Web", description: "Browser", color: "#EC4899" },
   ]
 
   return (
     <section className="relative py-24 px-4">
-      <div className="max-w-6xl mx-auto">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0">
+        <motion.div
+          animate={{
+            background: [
+              "radial-gradient(ellipse at 20% 50%, rgba(0,122,255,0.1) 0%, transparent 50%)",
+              "radial-gradient(ellipse at 80% 50%, rgba(245,193,92,0.1) 0%, transparent 50%)",
+              "radial-gradient(ellipse at 20% 50%, rgba(0,122,255,0.1) 0%, transparent 50%)",
+            ],
+          }}
+          transition={{ duration: 10, repeat: Infinity }}
+          className="absolute inset-0"
+        />
+      </div>
+
+      <div className="max-w-4xl mx-auto relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
+          <motion.span
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block px-4 py-1.5 mb-4 rounded-full bg-white/5 border border-white/10 text-white/70 text-sm font-medium"
+          >
+            Available on All Platforms
+          </motion.span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             立即下载
           </h2>
-          <p className="text-white/60 text-lg">Download Gold House on your favorite platform</p>
+          <p className="text-white/60 text-lg">
+            Choose your platform and start connecting
+          </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        {/* Platform grid */}
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
           {platforms.map((platform, index) => (
-            <motion.div
+            <motion.a
               key={platform.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              href="#"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.4, delay: index * 0.05 }}
+              whileHover={{ scale: 1.1, y: -5 }}
+              whileTap={{ scale: 0.95 }}
               className="group"
             >
-              <div className="glass-card rounded-2xl p-6 h-full flex flex-col items-center text-center transition-all duration-500 hover:bg-white/[0.08] hover:border-[#007AFF]/30">
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#007AFF]/20 to-transparent flex items-center justify-center mb-4 group-hover:from-[#007AFF]/30 transition-all">
-                  <platform.icon className="w-7 h-7 text-[#007AFF]" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-1">{platform.name}</h3>
-                <p className="text-white/50 text-sm mb-4">{platform.description}</p>
-                
-                {/* QR Code placeholder */}
-                <div className="w-20 h-20 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center mb-4">
-                  <QrCode className="w-10 h-10 text-white/30" />
-                </div>
-
-                <Button
-                  asChild
-                  size="sm"
-                  className="w-full bg-[#007AFF] hover:bg-[#007AFF]/90 text-white rounded-lg transition-all hover:scale-105"
+              <div className="glass-card rounded-2xl p-4 flex flex-col items-center text-center transition-all duration-300 hover:border-white/20">
+                <motion.div
+                  whileHover={{ rotate: [0, -10, 10, 0] }}
+                  transition={{ duration: 0.5 }}
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-all duration-300"
+                  style={{ background: `${platform.color}20` }}
                 >
-                  <a href={platform.href}>
-                    <Download className="w-4 h-4 mr-2" />
-                    {platform.button}
-                  </a>
-                </Button>
+                  <platform.icon className="w-6 h-6 transition-colors" style={{ color: platform.color }} />
+                </motion.div>
+                <h3 className="text-white font-semibold text-sm mb-0.5">{platform.name}</h3>
+                <p className="text-white/40 text-xs">{platform.description}</p>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
+
+        {/* Main CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="mt-12 text-center"
+        >
+          <MagneticButton>
+            <Button
+              asChild
+              size="lg"
+              className="bg-gradient-to-r from-[#007AFF] to-[#00C6FF] hover:opacity-90 text-white px-8 py-6 rounded-xl font-medium text-lg transition-all hover:shadow-[0_0_40px_rgba(0,122,255,0.4)]"
+            >
+              <a href="#">
+                <Download className="w-5 h-5 mr-2" />
+                Download Now
+              </a>
+            </Button>
+          </MagneticButton>
+        </motion.div>
       </div>
     </section>
   )
 }
 
-// Footer
+// Footer with animated elements
 function Footer() {
   return (
     <footer className="relative py-16 px-4 border-t border-white/5">
+      {/* Top glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60%] h-px bg-gradient-to-r from-transparent via-[#007AFF]/50 to-transparent" />
+
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Logo & Slogan */}
-          <div className="text-center md:text-left">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="text-center md:text-left"
+          >
             <div className="flex items-center justify-center md:justify-start gap-3 mb-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#007AFF] to-[#F5C15C] flex items-center justify-center">
+              <motion.div
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.5 }}
+                className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#007AFF] to-[#F5C15C] flex items-center justify-center"
+              >
                 <span className="text-white font-bold">GH</span>
-              </div>
+              </motion.div>
               <span className="text-2xl font-bold text-white">Gold House</span>
             </div>
             <p className="text-white/50">世界在你掌中</p>
-          </div>
+          </motion.div>
 
           {/* Links */}
-          <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
-            <a href="#" className="text-white/60 hover:text-white transition-colors">
-              User Agreement
-            </a>
-            <a href="#" className="text-white/60 hover:text-white transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-white/60 hover:text-white transition-colors">
-              Web App
-            </a>
-            <a href="#" className="text-white/60 hover:text-white transition-colors">
-              Contact
-            </a>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap items-center justify-center gap-6 text-sm"
+          >
+            {["User Agreement", "Privacy Policy", "Web App", "Contact"].map((link) => (
+              <a
+                key={link}
+                href="#"
+                className="text-white/60 hover:text-[#007AFF] transition-colors relative group"
+              >
+                {link}
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#007AFF] group-hover:w-full transition-all duration-300" />
+              </a>
+            ))}
+          </motion.div>
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-white/5 text-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-12 pt-8 border-t border-white/5 text-center"
+        >
           <p className="text-white/40 text-sm">
             © 2026 Gold House. All Rights Reserved.
           </p>
-        </div>
+        </motion.div>
       </div>
     </footer>
   )
@@ -713,14 +906,13 @@ function Footer() {
 // Main Landing Page
 export default function GoldHouseLanding() {
   return (
-    <main className="relative min-h-screen bg-[#0A0F1C] overflow-hidden grid-bg">
-      <MouseGlow />
+    <main className="relative min-h-screen bg-[#0A0F1C] overflow-hidden">
+      <GradientOrbs />
       <ParticlesBackground />
-      
+
       <HeroSection />
       <FeaturesSection />
       <BrandSection />
-      <StatsSection />
       <DownloadSection />
       <Footer />
     </main>
