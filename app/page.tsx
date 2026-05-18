@@ -951,7 +951,7 @@ export default function GoldHouseLanding() {
               </div>
               
               <div className={`mt-12 pt-8 border-t text-center text-sm ${isDark ? "border-gray-800 text-gray-500" : "border-gray-200 text-gray-400"}`}>
-                &copy; 2024 Gold House. {t("保留所有权利", "All rights reserved.")}
+                &copy; 2026 Gold House. {t("保留所有权利", "All rights reserved.")}
               </div>
             </div>
           </footer>
