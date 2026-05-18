@@ -63,21 +63,16 @@ function useTheme() {
 // Language selector component
 function LanguageSelector() {
   const { lang, setLang } = useLanguage();
-  const { isDark } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-          isDark 
-            ? "text-gray-300 hover:bg-white/10" 
-            : "text-gray-600 hover:bg-gray-100"
-        }`}
+        className="flex items-center gap-2 px-4 py-2 rounded-full bg-[#3370FF] text-white text-sm font-medium hover:bg-[#2860E0] transition-colors"
       >
         <Languages className="w-4 h-4" />
-        <span className="text-sm font-medium">{lang === "zh" ? "中文" : "EN"}</span>
+        <span>{lang === "zh" ? "中文" : "EN"}</span>
         <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
       </button>
       
@@ -87,18 +82,14 @@ function LanguageSelector() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className={`absolute right-0 top-full mt-2 rounded-xl shadow-lg border overflow-hidden z-50 ${
-              isDark 
-                ? "bg-gray-800 border-gray-700" 
-                : "bg-white border-gray-200"
-            }`}
+            className="absolute right-0 top-full mt-2 rounded-xl shadow-lg border overflow-hidden z-50 bg-white border-gray-200"
           >
             <button
               onClick={() => { setLang("zh"); setIsOpen(false); }}
               className={`w-full px-4 py-2.5 text-left text-sm flex items-center gap-2 transition-colors ${
                 lang === "zh" 
-                  ? isDark ? "bg-blue-500/20 text-blue-400" : "bg-blue-50 text-blue-600"
-                  : isDark ? "text-gray-300 hover:bg-white/5" : "text-gray-700 hover:bg-gray-50"
+                  ? "bg-blue-50 text-blue-600"
+                  : "text-gray-700 hover:bg-gray-50"
               }`}
             >
               中文
@@ -108,8 +99,8 @@ function LanguageSelector() {
               onClick={() => { setLang("en"); setIsOpen(false); }}
               className={`w-full px-4 py-2.5 text-left text-sm flex items-center gap-2 transition-colors ${
                 lang === "en" 
-                  ? isDark ? "bg-blue-500/20 text-blue-400" : "bg-blue-50 text-blue-600"
-                  : isDark ? "text-gray-300 hover:bg-white/5" : "text-gray-700 hover:bg-gray-50"
+                  ? "bg-blue-50 text-blue-600"
+                  : "text-gray-700 hover:bg-gray-50"
               }`}
             >
               English
@@ -129,11 +120,7 @@ function ThemeToggle() {
   return (
     <motion.button
       onClick={toggleTheme}
-      className={`p-2.5 rounded-lg transition-colors ${
-        isDark 
-          ? "text-yellow-400 hover:bg-white/10" 
-          : "text-gray-600 hover:bg-gray-100"
-      }`}
+      className="p-2.5 rounded-full bg-[#3370FF] text-white hover:bg-[#2860E0] transition-colors"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
