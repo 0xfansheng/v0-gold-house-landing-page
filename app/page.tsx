@@ -179,13 +179,9 @@ function IconBadge({
   label: string;
   delay?: number;
 }) {
-  const { isDark } = useTheme();
-  
   return (
     <motion.div
-      className={`flex items-center gap-2 px-3 py-2 rounded-xl shadow-lg ${
-        isDark ? "bg-gray-800/90 backdrop-blur-sm" : "bg-white"
-      }`}
+      className="flex items-center gap-2 px-3 py-2 rounded-xl shadow-lg bg-white/95 backdrop-blur-sm"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, type: "spring", stiffness: 200 }}
@@ -194,7 +190,7 @@ function IconBadge({
       <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: bgColor }}>
         <Icon className="w-4 h-4" style={{ color }} />
       </div>
-      <span className={`text-sm font-medium ${isDark ? "text-gray-200" : "text-gray-700"}`}>{label}</span>
+      <span className="text-sm font-medium text-gray-700">{label}</span>
     </motion.div>
   );
 }
@@ -473,31 +469,25 @@ function AppShowcase() {
   );
 }
 
-// Download button component
+// Download button component - all standard blue
 function DownloadButton({ 
   icon: Icon, 
   title, 
   subtitle, 
-  primary = false,
 }: { 
   icon: React.ElementType;
   title: string;
   subtitle: string;
-  primary?: boolean;
 }) {
   return (
     <motion.button
-      className={`flex items-center gap-3 px-5 py-3 rounded-xl transition-all duration-300 ${
-        primary
-          ? "bg-[#3370FF] text-white hover:bg-[#2860E0] shadow-lg shadow-blue-500/25"
-          : "bg-white/10 text-white border border-white/20 hover:bg-white/20"
-      }`}
+      className="flex items-center gap-3 px-5 py-3 rounded-xl transition-all duration-300 bg-[#3370FF] text-white hover:bg-[#2860E0] shadow-lg shadow-blue-500/25"
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
     >
       <Icon className="w-6 h-6" />
       <div className="text-left">
-        <p className={`text-xs ${primary ? "text-blue-100" : "text-white/60"}`}>{subtitle}</p>
+        <p className="text-xs text-blue-100">{subtitle}</p>
         <p className="font-semibold">{title}</p>
       </div>
     </motion.button>
@@ -685,7 +675,7 @@ export default function GoldHouseLanding() {
               <div className={`absolute inset-0 ${
                 isDark 
                   ? "bg-gradient-to-b from-gray-900/70 via-gray-900/50 to-gray-900" 
-                  : "bg-gradient-to-b from-white/60 via-white/40 to-white"
+                  : "bg-gradient-to-b from-black/40 via-black/30 to-white"
               }`} />
             </motion.div>
             
@@ -697,27 +687,23 @@ export default function GoldHouseLanding() {
                 {/* Left content */}
                 <div className="space-y-8">
                   <motion.div
-                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${
-                      isDark ? "bg-blue-500/20" : "bg-blue-50"
-                    }`}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
                   >
                     <motion.div
-                      className="w-2 h-2 rounded-full bg-green-500"
+                      className="w-2 h-2 rounded-full bg-green-400"
                       animate={{ scale: [1, 1.2, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     />
-                    <span className={`text-sm font-medium ${isDark ? "text-blue-400" : "text-blue-700"}`}>
+                    <span className="text-sm font-medium text-white">
                       {t("新一代超级通讯应用", "Next-Gen Super Communication App")}
                     </span>
                   </motion.div>
                   
                   <motion.h1
-                    className={`text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight ${
-                      isDark ? "text-white" : "text-gray-900"
-                    }`}
+                    className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
@@ -726,7 +712,7 @@ export default function GoldHouseLanding() {
                   </motion.h1>
                   
                   <motion.p
-                    className={`text-lg max-w-lg leading-relaxed ${isDark ? "text-gray-300" : "text-gray-600"}`}
+                    className="text-lg max-w-lg leading-relaxed text-white/90"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
@@ -743,7 +729,7 @@ export default function GoldHouseLanding() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
                   >
-                    <DownloadButton icon={Apple} title="App Store" subtitle={t("下载于", "Download on")} primary />
+                    <DownloadButton icon={Apple} title="App Store" subtitle={t("下载于", "Download on")} />
                     <DownloadButton icon={Play} title="Google Play" subtitle={t("下载于", "Get it on")} />
                     <DownloadButton icon={Globe} title="Web App" subtitle={t("在浏览器打开", "Open in browser")} />
                   </motion.div>
@@ -760,8 +746,8 @@ export default function GoldHouseLanding() {
                         <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
                       ))}
                     </div>
-                    <span className={isDark ? "text-gray-300" : "text-gray-600"}>
-                      <span className={`font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>4.9</span> | {t("基于 10,000+ 评价", "Based on 10,000+ reviews")}
+                    <span className="text-white/80">
+                      <span className="font-semibold text-white">4.9</span> | {t("基于 10,000+ 评价", "Based on 10,000+ reviews")}
                     </span>
                   </motion.div>
                 </div>
@@ -780,11 +766,9 @@ export default function GoldHouseLanding() {
               animate={{ opacity: 1, y: [0, 8, 0] }}
               transition={{ opacity: { delay: 1 }, y: { duration: 2, repeat: Infinity } }}
             >
-              <div className={`w-6 h-10 rounded-full border-2 flex justify-center pt-2 ${
-                isDark ? "border-gray-500" : "border-gray-300"
-              }`}>
+              <div className="w-6 h-10 rounded-full border-2 border-white/50 flex justify-center pt-2">
                 <motion.div
-                  className={`w-1.5 h-1.5 rounded-full ${isDark ? "bg-gray-400" : "bg-gray-400"}`}
+                  className="w-1.5 h-1.5 rounded-full bg-white/70"
                   animate={{ y: [0, 12, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 />
