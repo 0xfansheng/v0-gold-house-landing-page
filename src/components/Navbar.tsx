@@ -1,7 +1,9 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { useI18n } from '@/i18n/I18nProvider';
+import { useSectionNav } from '@/lib/useSectionNav';
 import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Navbar() {
@@ -75,13 +77,12 @@ export default function Navbar() {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  const navigate = useSectionNav();
+
   const handleNavClick = (href: string) => {
     setMobileOpen(false);
     setMegaOpen(false);
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    navigate(href);
   };
 
   return (
@@ -95,11 +96,11 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-18">
             {/* Logo */}
-            <a
-              href="#"
+            <Link
+              href="/"
               className="flex items-center gap-2.5 group flex-shrink-0"
               aria-label={n.logoAriaLabel}
-              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              onClick={(e) => { e.preventDefault(); handleNavClick('/'); }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -112,7 +113,7 @@ export default function Navbar() {
               <span className="text-white font-bold text-lg tracking-tight leading-none">
                 Gold<span className="text-[#FFC247]">House</span>
               </span>
-            </a>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-1" aria-label={n.mainNav}>

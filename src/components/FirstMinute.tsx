@@ -2,6 +2,7 @@
 
 import ScrollReveal from './ScrollReveal';
 import { useI18n } from '@/i18n/I18nProvider';
+import { useSectionNav } from '@/lib/useSectionNav';
 
 function StepIcon0() {
   return (
@@ -49,6 +50,7 @@ const stepAccents = [
 export default function FirstMinute() {
   const { dict } = useI18n();
   const f = dict.firstMinute;
+  const navigate = useSectionNav();
 
   return (
     <section
@@ -145,15 +147,15 @@ export default function FirstMinute() {
               </div>
 
               <div className="mt-10">
-                <a
-                  href="#cta"
+                <button
+                  onClick={() => navigate('#cta')}
                   className="btn-gradient inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl"
                 >
                   {f.cta}
                   <svg className="w-4 h-4" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
                     <path fillRule="evenodd" d="M8 1a.5.5 0 01.5.5v11.793l3.146-3.147a.5.5 0 01.708.708l-4 4a.5.5 0 01-.708 0l-4-4a.5.5 0 01.708-.708L7.5 13.293V1.5A.5.5 0 018 1z" clipRule="evenodd" transform="rotate(-90 8 8)" />
                   </svg>
-                </a>
+                </button>
               </div>
             </div>
           </ScrollReveal>

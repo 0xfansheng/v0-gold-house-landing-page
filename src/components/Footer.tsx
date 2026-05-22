@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useI18n } from '@/i18n/I18nProvider';
+import { useSectionNav } from '@/lib/useSectionNav';
 
 const communityLinksData = [
   {
@@ -29,6 +30,7 @@ const communityLinksData = [
 export default function Footer() {
   const { dict } = useI18n();
   const f = dict.footer;
+  const navigate = useSectionNav();
 
   return (
     <footer className="relative bg-[#000D2B] border-t border-white/8" role="contentinfo">
@@ -37,17 +39,18 @@ export default function Footer() {
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-10 py-14">
           {/* Brand column */}
           <div className="col-span-2 lg:col-span-1">
-            <a
-              href="#"
+            <Link
+              href="/"
               className="inline-flex items-center gap-2.5 mb-5 group"
               aria-label={f.logoAriaLabel}
+              onClick={(e) => { e.preventDefault(); navigate('/'); }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/logo.svg" alt="GoldHouse" className="w-9 h-9 rounded-lg" width={36} height={36} />
               <span className="text-white font-bold text-lg tracking-tight">
                 Gold<span className="text-[#FFC247]">House</span>
               </span>
-            </a>
+            </Link>
             <p className="text-sm text-white/40 leading-relaxed mb-6 max-w-xs">
               {f.brandDesc}
             </p>
@@ -75,12 +78,12 @@ export default function Footer() {
             <ul className="space-y-3" role="list">
               {f.productLinks.map((link) => (
                 <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-white/45 hover:text-white transition-colors duration-200"
+                  <button
+                    onClick={() => navigate(link.href)}
+                    className="text-sm text-white/45 hover:text-white transition-colors duration-200 text-left"
                   >
                     {link.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -105,9 +108,12 @@ export default function Footer() {
               ))}
             </ul>
             <div className="mt-4 pt-4 border-t border-white/8">
-              <a href="#mission" className="text-sm text-white/45 hover:text-white transition-colors duration-200 block mb-2">
+              <button
+                onClick={() => navigate('#mission')}
+                className="text-sm text-white/45 hover:text-white transition-colors duration-200 block mb-2 text-left"
+              >
                 {f.aboutUs}
-              </a>
+              </button>
               <Link href="/privacy" className="text-sm text-white/45 hover:text-white transition-colors duration-200 block mb-2">
                 {f.privacy}
               </Link>
