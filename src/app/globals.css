@@ -1,26 +1,326 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   GoldHouse Design Tokens — Tailwind v4 CSS-first @theme
+   ============================================================ */
+@theme {
+  /* Brand Colors */
+  --color-brand-cyan:       #19B7FF;
+  --color-brand-blue:       #0A6CFF;
+  --color-brand-navy:       #002C8C;
+  --color-brand-deep:       #001A5C;
+  --color-brand-gold:       #FFC247;
+  --color-brand-gold-light: #FFD66B;
+
+  /* Neutral / UI */
+  --color-surface-white:    #FFFFFF;
+  --color-surface-frost:    #F2F6FF;
+  --color-surface-card:     rgba(255, 255, 255, 0.07);
+  --color-ink-dark:         #0B1A33;
+  --color-ink-mid:          #3A5080;
+  --color-ink-soft:         #7A94C1;
+  --color-ink-faint:        #B8CAE8;
+
+  /* Gradients (as custom properties, referenced via var()) */
+  --gradient-hero:          linear-gradient(135deg, #001A5C 0%, #002C8C 35%, #0A3AAA 65%, #0A6CFF 100%);
+  --gradient-brand:         linear-gradient(135deg, #19B7FF 0%, #0A6CFF 50%, #002C8C 100%);
+  --gradient-gold:          linear-gradient(135deg, #FFC247 0%, #FFD66B 100%);
+  --gradient-dark-section:  linear-gradient(180deg, #000D2B 0%, #001440 100%);
+  --gradient-glass-border:  linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 100%);
+
+  /* Shadows */
+  --shadow-glow-blue:       0 0 60px rgba(10, 108, 255, 0.35), 0 0 120px rgba(25, 183, 255, 0.15);
+  --shadow-glow-gold:       0 0 40px rgba(255, 194, 71, 0.4);
+  --shadow-card:            0 8px 40px rgba(0, 44, 140, 0.15), 0 2px 8px rgba(0, 44, 140, 0.08);
+  --shadow-card-hover:      0 16px 60px rgba(0, 44, 140, 0.25), 0 4px 16px rgba(0, 44, 140, 0.12);
+  --shadow-glass:           0 8px 32px rgba(0, 28, 100, 0.2), inset 0 1px 0 rgba(255,255,255,0.15);
+
+  /* Border Radius */
+  --radius-card:   1.25rem;
+  --radius-pill:   9999px;
+  --radius-btn:    0.625rem;
+
+  /* Typography */
+  --font-sans:     var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono:     var(--font-geist-mono), monospace;
+
+  /* Spacing scale extras */
+  --spacing-section: 7rem;
+
+  /* Animation durations */
+  --duration-fast:   150ms;
+  --duration-base:   300ms;
+  --duration-slow:   600ms;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ============================================================
+   Base Resets & Globals
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface-white);
+  color: var(--color-ink-dark);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   Glass Card Utility
+   ============================================================ */
+.glass-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(10, 108, 255, 0.1);
+  box-shadow: var(--shadow-card);
+}
+
+/* ============================================================
+   Gradient Text
+   ============================================================ */
+.gradient-text-brand {
+  background: linear-gradient(135deg, #19B7FF 0%, #0A6CFF 50%, #7B4FFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #FFC247 0%, #FFD66B 60%, #FFE8A0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ============================================================
+   Background Patterns & Glow Effects
+   ============================================================ */
+.bg-hero-gradient {
+  background: var(--gradient-hero);
+}
+
+.bg-grid-overlay {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.glow-orb-blue {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(25, 183, 255, 0.35) 0%, rgba(10, 108, 255, 0.15) 50%, transparent 70%);
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.glow-orb-gold {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 194, 71, 0.3) 0%, rgba(255, 214, 107, 0.1) 50%, transparent 70%);
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+/* ============================================================
+   Scroll Reveal Animation
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ============================================================
+   Gradient Border Button
+   ============================================================ */
+.btn-gradient {
+  position: relative;
+  background: linear-gradient(135deg, #19B7FF 0%, #0A6CFF 100%);
+  border-radius: var(--radius-btn);
+  color: white;
+  font-weight: 600;
+  transition: all var(--duration-base) ease;
+  box-shadow: 0 4px 20px rgba(10, 108, 255, 0.4);
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #2EC4FF 0%, #1A7CFF 100%);
+  box-shadow: 0 6px 28px rgba(10, 108, 255, 0.55);
+  transform: translateY(-1px);
+}
+
+.btn-outline-glass {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-btn);
+  color: white;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+  transition: all var(--duration-base) ease;
+}
+
+.btn-outline-glass:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-1px);
+}
+
+/* App / store download buttons */
+.store-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-btn);
+  color: white;
+  backdrop-filter: blur(8px);
+  transition: all var(--duration-base) ease;
+}
+
+.store-btn:hover {
+  background: rgba(255, 255, 255, 0.13);
+  border-color: rgba(25, 183, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 44, 140, 0.45);
+}
+
+/* ============================================================
+   Navbar Scroll State
+   ============================================================ */
+.navbar-scrolled {
+  background: rgba(0, 20, 70, 0.85) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 32px rgba(0, 44, 140, 0.25) !important;
+}
+
+/* ============================================================
+   Architecture Layer Bars
+   ============================================================ */
+.arch-layer {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  transition: all var(--duration-base) ease;
+}
+
+.arch-layer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.arch-layer:hover {
+  transform: translateX(6px);
+}
+
+/* ============================================================
+   Phone Mockup
+   ============================================================ */
+.phone-mockup {
+  position: relative;
+  width: 268px;
+  height: 540px;
+  background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border-radius: 2.5rem;
+  border: 2.5px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,0.4),
+    0 30px 80px rgba(0, 44, 140, 0.6),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+  overflow: hidden;
+}
+
+.phone-mockup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 22px;
+  background: rgba(0,0,0,0.6);
+  border-radius: 0 0 14px 14px;
+  z-index: 10;
+}
+
+/* ============================================================
+   Animated Gradient Shimmer
+   ============================================================ */
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animated-gradient {
+  background: linear-gradient(270deg, #19B7FF, #0A6CFF, #002C8C, #7B4FFF, #0A6CFF, #19B7FF);
+  background-size: 400% 400%;
+  animation: gradient-shift 8s ease infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-12px) rotate(1deg); }
+}
+
+.float-anim {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(10, 108, 255, 0.5); }
+  70%  { transform: scale(1);    box-shadow: 0 0 0 16px rgba(10, 108, 255, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(10, 108, 255, 0); }
+}
+
+.pulse-ring {
+  animation: pulse-ring 2.5s ease-out infinite;
+}
+
+/* ============================================================
+   Scrollbar Styling
+   ============================================================ */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: rgba(10, 108, 255, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(10, 108, 255, 0.5); }
+
+/* Focus ring for accessibility */
+:focus-visible {
+  outline: 2px solid #19B7FF;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
