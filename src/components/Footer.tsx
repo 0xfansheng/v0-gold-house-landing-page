@@ -117,8 +117,11 @@ export default function Footer() {
               <Link href="/privacy" className="text-sm text-white/45 hover:text-white transition-colors duration-200 block mb-2">
                 {f.privacy}
               </Link>
-              <Link href="/terms" className="text-sm text-white/45 hover:text-white transition-colors duration-200 block">
+              <Link href="/terms" className="text-sm text-white/45 hover:text-white transition-colors duration-200 block mb-2">
                 {f.terms}
+              </Link>
+              <Link href="/account-deletion" className="text-sm text-white/45 hover:text-white transition-colors duration-200 block">
+                {f.accountDeletion}
               </Link>
             </div>
           </div>
