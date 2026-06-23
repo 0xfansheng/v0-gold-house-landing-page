@@ -1,0 +1,111 @@
+'use client';
+
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import { useI18n } from '@/i18n/I18nProvider';
+
+const categoryStyles: Record<string, { color: string; gradient: string }> = {
+  feature: { color: '#FFC247', gradient: 'from-[#FFC247] to-[#FF8C00]' },
+  improvement: { color: '#19B7FF', gradient: 'from-[#0A6CFF] to-[#19B7FF]' },
+  fix: { color: '#7B4FFF', gradient: 'from-[#7B4FFF] to-[#0A6CFF]' },
+};
+
+export default function AnnouncementsClient() {
+  const { dict } = useI18n();
+  const a = dict.announcements;
+
+  return (
+    <>
+      <Navbar />
+      <main className="min-h-screen bg-[#000D2B] pt-24 pb-20">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0A6CFF]/15 border border-[#0A6CFF]/30 text-[#19B7FF] text-xs font-semibold tracking-wider uppercase mb-6">
+              {a.badge}
+            </div>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-tight">
+              {a.headingPart1} <span className="gradient-text-gold">{a.headingGold}</span>
+            </h1>
+            <p className="text-sm sm:text-base text-white/45 max-w-2xl leading-relaxed border-l-2 border-[#0A6CFF]/50 pl-4">
+              {a.subtext}
+            </p>
+          </div>
+
+          {/* Divider */}
+          <div className="w-full h-px bg-gradient-to-r from-[#0A6CFF]/50 via-[#19B7FF]/30 to-transparent mb-12" aria-hidden="true" />
+
+          {/* Release timeline */}
+          <ol className="relative space-y-6" role="list">
+            {a.releases.map((rel, i) => (
+              <li key={`${rel.date}-${rel.title}`}>
+                <article
+                  className="group relative glass-card rounded-3xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1"
+                  aria-label={`${rel.date} · ${rel.title}`}
+                >
+                  {/* Header: date */}
+                  <div className="flex flex-wrap items-center gap-2.5 mb-4">
+                    <time className="text-xs text-white/40 font-medium tracking-wide tabular-nums">
+                      {rel.date}
+                    </time>
+                    {i === 0 && (
+                      <span className="px-2.5 py-1 rounded-lg bg-gradient-to-r from-[#FFC247] to-[#FF8C00] text-[#001A5C] text-xs font-bold tracking-wide">
+                        {a.latestLabel}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Title + summary */}
+                  <h2 className="text-xl sm:text-2xl font-black text-white mb-2">{rel.title}</h2>
+                  <p className="text-sm text-white/55 leading-relaxed mb-6">{rel.summary}</p>
+
+                  {/* Change groups */}
+                  <div className="space-y-5">
+                    {rel.groups.map((group) => {
+                      const style = categoryStyles[group.type] ?? categoryStyles.feature;
+                      const label = a.categories[group.type as keyof typeof a.categories];
+                      return (
+                        <div key={group.type}>
+                          <div
+                            className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md text-[11px] font-bold uppercase tracking-wider mb-3"
+                            style={{
+                              background: `${style.color}1A`,
+                              color: style.color,
+                              border: `1px solid ${style.color}40`,
+                            }}
+                          >
+                            {label}
+                          </div>
+                          <ul className="space-y-2" role="list">
+                            {group.items.map((item) => (
+                              <li
+                                key={item}
+                                className="flex items-start gap-2.5 text-sm text-white/70 leading-relaxed"
+                              >
+                                <span
+                                  className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 bg-gradient-to-br ${style.gradient}`}
+                                  aria-hidden="true"
+                                />
+                                <span>{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </article>
+              </li>
+            ))}
+          </ol>
+
+          {/* Copyright */}
+          <div className="mt-12 pt-8 border-t border-white/10 text-center">
+            <p className="text-xs text-white/30">{a.copyright}</p>
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </>
+  );
+}
