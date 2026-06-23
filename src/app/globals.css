@@ -311,6 +311,75 @@ body {
 }
 
 /* ============================================================
+   Splash / 开屏 (brand launch overlay)
+   ============================================================ */
+.splash-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(120% 120% at 50% 38%, #00103a 0%, #00081f 55%, #00040f 100%);
+  overflow: hidden;
+}
+
+.splash-overlay.is-leaving {
+  animation: splash-out 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes splash-out {
+  to { opacity: 0; visibility: hidden; transform: scale(1.05); }
+}
+
+@keyframes splash-pop {
+  0%   { opacity: 0; transform: translateY(10px) scale(0.86); filter: blur(10px); }
+  100% { opacity: 1; transform: translateY(0)   scale(1);    filter: blur(0); }
+}
+
+@keyframes splash-rise {
+  0%   { opacity: 0; transform: translateY(26px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes splash-bar {
+  0%   { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+.splash-logo   { animation: splash-pop  0.95s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.splash-line-1 { animation: splash-rise 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both; }
+.splash-line-2 { animation: splash-rise 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.34s both; }
+.splash-line-3 { animation: splash-rise 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.50s both; }
+.splash-bar    { transform: scaleX(0); transform-origin: left center; animation: splash-bar 1.7s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards; }
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-logo, .splash-line-1, .splash-line-2, .splash-line-3, .splash-bar {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+  }
+  .splash-bar { transform: scaleX(1); }
+}
+
+/* ============================================================
+   Hero scroll-cue + slow ambient drift
+   ============================================================ */
+@keyframes hero-scroll-cue {
+  0%   { opacity: 0; transform: translateY(-6px); }
+  50%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(8px); }
+}
+.hero-scroll-dot { animation: hero-scroll-cue 2s ease-in-out infinite; }
+
+@keyframes drift-slow {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -24px, 0); }
+}
+.drift-slow { animation: drift-slow 14s ease-in-out infinite; }
+
+/* ============================================================
    Scrollbar Styling
    ============================================================ */
 ::-webkit-scrollbar        { width: 6px; }

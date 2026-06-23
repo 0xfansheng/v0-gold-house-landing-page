@@ -13,6 +13,7 @@ const en: Dictionary = {
       solutions: 'Solutions',
       security: 'Security',
       ecosystem: 'Ecosystem',
+      updates: 'Updates',
       about: 'About',
     },
     start: 'Get Started',
@@ -68,12 +69,15 @@ const en: Dictionary = {
     ctaStartAriaLabel: 'Get started with GoldHouse now',
     ctaLearnMoreAriaLabel: 'Learn more about GoldHouse features',
     downloads: {
-      iosSmall: 'Download on the',
-      androidSmall: 'GET IT ON',
-      apkSmall: 'Direct download',
-      iosAriaLabel: 'Download GoldHouse on the App Store',
-      androidAriaLabel: 'Get GoldHouse on Google Play',
-      apkAriaLabel: 'Download GoldHouse Android APK',
+      appStoreSmall: 'App Store',
+      iosSmall: 'TestFlight',
+      androidSmall: 'Google Play',
+      apkSmall: 'APK · Direct install',
+      appStoreAriaLabel: 'Get GoldHouse on the App Store',
+      iosAriaLabel: 'Get GoldHouse for iPhone or iPad via TestFlight',
+      androidAriaLabel: 'Get GoldHouse for Android on Google Play',
+      apkAriaLabel: 'Download GoldHouse for Android (APK)',
+      comingSoon: 'Coming soon',
     },
     stats: [
       { value: '7+', label: 'Core Modules' },
@@ -389,14 +393,21 @@ const en: Dictionary = {
     headingGold: 'Web3',
     headingPart2: 'New Era',
     subtext: 'Download GoldHouse and experience the Web2-grade gateway to launch your Web3 social and asset journey.',
-    appStoreLabel: 'Download GoldHouse on the App Store',
-    appStoreSmall: 'Download on the',
-    appStoreName: 'App Store',
-    googlePlayLabel: 'Get GoldHouse on Google Play',
-    googlePlaySmall: 'Get it on',
-    googlePlayName: 'Google Play',
-    webAppLabel: 'Open GoldHouse Web App',
-    webAppText: 'Launch Web App',
+    appStoreLabel: 'Get GoldHouse on the App Store',
+    appStoreSmall: 'App Store',
+    appStoreName: 'iPhone / iPad',
+    testflightLabel: 'Get GoldHouse for iPhone or iPad via TestFlight',
+    testflightSmall: 'TestFlight',
+    testflightName: 'iPhone / iPad',
+    googlePlayLabel: 'Get GoldHouse for Android on Google Play',
+    googlePlaySmall: 'Google Play',
+    googlePlayName: 'Android',
+    webAppLabel: 'Open GoldHouse in your web browser',
+    webAppText: 'Web Browser',
+    comingSoon: 'Coming soon',
+    apkLabel: 'Download GoldHouse for Android (APK)',
+    apkSmall: 'APK · Direct install',
+    apkName: 'Android',
     trust: [
       { icon: '🔐', text: 'E2E Encrypted' },
       { icon: '🛡️', text: 'MPC Protected' },
@@ -405,15 +416,22 @@ const en: Dictionary = {
       { icon: '⚡', text: 'Frictionless UX' },
     ],
   },
+  splash: {
+    slogan: 'To hold ! The world !',
+    sloganSub: '世界在你掌中',
+    loadingLabel: 'Entering GoldHouse',
+  },
   footer: {
     logoAriaLabel: 'GoldHouse Home',
     brandDesc: 'Multi-chain Web3 social platform building the infrastructure-grade social gateway. Identity · Wallet · Relationships · Permissions · Apps.',
     productHeading: 'Product',
     communityHeading: 'Community & About',
     aboutUs: 'About Us',
+    updates: 'Release Notes',
     privacy: 'Privacy Policy',
     terms: 'Terms of Service',
     accountDeletion: 'Delete Account',
+    childSafety: 'Child Safety',
     copyright: '© 2024 GoldHouse. All rights reserved.',
     tagline: 'Building the infrastructure-grade social gateway for the Web3 era',
     productLinks: [
@@ -665,6 +683,153 @@ const en: Dictionary = {
     contactEmail: 'support@goldhouse.cc',
     contactIntroPart2: '.',
     copyright: '© 2024 GoldHouse. All rights reserved.',
+  },
+  childSafety: {
+    pageTitle: 'Child Safety Standards',
+    metaTitle: 'Child Safety Standards (CSAE) — GoldHouse',
+    metaDesc:
+      'GoldHouse Child Safety Standards: our zero-tolerance policy against child sexual abuse and exploitation (CSAE), reporting channels, and child safety contact.',
+    lastUpdated: 'Last Updated: June 11, 2026',
+    sections: [
+      {
+        title: '1. Our Commitment to Child Safety',
+        intro:
+          'GoldHouse (operated by the GoldHouse Team) is committed to protecting children and keeping our platform safe. We maintain a strict zero-tolerance policy toward child sexual abuse and exploitation (CSAE) and child sexual abuse material (CSAM). These standards apply to every user of the GoldHouse application and all related services.',
+        bullets: [],
+      },
+      {
+        title: '2. Prohibited Content and Conduct',
+        intro: 'The following are strictly prohibited on GoldHouse and will result in immediate action:',
+        bullets: [
+          'Any child sexual abuse material (CSAM) — including images, videos, text, or AI-generated content that depicts the sexual abuse or exploitation of minors.',
+          'Grooming, solicitation, sextortion, or any attempt to sexually exploit a minor.',
+          'Sharing, promoting, linking to, or otherwise facilitating access to CSAE or CSAM content.',
+          'Trafficking, sexualization, or endangerment of children in any form.',
+        ],
+      },
+      {
+        title: '3. Our Standards and Enforcement',
+        intro: 'To protect children on our platform, GoldHouse:',
+        bullets: [
+          'Explicitly prohibits CSAE and CSAM in our Terms of Service and content guidelines, with zero-tolerance enforcement.',
+          'Promptly removes violating content and permanently bans the accounts responsible.',
+          'Reports confirmed CSAM to the National Center for Missing & Exploited Children (NCMEC) and/or relevant local authorities as required by law.',
+          'Preserves related evidence and cooperates with law enforcement investigations.',
+        ],
+      },
+      {
+        title: '4. How to Report',
+        intro:
+          'If you encounter content or behavior that may constitute child sexual abuse or exploitation, please report it immediately:',
+        bullets: [
+          'In-app: use the Report option available on any user profile, message, or piece of content.',
+          'Email our Child Safety Team: support@goldhouse.cc',
+          'You can also report directly to the NCMEC CyberTipline: https://report.cybertip.org',
+        ],
+      },
+      {
+        title: '5. Child Safety Point of Contact',
+        intro: 'GoldHouse has designated a dedicated point of contact responsible for child safety matters:',
+        bullets: [
+          'GoldHouse Child Safety Team',
+          'Email: support@goldhouse.cc',
+          'All reports are reviewed and acted upon promptly.',
+        ],
+      },
+      {
+        title: '6. Compliance and Publication',
+        intro:
+          'These Child Safety Standards are published and accessible to anyone worldwide. They align with applicable child-protection laws and with Google Play’s Child Safety Standards policy. We review and update these standards regularly.',
+        bullets: ['Published standards: https://goldhouse.cc/child-safety'],
+      },
+    ],
+    copyright: '© 2024 GoldHouse. All rights reserved.',
+  },
+  announcements: {
+    badge: 'Announcements · Release Notes',
+    headingPart1: 'Always',
+    headingGold: 'Evolving',
+    subtext:
+      'Every release makes GoldHouse safer and smoother. Below are our latest release announcements and detailed changelogs.',
+    latestLabel: 'Latest',
+    copyright: '© 2024 GoldHouse. All rights reserved.',
+    categories: {
+      feature: 'New Features',
+      improvement: 'Improvements',
+      fix: 'Bug Fixes',
+    },
+    releases: [
+      {
+        date: '2026-06-18',
+        title: 'Web3 and Web2 Capability Upgrade',
+        summary:
+          'The Web3 version adds in-app keyless wallet payments, DApp payment connectivity, and U Card beta access; the Web2 version expands meeting and group capacity.',
+        groups: [
+          {
+            type: 'feature',
+            items: [
+              'Web3 version now supports a keyless wallet, enabling in-app payments with a Web3 wallet',
+              'Web3 version now supports meetings with up to 5000 participants',
+              'Web3 version now supports groups with up to 5000 members',
+              'Web3 version now connects DApps with DApp payments',
+              'Web3 version launches the U Card beta',
+              'Web2 version now supports meetings with up to 5000 participants',
+              'Web2 version now supports groups with up to 5000 members',
+            ],
+          },
+          {
+            type: 'fix',
+            items: ['Fixed and improved the user experience', 'Enhanced security risk controls'],
+          },
+        ],
+      },
+      {
+        date: '2026-06-15',
+        title: 'New Features & Experience Improvements',
+        summary:
+          'Save video messages to your photo library, plus search and meeting refinements and a batch of stability fixes.',
+        groups: [
+          {
+            type: 'feature',
+            items: ['Video messages received in chat can now be saved to your phone’s photo library'],
+          },
+          {
+            type: 'improvement',
+            items: [
+              'Contact search no longer shows bot accounts, for cleaner results',
+              'Improved the layering of the in-meeting floating window and main UI so it no longer blocks the meeting view',
+            ],
+          },
+          {
+            type: 'fix',
+            items: [
+              'Fixed an issue where a friend’s old name still showed locally after they renamed themselves',
+              'Fixed an issue where a contact’s note was auto-filled with their nickname when adding them',
+              'Fixed an issue where some verification flows got stuck after enabling biometrics (fingerprint / Face ID)',
+              'Fixed an issue where scanning a personal QR code occasionally reported “not found”',
+              'Fixed occasional lag / unresponsiveness when logging out',
+            ],
+          },
+        ],
+      },
+      {
+        date: '2026-06-13',
+        title: 'GoldHouse Officially Launched',
+        summary:
+          'GoldHouse is officially released — the infrastructure-grade Web3 social platform sets sail, bringing identity, assets, governance, and apps into a single social account for the first time.',
+        groups: [
+          {
+            type: 'feature',
+            items: [
+              'Social login with MPC wallet recovery — enter Web3 without a seed phrase',
+              'End-to-end encrypted IM — message content readable only by the two parties',
+              'GoldHouse DID unified identity — consistent reputation across communities',
+              'In-chat GoldHouse Pay — the conversation is the payment interface',
+            ],
+          },
+        ],
+      },
+    ],
   },
   openSourceNotice: {
     pageTitle: 'GoldHouse — Open Source Software Notice (Android)',

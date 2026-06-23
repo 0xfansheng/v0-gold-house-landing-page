@@ -11,6 +11,7 @@ const zhCN = {
       solutions: '解决方案',
       security: '安全架构',
       ecosystem: '生态',
+      updates: '动态',
       about: '关于',
     },
     start: '开始使用',
@@ -66,12 +67,15 @@ const zhCN = {
     ctaStartAriaLabel: '立即开始使用 GoldHouse',
     ctaLearnMoreAriaLabel: '了解更多关于 GoldHouse 的功能',
     downloads: {
-      iosSmall: '从以下平台下载',
-      androidSmall: '前往',
-      apkSmall: '直接下载',
-      iosAriaLabel: '从 App Store 下载 GoldHouse',
-      androidAriaLabel: '从 Google Play 下载 GoldHouse',
-      apkAriaLabel: '下载 GoldHouse Android APK',
+      appStoreSmall: 'App Store',
+      iosSmall: 'TestFlight',
+      androidSmall: 'Google Play',
+      apkSmall: 'APK 直接安装',
+      appStoreAriaLabel: '在 App Store 获取 GoldHouse',
+      iosAriaLabel: '通过 TestFlight 获取适用于 iPhone / iPad 的 GoldHouse',
+      androidAriaLabel: '在 Google Play 获取适用于 Android 的 GoldHouse',
+      apkAriaLabel: '下载适用于 Android 的 GoldHouse APK',
+      comingSoon: '即将发布',
     },
     stats: [
       { value: '7+', label: '核心模块' },
@@ -387,14 +391,21 @@ const zhCN = {
     headingGold: 'Web3',
     headingPart2: '新纪元',
     subtext: '下载 GoldHouse，体验 Web2 级别的流畅入口，开启你的 Web3 社交与资产之旅。',
-    appStoreLabel: '从 App Store 下载 GoldHouse',
-    appStoreSmall: '下载于',
-    appStoreName: 'App Store',
-    googlePlayLabel: '从 Google Play 下载 GoldHouse',
-    googlePlaySmall: '获取自',
-    googlePlayName: 'Google Play',
-    webAppLabel: '打开 GoldHouse 网页版',
-    webAppText: '立即使用 Web 版',
+    appStoreLabel: '在 App Store 获取 GoldHouse',
+    appStoreSmall: 'App Store',
+    appStoreName: 'iPhone / iPad',
+    testflightLabel: '通过 TestFlight 获取适用于 iPhone / iPad 的 GoldHouse',
+    testflightSmall: 'TestFlight',
+    testflightName: 'iPhone / iPad',
+    googlePlayLabel: '在 Google Play 获取适用于 Android 的 GoldHouse',
+    googlePlaySmall: 'Google Play',
+    googlePlayName: 'Android',
+    webAppLabel: '在网页浏览器中打开 GoldHouse',
+    webAppText: '网页浏览器',
+    comingSoon: '即将发布',
+    apkLabel: '下载适用于 Android 的 GoldHouse APK',
+    apkSmall: 'APK 直接安装',
+    apkName: 'Android',
     trust: [
       { icon: '🔐', text: 'E2E 加密' },
       { icon: '🛡️', text: 'MPC 保护' },
@@ -403,15 +414,22 @@ const zhCN = {
       { icon: '⚡', text: '无感体验' },
     ],
   },
+  splash: {
+    slogan: '世界在你掌中',
+    sloganSub: 'To hold ! The world !',
+    loadingLabel: '正在进入 GoldHouse',
+  },
   footer: {
     logoAriaLabel: 'GoldHouse 首页',
     brandDesc: '多链 Web3 社交平台，构建基础设施级的社交入口。身份 · 钱包 · 关系 · 权限 · 应用。',
     productHeading: '产品',
     communityHeading: '社区与关于',
     aboutUs: '关于我们',
+    updates: '更新公告',
     privacy: '隐私政策',
     terms: '服务条款',
     accountDeletion: '账户删除',
+    childSafety: '儿童安全',
     copyright: '© 2024 GoldHouse. All rights reserved.',
     tagline: '构建 Web3 时代基础设施级的社交入口',
     productLinks: [
@@ -663,6 +681,151 @@ const zhCN = {
     contactEmail: 'support@goldhouse.cc',
     contactIntroPart2: '。',
     copyright: '© 2024 GoldHouse. All rights reserved.',
+  },
+  childSafety: {
+    pageTitle: '儿童安全标准',
+    metaTitle: '儿童安全标准（CSAE）— GoldHouse',
+    metaDesc:
+      'GoldHouse 儿童安全标准：我们对儿童性虐待和性剥削（CSAE）采取零容忍政策，并提供举报渠道与儿童安全联系人。',
+    lastUpdated: '最后更新：2026年6月11日',
+    sections: [
+      {
+        title: '1. 我们对儿童安全的承诺',
+        intro:
+          'GoldHouse（由 GoldHouse 团队运营）致力于保护儿童并维护平台安全。我们对儿童性虐待和性剥削（CSAE）以及儿童性虐待内容（CSAM）采取严格的零容忍政策。本标准适用于 GoldHouse 应用程序及所有相关服务的每一位用户。',
+        bullets: [],
+      },
+      {
+        title: '2. 禁止的内容与行为',
+        intro: '以下内容与行为在 GoldHouse 上被严格禁止，一经发现将立即处理：',
+        bullets: [
+          '任何儿童性虐待内容（CSAM）——包括描绘对未成年人进行性虐待或性剥削的图片、视频、文字或 AI 生成内容。',
+          '诱骗（grooming）、引诱、性勒索，或任何试图对未成年人实施性剥削的行为。',
+          '分享、宣传、提供链接，或以其他方式协助获取 CSAE 或 CSAM 内容。',
+          '以任何形式对儿童进行贩运、性化或使其处于危险之中。',
+        ],
+      },
+      {
+        title: '3. 我们的标准与执行',
+        intro: '为保护平台上的儿童，GoldHouse：',
+        bullets: [
+          '在服务条款和内容准则中明确禁止 CSAE 与 CSAM，并以零容忍方式执行。',
+          '及时删除违规内容，并永久封禁相关账户。',
+          '依法将确认的 CSAM 举报至美国国家失踪与受虐儿童中心（NCMEC）及/或相关当地执法机关。',
+          '保存相关证据并配合执法部门的调查。',
+        ],
+      },
+      {
+        title: '4. 如何举报',
+        intro: '如果您发现可能构成儿童性虐待或性剥削的内容或行为，请立即举报：',
+        bullets: [
+          '应用内：在任意用户资料、消息或内容上使用「举报」功能。',
+          '发送邮件至我们的儿童安全团队：support@goldhouse.cc',
+          '您也可以直接向 NCMEC CyberTipline 举报：https://report.cybertip.org',
+        ],
+      },
+      {
+        title: '5. 儿童安全联系人',
+        intro: 'GoldHouse 已指定专门负责处理儿童安全事宜的联系人：',
+        bullets: [
+          'GoldHouse 儿童安全团队',
+          '邮箱：support@goldhouse.cc',
+          '我们会及时审查并处理所有举报。',
+        ],
+      },
+      {
+        title: '6. 合规与公开',
+        intro:
+          '本儿童安全标准已公开发布，全球任何人均可访问。本标准符合适用的儿童保护法律以及 Google Play 的「儿童安全标准」政策。我们会定期审查并更新本标准。',
+        bullets: ['已发布标准：https://goldhouse.cc/child-safety'],
+      },
+    ],
+    copyright: '© 2024 GoldHouse. All rights reserved.',
+  },
+  announcements: {
+    badge: '公告 · 版本更新',
+    headingPart1: '持续',
+    headingGold: '进化',
+    subtext: '每一次更新都让 GoldHouse 更安全、更流畅。以下是最近的版本同步公告与更新明细。',
+    latestLabel: '最新',
+    copyright: '© 2024 GoldHouse. All rights reserved.',
+    categories: {
+      feature: '新增功能',
+      improvement: '体验优化',
+      fix: '问题修复',
+    },
+    releases: [
+      {
+        date: '2026-06-18',
+        title: 'Web3 与 Web2 版本能力升级',
+        summary:
+          'Web3 版本新增端内无私钥钱包支付、DApp 支付打通与 U 卡内测；Web2 版本同步提升会议与群组容量。',
+        groups: [
+          {
+            type: 'feature',
+            items: [
+              'Web3 版本支持无私钥钱包，可在端内使用 Web3 钱包进行支付',
+              'Web3 版本支持 5000 人会议',
+              'Web3 版本支持 5000 人群',
+              'Web3 版本支持 DApp 与 DApp 支付打通',
+              'Web3 版本推出 U 卡内测版',
+              'Web2 版本支持 5000 人会议',
+              'Web2 版本支持 5000 人群',
+            ],
+          },
+          {
+            type: 'fix',
+            items: ['修复并优化用户体验', '提升安全风控能力'],
+          },
+        ],
+      },
+      {
+        date: '2026-06-15',
+        title: '功能新增与体验优化',
+        summary:
+          '新增视频消息保存到相册，并带来搜索、会议体验优化及多项稳定性修复。',
+        groups: [
+          {
+            type: 'feature',
+            items: ['聊天中收到的视频消息现在支持保存到手机相册'],
+          },
+          {
+            type: 'improvement',
+            items: [
+              '搜索联系人时不再显示机器人账号，搜索结果更清爽',
+              '优化会议中悬浮窗与主界面的层级，不再遮挡会议画面',
+            ],
+          },
+          {
+            type: 'fix',
+            items: [
+              '修复好友修改名称后、本地仍显示旧名称的问题',
+              '修复添加联系人时备注被自动填成对方昵称的问题',
+              '修复开启生物识别（指纹 / 面容）后、部分验证流程被卡住的问题',
+              '修复扫描个人二维码偶尔提示“未找到”的问题',
+              '修复退出登录时偶发卡顿 / 无响应的问题',
+            ],
+          },
+        ],
+      },
+      {
+        date: '2026-06-13',
+        title: 'GoldHouse 正式上线',
+        summary:
+          'GoldHouse 正式版发布——基础设施级 Web3 社交平台正式启航，身份、资金、治理、应用首次整合进同一社交账户。',
+        groups: [
+          {
+            type: 'feature',
+            items: [
+              '社交登录与 MPC 钱包恢复，无需助记词即可进入 Web3',
+              'E2E 端到端加密 IM，消息内容仅双方可读',
+              'GoldHouse DID 统一身份，跨社群保持一致声誉',
+              '聊天内 GoldHouse Pay，对话即支付界面',
+            ],
+          },
+        ],
+      },
+    ],
   },
   openSourceNotice: {
     pageTitle: 'GoldHouse — 开源软件声明（Android）',

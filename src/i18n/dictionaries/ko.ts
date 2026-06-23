@@ -13,6 +13,7 @@ const ko: Dictionary = {
       solutions: '솔루션',
       security: '보안 아키텍처',
       ecosystem: '생태계',
+      updates: '소식',
       about: '소개',
     },
     start: '시작하기',
@@ -68,12 +69,15 @@ const ko: Dictionary = {
     ctaStartAriaLabel: 'GoldHouse 지금 시작하기',
     ctaLearnMoreAriaLabel: 'GoldHouse 기능 더 알아보기',
     downloads: {
-      iosSmall: '다운로드',
-      androidSmall: '다운로드',
-      apkSmall: '직접 다운로드',
-      iosAriaLabel: 'App Store에서 GoldHouse 다운로드',
-      androidAriaLabel: 'Google Play에서 GoldHouse 다운로드',
-      apkAriaLabel: 'GoldHouse Android APK 다운로드',
+      appStoreSmall: 'App Store',
+      iosSmall: 'TestFlight',
+      androidSmall: 'Google Play',
+      apkSmall: 'APK 직접 설치',
+      appStoreAriaLabel: 'App Store에서 GoldHouse 받기',
+      iosAriaLabel: 'TestFlight로 iPhone / iPad용 GoldHouse 받기',
+      androidAriaLabel: 'Google Play에서 Android용 GoldHouse 받기',
+      apkAriaLabel: 'Android용 GoldHouse APK 다운로드',
+      comingSoon: '출시 예정',
     },
     stats: [
       { value: '7+', label: '핵심 모듈' },
@@ -389,14 +393,21 @@ const ko: Dictionary = {
     headingGold: 'Web3',
     headingPart2: '새 시대로 진입하세요',
     subtext: 'GoldHouse를 다운로드하여 Web2 수준의 매끄러운 게이트웨이를 경험하고 Web3 소셜 & 자산 여정을 시작하세요.',
-    appStoreLabel: 'App Store에서 GoldHouse 다운로드',
-    appStoreSmall: '다운로드',
-    appStoreName: 'App Store',
-    googlePlayLabel: 'Google Play에서 GoldHouse 다운로드',
-    googlePlaySmall: '다운로드',
-    googlePlayName: 'Google Play',
-    webAppLabel: 'GoldHouse 웹 버전 열기',
-    webAppText: '웹 버전 바로 사용',
+    appStoreLabel: 'App Store에서 GoldHouse 받기',
+    appStoreSmall: 'App Store',
+    appStoreName: 'iPhone / iPad',
+    testflightLabel: 'TestFlight로 iPhone / iPad용 GoldHouse 받기',
+    testflightSmall: 'TestFlight',
+    testflightName: 'iPhone / iPad',
+    googlePlayLabel: 'Google Play에서 Android용 GoldHouse 받기',
+    googlePlaySmall: 'Google Play',
+    googlePlayName: 'Android',
+    webAppLabel: '웹 브라우저에서 GoldHouse 열기',
+    webAppText: '웹 브라우저',
+    comingSoon: '출시 예정',
+    apkLabel: 'Android용 GoldHouse APK 다운로드',
+    apkSmall: 'APK 직접 설치',
+    apkName: 'Android',
     trust: [
       { icon: '🔐', text: 'E2E 암호화' },
       { icon: '🛡️', text: 'MPC 보호' },
@@ -405,15 +416,22 @@ const ko: Dictionary = {
       { icon: '⚡', text: '자연스러운 경험' },
     ],
   },
+  splash: {
+    slogan: '세상을 손안에',
+    sloganSub: 'To hold ! The world !',
+    loadingLabel: 'GoldHouse 진입 중',
+  },
   footer: {
     logoAriaLabel: 'GoldHouse 홈',
     brandDesc: '멀티체인 Web3 소셜 플랫폼, 인프라급 소셜 게이트웨이 구축. 신원 · 지갑 · 관계 · 권한 · 앱.',
     productHeading: '제품',
     communityHeading: '커뮤니티 & 소개',
     aboutUs: '소개',
+    updates: '업데이트 공지',
     privacy: '개인정보 처리방침',
     terms: '이용약관',
     accountDeletion: '계정 삭제',
+    childSafety: '아동 안전',
     copyright: '© 2024 GoldHouse. All rights reserved.',
     tagline: 'Web3 시대의 인프라급 소셜 게이트웨이 구축',
     productLinks: [
@@ -665,6 +683,152 @@ const ko: Dictionary = {
     contactEmail: 'support@goldhouse.cc',
     contactIntroPart2: ' 로 연락주세요.',
     copyright: '© 2024 GoldHouse. All rights reserved.',
+  },
+  childSafety: {
+    pageTitle: '아동 안전 기준',
+    metaTitle: '아동 안전 기준(CSAE) — GoldHouse',
+    metaDesc:
+      'GoldHouse 아동 안전 기준: 아동 성적 학대 및 착취(CSAE)에 대한 무관용 정책, 신고 채널 및 아동 안전 담당 연락처를 안내합니다.',
+    lastUpdated: '최종 업데이트: 2026년 6월 11일',
+    sections: [
+      {
+        title: '1. 아동 안전에 대한 우리의 약속',
+        intro:
+          'GoldHouse(GoldHouse 팀 운영)는 아동을 보호하고 안전한 플랫폼을 유지하기 위해 최선을 다합니다. 우리는 아동 성적 학대 및 착취(CSAE)와 아동 성적 학대 콘텐츠(CSAM)에 대해 엄격한 무관용 정책을 유지합니다. 본 기준은 GoldHouse 애플리케이션 및 모든 관련 서비스의 모든 사용자에게 적용됩니다.',
+        bullets: [],
+      },
+      {
+        title: '2. 금지되는 콘텐츠 및 행위',
+        intro: '다음 행위는 GoldHouse에서 엄격히 금지되며, 발견 즉시 조치됩니다:',
+        bullets: [
+          '미성년자에 대한 성적 학대 또는 착취를 묘사하는 이미지, 동영상, 텍스트 또는 AI 생성 콘텐츠를 포함한 모든 아동 성적 학대 콘텐츠(CSAM).',
+          '그루밍, 유인, 성착취 협박(섹스토션) 또는 미성년자를 성적으로 착취하려는 모든 시도.',
+          'CSAE 또는 CSAM 콘텐츠를 공유, 홍보, 링크하거나 그 접근을 돕는 행위.',
+          '어떠한 형태로든 아동을 인신매매, 성적 대상화하거나 위험에 빠뜨리는 행위.',
+        ],
+      },
+      {
+        title: '3. 기준 및 집행',
+        intro: '플랫폼 내 아동을 보호하기 위해 GoldHouse는:',
+        bullets: [
+          '서비스 약관 및 콘텐츠 가이드라인에서 CSAE와 CSAM을 명시적으로 금지하며 무관용 원칙으로 집행합니다.',
+          '위반 콘텐츠를 신속히 삭제하고 책임 계정을 영구 정지합니다.',
+          '확인된 CSAM을 법률에 따라 미국 실종학대아동방지센터(NCMEC) 및/또는 관련 현지 사법 당국에 신고합니다.',
+          '관련 증거를 보존하고 법 집행 기관의 수사에 협조합니다.',
+        ],
+      },
+      {
+        title: '4. 신고 방법',
+        intro: '아동 성적 학대 또는 착취에 해당할 수 있는 콘텐츠나 행위를 발견하면 즉시 신고해 주십시오:',
+        bullets: [
+          '앱 내: 사용자 프로필, 메시지 또는 콘텐츠의 「신고」 기능을 이용하세요.',
+          '아동 안전 팀 이메일: support@goldhouse.cc',
+          'NCMEC CyberTipline에 직접 신고할 수도 있습니다: https://report.cybertip.org',
+        ],
+      },
+      {
+        title: '5. 아동 안전 담당 연락처',
+        intro: 'GoldHouse는 아동 안전 문제를 전담하는 연락 창구를 지정했습니다:',
+        bullets: [
+          'GoldHouse 아동 안전 팀',
+          '이메일: support@goldhouse.cc',
+          '모든 신고는 신속히 검토 및 처리됩니다.',
+        ],
+      },
+      {
+        title: '6. 규정 준수 및 공개',
+        intro:
+          '본 아동 안전 기준은 공개되어 전 세계 누구나 접근할 수 있습니다. 본 기준은 관련 아동 보호 법률 및 Google Play의 아동 안전 기준 정책을 준수합니다. 우리는 본 기준을 정기적으로 검토하고 업데이트합니다.',
+        bullets: ['게시된 기준: https://goldhouse.cc/child-safety'],
+      },
+    ],
+    copyright: '© 2024 GoldHouse. All rights reserved.',
+  },
+  announcements: {
+    badge: '공지 · 버전 업데이트',
+    headingPart1: '끊임없는',
+    headingGold: '진화',
+    subtext:
+      '모든 업데이트는 GoldHouse를 더 안전하고 매끄럽게 만듭니다. 다음은 최근 버전 동기화 공지와 상세 변경 내역입니다.',
+    latestLabel: '최신',
+    copyright: '© 2024 GoldHouse. All rights reserved.',
+    categories: {
+      feature: '신규 기능',
+      improvement: '경험 개선',
+      fix: '버그 수정',
+    },
+    releases: [
+      {
+        date: '2026-06-18',
+        title: 'Web3 및 Web2 기능 업그레이드',
+        summary:
+          'Web3 버전은 앱 내 키리스 지갑 결제, DApp 결제 연동, U Card 베타를 추가했으며 Web2 버전은 회의와 그룹 수용 인원을 확대했습니다.',
+        groups: [
+          {
+            type: 'feature',
+            items: [
+              'Web3 버전에서 키리스 지갑을 지원해 앱 내에서 Web3 지갑으로 결제할 수 있습니다',
+              'Web3 버전에서 최대 5000명 회의를 지원합니다',
+              'Web3 버전에서 최대 5000명 그룹을 지원합니다',
+              'Web3 버전에서 DApp과 DApp 결제 연동을 지원합니다',
+              'Web3 버전에서 U Card 베타를 시작합니다',
+              'Web2 버전에서 최대 5000명 회의를 지원합니다',
+              'Web2 버전에서 최대 5000명 그룹을 지원합니다',
+            ],
+          },
+          {
+            type: 'fix',
+            items: ['사용자 경험을 수정 및 개선했습니다', '보안 리스크 제어를 강화했습니다'],
+          },
+        ],
+      },
+      {
+        date: '2026-06-15',
+        title: '신규 기능 및 경험 개선',
+        summary:
+          '채팅 영상 메시지를 사진 앨범에 저장할 수 있으며, 검색·회의 경험 개선과 다수의 안정성 수정을 포함합니다.',
+        groups: [
+          {
+            type: 'feature',
+            items: ['채팅에서 받은 영상 메시지를 이제 휴대폰 사진 앨범에 저장할 수 있습니다'],
+          },
+          {
+            type: 'improvement',
+            items: [
+              '연락처 검색 시 봇 계정이 더 이상 표시되지 않아 검색 결과가 깔끔해졌습니다',
+              '회의 중 플로팅 창과 메인 화면의 레이어 순서를 개선해 회의 화면을 가리지 않습니다',
+            ],
+          },
+          {
+            type: 'fix',
+            items: [
+              '친구가 이름을 변경한 뒤에도 로컬에 이전 이름이 표시되던 문제 수정',
+              '연락처 추가 시 메모가 상대방 닉네임으로 자동 입력되던 문제 수정',
+              '생체 인증(지문 / 얼굴) 활성화 후 일부 인증 흐름이 멈추던 문제 수정',
+              '개인 QR 코드 스캔 시 가끔 “찾을 수 없음”이 표시되던 문제 수정',
+              '로그아웃 시 간헐적으로 발생하던 멈춤 / 무응답 문제 수정',
+            ],
+          },
+        ],
+      },
+      {
+        date: '2026-06-13',
+        title: 'GoldHouse 정식 출시',
+        summary:
+          'GoldHouse 정식 버전 출시 — 인프라급 Web3 소셜 플랫폼이 출항하여 신원, 자산, 거버넌스, 앱을 처음으로 하나의 소셜 계정에 통합합니다.',
+        groups: [
+          {
+            type: 'feature',
+            items: [
+              '소셜 로그인과 MPC 지갑 복구 — 시드 구문 없이 Web3 진입',
+              'E2E 종단 간 암호화 IM — 메시지 내용은 양측만 읽을 수 있음',
+              'GoldHouse DID 통합 신원 — 커뮤니티 전반에서 일관된 평판 유지',
+              '채팅 내 GoldHouse Pay — 대화가 곧 결제 화면',
+            ],
+          },
+        ],
+      },
+    ],
   },
   openSourceNotice: {
     pageTitle: 'GoldHouse — 오픈소스 소프트웨어 고지 (Android)',

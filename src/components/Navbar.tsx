@@ -22,6 +22,7 @@ export default function Navbar() {
     { label: n.links.solutions, href: '#architecture' },
     { label: n.links.security, href: '#architecture' },
     { label: n.links.ecosystem, href: '#modules' },
+    { label: n.links.updates, href: '/announcements' },
     { label: n.links.about, href: '#mission' },
   ];
 
