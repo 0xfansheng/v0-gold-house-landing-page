@@ -5,7 +5,7 @@ import ScrollReveal from './ScrollReveal';
 import { useI18n } from '@/i18n/I18nProvider';
 
 const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.goldhouse.android&pcampaignid=web_share';
-const DOWNLOAD_VERSION = 'v1.0.3'; // Android APK direct download
+const DOWNLOAD_VERSION = 'v1.0.4'; // Android APK direct download
 const TESTFLIGHT_VERSION = 'v1.0.4'; // iOS TestFlight beta
 const GOOGLE_PLAY_VERSION = 'v1.0.0';
 

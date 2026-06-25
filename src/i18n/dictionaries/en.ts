@@ -760,6 +760,26 @@ const en: Dictionary = {
     },
     releases: [
       {
+        date: '2026-06-26',
+        title: 'Major Infrastructure Upgrade for IM, Groups, and Meetings',
+        summary:
+          'This release delivers a major upgrade to the underlying infrastructure of IM, groups, and meetings, fixes and refines the Web3 wallet payment flow, and brings a comprehensive update to the U Card experience.',
+        groups: [
+          {
+            type: 'improvement',
+            items: [
+              'Major update to the IM infrastructure for more stable, efficient messaging',
+              'Underlying infrastructure update for groups and meetings, improving capacity and stability',
+              'U Card experience update for smoother issuance and usage',
+            ],
+          },
+          {
+            type: 'fix',
+            items: ['Fixed and refined the Web3 wallet for a smoother payment flow'],
+          },
+        ],
+      },
+      {
         date: '2026-06-24',
         title: 'U Card, Meetings & Groups Improvements',
         summary:
