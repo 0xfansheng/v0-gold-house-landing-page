@@ -11,15 +11,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev      # next dev  (http://localhost:3000)
-npm run build    # next build
-npm run start    # next start (serve the production build)
-npm run lint     # eslint (flat config — eslint.config.mjs)
+pnpm dev     # next dev  (http://localhost:3000)
+pnpm build   # next build
+pnpm start   # next start (serve the production build)
+pnpm lint    # eslint (flat config — eslint.config.mjs)
 ```
+
+The lockfile is `pnpm-lock.yaml` — this project uses **pnpm** (committed `pnpm-lock.yaml`, no `package-lock.json`). Prefer `pnpm` over `npm`/`yarn` to keep the lockfile consistent; `package.json` does not declare a `packageManager` field.
 
 There is **no test framework** configured. Type checking happens via the Next build (`tsc` is `noEmit`, run through `next build`); there is no standalone `typecheck` script.
 
-> `node_modules/` is not committed. Run `npm install` before relying on the AGENTS.md instruction to read `node_modules/next/dist/docs/` — that path only exists after install.
+> `node_modules/` is not committed. Run `pnpm install` before relying on the AGENTS.md instruction to read `node_modules/next/dist/docs/` — that path only exists after install.
 
 ## Stack specifics (this is a recent version — verify before assuming)
 
