@@ -449,7 +449,7 @@ const en: Dictionary = {
           },
           {
             q: 'Is identity verification required?',
-            a: 'No KYC verification is required to get the card.',
+            a: 'Most cards require no KYC verification; some card types require a passport issued outside mainland China for verification.',
           },
           {
             q: 'How long does the application take?',
