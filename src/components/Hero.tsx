@@ -75,6 +75,22 @@ export default function Hero() {
         {/* Download Buttons */}
         <ScrollReveal delay={3}>
           <div className="flex flex-wrap gap-3 justify-center">
+            {/* iOS — App Store (live, official release) */}
+            <a
+              href="https://apps.apple.com/app/goldhouse-social/id6772489278"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="store-btn group inline-flex items-center gap-3 px-5 py-3 rounded-xl"
+              aria-label={h.downloads.appStoreAriaLabel}
+            >
+              <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M17.05 12.04c-.03-2.9 2.37-4.29 2.48-4.36-1.35-1.98-3.46-2.25-4.21-2.28-1.79-.18-3.5 1.06-4.41 1.06-.91 0-2.31-1.04-3.8-1.01-1.95.03-3.76 1.14-4.76 2.89-2.03 3.52-.52 8.73 1.45 11.59.96 1.4 2.11 2.97 3.61 2.91 1.45-.06 2-.94 3.75-.94 1.75 0 2.24.94 3.77.91 1.56-.03 2.54-1.42 3.49-2.83 1.1-1.62 1.55-3.19 1.58-3.27-.03-.02-3.03-1.16-3.06-4.61zM14.13 3.66c.8-.97 1.34-2.32 1.19-3.66-1.15.05-2.54.77-3.37 1.74-.74.86-1.39 2.23-1.22 3.55 1.28.1 2.59-.65 3.4-1.63z" />
+              </svg>
+              <span className="flex flex-col items-start leading-none">
+                <span className="text-[10px] text-white/60 mb-0.5">{h.downloads.appStoreSmall}</span>
+                <span className="text-sm font-semibold text-white">iPhone / iPad</span>
+              </span>
+            </a>
             {/* iOS — TestFlight beta (live) */}
             <a
               href="https://testflight.apple.com/join/6pVzHRZf"
