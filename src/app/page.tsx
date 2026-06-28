@@ -8,6 +8,8 @@ import IMGateway from "@/components/IMGateway";
 import Architecture from "@/components/Architecture";
 import RevenueModel from "@/components/RevenueModel";
 import Mission from "@/components/Mission";
+import UCardIntro from "@/components/UCardIntro";
+import UCardFAQ from "@/components/UCardFAQ";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
@@ -25,6 +27,8 @@ export default function Home() {
         <Architecture />
         <RevenueModel />
         <Mission />
+        <UCardIntro />
+        <UCardFAQ />
         <CTA />
       </main>
       <Footer />

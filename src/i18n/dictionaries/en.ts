@@ -387,6 +387,190 @@ const en: Dictionary = {
       },
     ],
   },
+  ucard: {
+    intro: {
+      badge: 'GoldHouse U-Card',
+      headingPart1: 'One U-Card,',
+      headingBrand: 'bridging Web3 and the real world',
+      subtext:
+        'The GoldHouse U-Card connects your digital assets to the global payment network — no complex swaps required. Top up mainstream crypto, convert it to spending balance in real time, and pay at any merchant that accepts Visa / Mastercard worldwide.',
+      card: {
+        brand: 'U CARD',
+        tagline: 'Crypto In · Spend Anywhere',
+        holder: 'GOLDHOUSE',
+        validLabel: 'VALID THRU',
+        validDate: '08 / 30',
+        network: 'VISA',
+      },
+      highlights: [
+        { title: 'Global Coverage', desc: 'Works at major online and offline merchants worldwide' },
+        { title: 'Real-time Conversion', desc: 'Assets convert to spending balance in seconds' },
+        { title: 'Secure & Compliant', desc: 'Multi-layer risk control protects your funds' },
+        { title: 'Fully Transparent', desc: 'Transaction records available in real time' },
+      ],
+      flowTitle: 'How it works',
+      flow: [
+        { step: '01', title: 'Top up crypto', desc: 'Transfer from your platform balance to the card' },
+        { step: '02', title: 'Convert in real time', desc: 'Assets become usable spending balance instantly' },
+        { step: '03', title: 'Spend anywhere', desc: 'Use it online or offline, any scenario' },
+        { step: '04', title: 'Track records', desc: 'View statements and status anytime' },
+      ],
+      capabilitiesTitle: 'Core capabilities',
+      capabilities: [
+        'Crypto top-up',
+        'Virtual & physical cards',
+        'Apple Pay / Google Pay',
+        'Global online & offline spending',
+        'Multi-currency asset management',
+      ],
+      assetsTitle: 'Supported assets',
+      assets: ['USDT', 'USDC', 'ETH', 'BNB'],
+      assetsMore: 'and more mainstream digital assets',
+      scenesTitle: 'Use cases',
+      scenes: ['E-commerce', 'Subscriptions', 'Travel', 'Daily spending', 'Business expenses', 'Ad spend'],
+    },
+    badge: 'GoldHouse U-Card',
+    headingPart1: 'Everything you want to know',
+    headingBrand: 'about the U-Card is here',
+    subtext:
+      'From application and top-up to spending and refunds—the GoldHouse U-Card is an internationally issued card that works at merchants worldwide supporting Visa / Mastercard. Below are the most frequently asked questions.',
+    searchPlaceholder: 'Search question keywords…',
+    allLabel: 'All',
+    noResults: 'No related questions found. Try a different keyword.',
+    questionCountSuffix: ' questions',
+    categories: [
+      {
+        id: 'before',
+        name: 'Before Applying',
+        items: [
+          {
+            q: 'What do I need to apply for a U-Card?',
+            a: 'You need a phone number (matching your current country), a regularly used email address (QQ email is not recommended), and your basic personal information.',
+          },
+          {
+            q: 'Is identity verification required?',
+            a: 'No KYC verification is required to get the card.',
+          },
+          {
+            q: 'How long does the application take?',
+            a: 'After purchase, a minimum top-up of 30 USDT is required. Once the top-up is complete, the card number is usually activated in about 20 minutes.',
+          },
+          {
+            q: 'What usually causes an application to fail?',
+            a: 'Common reasons are purchasing a duplicate card range, or opening the same card type more than once on a single account—one account can only open one type of card.',
+          },
+          {
+            q: 'Is the U-Card an international card?',
+            a: 'Yes. The U-Card is issued by an overseas institution and is an international card that can be used worldwide.',
+          },
+        ],
+      },
+      {
+        id: 'recharge',
+        name: 'Top-Up & Crediting',
+        items: [
+          {
+            q: 'How do I top up the U-Card?',
+            a: 'Simply transfer funds from your GoldHouse platform balance directly to the card account to complete the top-up.',
+          },
+          {
+            q: 'Which top-up chains are supported?',
+            a: 'TRC20 and BEP20 are supported. Be sure to select the correct chain—topping up on the wrong chain may result in funds that cannot be recovered.',
+          },
+          {
+            q: 'What should I do if my top-up has not been credited?',
+            a: 'Please provide the transaction hash (TxID), top-up amount, top-up time, the chain used, and a screenshot of the receiving address. Support will verify and resolve it for you.',
+          },
+        ],
+      },
+      {
+        id: 'spending',
+        name: 'Spending & Withdrawals',
+        items: [
+          {
+            q: 'Where can I use the U-Card?',
+            a: 'It can typically be used at online or offline merchants supporting card networks such as Visa / Mastercard, depending on the card type and the merchant\'s risk controls.',
+          },
+          {
+            q: 'Why did my payment fail?',
+            a: 'Common reasons include: insufficient balance, the merchant not being supported, risk-control blocks, regional restrictions, exceeding the per-transaction limit, or network errors.',
+          },
+          {
+            q: 'Can I link it to Apple Pay / Google Pay / WeChat / Alipay?',
+            a: 'Whether this is supported depends on the specific card type. Please refer to the information shown on the platform page.',
+          },
+          {
+            q: 'Can I withdraw cash at an ATM?',
+            a: 'Physical cards support ATM withdrawals, but fees apply and they are subject to per-transaction limits, daily limits, and regional restrictions.',
+          },
+          {
+            q: 'Can I use it to subscribe to services like ChatGPT?',
+            a: 'Most cards support this. We recommend doing it on a computer, switching to a US region via VPN, entering a US billing address, and then filling in the card details to complete the payment.',
+          },
+        ],
+      },
+      {
+        id: 'authorization',
+        name: 'Transaction Authorization',
+        items: [
+          {
+            q: 'Why do I see two charges?',
+            a: 'Credit card spending usually involves a transaction authorization first, followed by the actual charge. If you see two amounts, refer to the final settled charge as the correct one—this works the same way as an ordinary credit card.',
+          },
+        ],
+      },
+      {
+        id: 'fees',
+        name: 'Fees & Limits',
+        items: [
+          {
+            q: 'Is there a minimum top-up amount?',
+            a: 'The minimum top-up amount is 30 USDT.',
+          },
+          {
+            q: 'What is the per-transaction spending limit?',
+            a: 'The per-transaction spending limit is 20,000 dollars.',
+          },
+        ],
+      },
+      {
+        id: 'security',
+        name: 'Account & Security',
+        items: [
+          {
+            q: 'What should I do if my card is frozen?',
+            a: 'Please contact support, submit your card number and a description of the transaction, and wait for processing.',
+          },
+          {
+            q: 'What should I do if I lose my card?',
+            a: 'Freeze the card on the platform immediately, then contact support to request a replacement or new card to avoid loss of funds.',
+          },
+          {
+            q: 'What should I do if I forget my password?',
+            a: 'Please provide your card number and a screenshot of your card balance. Support will manually update it after verifying your identity.',
+          },
+          {
+            q: 'What should I do if my account is fraudulently charged?',
+            a: 'Freeze the card on the platform immediately, and provide your card number and the fraudulent transaction records to support for handling.',
+          },
+        ],
+      },
+      {
+        id: 'refund',
+        name: 'Refunds & Disputes',
+        items: [
+          {
+            q: 'How long do merchant refunds take to arrive?',
+            a: 'Refund time depends on the processing speed of the merchant, the card network, and the issuing institution. It usually takes 3–5 business days, and in some cases up to 20 business days. Please refer to your statement status for the final outcome.',
+          },
+          {
+            q: 'What should I do if a payment failed but I was still charged?',
+            a: 'Please provide your card number and a screenshot of the charge, and support will look into the details for you. Such cases generally enter a pre-authorization or reversal process—simply wait for the system to refund it automatically.',
+          },
+        ],
+      },
+    ],
+  },
   cta: {
     badge: 'Get Started Now',
     headingPart1: 'Enter the',
