@@ -6,6 +6,7 @@ import { useI18n } from '@/i18n/I18nProvider';
 
 // Google Play 下载入口暂时下线，保留常量以便将来恢复
 // const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.goldhouse.android&pcampaignid=web_share';
+const WEB_APP_URL = 'https://imweb.goldhouse.cc'; // GoldHouse 网页版（免安装）
 const DOWNLOAD_VERSION = 'v1.0.4'; // Android APK direct download
 const TESTFLIGHT_VERSION = 'v1.0.4'; // iOS TestFlight beta
 const APP_STORE_VERSION = 'v1.0.4'; // iOS App Store official release
@@ -140,6 +141,23 @@ export default function Hero() {
               <span className="flex flex-col items-start leading-none">
                 <span className="text-[10px] text-white/60 mb-0.5">{h.downloads.apkSmall} · {DOWNLOAD_VERSION}</span>
                 <span className="text-sm font-semibold text-white">Android</span>
+              </span>
+            </a>
+            {/* Web App — live, zero-install entry (highlighted as the lowest-friction option) */}
+            <a
+              href={WEB_APP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="store-btn group inline-flex items-center gap-3 px-5 py-3 rounded-xl !border-[#19B7FF]/50 !bg-[#19B7FF]/10"
+              aria-label={h.downloads.webAriaLabel}
+            >
+              <svg className="w-6 h-6 flex-shrink-0 text-[#19B7FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3 12h18M12 3c2.5 2.5 3.5 5.7 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.7-3.5-9s1-6.5 3.5-9z" />
+              </svg>
+              <span className="flex flex-col items-start leading-none">
+                <span className="text-[10px] text-white/60 mb-0.5">{h.downloads.webName}</span>
+                <span className="text-sm font-semibold text-white">{h.downloads.webSmall}</span>
               </span>
             </a>
           </div>

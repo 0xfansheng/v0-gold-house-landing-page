@@ -6,6 +6,8 @@ import { useI18n } from '@/i18n/I18nProvider';
 import { useSectionNav } from '@/lib/useSectionNav';
 import LanguageSwitcher from './LanguageSwitcher';
 
+const WEB_APP_URL = 'https://imweb.goldhouse.cc'; // GoldHouse 网页版（免安装）
+
 export default function Navbar() {
   const { dict } = useI18n();
   const n = dict.nav;
@@ -155,6 +157,19 @@ export default function Navbar() {
             {/* Right Actions */}
             <div className="hidden lg:flex items-center gap-3">
               <LanguageSwitcher />
+              <a
+                href={WEB_APP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3.5 py-2 text-sm font-medium text-white/80 hover:text-white rounded-lg border border-white/20 hover:border-[#19B7FF]/50 hover:bg-white/10 transition-all duration-200"
+                aria-label={n.webAppAriaLabel}
+              >
+                <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M3 12h18M12 3c2.5 2.5 3.5 5.7 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.7-3.5-9s1-6.5 3.5-9z" />
+                </svg>
+                {n.webApp}
+              </a>
               <button
                 onClick={() => handleNavClick('#cta')}
                 className="btn-gradient px-5 py-2 text-sm rounded-lg"
@@ -301,6 +316,20 @@ export default function Navbar() {
 
             <div className="p-4 border-t border-white/10 space-y-3">
               <LanguageSwitcher variant="mobile" />
+              <a
+                href={WEB_APP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="flex items-center justify-center gap-2 w-full py-3 text-sm font-medium text-white/85 rounded-xl border border-white/20 hover:border-[#19B7FF]/50 hover:bg-white/10 transition-all duration-200"
+                aria-label={n.webAppAriaLabel}
+              >
+                <svg className="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M3 12h18M12 3c2.5 2.5 3.5 5.7 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.7-3.5-9s1-6.5 3.5-9z" />
+                </svg>
+                {n.webApp}
+              </a>
               <button
                 onClick={() => handleNavClick('#cta')}
                 className="btn-gradient w-full py-3 text-sm rounded-xl"

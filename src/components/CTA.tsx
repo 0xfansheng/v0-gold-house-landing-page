@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useRef } from 'react';
 import ScrollReveal from './ScrollReveal';
 import { useI18n } from '@/i18n/I18nProvider';
 
 // Google Play 下载入口暂时下线，保留常量以便将来恢复
 // const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.goldhouse.android&pcampaignid=web_share';
+const WEB_APP_URL = 'https://imweb.goldhouse.cc'; // GoldHouse 网页版（免安装）
 const DOWNLOAD_VERSION = 'v1.0.4'; // Android APK direct download
 const TESTFLIGHT_VERSION = 'v1.0.4'; // iOS TestFlight beta
 const APP_STORE_VERSION = 'v1.0.4'; // iOS App Store official release
@@ -14,15 +14,6 @@ const APP_STORE_VERSION = 'v1.0.4'; // iOS App Store official release
 export default function CTA() {
   const { dict } = useI18n();
   const c = dict.cta;
-
-  // Channels that aren't live yet show a transient "coming soon" hint on click.
-  const [comingSoon, setComingSoon] = useState<string | null>(null);
-  const comingSoonTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const showComingSoon = (key: string) => {
-    setComingSoon(key);
-    if (comingSoonTimer.current) clearTimeout(comingSoonTimer.current);
-    comingSoonTimer.current = setTimeout(() => setComingSoon(null), 2000);
-  };
 
   return (
     <section
@@ -145,23 +136,23 @@ export default function CTA() {
                 </a>
                 */}
 
-                {/* Web App — not live yet */}
-                <button
-                  type="button"
-                  onClick={() => showComingSoon('web')}
-                  className="group relative inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-white/10 border border-white/20 backdrop-blur-sm rounded-2xl text-white hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                {/* Web App — live, zero-install entry (last) */}
+                <a
+                  href={WEB_APP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center gap-3 px-7 py-4 bg-white/10 border border-white/20 backdrop-blur-sm rounded-2xl text-white hover:bg-white/20 hover:border-white/40 transition-all duration-300 hover:-translate-y-1"
                   aria-label={c.webAppLabel}
                 >
-                  <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 1.414L10.586 9H7a1 1 0 100 2h3.586l-1.293 1.293a1 1 0 101.414 1.414l3-3a1 1 0 000-1.414z" clipRule="evenodd" />
+                  <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                    <circle cx="12" cy="12" r="9" />
+                    <path d="M3 12h18M12 3c2.5 2.5 3.5 5.7 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.7-3.5-9s1-6.5 3.5-9z" />
                   </svg>
-                  <span className="text-sm font-semibold">{c.webAppText}</span>
-                  {comingSoon === 'web' && (
-                    <span className="absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 rounded-md bg-[#FFC247] text-[#001A5C] text-[11px] font-bold whitespace-nowrap shadow-lg">
-                      {c.comingSoon}
-                    </span>
-                  )}
-                </button>
+                  <div className="text-left">
+                    <p className="text-[10px] text-white/70 leading-none mb-0.5">{c.webAppSmall}</p>
+                    <p className="text-sm font-semibold leading-none">{c.webAppText}</p>
+                  </div>
+                </a>
               </div>
             </ScrollReveal>
 
