@@ -93,7 +93,11 @@ export default function UCardFAQ() {
 
         {/* Category tabs */}
         <ScrollReveal delay={1}>
-          <div className="flex flex-wrap justify-center gap-2.5 mb-10" role="tablist" aria-label={u.badge}>
+          <div
+            role="tablist"
+            aria-label={u.badge}
+            className="flex sm:flex-wrap justify-start sm:justify-center gap-2.5 mb-10 overflow-x-auto sm:overflow-visible snap-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+          >
             <CategoryPill
               label={u.allLabel}
               active={activeCat === 'all'}
@@ -201,7 +205,7 @@ function CategoryPill({
       role="tab"
       aria-selected={active}
       onClick={onClick}
-      className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${
+      className={`shrink-0 snap-start whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200 cursor-pointer ${
         active
           ? 'bg-[#0A6CFF] text-white shadow-[0_4px_14px_rgba(10,108,255,0.30)]'
           : 'bg-white text-[#3A5080] border border-[#E2EAF7] hover:border-[#0A6CFF]/40 hover:text-[#0A6CFF]'

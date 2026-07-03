@@ -35,6 +35,10 @@ export default function SplashScreen() {
     const leaveTimer = setTimeout(() => setPhase('leaving'), HOLD_MS);
     const doneTimer = setTimeout(() => {
       setPhase('done');
+      // Restore scrolling now: the component renders null when done but stays
+      // mounted, so the cleanup below (unmount-only) would never run and would
+      // leave the body scroll-locked on first visit.
+      document.body.style.overflow = prevOverflow;
       try {
         sessionStorage.setItem(SESSION_KEY, '1');
       } catch {

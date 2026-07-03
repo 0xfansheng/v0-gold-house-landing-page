@@ -76,19 +76,19 @@ export default function Hero() {
 
         {/* Download Buttons */}
         <ScrollReveal delay={3}>
-          <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md mx-auto lg:flex lg:max-w-none lg:flex-wrap lg:justify-center">
             {/* iOS — App Store (live, official release) */}
             <a
               href="https://apps.apple.com/app/goldhouse-social/id6772489278"
               target="_blank"
               rel="noopener noreferrer"
-              className="store-btn group inline-flex w-full sm:w-auto items-center gap-3 px-5 py-3 rounded-xl"
+              className="store-btn group inline-flex w-full lg:w-auto items-center gap-2.5 px-3.5 py-3 sm:gap-3 sm:px-5 rounded-xl"
               aria-label={h.downloads.appStoreAriaLabel}
             >
-              <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <svg className="w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M17.05 12.04c-.03-2.9 2.37-4.29 2.48-4.36-1.35-1.98-3.46-2.25-4.21-2.28-1.79-.18-3.5 1.06-4.41 1.06-.91 0-2.31-1.04-3.8-1.01-1.95.03-3.76 1.14-4.76 2.89-2.03 3.52-.52 8.73 1.45 11.59.96 1.4 2.11 2.97 3.61 2.91 1.45-.06 2-.94 3.75-.94 1.75 0 2.24.94 3.77.91 1.56-.03 2.54-1.42 3.49-2.83 1.1-1.62 1.55-3.19 1.58-3.27-.03-.02-3.03-1.16-3.06-4.61zM14.13 3.66c.8-.97 1.34-2.32 1.19-3.66-1.15.05-2.54.77-3.37 1.74-.74.86-1.39 2.23-1.22 3.55 1.28.1 2.59-.65 3.4-1.63z" />
               </svg>
-              <span className="flex flex-col items-start leading-none">
+              <span className="flex flex-col items-start leading-none whitespace-nowrap">
                 <span className="text-[10px] text-white/60 mb-0.5">{h.downloads.appStoreSmall} · {APP_STORE_VERSION}</span>
                 <span className="text-sm font-semibold text-white">iPhone / iPad</span>
               </span>
@@ -98,13 +98,13 @@ export default function Hero() {
               href="https://testflight.apple.com/join/6pVzHRZf"
               target="_blank"
               rel="noopener noreferrer"
-              className="store-btn group inline-flex w-full sm:w-auto items-center gap-3 px-5 py-3 rounded-xl"
+              className="store-btn group inline-flex w-full lg:w-auto items-center gap-2.5 px-3.5 py-3 sm:gap-3 sm:px-5 rounded-xl"
               aria-label={h.downloads.iosAriaLabel}
             >
-              <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <svg className="w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M17.05 12.04c-.03-2.9 2.37-4.29 2.48-4.36-1.35-1.98-3.46-2.25-4.21-2.28-1.79-.18-3.5 1.06-4.41 1.06-.91 0-2.31-1.04-3.8-1.01-1.95.03-3.76 1.14-4.76 2.89-2.03 3.52-.52 8.73 1.45 11.59.96 1.4 2.11 2.97 3.61 2.91 1.45-.06 2-.94 3.75-.94 1.75 0 2.24.94 3.77.91 1.56-.03 2.54-1.42 3.49-2.83 1.1-1.62 1.55-3.19 1.58-3.27-.03-.02-3.03-1.16-3.06-4.61zM14.13 3.66c.8-.97 1.34-2.32 1.19-3.66-1.15.05-2.54.77-3.37 1.74-.74.86-1.39 2.23-1.22 3.55 1.28.1 2.59-.65 3.4-1.63z" />
               </svg>
-              <span className="flex flex-col items-start leading-none">
+              <span className="flex flex-col items-start leading-none whitespace-nowrap">
                 <span className="text-[10px] text-white/60 mb-0.5">{h.downloads.iosSmall} · {TESTFLIGHT_VERSION}</span>
                 <span className="text-sm font-semibold text-white">iPhone / iPad</span>
               </span>
@@ -114,7 +114,7 @@ export default function Hero() {
               href={GOOGLE_PLAY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="store-btn group inline-flex items-center gap-3 px-5 py-3 rounded-xl"
+              className="store-btn group inline-flex items-center gap-2.5 px-3.5 py-3 sm:gap-3 sm:px-5 rounded-xl"
               aria-label={h.downloads.androidAriaLabel}
             >
               <svg className="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
@@ -123,7 +123,7 @@ export default function Hero() {
                 <path d="M3.6 1.5L14 11.7l3.9-3.3L5.4.44C5.04.25 4.66.2 4.3.3 4.04.37 3.8.4 3.6 1.5z" fill="#34D399" />
                 <path d="M3.6 22.5c.2.07.42.04.7-.12l13.6-7.66L14 11.7 3.6 22.5z" fill="#F87171" />
               </svg>
-              <span className="flex flex-col items-start leading-none">
+              <span className="flex flex-col items-start leading-none whitespace-nowrap">
                 <span className="text-[10px] text-white/60 mb-0.5">{h.downloads.androidSmall} · {GOOGLE_PLAY_VERSION}</span>
                 <span className="text-sm font-semibold text-white">Android</span>
               </span>
@@ -132,13 +132,13 @@ export default function Hero() {
             {/* Android APK — live download */}
             <a
               href="https://bridgeweb.goldhouse.cc/apk/releases/goldhouse.apk"
-              className="store-btn group inline-flex w-full sm:w-auto items-center gap-3 px-5 py-3 rounded-xl"
+              className="store-btn group inline-flex w-full lg:w-auto items-center gap-2.5 px-3.5 py-3 sm:gap-3 sm:px-5 rounded-xl"
               aria-label={h.downloads.apkAriaLabel}
             >
               <svg className="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="#34D399" aria-hidden="true">
                 <path d="M17.6 9.48l1.84-3.18a.4.4 0 00-.69-.4l-1.86 3.23a11.5 11.5 0 00-9.78 0L5.25 5.9a.4.4 0 10-.69.4L6.4 9.48A10.8 10.8 0 001 18.13h22a10.8 10.8 0 00-5.4-8.65zM7 15.25a1 1 0 110-2 1 1 0 010 2zm10 0a1 1 0 110-2 1 1 0 010 2z" />
               </svg>
-              <span className="flex flex-col items-start leading-none">
+              <span className="flex flex-col items-start leading-none whitespace-nowrap">
                 <span className="text-[10px] text-white/60 mb-0.5">{h.downloads.apkSmall} · {DOWNLOAD_VERSION}</span>
                 <span className="text-sm font-semibold text-white">Android</span>
               </span>
@@ -148,14 +148,14 @@ export default function Hero() {
               href={WEB_APP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="store-btn group inline-flex w-full sm:w-auto items-center gap-3 px-5 py-3 rounded-xl !border-[#19B7FF]/50 !bg-[#19B7FF]/10"
+              className="store-btn group inline-flex w-full lg:w-auto items-center gap-2.5 px-3.5 py-3 sm:gap-3 sm:px-5 rounded-xl !border-[#19B7FF]/50 !bg-[#19B7FF]/10"
               aria-label={h.downloads.webAriaLabel}
             >
               <svg className="w-6 h-6 flex-shrink-0 text-[#19B7FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                 <circle cx="12" cy="12" r="9" />
                 <path d="M3 12h18M12 3c2.5 2.5 3.5 5.7 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-5.7-3.5-9s1-6.5 3.5-9z" />
               </svg>
-              <span className="flex flex-col items-start leading-none">
+              <span className="flex flex-col items-start leading-none whitespace-nowrap">
                 <span className="text-[10px] text-white/60 mb-0.5">{h.downloads.webName}</span>
                 <span className="text-sm font-semibold text-white">{h.downloads.webSmall}</span>
               </span>
