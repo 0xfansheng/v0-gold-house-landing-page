@@ -76,13 +76,13 @@ export default function Hero() {
 
         {/* Download Buttons */}
         <ScrollReveal delay={3}>
-          <div className="flex flex-wrap gap-3 justify-center">
+          <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap sm:justify-center">
             {/* iOS — App Store (live, official release) */}
             <a
               href="https://apps.apple.com/app/goldhouse-social/id6772489278"
               target="_blank"
               rel="noopener noreferrer"
-              className="store-btn group inline-flex items-center gap-3 px-5 py-3 rounded-xl"
+              className="store-btn group inline-flex w-full sm:w-auto items-center gap-3 px-5 py-3 rounded-xl"
               aria-label={h.downloads.appStoreAriaLabel}
             >
               <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -98,7 +98,7 @@ export default function Hero() {
               href="https://testflight.apple.com/join/6pVzHRZf"
               target="_blank"
               rel="noopener noreferrer"
-              className="store-btn group inline-flex items-center gap-3 px-5 py-3 rounded-xl"
+              className="store-btn group inline-flex w-full sm:w-auto items-center gap-3 px-5 py-3 rounded-xl"
               aria-label={h.downloads.iosAriaLabel}
             >
               <svg className="w-7 h-7 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -132,7 +132,7 @@ export default function Hero() {
             {/* Android APK — live download */}
             <a
               href="https://bridgeweb.goldhouse.cc/apk/releases/goldhouse.apk"
-              className="store-btn group inline-flex items-center gap-3 px-5 py-3 rounded-xl"
+              className="store-btn group inline-flex w-full sm:w-auto items-center gap-3 px-5 py-3 rounded-xl"
               aria-label={h.downloads.apkAriaLabel}
             >
               <svg className="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="#34D399" aria-hidden="true">
@@ -148,7 +148,7 @@ export default function Hero() {
               href={WEB_APP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="store-btn group inline-flex items-center gap-3 px-5 py-3 rounded-xl !border-[#19B7FF]/50 !bg-[#19B7FF]/10"
+              className="store-btn group inline-flex w-full sm:w-auto items-center gap-3 px-5 py-3 rounded-xl !border-[#19B7FF]/50 !bg-[#19B7FF]/10"
               aria-label={h.downloads.webAriaLabel}
             >
               <svg className="w-6 h-6 flex-shrink-0 text-[#19B7FF]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">

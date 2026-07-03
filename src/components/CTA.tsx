@@ -68,7 +68,7 @@ export default function CTA() {
 
             {/* CTA Buttons */}
             <ScrollReveal delay={1}>
-              <div className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center mb-12">
+              <div className="grid grid-cols-2 gap-4 sm:flex sm:flex-row sm:flex-wrap sm:justify-center mb-12">
                 {/* iOS — App Store, live (official release) */}
                 <a
                   href="https://apps.apple.com/app/goldhouse-social/id6772489278"
