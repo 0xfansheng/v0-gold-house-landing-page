@@ -948,6 +948,17 @@ const zhTW: Dictionary = {
     },
     releases: [
       {
+        date: '2026-07-03',
+        title: '新增私鑰匯入功能',
+        summary: '本次更新新增私鑰匯入功能，可將既有錢包私鑰匯入 GoldHouse 使用。',
+        groups: [
+          {
+            type: 'feature',
+            items: ['新增私鑰匯入功能'],
+          },
+        ],
+      },
+      {
         date: '2026-06-26',
         title: 'IM、群組與會議底層機制重大升級',
         summary:

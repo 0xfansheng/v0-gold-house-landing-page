@@ -946,6 +946,17 @@ const zhCN = {
     },
     releases: [
       {
+        date: '2026-07-03',
+        title: '新增私钥导入功能',
+        summary: '本次更新新增私钥导入功能，可将已有钱包私钥导入 GoldHouse 使用。',
+        groups: [
+          {
+            type: 'feature',
+            items: ['新增私钥导入功能'],
+          },
+        ],
+      },
+      {
         date: '2026-06-26',
         title: 'IM、群组与会议底层机制重大升级',
         summary:

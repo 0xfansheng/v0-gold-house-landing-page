@@ -950,6 +950,17 @@ const en: Dictionary = {
     },
     releases: [
       {
+        date: '2026-07-03',
+        title: 'Private Key Import Added',
+        summary: 'This update adds a private key import feature, letting you import an existing wallet private key into GoldHouse.',
+        groups: [
+          {
+            type: 'feature',
+            items: ['Added private key import'],
+          },
+        ],
+      },
+      {
         date: '2026-06-26',
         title: 'Major Infrastructure Upgrade for IM, Groups, and Meetings',
         summary:

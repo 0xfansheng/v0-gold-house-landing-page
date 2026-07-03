@@ -949,6 +949,17 @@ const ko: Dictionary = {
     },
     releases: [
       {
+        date: '2026-07-03',
+        title: '개인 키 가져오기 기능 추가',
+        summary: '이번 업데이트에서 개인 키 가져오기 기능이 추가되어 기존 지갑의 개인 키를 GoldHouse로 가져와 사용할 수 있습니다.',
+        groups: [
+          {
+            type: 'feature',
+            items: ['개인 키 가져오기 기능 추가'],
+          },
+        ],
+      },
+      {
         date: '2026-06-26',
         title: 'IM·그룹·회의 하부 구조 대규모 업그레이드',
         summary:
