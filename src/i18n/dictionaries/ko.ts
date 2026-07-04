@@ -13,6 +13,7 @@ const ko: Dictionary = {
       solutions: '솔루션',
       security: '보안 아키텍처',
       ecosystem: '생태계',
+      alliance: '생태계 얼라이언스',
       updates: '소식',
       about: '소개',
     },
@@ -270,6 +271,55 @@ const ko: Dictionary = {
       },
     ],
     moduleAriaPrefix: '모듈',
+  },
+  alliance: {
+    badge: '생태계 얼라이언스',
+    headingPart1: '우수한 프로젝트와',
+    headingBrand: '생태계를 함께 구축',
+    subtext:
+      '보안, 결제, 퍼블릭 체인부터 AI 에이전트까지, GoldHouse는 우수한 Web3 프로젝트들과 손잡고\n개방적이고 상호 연결된 멀티체인 생태계 얼라이언스를 함께 만들어 갑니다.',
+    announceLabel: '공식 발표 보기',
+    comingSoonLabel: '발표 예정',
+    visitXPrefix: '방문:',
+    partnerAriaPrefix: '생태계 얼라이언스 멤버',
+    partners: [
+      {
+        name: 'AVE',
+        desc: 'Web3 거래 애그리게이터로, 실시간 DEX 거래·시장 분석·스마트 트레이딩 도구를 제공해 사용자가 온체인 자산을 더 효율적으로 실행하고 추적하도록 돕습니다.',
+      },
+      {
+        name: 'GoPlus',
+        desc: 'Web3 보안 인프라와 실시간 리스크 탐지 기능을 제공하여 온체인 거래와 자산에 대한 보안 보호 및 리스크 관리 서비스를 제공합니다.',
+      },
+      {
+        name: 'U9',
+        desc: '온체인 자산 결제 인프라로, Binance 등 플랫폼의 온체인 미국 주식 자산을 실제 결제·소비 시나리오로 전환하는 데 집중하며 글로벌 국경 간 결제와 소셜 파이낸스(PayFi)를 지원합니다.',
+      },
+      {
+        name: 'REI',
+        desc: '2017년 출시된 EVM 호환 퍼블릭 체인으로 온체인 주소가 32만 개를 넘습니다. 초기 투자자로는 Fenbushi Capital, Bixin Ventures, LD Capital 등 유명 크립토 펀드가 포함됩니다.',
+      },
+      {
+        name: 'XAgent',
+        desc: 'AI 에이전트 플랫폼으로 전 세계 사용자 100만 명 이상, 누적 840억+ 토큰을 처리했습니다.',
+      },
+      {
+        name: 'FistFloor',
+        desc: 'Rise.rich로 $FF의 영구 바닥가를 지키고, AI 에이전트와 결제 생태계로 Web4의 지능과 연결을 확장합니다.',
+      },
+      {
+        name: 'Alphio AI',
+        desc: '자율 트레이딩 에이전트로 이미 Google Play와 App Store에 출시되었으며 사용자 규모는 5만 명에 달합니다.',
+      },
+      {
+        name: 'Astarter',
+        desc: 'AI 에이전트·DePIN·DeFAI 기술을 결합한 Web4 AI 네트워크 인프라 플랫폼으로, 투자자로 OKX Ventures와 EMURGO가 참여했습니다.',
+      },
+      {
+        name: 'GANA',
+        desc: 'BNB Chain 기반의 탈중앙화 PayFi 결제 인프라로, Web3 결제·유동성·생태계 구축에 집중하며 글로벌 심리스 결제 네트워크 구축을 목표로 합니다.',
+      },
+    ],
   },
   architecture: {
     badge: '4계층 아키텍처',

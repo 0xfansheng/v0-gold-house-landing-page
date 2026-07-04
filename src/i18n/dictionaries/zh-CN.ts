@@ -11,6 +11,7 @@ const zhCN = {
       solutions: '解决方案',
       security: '安全架构',
       ecosystem: '生态',
+      alliance: '生态联盟',
       updates: '动态',
       about: '关于',
     },
@@ -268,6 +269,55 @@ const zhCN = {
       },
     ],
     moduleAriaPrefix: '模块',
+  },
+  alliance: {
+    badge: '生态联盟',
+    headingPart1: '与优质项目',
+    headingBrand: '共建生态',
+    subtext:
+      '从安全、支付、公链到 AI 代理，GoldHouse 正与一批优质 Web3 项目携手，\n共同构建开放、互联的多链生态联盟。',
+    announceLabel: '查看官宣',
+    comingSoonLabel: '即将官宣',
+    visitXPrefix: '访问',
+    partnerAriaPrefix: '生态联盟成员',
+    partners: [
+      {
+        name: 'AVE',
+        desc: 'Web3 交易聚合器，提供实时 DEX 交易、市场分析与智能交易工具，帮助用户更高效地执行和跟踪链上资产。',
+      },
+      {
+        name: 'GoPlus',
+        desc: '提供 Web3 安全基础设施与实时风险检测能力，为链上交易与资产提供安全防护与风控服务。',
+      },
+      {
+        name: 'U9',
+        desc: '链上资产支付基础设施，专注将 Binance 等平台的链上美股资产转化为实际支付与消费场景，支持全球跨境支付与社交金融（PayFi）。',
+      },
+      {
+        name: 'REI',
+        desc: '2017 年上线的 EVM 兼容公链，链上地址超 32 万。早期投资方包括分布式资本、Bixin Ventures、LD Capital 等知名 crypto 基金。',
+      },
+      {
+        name: 'XAgent',
+        desc: 'AI Agent 平台，全球用户超 100 万，累计处理 840 亿+ Tokens。',
+      },
+      {
+        name: 'FistFloor',
+        desc: '以 Rise.rich 守住 $FF 永久地板，以 AI Agent 与支付生态拓展 Web4 的智能与连接。',
+      },
+      {
+        name: 'Alphio AI',
+        desc: '自主交易代理，已上线 Google Play 与 App Store，用户规模达 5 万。',
+      },
+      {
+        name: 'Astarter',
+        desc: 'Web4 AI 网络基础设施平台，融合 AI 代理、DePIN 与 DeFAI 技术，投资方包括 OKX Ventures 与 EMURGO。',
+      },
+      {
+        name: 'GANA',
+        desc: '基于 BNB Chain 的去中心化 PayFi 支付基础设施，专注 Web3 支付、流动性与生态建设，目标打造全球无缝支付网络。',
+      },
+    ],
   },
   architecture: {
     badge: '四层架构',

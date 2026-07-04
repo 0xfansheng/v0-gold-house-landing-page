@@ -13,6 +13,7 @@ const en: Dictionary = {
       solutions: 'Solutions',
       security: 'Security',
       ecosystem: 'Ecosystem',
+      alliance: 'Alliance',
       updates: 'Updates',
       about: 'About',
     },
@@ -270,6 +271,55 @@ const en: Dictionary = {
       },
     ],
     moduleAriaPrefix: 'Module',
+  },
+  alliance: {
+    badge: 'Ecosystem Alliance',
+    headingPart1: 'Building the ecosystem',
+    headingBrand: 'together',
+    subtext:
+      'From security, payments and public chains to AI agents, GoldHouse is partnering with a group of\nquality Web3 projects to build an open, interconnected multi-chain ecosystem alliance.',
+    announceLabel: 'View announcement',
+    comingSoonLabel: 'Announcement soon',
+    visitXPrefix: 'Visit',
+    partnerAriaPrefix: 'Ecosystem alliance member',
+    partners: [
+      {
+        name: 'AVE',
+        desc: 'A Web3 trading aggregator offering real-time DEX trading, market analysis and smart trading tools that help users execute and track on-chain assets more efficiently.',
+      },
+      {
+        name: 'GoPlus',
+        desc: 'Provides Web3 security infrastructure and real-time risk detection, delivering protection and risk-control services for on-chain transactions and assets.',
+      },
+      {
+        name: 'U9',
+        desc: 'An on-chain asset payment infrastructure focused on turning tokenized U.S. equity assets from platforms like Binance into real payment and spending scenarios, supporting global cross-border payments and social finance (PayFi).',
+      },
+      {
+        name: 'REI',
+        desc: 'An EVM-compatible public chain launched in 2017 with over 320,000 on-chain addresses. Early backers include Fenbushi Capital, Bixin Ventures, LD Capital and other renowned crypto funds.',
+      },
+      {
+        name: 'XAgent',
+        desc: 'An AI agent platform with over 1 million users worldwide, having processed 84 billion+ tokens.',
+      },
+      {
+        name: 'FistFloor',
+        desc: 'Holds a permanent floor for $FF via Rise.rich, and expands the intelligence and connectivity of Web4 through AI agents and a payment ecosystem.',
+      },
+      {
+        name: 'Alphio AI',
+        desc: 'An autonomous trading agent, already live on Google Play and the App Store, with 50,000 users.',
+      },
+      {
+        name: 'Astarter',
+        desc: 'A Web4 AI network infrastructure platform combining AI agents, DePIN and DeFAI technologies, backed by OKX Ventures and EMURGO.',
+      },
+      {
+        name: 'GANA',
+        desc: 'A decentralized PayFi payment infrastructure on BNB Chain, focused on Web3 payments, liquidity and ecosystem building, aiming to create a seamless global payment network.',
+      },
+    ],
   },
   architecture: {
     badge: '4-Layer Architecture',

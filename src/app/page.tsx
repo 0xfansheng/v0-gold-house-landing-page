@@ -7,6 +7,7 @@ import FirstMinute from "@/components/FirstMinute";
 import IMGateway from "@/components/IMGateway";
 import Architecture from "@/components/Architecture";
 import RevenueModel from "@/components/RevenueModel";
+import Alliance from "@/components/Alliance";
 import Mission from "@/components/Mission";
 import UCardIntro from "@/components/UCardIntro";
 import UCardFAQ from "@/components/UCardFAQ";
@@ -26,6 +27,7 @@ export default function Home() {
         <Modules />
         <Architecture />
         <RevenueModel />
+        <Alliance />
         <Mission />
         <UCardIntro />
         <UCardFAQ />
