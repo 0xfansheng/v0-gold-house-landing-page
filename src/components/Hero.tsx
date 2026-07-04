@@ -8,8 +8,9 @@ import { useI18n } from '@/i18n/I18nProvider';
 // const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.goldhouse.android&pcampaignid=web_share';
 const WEB_APP_URL = 'https://imweb.goldhouse.cc'; // GoldHouse 网页版（免安装）
 const DOWNLOAD_VERSION = 'v1.0.7'; // Android APK direct download
-const TESTFLIGHT_VERSION = 'v1.0.4'; // iOS TestFlight beta
-const APP_STORE_VERSION = 'v1.0.4'; // iOS App Store official release
+const TESTFLIGHT_VERSION = 'v1.0.7'; // iOS TestFlight beta
+// App Store 入口暂时下线，保留常量以便将来恢复
+// const APP_STORE_VERSION = 'v1.0.4'; // iOS App Store official release
 // const GOOGLE_PLAY_VERSION = 'v1.0.0';
 
 export default function Hero() {
@@ -77,7 +78,7 @@ export default function Hero() {
         {/* Download Buttons */}
         <ScrollReveal delay={3}>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md mx-auto lg:flex lg:max-w-none lg:flex-wrap lg:justify-center">
-            {/* iOS — App Store (live, official release) */}
+            {/* iOS — App Store（暂时下线，保留以便将来恢复）
             <a
               href="https://apps.apple.com/app/goldhouse-social/id6772489278"
               target="_blank"
@@ -93,6 +94,7 @@ export default function Hero() {
                 <span className="text-sm font-semibold text-white">iPhone / iPad</span>
               </span>
             </a>
+            */}
             {/* iOS — TestFlight beta (live) */}
             <a
               href="https://testflight.apple.com/join/6pVzHRZf"
