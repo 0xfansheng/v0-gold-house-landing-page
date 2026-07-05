@@ -997,6 +997,7 @@ const zhCN = {
     releases: [
       {
         date: '2026-07-05',
+        version: 'v1.0.8',
         title: 'Swap 能力扩展与钱包体验优化',
         summary:
           '本次更新为安卓端扩大钱包截屏支持范围、新增 Polygon 链 Swap 功能，并优化 Swap 页面与导出私钥体验。',
@@ -1019,6 +1020,7 @@ const zhCN = {
       },
       {
         date: '2026-07-03',
+        version: 'v1.0.7',
         title: '新增私钥导入功能',
         summary: '本次更新新增私钥导入功能，可将已有钱包私钥导入 GoldHouse 使用。',
         groups: [
@@ -1030,6 +1032,7 @@ const zhCN = {
       },
       {
         date: '2026-06-26',
+        version: 'v1.0.4',
         title: 'IM、群组与会议底层机制重大升级',
         summary:
           '本次对 IM、群组与会议的底层机制进行了重大升级，修复并优化 Web3 钱包支付流程，同时带来 U 卡体验的全面更新。',
@@ -1050,6 +1053,7 @@ const zhCN = {
       },
       {
         date: '2026-06-24',
+        version: 'v1.0.3',
         title: 'U 卡申领与会议群聊改进',
         summary:
           '新增 U 卡，注册账户后即可申领；带来会议与群聊的诸多体验改进，并进一步提升整体稳定性。',
@@ -1073,6 +1077,7 @@ const zhCN = {
       },
       {
         date: '2026-06-18',
+        version: 'v1.0.2',
         title: 'Web3 与 Web2 版本能力升级',
         summary:
           'Web3 版本新增端内无私钥钱包支付、DApp 支付打通与 U 卡内测；Web2 版本同步提升会议与群组容量。',
@@ -1097,6 +1102,7 @@ const zhCN = {
       },
       {
         date: '2026-06-15',
+        version: 'v1.0.1',
         title: '功能新增与体验优化',
         summary:
           '新增视频消息保存到相册，并带来搜索、会议体验优化及多项稳定性修复。',
@@ -1126,6 +1132,7 @@ const zhCN = {
       },
       {
         date: '2026-06-13',
+        version: 'v1.0.0',
         title: 'GoldHouse 正式上线',
         summary:
           'GoldHouse 正式版发布——基础设施级 Web3 社交平台正式启航，身份、资金、治理、应用首次整合进同一社交账户。',

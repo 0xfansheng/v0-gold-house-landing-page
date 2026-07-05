@@ -43,8 +43,11 @@ export default function AnnouncementsClient() {
                   className="group relative glass-card rounded-3xl p-6 sm:p-8 transition-all duration-300 hover:-translate-y-1"
                   aria-label={`${rel.date} · ${rel.title}`}
                 >
-                  {/* Header: date */}
+                  {/* Header: version + date */}
                   <div className="flex flex-wrap items-center gap-2.5 mb-4">
+                    <span className="px-2 py-0.5 rounded-md bg-[#0A6CFF]/15 border border-[#0A6CFF]/30 text-[#19B7FF] text-xs font-bold tracking-wide tabular-nums">
+                      {rel.version}
+                    </span>
                     <time className="text-xs text-white/40 font-medium tracking-wide tabular-nums">
                       {rel.date}
                     </time>

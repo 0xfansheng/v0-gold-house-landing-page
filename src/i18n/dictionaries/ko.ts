@@ -1000,6 +1000,7 @@ const ko: Dictionary = {
     releases: [
       {
         date: '2026-07-05',
+        version: 'v1.0.8',
         title: 'Swap 기능 확장 및 지갑 경험 개선',
         summary:
           '이번 업데이트에서는 안드로이드의 지갑 스크린샷 지원 범위를 확대하고 Polygon 체인 Swap 기능을 추가했으며, Swap 페이지와 개인 키 내보내기 경험을 개선했습니다.',
@@ -1022,6 +1023,7 @@ const ko: Dictionary = {
       },
       {
         date: '2026-07-03',
+        version: 'v1.0.7',
         title: '개인 키 가져오기 기능 추가',
         summary: '이번 업데이트에서 개인 키 가져오기 기능이 추가되어 기존 지갑의 개인 키를 GoldHouse로 가져와 사용할 수 있습니다.',
         groups: [
@@ -1033,6 +1035,7 @@ const ko: Dictionary = {
       },
       {
         date: '2026-06-26',
+        version: 'v1.0.4',
         title: 'IM·그룹·회의 하부 구조 대규모 업그레이드',
         summary:
           '이번 버전은 IM·그룹·회의의 하부 구조를 대폭 업그레이드하고, Web3 지갑 결제 흐름을 수정·최적화했으며, U Card 경험 전반을 업데이트했습니다.',
@@ -1053,6 +1056,7 @@ const ko: Dictionary = {
       },
       {
         date: '2026-06-24',
+        version: 'v1.0.3',
         title: 'U Card 신청 및 회의·그룹 채팅 개선',
         summary:
           'U Card를 새롭게 추가해 계정 등록 후 바로 신청할 수 있으며, 회의와 그룹 채팅의 다양한 경험 개선과 전반적인 안정성 향상을 담았습니다.',
@@ -1076,6 +1080,7 @@ const ko: Dictionary = {
       },
       {
         date: '2026-06-18',
+        version: 'v1.0.2',
         title: 'Web3 및 Web2 기능 업그레이드',
         summary:
           'Web3 버전은 앱 내 키리스 지갑 결제, DApp 결제 연동, U Card 베타를 추가했으며 Web2 버전은 회의와 그룹 수용 인원을 확대했습니다.',
@@ -1100,6 +1105,7 @@ const ko: Dictionary = {
       },
       {
         date: '2026-06-15',
+        version: 'v1.0.1',
         title: '신규 기능 및 경험 개선',
         summary:
           '채팅 영상 메시지를 사진 앨범에 저장할 수 있으며, 검색·회의 경험 개선과 다수의 안정성 수정을 포함합니다.',
@@ -1129,6 +1135,7 @@ const ko: Dictionary = {
       },
       {
         date: '2026-06-13',
+        version: 'v1.0.0',
         title: 'GoldHouse 정식 출시',
         summary:
           'GoldHouse 정식 버전 출시 — 인프라급 Web3 소셜 플랫폼이 출항하여 신원, 자산, 거버넌스, 앱을 처음으로 하나의 소셜 계정에 통합합니다.',

@@ -999,6 +999,7 @@ const zhTW: Dictionary = {
     releases: [
       {
         date: '2026-07-05',
+        version: 'v1.0.8',
         title: 'Swap 能力擴展與錢包體驗優化',
         summary:
           '本次更新為安卓端擴大錢包截圖支援範圍、新增 Polygon 鏈 Swap 功能，並優化 Swap 頁面與匯出私鑰體驗。',
@@ -1021,6 +1022,7 @@ const zhTW: Dictionary = {
       },
       {
         date: '2026-07-03',
+        version: 'v1.0.7',
         title: '新增私鑰匯入功能',
         summary: '本次更新新增私鑰匯入功能，可將既有錢包私鑰匯入 GoldHouse 使用。',
         groups: [
@@ -1032,6 +1034,7 @@ const zhTW: Dictionary = {
       },
       {
         date: '2026-06-26',
+        version: 'v1.0.4',
         title: 'IM、群組與會議底層機制重大升級',
         summary:
           '本次對 IM、群組與會議的底層機制進行了重大升級，修復並優化 Web3 錢包支付流程，同時帶來 U 卡體驗的全面更新。',
@@ -1052,6 +1055,7 @@ const zhTW: Dictionary = {
       },
       {
         date: '2026-06-24',
+        version: 'v1.0.3',
         title: 'U 卡申領與會議群聊改進',
         summary:
           '新增 U 卡，註冊帳戶後即可申領；帶來會議與群聊的諸多體驗改進，並進一步提升整體穩定性。',
@@ -1075,6 +1079,7 @@ const zhTW: Dictionary = {
       },
       {
         date: '2026-06-18',
+        version: 'v1.0.2',
         title: 'Web3 與 Web2 版本能力升級',
         summary:
           'Web3 版本新增端內無私鑰錢包支付、DApp 支付打通與 U 卡內測；Web2 版本同步提升會議與群組容量。',
@@ -1099,6 +1104,7 @@ const zhTW: Dictionary = {
       },
       {
         date: '2026-06-15',
+        version: 'v1.0.1',
         title: '功能新增與體驗優化',
         summary:
           '新增影片訊息儲存到相簿，並帶來搜尋、會議體驗優化及多項穩定性修復。',
@@ -1128,6 +1134,7 @@ const zhTW: Dictionary = {
       },
       {
         date: '2026-06-13',
+        version: 'v1.0.0',
         title: 'GoldHouse 正式上線',
         summary:
           'GoldHouse 正式版發布——基礎設施級 Web3 社交平台正式啟航，身份、資金、治理、應用首次整合進同一社交帳戶。',

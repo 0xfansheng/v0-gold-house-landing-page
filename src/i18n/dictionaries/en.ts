@@ -1001,6 +1001,7 @@ const en: Dictionary = {
     releases: [
       {
         date: '2026-07-05',
+        version: 'v1.0.8',
         title: 'Expanded Swap Support & Wallet Improvements',
         summary:
           'This update expands screenshot support in the Android wallet, adds Swap on the Polygon chain, and improves the Swap page and private key export experience.',
@@ -1023,6 +1024,7 @@ const en: Dictionary = {
       },
       {
         date: '2026-07-03',
+        version: 'v1.0.7',
         title: 'Private Key Import Added',
         summary: 'This update adds a private key import feature, letting you import an existing wallet private key into GoldHouse.',
         groups: [
@@ -1034,6 +1036,7 @@ const en: Dictionary = {
       },
       {
         date: '2026-06-26',
+        version: 'v1.0.4',
         title: 'Major Infrastructure Upgrade for IM, Groups, and Meetings',
         summary:
           'This release delivers a major upgrade to the underlying infrastructure of IM, groups, and meetings, fixes and refines the Web3 wallet payment flow, and brings a comprehensive update to the U Card experience.',
@@ -1054,6 +1057,7 @@ const en: Dictionary = {
       },
       {
         date: '2026-06-24',
+        version: 'v1.0.3',
         title: 'U Card, Meetings & Groups Improvements',
         summary:
           'Introduces the U Card, claimable right after registering your account, along with a wide range of meeting and group chat improvements and further stability gains.',
@@ -1077,6 +1081,7 @@ const en: Dictionary = {
       },
       {
         date: '2026-06-18',
+        version: 'v1.0.2',
         title: 'Web3 and Web2 Capability Upgrade',
         summary:
           'The Web3 version adds in-app keyless wallet payments, DApp payment connectivity, and U Card beta access; the Web2 version expands meeting and group capacity.',
@@ -1101,6 +1106,7 @@ const en: Dictionary = {
       },
       {
         date: '2026-06-15',
+        version: 'v1.0.1',
         title: 'New Features & Experience Improvements',
         summary:
           'Save video messages to your photo library, plus search and meeting refinements and a batch of stability fixes.',
@@ -1130,6 +1136,7 @@ const en: Dictionary = {
       },
       {
         date: '2026-06-13',
+        version: 'v1.0.0',
         title: 'GoldHouse Officially Launched',
         summary:
           'GoldHouse is officially released — the infrastructure-grade Web3 social platform sets sail, bringing identity, assets, governance, and apps into a single social account for the first time.',
