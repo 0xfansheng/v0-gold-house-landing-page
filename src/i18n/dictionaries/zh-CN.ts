@@ -996,6 +996,28 @@ const zhCN = {
     },
     releases: [
       {
+        date: '2026-07-05',
+        title: 'Swap 能力扩展与钱包体验优化',
+        summary:
+          '本次更新为安卓端扩大钱包截屏支持范围、新增 Polygon 链 Swap 功能，并优化 Swap 页面与导出私钥体验。',
+        groups: [
+          {
+            type: 'feature',
+            items: [
+              '新增 Polygon 链的 Swap 功能',
+              'Swap 页面新增刷新按钮',
+            ],
+          },
+          {
+            type: 'improvement',
+            items: [
+              '安卓端优化钱包截屏范围，除导出私钥外的其他场景现已支持截屏',
+              '提高导出私钥成功率',
+            ],
+          },
+        ],
+      },
+      {
         date: '2026-07-03',
         title: '新增私钥导入功能',
         summary: '本次更新新增私钥导入功能，可将已有钱包私钥导入 GoldHouse 使用。',

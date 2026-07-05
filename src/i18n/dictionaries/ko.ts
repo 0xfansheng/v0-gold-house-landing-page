@@ -999,6 +999,28 @@ const ko: Dictionary = {
     },
     releases: [
       {
+        date: '2026-07-05',
+        title: 'Swap 기능 확장 및 지갑 경험 개선',
+        summary:
+          '이번 업데이트에서는 안드로이드의 지갑 스크린샷 지원 범위를 확대하고 Polygon 체인 Swap 기능을 추가했으며, Swap 페이지와 개인 키 내보내기 경험을 개선했습니다.',
+        groups: [
+          {
+            type: 'feature',
+            items: [
+              'Polygon 체인 Swap 기능 추가',
+              'Swap 페이지에 새로고침 버튼 추가',
+            ],
+          },
+          {
+            type: 'improvement',
+            items: [
+              '안드로이드 지갑 스크린샷 범위 개선, 개인 키 내보내기를 제외한 다른 화면에서 스크린샷 지원',
+              '개인 키 내보내기 성공률 향상',
+            ],
+          },
+        ],
+      },
+      {
         date: '2026-07-03',
         title: '개인 키 가져오기 기능 추가',
         summary: '이번 업데이트에서 개인 키 가져오기 기능이 추가되어 기존 지갑의 개인 키를 GoldHouse로 가져와 사용할 수 있습니다.',

@@ -998,6 +998,28 @@ const zhTW: Dictionary = {
     },
     releases: [
       {
+        date: '2026-07-05',
+        title: 'Swap 能力擴展與錢包體驗優化',
+        summary:
+          '本次更新為安卓端擴大錢包截圖支援範圍、新增 Polygon 鏈 Swap 功能，並優化 Swap 頁面與匯出私鑰體驗。',
+        groups: [
+          {
+            type: 'feature',
+            items: [
+              '新增 Polygon 鏈的 Swap 功能',
+              'Swap 頁面新增重新整理按鈕',
+            ],
+          },
+          {
+            type: 'improvement',
+            items: [
+              '安卓端優化錢包截圖範圍，除匯出私鑰外的其他場景現已支援截圖',
+              '提高匯出私鑰成功率',
+            ],
+          },
+        ],
+      },
+      {
         date: '2026-07-03',
         title: '新增私鑰匯入功能',
         summary: '本次更新新增私鑰匯入功能，可將既有錢包私鑰匯入 GoldHouse 使用。',

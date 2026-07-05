@@ -1000,6 +1000,28 @@ const en: Dictionary = {
     },
     releases: [
       {
+        date: '2026-07-05',
+        title: 'Expanded Swap Support & Wallet Improvements',
+        summary:
+          'This update expands screenshot support in the Android wallet, adds Swap on the Polygon chain, and improves the Swap page and private key export experience.',
+        groups: [
+          {
+            type: 'feature',
+            items: [
+              'Added Swap support for the Polygon chain',
+              'Added a refresh button to the Swap page',
+            ],
+          },
+          {
+            type: 'improvement',
+            items: [
+              'Expanded screenshot support in the Android wallet — screenshots now work everywhere except the private key export screen',
+              'Improved the private key export success rate',
+            ],
+          },
+        ],
+      },
+      {
         date: '2026-07-03',
         title: 'Private Key Import Added',
         summary: 'This update adds a private key import feature, letting you import an existing wallet private key into GoldHouse.',
