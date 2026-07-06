@@ -3,14 +3,13 @@
 import ScrollReveal from './ScrollReveal';
 import { useI18n } from '@/i18n/I18nProvider';
 
-// Google Play 下载入口暂时下线，保留常量以便将来恢复
-// const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.goldhouse.android&pcampaignid=web_share';
+const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.goldhouse.android&pcampaignid=web_share';
 const WEB_APP_URL = 'https://imweb.goldhouse.cc'; // GoldHouse 网页版（免安装）
 const DOWNLOAD_VERSION = 'v1.0.8'; // Android APK direct download
-const TESTFLIGHT_VERSION = 'v1.0.7'; // iOS TestFlight beta
+const TESTFLIGHT_VERSION = 'v1.0.8'; // iOS TestFlight beta
+const GOOGLE_PLAY_VERSION = 'v1.0.8'; // Android Google Play
 // App Store 入口暂时下线，保留常量以便将来恢复
 // const APP_STORE_VERSION = 'v1.0.4'; // iOS App Store official release
-// const GOOGLE_PLAY_VERSION = 'v1.0.0';
 
 export default function CTA() {
   const { dict } = useI18n();
@@ -120,7 +119,7 @@ export default function CTA() {
                   </div>
                 </a>
 
-                {/* Google Play — 暂时下线，保留以便将来恢复（恢复时同时解开顶部 GOOGLE_PLAY_URL / GOOGLE_PLAY_VERSION 常量）
+                {/* Google Play */}
                 <a
                   href={GOOGLE_PLAY_URL}
                   target="_blank"
@@ -136,7 +135,6 @@ export default function CTA() {
                     <p className="text-sm font-semibold leading-none">{c.googlePlayName}</p>
                   </div>
                 </a>
-                */}
 
                 {/* Web App — live, zero-install entry (last) */}
                 <a
