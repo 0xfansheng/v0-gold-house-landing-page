@@ -104,21 +104,6 @@ export default function CTA() {
                   </div>
                 </a>
 
-                {/* Android APK — live download */}
-                <a
-                  href="https://bridgeweb.goldhouse.cc/apk/releases/goldhouse.apk"
-                  className="group inline-flex w-full lg:w-auto items-center justify-center gap-2.5 px-4 py-3.5 sm:gap-3 sm:px-7 sm:py-4 btn-gradient rounded-2xl text-white"
-                  aria-label={c.apkLabel}
-                >
-                  <svg className="w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M17.6 9.48l1.84-3.18a.4.4 0 00-.69-.4l-1.86 3.23a11.5 11.5 0 00-9.78 0L5.25 5.9a.4.4 0 10-.69.4L6.4 9.48A10.8 10.8 0 001 18.13h22a10.8 10.8 0 00-5.4-8.65zM7 15.25a1 1 0 110-2 1 1 0 010 2zm10 0a1 1 0 110-2 1 1 0 010 2z" />
-                  </svg>
-                  <div className="text-left whitespace-nowrap">
-                    <p className="text-[10px] text-white/70 leading-none mb-0.5">{c.apkSmall} · {DOWNLOAD_VERSION}</p>
-                    <p className="text-sm font-semibold leading-none">{c.apkName}</p>
-                  </div>
-                </a>
-
                 {/* Google Play */}
                 <a
                   href={GOOGLE_PLAY_URL}
@@ -133,6 +118,21 @@ export default function CTA() {
                   <div className="text-left whitespace-nowrap">
                     <p className="text-[10px] text-white/60 leading-none mb-0.5">{c.googlePlaySmall} · {GOOGLE_PLAY_VERSION}</p>
                     <p className="text-sm font-semibold leading-none">{c.googlePlayName}</p>
+                  </div>
+                </a>
+
+                {/* Android APK — live download */}
+                <a
+                  href="https://bridgeweb.goldhouse.cc/apk/releases/goldhouse.apk"
+                  className="group inline-flex w-full lg:w-auto items-center justify-center gap-2.5 px-4 py-3.5 sm:gap-3 sm:px-7 sm:py-4 btn-gradient rounded-2xl text-white"
+                  aria-label={c.apkLabel}
+                >
+                  <svg className="w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M17.6 9.48l1.84-3.18a.4.4 0 00-.69-.4l-1.86 3.23a11.5 11.5 0 00-9.78 0L5.25 5.9a.4.4 0 10-.69.4L6.4 9.48A10.8 10.8 0 001 18.13h22a10.8 10.8 0 00-5.4-8.65zM7 15.25a1 1 0 110-2 1 1 0 010 2zm10 0a1 1 0 110-2 1 1 0 010 2z" />
+                  </svg>
+                  <div className="text-left whitespace-nowrap">
+                    <p className="text-[10px] text-white/70 leading-none mb-0.5">{c.apkSmall} · {DOWNLOAD_VERSION}</p>
+                    <p className="text-sm font-semibold leading-none">{c.apkName}</p>
                   </div>
                 </a>
 
