@@ -380,6 +380,19 @@ body {
 .drift-slow { animation: drift-slow 14s ease-in-out infinite; }
 
 /* ============================================================
+   Announcement bar entrance
+   ============================================================ */
+@keyframes notice-bar-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.notice-bar-in { animation: notice-bar-in 0.4s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .notice-bar-in { animation: none; }
+}
+
+/* ============================================================
    Scrollbar Styling
    ============================================================ */
 ::-webkit-scrollbar        { width: 6px; }

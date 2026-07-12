@@ -42,7 +42,7 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-24 text-center">
         {/* Badge */}
         <ScrollReveal>
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#19B7FF]/30 bg-[#19B7FF]/10 text-[#19B7FF] text-xs font-semibold tracking-wider uppercase mb-10">

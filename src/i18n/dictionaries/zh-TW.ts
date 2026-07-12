@@ -996,6 +996,35 @@ const zhTW: Dictionary = {
       improvement: '體驗優化',
       fix: '問題修復',
     },
+    noticesLabel: '營運公告',
+    noticeBanner: {
+      viewDetails: '查看詳情',
+      dismissAriaLabel: '關閉公告',
+    },
+    notices: [
+      {
+        id: 'ucard-upgrade-202607',
+        date: '2026-07-12',
+        title: 'GoldHouse 關於 U 卡升級優化的公告',
+        bannerText: 'U 卡功能升級優化中，升級期間請暫勿進行 U 卡相關操作',
+        greeting: '尊敬的各位用戶：',
+        paragraphs: [
+          '為進一步提升 U 卡的穩定性與使用體驗，目前 U 卡相關功能正在進行升級優化。',
+        ],
+        listIntro: '升級期間，將重點優化以下內容：',
+        listItems: [
+          '新卡開卡流程優化',
+          '交易流水顯示優化（授權記錄與扣款記錄展示邏輯優化）',
+          '系統穩定性及其他已知問題修復',
+        ],
+        closingParagraphs: [
+          '升級期間，請暫勿進行任何與 U 卡相關的操作，恢復時間請以官方後續公告為準。',
+          '感謝您的理解與支持，我們將盡快完成升級，為大家提供更穩定、更優質的服務。',
+        ],
+        signature: 'GoldHouse 團隊',
+        signatureDate: '2026 年 7 月 12 日',
+      },
+    ],
     releases: [
       {
         date: '2026-07-12',

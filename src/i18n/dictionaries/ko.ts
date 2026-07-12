@@ -997,6 +997,35 @@ const ko: Dictionary = {
       improvement: '경험 개선',
       fix: '버그 수정',
     },
+    noticesLabel: '운영 공지',
+    noticeBanner: {
+      viewDetails: '자세히 보기',
+      dismissAriaLabel: '공지 닫기',
+    },
+    notices: [
+      {
+        id: 'ucard-upgrade-202607',
+        date: '2026-07-12',
+        title: 'GoldHouse U 카드 업그레이드 및 최적화 안내',
+        bannerText: 'U 카드 기능 업그레이드 진행 중 — 기간 중 U 카드 관련 조작을 잠시 멈춰 주세요',
+        greeting: '고객 여러분께,',
+        paragraphs: [
+          'U 카드의 안정성과 사용 경험을 한층 향상하기 위해 현재 U 카드 관련 기능의 업그레이드 및 최적화를 진행하고 있습니다.',
+        ],
+        listIntro: '업그레이드 기간 동안 다음 항목을 중점적으로 개선합니다:',
+        listItems: [
+          '신규 카드 발급 절차 최적화',
+          '거래 내역 표시 개선(승인 기록 및 출금 기록 표시 로직 최적화)',
+          '시스템 안정성 개선 및 기타 알려진 문제 수정',
+        ],
+        closingParagraphs: [
+          '업그레이드 기간 동안에는 U 카드 관련 작업을 일절 진행하지 마시기 바라며, 서비스 재개 시점은 추후 공식 공지를 통해 안내드리겠습니다.',
+          '이해와 성원에 감사드립니다. 최대한 빠르게 업그레이드를 완료하여 더욱 안정적이고 우수한 서비스를 제공하겠습니다.',
+        ],
+        signature: 'GoldHouse 팀',
+        signatureDate: '2026년 7월 12일',
+      },
+    ],
     releases: [
       {
         date: '2026-07-12',

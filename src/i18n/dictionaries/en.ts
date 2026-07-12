@@ -998,6 +998,35 @@ const en: Dictionary = {
       improvement: 'Improvements',
       fix: 'Bug Fixes',
     },
+    noticesLabel: 'Service Notices',
+    noticeBanner: {
+      viewDetails: 'View details',
+      dismissAriaLabel: 'Dismiss notice',
+    },
+    notices: [
+      {
+        id: 'ucard-upgrade-202607',
+        date: '2026-07-12',
+        title: 'GoldHouse Notice: U Card Upgrade & Optimization',
+        bannerText: 'U Card upgrade in progress — please avoid U Card operations for now',
+        greeting: 'Dear users,',
+        paragraphs: [
+          'To further improve the stability and experience of the U Card, U Card–related features are currently undergoing an upgrade and optimization.',
+        ],
+        listIntro: 'During the upgrade, we will focus on the following:',
+        listItems: [
+          'Streamlined new-card issuance flow',
+          'Improved transaction history display (clearer presentation of authorization and debit records)',
+          'System stability improvements and fixes for other known issues',
+        ],
+        closingParagraphs: [
+          'Please refrain from performing any U Card–related operations during the upgrade. The restoration time will be confirmed in a follow-up official announcement.',
+          'Thank you for your understanding and support. We will complete the upgrade as soon as possible to deliver a more stable and reliable service.',
+        ],
+        signature: 'The GoldHouse Team',
+        signatureDate: 'July 12, 2026',
+      },
+    ],
     releases: [
       {
         date: '2026-07-12',

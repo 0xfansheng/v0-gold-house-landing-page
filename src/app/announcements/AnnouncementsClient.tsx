@@ -32,6 +32,47 @@ export default function AnnouncementsClient() {
             </p>
           </div>
 
+          {/* Operational notices */}
+          {a.notices.length > 0 && (
+            <section id="notices" aria-label={a.noticesLabel} className="mb-12 scroll-mt-28 space-y-6">
+              {a.notices.map((n) => (
+                <article
+                  key={n.id}
+                  className="relative rounded-3xl p-6 sm:p-8 border border-[#FFC247]/30 bg-gradient-to-br from-[#FFC247]/[0.10] via-[#FFC247]/[0.04] to-transparent backdrop-blur-xl shadow-[0_8px_40px_rgba(255,194,71,0.08)]"
+                >
+                  <div className="flex flex-wrap items-center gap-2.5 mb-4">
+                    <span className="px-2.5 py-1 rounded-lg bg-gradient-to-r from-[#FFC247] to-[#FF8C00] text-[#001A5C] text-xs font-bold tracking-wide">
+                      {a.noticesLabel}
+                    </span>
+                    <time className="text-xs text-white/40 font-medium tracking-wide tabular-nums">
+                      {n.date}
+                    </time>
+                  </div>
+
+                  <h2 className="text-xl sm:text-2xl font-black text-white mb-4">{n.title}</h2>
+                  <p className="text-sm text-white/70 leading-relaxed mb-3">{n.greeting}</p>
+                  {n.paragraphs.map((p) => (
+                    <p key={p} className="text-sm text-white/70 leading-relaxed mb-3">{p}</p>
+                  ))}
+                  <p className="text-sm text-white/70 leading-relaxed mb-2">{n.listIntro}</p>
+                  <ol className="list-decimal list-inside space-y-1.5 mb-4 text-sm text-[#FFD66B]/90 leading-relaxed marker:text-[#FFC247]">
+                    {n.listItems.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ol>
+                  {n.closingParagraphs.map((p) => (
+                    <p key={p} className="text-sm text-white/70 leading-relaxed mb-3">{p}</p>
+                  ))}
+
+                  <div className="mt-6 text-right">
+                    <p className="text-sm font-semibold text-white/85">{n.signature}</p>
+                    <p className="text-xs text-white/45 mt-1 tabular-nums">{n.signatureDate}</p>
+                  </div>
+                </article>
+              ))}
+            </section>
+          )}
+
           {/* Divider */}
           <div className="w-full h-px bg-gradient-to-r from-[#0A6CFF]/50 via-[#19B7FF]/30 to-transparent mb-12" aria-hidden="true" />
 
