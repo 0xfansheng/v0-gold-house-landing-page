@@ -6,7 +6,7 @@ import { useI18n } from '@/i18n/I18nProvider';
 
 const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.goldhouse.android&pcampaignid=web_share';
 const WEB_APP_URL = 'https://imweb.goldhouse.cc'; // GoldHouse 网页版（免安装）
-const DOWNLOAD_VERSION = 'v1.0.8'; // Android APK direct download
+const DOWNLOAD_VERSION = 'v1.0.9'; // Android APK direct download
 const TESTFLIGHT_VERSION = 'v1.0.8'; // iOS TestFlight beta
 const GOOGLE_PLAY_VERSION = 'v1.0.8'; // Android Google Play
 // App Store 入口暂时下线，保留常量以便将来恢复

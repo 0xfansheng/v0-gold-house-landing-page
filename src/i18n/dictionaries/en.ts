@@ -1000,6 +1000,30 @@ const en: Dictionary = {
     },
     releases: [
       {
+        date: '2026-07-12',
+        version: 'v1.0.9',
+        title: 'Chat & Meeting Translation, Cross-Chain Asset Overview',
+        summary:
+          'This update brings translation to chat, adds live caption recognition and language translation to meetings, and upgrades the wallet to display your asset balances across all chains, alongside overall experience and stability improvements.',
+        groups: [
+          {
+            type: 'feature',
+            items: [
+              'Added translation support in chat',
+              'Meetings now support live caption recognition and language translation',
+              'Wallet update — view your asset balances across all chains',
+            ],
+          },
+          {
+            type: 'improvement',
+            items: [
+              'Refined the product experience with detailed feature improvements',
+              'Improved product stability and performance',
+            ],
+          },
+        ],
+      },
+      {
         date: '2026-07-05',
         version: 'v1.0.8',
         title: 'Expanded Swap Support & Wallet Improvements',
