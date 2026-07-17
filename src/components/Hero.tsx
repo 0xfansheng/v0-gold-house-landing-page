@@ -115,7 +115,7 @@ export default function Hero() {
               href={GOOGLE_PLAY_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="store-btn group inline-flex items-center gap-2.5 px-3.5 py-3 sm:gap-3 sm:px-5 rounded-xl"
+              className="store-btn group inline-flex w-full lg:w-auto items-center justify-center gap-2.5 px-3.5 py-3 sm:gap-3 sm:px-5 rounded-xl"
               aria-label={h.downloads.androidAriaLabel}
             >
               <svg className="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
