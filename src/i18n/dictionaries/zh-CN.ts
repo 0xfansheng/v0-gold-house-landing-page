@@ -670,7 +670,7 @@ const zhCN = {
     terms: '服务条款',
     accountDeletion: '账户删除',
     childSafety: '儿童安全',
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
     tagline: '构建 Web3 时代基础设施级的社交入口',
     productLinks: [
       { label: '社交即身份', href: '#pillars' },
@@ -759,7 +759,7 @@ const zhCN = {
         bullets: ['运营主体：AUROWAVE TECHNOLOGIES PTE. LTD.', '邮箱：business@goldhouse.cc'],
       },
     ],
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   terms: {
     pageTitle: '服务条款',
@@ -873,7 +873,7 @@ const zhCN = {
         bullets: ['运营主体：AUROWAVE TECHNOLOGIES PTE. LTD.', '邮箱：business@goldhouse.cc'],
       },
     ],
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   accountDeletion: {
     pageTitle: '账户删除请求',
@@ -920,7 +920,7 @@ const zhCN = {
     contactIntroPart1: '如对账户删除或数据处理有任何疑问，请联系 ',
     contactEmail: 'support@goldhouse.cc',
     contactIntroPart2: '。',
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   childSafety: {
     pageTitle: '儿童安全标准',
@@ -980,7 +980,7 @@ const zhCN = {
         bullets: ['已发布标准：https://goldhouse.cc/child-safety'],
       },
     ],
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   announcements: {
     badge: '公告 · 版本更新',
@@ -988,7 +988,7 @@ const zhCN = {
     headingGold: '进化',
     subtext: '每一次更新都让 GoldHouse 更安全、更流畅。以下是最近的版本同步公告与更新明细。',
     latestLabel: '最新',
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
     categories: {
       feature: '新增功能',
       improvement: '体验优化',

@@ -672,7 +672,7 @@ const en: Dictionary = {
     terms: 'Terms of Service',
     accountDeletion: 'Delete Account',
     childSafety: 'Child Safety',
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
     tagline: 'Building the infrastructure-grade social gateway for the Web3 era',
     productLinks: [
       { label: 'Social as Identity', href: '#pillars' },
@@ -761,7 +761,7 @@ const en: Dictionary = {
         bullets: ['Operated by: AUROWAVE TECHNOLOGIES PTE. LTD.', 'Email: business@goldhouse.cc'],
       },
     ],
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   terms: {
     pageTitle: 'Terms of Service',
@@ -875,7 +875,7 @@ const en: Dictionary = {
         bullets: ['Operated by: AUROWAVE TECHNOLOGIES PTE. LTD.', 'Email: business@goldhouse.cc'],
       },
     ],
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   accountDeletion: {
     pageTitle: 'Account Deletion Request',
@@ -922,7 +922,7 @@ const en: Dictionary = {
     contactIntroPart1: 'If you have any questions about account deletion or how we handle your data, please contact ',
     contactEmail: 'support@goldhouse.cc',
     contactIntroPart2: '.',
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   childSafety: {
     pageTitle: 'Child Safety Standards',
@@ -983,7 +983,7 @@ const en: Dictionary = {
         bullets: ['Published standards: https://goldhouse.cc/child-safety'],
       },
     ],
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   announcements: {
     badge: 'Announcements · Release Notes',
@@ -992,7 +992,7 @@ const en: Dictionary = {
     subtext:
       'Every release makes GoldHouse safer and smoother. Below are our latest release announcements and detailed changelogs.',
     latestLabel: 'Latest',
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
     categories: {
       feature: 'New Features',
       improvement: 'Improvements',

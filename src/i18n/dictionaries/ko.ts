@@ -672,7 +672,7 @@ const ko: Dictionary = {
     terms: '이용약관',
     accountDeletion: '계정 삭제',
     childSafety: '아동 안전',
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
     tagline: 'Web3 시대의 인프라급 소셜 게이트웨이 구축',
     productLinks: [
       { label: '소셜 = 신원', href: '#pillars' },
@@ -761,7 +761,7 @@ const ko: Dictionary = {
         bullets: ['운영 회사: AUROWAVE TECHNOLOGIES PTE. LTD.', '이메일: business@goldhouse.cc'],
       },
     ],
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   terms: {
     pageTitle: '이용약관',
@@ -875,7 +875,7 @@ const ko: Dictionary = {
         bullets: ['운영 회사: AUROWAVE TECHNOLOGIES PTE. LTD.', '이메일: business@goldhouse.cc'],
       },
     ],
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   accountDeletion: {
     pageTitle: '계정 삭제 요청',
@@ -922,7 +922,7 @@ const ko: Dictionary = {
     contactIntroPart1: '계정 삭제 또는 데이터 처리에 관한 문의사항은 ',
     contactEmail: 'support@goldhouse.cc',
     contactIntroPart2: ' 로 연락주세요.',
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   childSafety: {
     pageTitle: '아동 안전 기준',
@@ -982,7 +982,7 @@ const ko: Dictionary = {
         bullets: ['게시된 기준: https://goldhouse.cc/child-safety'],
       },
     ],
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   announcements: {
     badge: '공지 · 버전 업데이트',
@@ -991,7 +991,7 @@ const ko: Dictionary = {
     subtext:
       '모든 업데이트는 GoldHouse를 더 안전하고 매끄럽게 만듭니다. 다음은 최근 버전 동기화 공지와 상세 변경 내역입니다.',
     latestLabel: '최신',
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
     categories: {
       feature: '신규 기능',
       improvement: '경험 개선',

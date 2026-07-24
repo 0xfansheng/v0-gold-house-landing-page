@@ -672,7 +672,7 @@ const zhTW: Dictionary = {
     terms: '服務條款',
     accountDeletion: '帳戶刪除',
     childSafety: '兒童安全',
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
     tagline: '構建 Web3 時代基礎設施級的社交入口',
     productLinks: [
       { label: '社交即身份', href: '#pillars' },
@@ -761,7 +761,7 @@ const zhTW: Dictionary = {
         bullets: ['營運主體：AUROWAVE TECHNOLOGIES PTE. LTD.', '電子郵件：business@goldhouse.cc'],
       },
     ],
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   terms: {
     pageTitle: '服務條款',
@@ -875,7 +875,7 @@ const zhTW: Dictionary = {
         bullets: ['營運主體：AUROWAVE TECHNOLOGIES PTE. LTD.', '電子郵件：business@goldhouse.cc'],
       },
     ],
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   accountDeletion: {
     pageTitle: '帳戶刪除請求',
@@ -922,7 +922,7 @@ const zhTW: Dictionary = {
     contactIntroPart1: '如對帳戶刪除或資料處理有任何疑問，請聯絡 ',
     contactEmail: 'support@goldhouse.cc',
     contactIntroPart2: '。',
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   childSafety: {
     pageTitle: '兒童安全標準',
@@ -982,7 +982,7 @@ const zhTW: Dictionary = {
         bullets: ['已發布標準：https://goldhouse.cc/child-safety'],
       },
     ],
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
   },
   announcements: {
     badge: '公告 · 版本更新',
@@ -990,7 +990,7 @@ const zhTW: Dictionary = {
     headingGold: '進化',
     subtext: '每一次更新都讓 GoldHouse 更安全、更流暢。以下是最近的版本同步公告與更新明細。',
     latestLabel: '最新',
-    copyright: '© 2024 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
+    copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
     categories: {
       feature: '新增功能',
       improvement: '體驗優化',
