@@ -1029,6 +1029,34 @@ const en: Dictionary = {
     ],
     releases: [
       {
+        date: '2026-07-27',
+        version: 'v1.0.10',
+        title: 'Official Verification Badges, File Forwarding & Group Message Moderation',
+        summary:
+          'This update introduces official verification badges (Blue V and Gold V), adds file forwarding, and lets group owners and admins recall spam messages in groups — along with a large batch of bug fixes and major performance and responsiveness improvements.',
+        groups: [
+          {
+            type: 'feature',
+            items: [
+              'Added official verification badges — Blue V and Gold V',
+              'Added file forwarding',
+              'Group owners and admins can now recall spam messages in groups',
+            ],
+          },
+          {
+            type: 'improvement',
+            items: [
+              'Refined and improved the overall user experience',
+              'Significantly optimized performance and system responsiveness',
+            ],
+          },
+          {
+            type: 'fix',
+            items: ['Fixed a large number of known issues'],
+          },
+        ],
+      },
+      {
         date: '2026-07-12',
         version: 'v1.0.9',
         title: 'Chat & Meeting Translation, Cross-Chain Asset Overview',
