@@ -185,7 +185,7 @@ export default function Modules() {
               <div className="absolute inset-0 rounded-full border-2 border-[#0A6CFF]/30 animate-spin" style={{ animationDuration: '8s' }} aria-hidden="true" />
               <div className="absolute inset-2 rounded-full border border-[#19B7FF]/20 animate-spin" style={{ animationDuration: '5s', animationDirection: 'reverse' }} aria-hidden="true" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-[#19B7FF] to-[#0A6CFF]" aria-hidden="true" />
+                <div className="w-6 h-6 rounded-full bg-linear-to-br from-[#19B7FF] to-[#0A6CFF]" aria-hidden="true" />
               </div>
             </div>
           </div>

@@ -38,10 +38,10 @@ export default function AnnouncementsClient() {
               {a.notices.map((n) => (
                 <article
                   key={n.id}
-                  className="relative rounded-3xl p-6 sm:p-8 border border-[#FFC247]/30 bg-gradient-to-br from-[#FFC247]/[0.10] via-[#FFC247]/[0.04] to-transparent backdrop-blur-xl shadow-[0_8px_40px_rgba(255,194,71,0.08)]"
+                  className="relative rounded-3xl p-6 sm:p-8 border border-[#FFC247]/30 bg-linear-to-br from-[#FFC247]/[0.10] via-[#FFC247]/[0.04] to-transparent backdrop-blur-xl shadow-[0_8px_40px_rgba(255,194,71,0.08)]"
                 >
                   <div className="flex flex-wrap items-center gap-2.5 mb-4">
-                    <span className="px-2.5 py-1 rounded-lg bg-gradient-to-r from-[#FFC247] to-[#FF8C00] text-[#001A5C] text-xs font-bold tracking-wide">
+                    <span className="px-2.5 py-1 rounded-lg bg-linear-to-r from-[#FFC247] to-[#FF8C00] text-[#001A5C] text-xs font-bold tracking-wide">
                       {a.noticesLabel}
                     </span>
                     <time className="text-xs text-white/40 font-medium tracking-wide tabular-nums">
@@ -74,7 +74,7 @@ export default function AnnouncementsClient() {
           )}
 
           {/* Divider */}
-          <div className="w-full h-px bg-gradient-to-r from-[#0A6CFF]/50 via-[#19B7FF]/30 to-transparent mb-12" aria-hidden="true" />
+          <div className="w-full h-px bg-linear-to-r from-[#0A6CFF]/50 via-[#19B7FF]/30 to-transparent mb-12" aria-hidden="true" />
 
           {/* Release timeline */}
           <ol className="relative space-y-6" role="list">
@@ -93,7 +93,7 @@ export default function AnnouncementsClient() {
                       {rel.date}
                     </time>
                     {i === 0 && (
-                      <span className="px-2.5 py-1 rounded-lg bg-gradient-to-r from-[#FFC247] to-[#FF8C00] text-[#001A5C] text-xs font-bold tracking-wide">
+                      <span className="px-2.5 py-1 rounded-lg bg-linear-to-r from-[#FFC247] to-[#FF8C00] text-[#001A5C] text-xs font-bold tracking-wide">
                         {a.latestLabel}
                       </span>
                     )}
@@ -127,7 +127,7 @@ export default function AnnouncementsClient() {
                                 className="flex items-start gap-2.5 text-sm text-white/70 leading-relaxed"
                               >
                                 <span
-                                  className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 bg-gradient-to-br ${style.gradient}`}
+                                  className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 bg-linear-to-br ${style.gradient}`}
                                   aria-hidden="true"
                                 />
                                 <span>{item}</span>

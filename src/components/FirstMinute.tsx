@@ -74,7 +74,7 @@ export default function FirstMinute() {
             <div className="relative">
               {/* Vertical connector line (centered behind the icon column) */}
               <div
-                className="absolute left-[39px] top-10 bottom-10 w-0.5 z-0 bg-gradient-to-b from-[#19B7FF] via-[#0A6CFF] to-[#FFC247] rounded-full"
+                className="absolute left-[39px] top-10 bottom-10 w-0.5 z-0 bg-linear-to-b from-[#19B7FF] via-[#0A6CFF] to-[#FFC247] rounded-full"
                 aria-hidden="true"
               />
 
@@ -89,7 +89,7 @@ export default function FirstMinute() {
                     >
                       {/* Icon circle */}
                       <div
-                        className={`relative z-10 flex-shrink-0 w-12 h-12 rounded-xl bg-white bg-gradient-to-br ${accent.gradient} border flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}
+                        className={`relative z-10 flex-shrink-0 w-12 h-12 rounded-xl bg-white bg-linear-to-br ${accent.gradient} border flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}
                         style={{ color: accent.accentColor, borderColor: `${accent.accentColor}30` }}
                         aria-hidden="true"
                       >
@@ -138,7 +138,7 @@ export default function FirstMinute() {
               <div className="space-y-4">
                 {f.points.map((point) => (
                   <div key={point} className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#19B7FF] to-[#0A6CFF] flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0 mt-0.5" aria-hidden="true">
+                    <div className="w-5 h-5 rounded-full bg-linear-to-br from-[#19B7FF] to-[#0A6CFF] flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0 mt-0.5" aria-hidden="true">
                       ✓
                     </div>
                     <p className="text-sm text-[#3A5080] leading-relaxed">{point}</p>

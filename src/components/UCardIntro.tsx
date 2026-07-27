@@ -45,7 +45,7 @@ export default function UCardIntro() {
   return (
     <section
       id="ucard"
-      className="relative py-24 lg:py-32 overflow-hidden bg-gradient-to-b from-[#000D2B] via-[#001440] to-[#001A52]"
+      className="relative py-24 lg:py-32 overflow-hidden bg-linear-to-b from-[#000D2B] via-[#001440] to-[#001A52]"
       aria-labelledby="ucard-intro-heading"
     >
       {/* Ambient glow accents */}

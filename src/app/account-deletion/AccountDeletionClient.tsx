@@ -27,7 +27,7 @@ export default function AccountDeletionClient() {
           </div>
 
           {/* Divider */}
-          <div className="w-full h-px bg-gradient-to-r from-emerald-400/50 via-[#19B7FF]/30 to-transparent mb-12" aria-hidden="true" />
+          <div className="w-full h-px bg-linear-to-r from-emerald-400/50 via-[#19B7FF]/30 to-transparent mb-12" aria-hidden="true" />
 
           {/* How to delete */}
           <section className="mb-12">
@@ -39,7 +39,7 @@ export default function AccountDeletionClient() {
             </p>
 
             {/* Option 1 — In-App */}
-            <div className="rounded-2xl border border-white/8 bg-gradient-to-br from-emerald-500/[0.05] to-[#0A6CFF]/[0.03] p-6 sm:p-7 mb-5 transition-colors hover:border-white/16">
+            <div className="rounded-2xl border border-white/8 bg-linear-to-br from-emerald-500/[0.05] to-[#0A6CFF]/[0.03] p-6 sm:p-7 mb-5 transition-colors hover:border-white/16">
               <span className="block text-[#19B7FF] text-xs font-bold uppercase tracking-wider mb-2">
                 {a.inAppLabel}
               </span>
@@ -49,7 +49,7 @@ export default function AccountDeletionClient() {
             </div>
 
             {/* Option 2 — Email */}
-            <div className="rounded-2xl border border-white/8 bg-gradient-to-br from-emerald-500/[0.05] to-[#0A6CFF]/[0.03] p-6 sm:p-7 transition-colors hover:border-white/16">
+            <div className="rounded-2xl border border-white/8 bg-linear-to-br from-emerald-500/[0.05] to-[#0A6CFF]/[0.03] p-6 sm:p-7 transition-colors hover:border-white/16">
               <span className="block text-[#19B7FF] text-xs font-bold uppercase tracking-wider mb-2">
                 {a.emailLabel}
               </span>
@@ -111,7 +111,7 @@ export default function AccountDeletionClient() {
             </ul>
 
             {/* Highlight */}
-            <div className="mt-6 rounded-xl border-l-2 border-[#FFC247] bg-gradient-to-r from-[#FFC247]/[0.08] to-transparent px-5 py-4">
+            <div className="mt-6 rounded-xl border-l-2 border-[#FFC247] bg-linear-to-r from-[#FFC247]/[0.08] to-transparent px-5 py-4">
               <p className="text-sm sm:text-base text-white/90 leading-relaxed m-0">
                 {a.retentionNote}
               </p>

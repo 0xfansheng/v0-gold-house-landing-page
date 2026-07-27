@@ -61,7 +61,7 @@ export default function IMGateway() {
               <div className="glass-card-light rounded-3xl overflow-hidden shadow-2xl" aria-label={m.ariaLabel}>
                 {/* Chat header */}
                 <div className="px-5 py-4 border-b border-[#0A6CFF]/10 flex items-center gap-3 bg-white">
-                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#0A6CFF] to-[#19B7FF] flex items-center justify-center text-white text-xs font-bold" aria-hidden="true">
+                  <div className="w-9 h-9 rounded-full bg-linear-to-br from-[#0A6CFF] to-[#19B7FF] flex items-center justify-center text-white text-xs font-bold" aria-hidden="true">
                     DeFi
                   </div>
                   <div>
@@ -77,10 +77,10 @@ export default function IMGateway() {
                 </div>
 
                 {/* Messages */}
-                <div className="p-5 space-y-4 bg-gradient-to-b from-[#F8FBFF] to-white">
+                <div className="p-5 space-y-4 bg-linear-to-b from-[#F8FBFF] to-white">
                   {/* Incoming message */}
                   <div className="flex items-start gap-2.5">
-                    <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#7B4FFF] to-[#0A6CFF] flex-shrink-0 flex items-center justify-center text-white text-[9px] font-bold" aria-hidden="true">A</div>
+                    <div className="w-7 h-7 rounded-full bg-linear-to-br from-[#7B4FFF] to-[#0A6CFF] flex-shrink-0 flex items-center justify-center text-white text-[9px] font-bold" aria-hidden="true">A</div>
                     <div className="max-w-[80%]">
                       <p className="text-[10px] text-[#7A94C1] mb-1 font-medium">{m.aliceAddr}</p>
                       <div className="bg-white rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm border border-[#0A6CFF]/08">
@@ -91,12 +91,12 @@ export default function IMGateway() {
 
                   {/* DApp card in chat */}
                   <div className="flex items-start gap-2.5">
-                    <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#0A6CFF] to-[#19B7FF] flex-shrink-0 flex items-center justify-center text-white text-[9px] font-bold" aria-hidden="true">G</div>
+                    <div className="w-7 h-7 rounded-full bg-linear-to-br from-[#0A6CFF] to-[#19B7FF] flex-shrink-0 flex items-center justify-center text-white text-[9px] font-bold" aria-hidden="true">G</div>
                     <div className="max-w-[85%]">
                       <p className="text-[10px] text-[#7A94C1] mb-1 font-medium">GoldHouse Bot</p>
-                      <div className="bg-gradient-to-br from-[#0A3AAA]/08 to-[#19B7FF]/05 rounded-2xl rounded-tl-sm p-4 border border-[#0A6CFF]/20">
+                      <div className="bg-linear-to-br from-[#0A3AAA]/08 to-[#19B7FF]/05 rounded-2xl rounded-tl-sm p-4 border border-[#0A6CFF]/20">
                         <div className="flex items-center gap-2 mb-3">
-                          <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-[#0A6CFF] to-[#19B7FF] flex items-center justify-center" aria-hidden="true">
+                          <div className="w-6 h-6 rounded-lg bg-linear-to-br from-[#0A6CFF] to-[#19B7FF] flex items-center justify-center" aria-hidden="true">
                             <svg className="w-3.5 h-3.5 text-white" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true">
                               <path d="M7 1L9 5h4L9.5 8l1.5 4L7 10l-4 2 1.5-4L1 5h4z"/>
                             </svg>
@@ -105,7 +105,7 @@ export default function IMGateway() {
                         </div>
                         <p className="text-[10px] text-[#3A5080] mb-3 leading-relaxed">{m.adjustFee}</p>
                         <div className="flex gap-2">
-                          <button className="flex-1 py-1.5 rounded-lg bg-gradient-to-r from-[#0A6CFF] to-[#19B7FF] text-white text-[9px] font-semibold">
+                          <button className="flex-1 py-1.5 rounded-lg bg-linear-to-r from-[#0A6CFF] to-[#19B7FF] text-white text-[9px] font-semibold">
                             {m.vote}
                           </button>
                           <button className="flex-1 py-1.5 rounded-lg border border-[#0A6CFF]/30 text-[#0A6CFF] text-[9px] font-medium">
@@ -119,7 +119,7 @@ export default function IMGateway() {
                   {/* Payment message */}
                   <div className="flex justify-end">
                     <div className="max-w-[75%]">
-                      <div className="bg-gradient-to-r from-[#FFC247]/15 to-[#FF8C00]/10 rounded-2xl rounded-tr-sm px-4 py-3 border border-[#FFC247]/25">
+                      <div className="bg-linear-to-r from-[#FFC247]/15 to-[#FF8C00]/10 rounded-2xl rounded-tr-sm px-4 py-3 border border-[#FFC247]/25">
                         <div className="flex items-center gap-2 mb-1">
                           <svg className="w-3.5 h-3.5 text-[#FFC247]" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true">
                             <path d="M7 1a6 6 0 100 12A6 6 0 007 1zm0 1.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9zM6.5 4v1H5a.5.5 0 000 1h1.5v1H5a.5.5 0 000 1h1.5v1a.5.5 0 001 0V8H9a.5.5 0 000-1H7.5V6H9a.5.5 0 000-1H7.5V4a.5.5 0 00-1 0z"/>
@@ -139,7 +139,7 @@ export default function IMGateway() {
                     {m.inputPlaceholder}
                   </div>
                   <button
-                    className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#FFC247] to-[#FF8C00] flex items-center justify-center"
+                    className="w-9 h-9 rounded-xl bg-linear-to-br from-[#FFC247] to-[#FF8C00] flex items-center justify-center"
                     aria-label={m.sendPayAriaLabel}
                   >
                     <svg className="w-4 h-4 text-white" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
@@ -147,7 +147,7 @@ export default function IMGateway() {
                     </svg>
                   </button>
                   <button
-                    className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#0A6CFF] to-[#19B7FF] flex items-center justify-center"
+                    className="w-9 h-9 rounded-xl bg-linear-to-br from-[#0A6CFF] to-[#19B7FF] flex items-center justify-center"
                     aria-label={m.sendMsgAriaLabel}
                   >
                     <svg className="w-4 h-4 text-white" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">

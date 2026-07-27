@@ -185,7 +185,7 @@ export default function Hero() {
 
       {/* Bottom gradient fade into the next (light) section */}
       <div
-        className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F2F6FF] to-transparent"
+        className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-[#F2F6FF] to-transparent"
         aria-hidden="true"
       />
     </section>

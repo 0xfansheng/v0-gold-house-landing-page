@@ -27,7 +27,7 @@ export default function TermsClient() {
           </div>
 
           {/* Divider */}
-          <div className="w-full h-px bg-gradient-to-r from-[#FFC247]/50 via-[#FF8C00]/30 to-transparent mb-12" aria-hidden="true" />
+          <div className="w-full h-px bg-linear-to-r from-[#FFC247]/50 via-[#FF8C00]/30 to-transparent mb-12" aria-hidden="true" />
 
           {/* Sections */}
           <div className="space-y-10">

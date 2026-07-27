@@ -35,9 +35,9 @@ function CardIcon2() {
 const cardIconComponents = [CardIcon0, CardIcon1, CardIcon2];
 
 const cardIconBgs = [
-  'bg-gradient-to-br from-[#FFC247]/20 to-[#FF8C00]/10 border-[#FFC247]/30',
-  'bg-gradient-to-br from-[#19B7FF]/20 to-[#0A6CFF]/10 border-[#19B7FF]/30',
-  'bg-gradient-to-br from-[#7B4FFF]/20 to-[#0A6CFF]/10 border-[#7B4FFF]/30',
+  'bg-linear-to-br from-[#FFC247]/20 to-[#FF8C00]/10 border-[#FFC247]/30',
+  'bg-linear-to-br from-[#19B7FF]/20 to-[#0A6CFF]/10 border-[#19B7FF]/30',
+  'bg-linear-to-br from-[#7B4FFF]/20 to-[#0A6CFF]/10 border-[#7B4FFF]/30',
 ];
 
 export default function Architecture() {
@@ -150,9 +150,9 @@ export default function Architecture() {
             {/* Arrow indicating layering */}
             <ScrollReveal delay={5}>
               <div className="flex items-center justify-center gap-3 pt-2">
-                <div className="h-0.5 flex-1 bg-gradient-to-r from-[#19B7FF]/40 to-transparent" aria-hidden="true" />
+                <div className="h-0.5 flex-1 bg-linear-to-r from-[#19B7FF]/40 to-transparent" aria-hidden="true" />
                 <p className="text-xs text-white/30 text-center">{a.fromToLabel}</p>
-                <div className="h-0.5 flex-1 bg-gradient-to-l from-[#19B7FF]/40 to-transparent" aria-hidden="true" />
+                <div className="h-0.5 flex-1 bg-linear-to-l from-[#19B7FF]/40 to-transparent" aria-hidden="true" />
               </div>
             </ScrollReveal>
           </div>

@@ -119,7 +119,7 @@ export default function Pillars() {
 
                   {/* Icon */}
                   <div
-                    className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${visual.gradient} flex items-center justify-center text-white mb-5 group-hover:scale-110 transition-transform duration-300`}
+                    className={`w-14 h-14 rounded-2xl bg-linear-to-br ${visual.gradient} flex items-center justify-center text-white mb-5 group-hover:scale-110 transition-transform duration-300`}
                     aria-hidden="true"
                   >
                     {visual.icon}
@@ -151,7 +151,7 @@ export default function Pillars() {
 
                   {/* Bottom border accent */}
                   <div
-                    className={`absolute bottom-0 left-6 right-6 h-0.5 bg-gradient-to-r ${visual.gradient} rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
+                    className={`absolute bottom-0 left-6 right-6 h-0.5 bg-linear-to-r ${visual.gradient} rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
                     aria-hidden="true"
                   />
                 </article>

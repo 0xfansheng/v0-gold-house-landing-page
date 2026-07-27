@@ -27,7 +27,7 @@ export default function PrivacyClient() {
           </div>
 
           {/* Divider */}
-          <div className="w-full h-px bg-gradient-to-r from-[#0A6CFF]/50 via-[#19B7FF]/30 to-transparent mb-12" aria-hidden="true" />
+          <div className="w-full h-px bg-linear-to-r from-[#0A6CFF]/50 via-[#19B7FF]/30 to-transparent mb-12" aria-hidden="true" />
 
           {/* Sections */}
           <div className="space-y-10">

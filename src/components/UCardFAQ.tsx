@@ -30,7 +30,7 @@ export default function UCardFAQ() {
   return (
     <section
       id="ucard-faq"
-      className="relative py-24 lg:py-32 overflow-hidden bg-gradient-to-b from-white via-[#F4F8FF] to-white"
+      className="relative py-24 lg:py-32 overflow-hidden bg-linear-to-b from-white via-[#F4F8FF] to-white"
       aria-labelledby="ucard-heading"
     >
       {/* Background accents */}

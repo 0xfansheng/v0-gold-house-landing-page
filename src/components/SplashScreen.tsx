@@ -92,7 +92,7 @@ export default function SplashScreen() {
         {/* Loading bar */}
         <div className="splash-line-3 w-44 sm:w-56">
           <div className="h-px w-full bg-white/10 overflow-hidden rounded-full">
-            <div className="splash-bar h-full w-full bg-gradient-to-r from-[#19B7FF] to-[#0A6CFF]" />
+            <div className="splash-bar h-full w-full bg-linear-to-r from-[#19B7FF] to-[#0A6CFF]" />
           </div>
           <p className="mt-4 text-[11px] tracking-[0.2em] uppercase text-white/35">{s.loadingLabel}</p>
         </div>
