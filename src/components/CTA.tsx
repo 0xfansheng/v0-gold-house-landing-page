@@ -7,7 +7,7 @@ const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.goldh
 const WEB_APP_URL = 'https://imweb.goldhouse.cc'; // GoldHouse 网页版（免安装）
 const DOWNLOAD_VERSION = 'v1.0.10'; // Android APK direct download
 const TESTFLIGHT_VERSION = 'v1.0.10'; // iOS TestFlight beta
-const GOOGLE_PLAY_VERSION = 'v1.0.9'; // Android Google Play
+const GOOGLE_PLAY_VERSION = 'v1.0.10'; // Android Google Play
 // App Store 入口暂时下线，保留常量以便将来恢复
 // const APP_STORE_VERSION = 'v1.0.4'; // iOS App Store official release
 
