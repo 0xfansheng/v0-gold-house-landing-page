@@ -1002,10 +1002,42 @@ const zhCN = {
     notices: [
       {
         // id is locale-independent: it keys the banner dismissal in localStorage
+        id: 'ucard-fee-subsidy-202607',
+        date: '2026-07-28',
+        title: 'GoldHouse 百万 U 消费手续费补贴活动开启',
+        bannerText: 'U 卡百万 U 消费手续费补贴计划已开启，单笔消费满 20U 即享手续费减免',
+        poster: '/announcements/ucard-fee-subsidy-202607.webp',
+        posterAlt: 'GoldHouse 百万 U 消费手续费补贴活动海报',
+        posterTags: ['百万 U 补贴', '手续费减免', '单笔满 20U', '按月返还'],
+        greeting: '尊敬的各位 GoldHouse 用户：',
+        paragraphs: [
+          '为了感谢全球用户对 GoldHouse U 卡生态的支持，进一步提升用户支付体验，GoldHouse 现正式开启：U 卡百万 U 消费手续费补贴计划。',
+          '活动期间，用户使用 GoldHouse U 卡进行消费，即可享受消费手续费减免福利。',
+        ],
+        listIntro: '活动规则：',
+        listItems: [
+          '单地址多卡参与活动',
+          '单笔消费金额 ≥ 20U，即可享受消费手续费减免',
+          '每张 U 卡每月最高享受 500U 消费额度的手续费补贴额度',
+          '按月返手续费补贴',
+          '全网累计补贴额度达到 100 万 U 后，活动结束',
+        ],
+        closingParagraphs: [
+          '本次活动期间，所有符合条件的消费手续费将由 GoldHouse 平台进行补贴，让用户享受更加便捷、低成本的 Web3 支付体验。',
+          'GoldHouse 致力于打造连接数字资产与现实支付场景的新一代支付生态，通过持续优化产品体验，为全球用户提供更加简单、高效、安全的支付服务。',
+          '百万 U 补贴正式开启，更多生态福利即将释放。感谢每一位用户的支持与参与，让我们共同探索 Web3 支付的新未来。',
+        ],
+        signature: 'GoldHouse 团队',
+        signatureDate: '2026 年 7 月 28 日',
+      },
+      {
         id: 'ucard-upgrade-202607',
         date: '2026-07-12',
         title: 'GoldHouse 关于 U 卡升级优化的公告',
         bannerText: 'U 卡功能升级优化中，升级期间请暂勿进行 U 卡相关操作',
+        poster: null,
+        posterAlt: '',
+        posterTags: [],
         greeting: '尊敬的各位用户：',
         paragraphs: [
           '为进一步提升 U 卡的稳定性与使用体验，目前 U 卡相关功能正在进行升级优化。',

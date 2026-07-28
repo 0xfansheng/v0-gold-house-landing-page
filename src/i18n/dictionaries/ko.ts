@@ -1004,10 +1004,42 @@ const ko: Dictionary = {
     },
     notices: [
       {
+        id: 'ucard-fee-subsidy-202607',
+        date: '2026-07-28',
+        title: 'GoldHouse 100만 U 결제 수수료 지원 이벤트 시작',
+        bannerText: 'U 카드 100만 U 결제 수수료 지원 프로그램 시작 — 건당 20U 이상 결제 시 수수료 면제',
+        poster: '/announcements/ucard-fee-subsidy-202607.webp',
+        posterAlt: 'GoldHouse 100만 U 결제 수수료 지원 이벤트 포스터',
+        posterTags: ['100만 U 지원', '수수료 면제', '건당 20U 이상', '월별 리베이트'],
+        greeting: 'GoldHouse 고객 여러분께,',
+        paragraphs: [
+          '전 세계 사용자 여러분의 GoldHouse U 카드 생태계에 대한 성원에 감사드리며, 결제 경험을 한층 더 향상하기 위해 GoldHouse는 U 카드 100만 U 결제 수수료 지원 프로그램을 공식적으로 시작합니다.',
+          '이벤트 기간 동안 GoldHouse U 카드로 결제하시면 결제 수수료 면제 혜택을 받으실 수 있습니다.',
+        ],
+        listIntro: '이벤트 규칙:',
+        listItems: [
+          '하나의 주소에서 여러 장의 카드로 참여 가능',
+          '건당 결제 금액 20U 이상 시 결제 수수료 면제 적용',
+          'U 카드 1장당 매월 최대 500U 결제 금액에 대한 수수료 지원',
+          '수수료 지원금은 매월 환급',
+          '전체 누적 지원 금액이 100만 U에 도달하면 이벤트 종료',
+        ],
+        closingParagraphs: [
+          '이벤트 기간 동안 조건을 충족하는 모든 결제 수수료는 GoldHouse 플랫폼이 지원하여, 보다 편리하고 저렴한 Web3 결제 경험을 제공합니다.',
+          'GoldHouse는 디지털 자산과 실제 결제 환경을 연결하는 차세대 결제 생태계 구축에 힘쓰고 있으며, 지속적인 제품 개선을 통해 전 세계 사용자에게 더욱 간편하고 빠르며 안전한 결제 서비스를 제공합니다.',
+          '100만 U 지원이 공식적으로 시작되었으며, 더 많은 생태계 혜택이 순차적으로 공개될 예정입니다. 언제나 함께해 주시는 모든 사용자 여러분께 감사드리며, Web3 결제의 새로운 미래를 함께 열어가겠습니다.',
+        ],
+        signature: 'GoldHouse 팀',
+        signatureDate: '2026년 7월 28일',
+      },
+      {
         id: 'ucard-upgrade-202607',
         date: '2026-07-12',
         title: 'GoldHouse U 카드 업그레이드 및 최적화 안내',
         bannerText: 'U 카드 기능 업그레이드 진행 중 — 기간 중 U 카드 관련 조작을 잠시 멈춰 주세요',
+        poster: null,
+        posterAlt: '',
+        posterTags: [],
         greeting: '고객 여러분께,',
         paragraphs: [
           'U 카드의 안정성과 사용 경험을 한층 향상하기 위해 현재 U 카드 관련 기능의 업그레이드 및 최적화를 진행하고 있습니다.',

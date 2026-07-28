@@ -1005,10 +1005,42 @@ const en: Dictionary = {
     },
     notices: [
       {
+        id: 'ucard-fee-subsidy-202607',
+        date: '2026-07-28',
+        title: 'GoldHouse Launches the 1,000,000 U Spending Fee Subsidy Program',
+        bannerText: 'The 1,000,000 U spending fee subsidy is live — spend 20U or more per transaction to get your fee waived',
+        poster: '/announcements/ucard-fee-subsidy-202607.webp',
+        posterAlt: 'GoldHouse 1,000,000 U spending fee subsidy campaign poster',
+        posterTags: ['1,000,000 U subsidy', 'Fee waiver', '20U per transaction', 'Monthly rebate'],
+        greeting: 'Dear GoldHouse users,',
+        paragraphs: [
+          'To thank users worldwide for supporting the GoldHouse U Card ecosystem and to further improve the payment experience, GoldHouse is officially launching the U Card 1,000,000 U Spending Fee Subsidy Program.',
+          'During the campaign, users who spend with a GoldHouse U Card are eligible for a spending fee waiver.',
+        ],
+        listIntro: 'Campaign rules:',
+        listItems: [
+          'Multiple cards under a single address may participate',
+          'Transactions of 20U or more qualify for the spending fee waiver',
+          'Each U Card receives a fee subsidy on up to 500U of spending per month',
+          'Fee subsidies are rebated monthly',
+          'The campaign ends once the network-wide subsidy reaches 1,000,000 U',
+        ],
+        closingParagraphs: [
+          'For the duration of the campaign, all qualifying spending fees will be subsidized by the GoldHouse platform, giving users a more convenient, lower-cost Web3 payment experience.',
+          'GoldHouse is committed to building a new generation of payment infrastructure connecting digital assets with real-world spending, continuously refining the product to deliver simpler, faster and safer payments for users worldwide.',
+          'The 1,000,000 U subsidy is now live, with more ecosystem benefits on the way. Thank you to every user for your support — let us explore the future of Web3 payments together.',
+        ],
+        signature: 'The GoldHouse Team',
+        signatureDate: 'July 28, 2026',
+      },
+      {
         id: 'ucard-upgrade-202607',
         date: '2026-07-12',
         title: 'GoldHouse Notice: U Card Upgrade & Optimization',
         bannerText: 'U Card upgrade in progress — please avoid U Card operations for now',
+        poster: null,
+        posterAlt: '',
+        posterTags: [],
         greeting: 'Dear users,',
         paragraphs: [
           'To further improve the stability and experience of the U Card, U Card–related features are currently undergoing an upgrade and optimization.',

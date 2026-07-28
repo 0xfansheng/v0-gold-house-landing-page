@@ -1003,10 +1003,42 @@ const zhTW: Dictionary = {
     },
     notices: [
       {
+        id: 'ucard-fee-subsidy-202607',
+        date: '2026-07-28',
+        title: 'GoldHouse 百萬 U 消費手續費補貼活動開啟',
+        bannerText: 'U 卡百萬 U 消費手續費補貼計畫已開啟，單筆消費滿 20U 即享手續費減免',
+        poster: '/announcements/ucard-fee-subsidy-202607.webp',
+        posterAlt: 'GoldHouse 百萬 U 消費手續費補貼活動海報',
+        posterTags: ['百萬 U 補貼', '手續費減免', '單筆滿 20U', '按月返還'],
+        greeting: '尊敬的各位 GoldHouse 用戶：',
+        paragraphs: [
+          '為了感謝全球用戶對 GoldHouse U 卡生態的支持，進一步提升用戶支付體驗，GoldHouse 現正式開啟：U 卡百萬 U 消費手續費補貼計畫。',
+          '活動期間，用戶使用 GoldHouse U 卡進行消費，即可享受消費手續費減免福利。',
+        ],
+        listIntro: '活動規則：',
+        listItems: [
+          '單地址多卡參與活動',
+          '單筆消費金額 ≥ 20U，即可享受消費手續費減免',
+          '每張 U 卡每月最高享受 500U 消費額度的手續費補貼額度',
+          '按月返手續費補貼',
+          '全網累計補貼額度達到 100 萬 U 後，活動結束',
+        ],
+        closingParagraphs: [
+          '本次活動期間，所有符合條件的消費手續費將由 GoldHouse 平台進行補貼，讓用戶享受更加便捷、低成本的 Web3 支付體驗。',
+          'GoldHouse 致力於打造連接數位資產與現實支付場景的新一代支付生態，透過持續優化產品體驗，為全球用戶提供更加簡單、高效、安全的支付服務。',
+          '百萬 U 補貼正式開啟，更多生態福利即將釋放。感謝每一位用戶的支持與參與，讓我們共同探索 Web3 支付的新未來。',
+        ],
+        signature: 'GoldHouse 團隊',
+        signatureDate: '2026 年 7 月 28 日',
+      },
+      {
         id: 'ucard-upgrade-202607',
         date: '2026-07-12',
         title: 'GoldHouse 關於 U 卡升級優化的公告',
         bannerText: 'U 卡功能升級優化中，升級期間請暫勿進行 U 卡相關操作',
+        poster: null,
+        posterAlt: '',
+        posterTags: [],
         greeting: '尊敬的各位用戶：',
         paragraphs: [
           '為進一步提升 U 卡的穩定性與使用體驗，目前 U 卡相關功能正在進行升級優化。',

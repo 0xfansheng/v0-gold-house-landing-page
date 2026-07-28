@@ -1,8 +1,13 @@
 'use client';
 
+import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { useI18n } from '@/i18n/I18nProvider';
+
+// Intrinsic size of the announcement posters shipped in /public/announcements.
+const POSTER_WIDTH = 941;
+const POSTER_HEIGHT = 1672;
 
 const categoryStyles: Record<string, { color: string; gradient: string }> = {
   feature: { color: '#FFC247', gradient: 'from-[#FFC247] to-[#FF8C00]' },
@@ -50,6 +55,31 @@ export default function AnnouncementsClient() {
                   </div>
 
                   <h2 className="text-xl sm:text-2xl font-black text-white mb-4">{n.title}</h2>
+
+                  {n.poster && (
+                    <figure className="mb-6">
+                      <Image
+                        src={n.poster}
+                        alt={n.posterAlt}
+                        width={POSTER_WIDTH}
+                        height={POSTER_HEIGHT}
+                        sizes="(min-width: 640px) 640px, 100vw"
+                        className="w-full h-auto rounded-2xl border border-white/10 shadow-[0_12px_48px_-16px_rgba(0,8,28,0.9)]"
+                        priority
+                      />
+                      {n.posterTags.length > 0 && (
+                        <figcaption className="mt-3 flex flex-wrap justify-center gap-x-3 gap-y-1.5 text-xs text-white/45">
+                          {n.posterTags.map((tag, ti) => (
+                            <span key={tag} className="inline-flex items-center gap-3">
+                              {ti > 0 && <span className="text-white/20" aria-hidden="true">·</span>}
+                              {tag}
+                            </span>
+                          ))}
+                        </figcaption>
+                      )}
+                    </figure>
+                  )}
+
                   <p className="text-sm text-white/70 leading-relaxed mb-3">{n.greeting}</p>
                   {n.paragraphs.map((p) => (
                     <p key={p} className="text-sm text-white/70 leading-relaxed mb-3">{p}</p>
