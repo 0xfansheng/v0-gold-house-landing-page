@@ -1001,6 +1001,35 @@ const zhCN = {
     },
     notices: [
       {
+        id: 'ios-testflight-migration-20260729',
+        date: '2026-07-29',
+        title: '关于 Gold House iOS 端 TestFlight 下载服务临时调整的公告',
+        bannerText: 'Gold House iOS 端 TestFlight 下载服务临时调整，预计 2–3 个工作日恢复',
+        poster: '/announcements/ios-testflight-migration-20260729.webp',
+        posterAlt: 'Gold House iOS 端 TestFlight 下载服务临时调整公告海报',
+        posterTags: ['TestFlight', 'iOS', '2–3 个工作日', '账号迁移'],
+        posterWidth: 1024,
+        posterHeight: 1536,
+        greeting: '尊敬的 Gold House 用户：',
+        paragraphs: [
+          '为进一步提升 Gold House iOS 端的服务稳定性与合规性，Gold House 目前正在将 iOS 应用由 TestFlight 个人开发者账号迁移至以新加坡公司为主体的 Apple Developer Program 正式开发者账号。',
+          '本次账号主体切换预计需要 2–3 个工作日。迁移期间，TestFlight 下载通道将暂时关闭，新用户可能无法通过 TestFlight 下载 Gold House iOS 应用。',
+        ],
+        listIntro: '请注意：',
+        listItems: [
+          '已完成下载并正在使用 Gold House iOS 应用的用户不受本次调整影响',
+          '现有用户可继续正常登录并使用相关功能',
+          'TestFlight 下载服务将在账号主体切换完成后恢复',
+          '具体恢复时间请以 Gold House 官方后续公告为准',
+        ],
+        closingParagraphs: [
+          '由此给您带来的不便，我们深表歉意。感谢您对 Gold House 的理解、耐心与支持。',
+          'Gold House 将持续完善产品与服务，为全球用户提供更加安全、稳定、合规的使用体验。',
+        ],
+        signature: 'Gold House 团队',
+        signatureDate: '2026 年 7 月 29 日',
+      },
+      {
         // id is locale-independent: it keys the banner dismissal in localStorage
         id: 'ucard-fee-subsidy-202607',
         date: '2026-07-28',

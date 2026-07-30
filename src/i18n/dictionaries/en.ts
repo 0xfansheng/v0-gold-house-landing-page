@@ -1005,6 +1005,35 @@ const en: Dictionary = {
     },
     notices: [
       {
+        id: 'ios-testflight-migration-20260729',
+        date: '2026-07-29',
+        title: 'Temporary Adjustment to Gold House iOS TestFlight Download Service',
+        bannerText: 'Gold House iOS TestFlight downloads are temporarily unavailable and are expected to resume in 2–3 business days',
+        poster: '/announcements/ios-testflight-migration-20260729.webp',
+        posterAlt: 'Gold House iOS TestFlight download service temporary adjustment announcement poster',
+        posterTags: ['TestFlight', 'iOS', '2–3 business days', 'Account migration'],
+        posterWidth: 1024,
+        posterHeight: 1536,
+        greeting: 'Dear Gold House users,',
+        paragraphs: [
+          'To further improve the stability and compliance of the Gold House iOS service, Gold House is migrating the iOS app from an individual TestFlight developer account to an official Apple Developer Program account held by our Singapore company.',
+          'The account-holder switch is expected to take 2–3 business days. During the migration, TestFlight downloads will be temporarily unavailable, and new users may be unable to download the Gold House iOS app through TestFlight.',
+        ],
+        listIntro: 'Please note:',
+        listItems: [
+          'Users who have already downloaded and are using the Gold House iOS app are not affected',
+          'Existing users can continue to sign in and use related features normally',
+          'TestFlight downloads will resume after the account-holder switch is complete',
+          'The exact restoration time will be announced in a follow-up Gold House notice',
+        ],
+        closingParagraphs: [
+          'We sincerely apologize for the inconvenience and appreciate your understanding, patience, and support.',
+          'Gold House will continue improving its products and services to provide users worldwide with a safer, more stable, and compliant experience.',
+        ],
+        signature: 'The Gold House Team',
+        signatureDate: 'July 29, 2026',
+      },
+      {
         id: 'ucard-fee-subsidy-202607',
         date: '2026-07-28',
         title: 'GoldHouse Launches the 1,000,000 U Spending Fee Subsidy Program',

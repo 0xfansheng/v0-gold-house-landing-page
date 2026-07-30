@@ -6,8 +6,8 @@ import Footer from '@/components/Footer';
 import { useI18n } from '@/i18n/I18nProvider';
 
 // Intrinsic size of the announcement posters shipped in /public/announcements.
-const POSTER_WIDTH = 941;
-const POSTER_HEIGHT = 1672;
+const DEFAULT_POSTER_WIDTH = 941;
+const DEFAULT_POSTER_HEIGHT = 1672;
 
 const categoryStyles: Record<string, { color: string; gradient: string }> = {
   feature: { color: '#FFC247', gradient: 'from-[#FFC247] to-[#FF8C00]' },
@@ -61,8 +61,8 @@ export default function AnnouncementsClient() {
                       <Image
                         src={n.poster}
                         alt={n.posterAlt}
-                        width={POSTER_WIDTH}
-                        height={POSTER_HEIGHT}
+                        width={n.posterWidth ?? DEFAULT_POSTER_WIDTH}
+                        height={n.posterHeight ?? DEFAULT_POSTER_HEIGHT}
                         sizes="(min-width: 640px) 640px, 100vw"
                         className="w-full h-auto rounded-2xl border border-white/10 shadow-[0_12px_48px_-16px_rgba(0,8,28,0.9)]"
                         priority

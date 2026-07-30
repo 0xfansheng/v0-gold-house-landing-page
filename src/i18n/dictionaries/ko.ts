@@ -1004,6 +1004,35 @@ const ko: Dictionary = {
     },
     notices: [
       {
+        id: 'ios-testflight-migration-20260729',
+        date: '2026-07-29',
+        title: 'Gold House iOS TestFlight 다운로드 서비스 임시 조정 안내',
+        bannerText: 'Gold House iOS TestFlight 다운로드 서비스가 임시 중단되며 2–3영업일 내 재개될 예정입니다',
+        poster: '/announcements/ios-testflight-migration-20260729.webp',
+        posterAlt: 'Gold House iOS TestFlight 다운로드 서비스 임시 조정 안내 포스터',
+        posterTags: ['TestFlight', 'iOS', '2–3영업일', '계정 이전'],
+        posterWidth: 1024,
+        posterHeight: 1536,
+        greeting: 'Gold House 사용자 여러분께,',
+        paragraphs: [
+          'Gold House iOS 서비스의 안정성과 규정 준수 수준을 한층 높이기 위해, 현재 iOS 앱을 TestFlight 개인 개발자 계정에서 싱가포르 법인 명의의 정식 Apple Developer Program 개발자 계정으로 이전하고 있습니다.',
+          '이번 계정 주체 전환에는 약 2–3영업일이 소요될 예정입니다. 이전 기간 동안 TestFlight 다운로드가 일시 중단되며, 신규 사용자는 TestFlight를 통해 Gold House iOS 앱을 다운로드하지 못할 수 있습니다.',
+        ],
+        listIntro: '안내 사항:',
+        listItems: [
+          '이미 Gold House iOS 앱을 다운로드하여 사용 중인 사용자는 이번 조정의 영향을 받지 않습니다',
+          '기존 사용자는 계속 정상적으로 로그인하고 관련 기능을 이용할 수 있습니다',
+          'TestFlight 다운로드 서비스는 계정 주체 전환 완료 후 재개됩니다',
+          '정확한 재개 시점은 Gold House의 후속 공식 공지를 확인해 주세요',
+        ],
+        closingParagraphs: [
+          '이용에 불편을 드려 진심으로 사과드리며, Gold House에 보내주시는 이해와 인내, 성원에 감사드립니다.',
+          'Gold House는 전 세계 사용자에게 더욱 안전하고 안정적이며 규정을 준수하는 이용 경험을 제공하기 위해 제품과 서비스를 지속적으로 개선하겠습니다.',
+        ],
+        signature: 'Gold House 팀',
+        signatureDate: '2026년 7월 29일',
+      },
+      {
         id: 'ucard-fee-subsidy-202607',
         date: '2026-07-28',
         title: 'GoldHouse 100만 U 결제 수수료 지원 이벤트 시작',
