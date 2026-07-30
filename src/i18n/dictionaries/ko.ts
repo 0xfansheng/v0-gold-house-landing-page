@@ -1004,6 +1004,44 @@ const ko: Dictionary = {
     },
     notices: [
       {
+        id: 'ucard-refund-completion-20260730',
+        date: '2026-07-30',
+        title: 'U 카드 환불 전체 완료 및 지급 결과 공시 안내',
+        bannerText: 'U 카드 관련 환불이 모두 완료되었습니다. 총 667건, 20,627.07 USDT 지급 내역 공시표를 다운로드할 수 있습니다.',
+        poster: '/announcements/ucard-refund-completion-20260730.webp',
+        posterAlt: 'GoldHouse U 카드 환불 전체 완료 및 지급 결과 공시 안내 포스터',
+        posterTags: ['U 카드 환불', '667건', '20,627.07 USDT', '지급 공시'],
+        posterWidth: 1080,
+        posterHeight: 1620,
+        attachments: [
+          {
+            label: 'USDT 지급 공시표 다운로드',
+            href: '/announcements/usdt-payment-disclosure-20260730.xlsx',
+          },
+        ],
+        greeting: 'GoldHouse 사용자 여러분께,',
+        paragraphs: [
+          'GoldHouse 기존 U 카드 관련 환불 작업이 모두 완료되었습니다.',
+          '이번 환불은 기존 U 카드의 카드 발급 비용과 카드 잔액을 포함합니다. 모든 환불은 최고 기준에 따라 산정 및 지급되어 모든 사용자의 자산 권익을 충분히 보호하며, 최종 환불 금액이 부족하지 않도록 했습니다.',
+          '이번 환불은 총 667건, 총 20,627.07 USDT 지급으로 완료되었습니다.',
+          '관련 금액은 사용자에게 해당하는 GoldHouse 지갑 주소로 반환되었습니다. 사용자가 여러 개의 GoldHouse 지갑 주소를 생성한 경우, 기존에 공지한 규칙에 따라 사용자가 생성한 첫 번째 지갑 주소로 기본 반환되었습니다.',
+          '이번 환불 절차를 공개적이고 투명하며 검증 가능하게 하기 위해 USDT 지급 공시표를 함께 공개합니다.',
+        ],
+        listIntro: '공시표에는 다음 내용이 포함됩니다:',
+        listItems: [
+          '지급 지갑 주소',
+          '실제 지급 금액',
+        ],
+        closingParagraphs: [
+          '사용자 개인정보 보호를 위해 공시표의 지갑 주소는 마스킹 처리되었으며, 주소 중간 부분은 XXXXXX로 통일 표시됩니다. 사용자는 지갑 주소의 앞뒤 문자와 실제 입금 금액을 기준으로 환불 기록을 직접 확인할 수 있습니다.',
+          '각 사용자께서는 지갑 입금 상황을 제때 확인해 주시기 바랍니다. 문의 사항이 있는 경우 GoldHouse 공식 채널을 통해 담당자에게 확인을 요청해 주세요.',
+          '이번 환불 작업이 순조롭게 완료될 수 있었던 것은 모든 사용자의 이해와 인내, 성원 덕분입니다. GoldHouse는 앞으로도 사용자 자산 권익을 최우선으로 하며, 플랫폼 서비스와 자산 관리 체계를 지속적으로 개선해 더욱 안전하고 투명하며 효율적인 서비스 경험을 제공하겠습니다.',
+          '항상 보내주시는 지원과 신뢰에 감사드립니다.',
+        ],
+        signature: 'GoldHouse 팀',
+        signatureDate: '2026년 7월 30일',
+      },
+      {
         id: 'ios-testflight-migration-20260729',
         date: '2026-07-29',
         title: 'Gold House iOS TestFlight 다운로드 서비스 임시 조정 안내',

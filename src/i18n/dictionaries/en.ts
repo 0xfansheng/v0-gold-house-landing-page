@@ -1005,6 +1005,44 @@ const en: Dictionary = {
     },
     notices: [
       {
+        id: 'ucard-refund-completion-20260730',
+        date: '2026-07-30',
+        title: 'Notice on Completion of All U Card Refunds and Payment Result Disclosure',
+        bannerText: 'U Card refunds are complete: 667 payments totaling 20,627.07 USDT. The disclosure sheet is available for download.',
+        poster: '/announcements/ucard-refund-completion-20260730.webp',
+        posterAlt: 'GoldHouse U Card refund completion and payment result disclosure announcement poster',
+        posterTags: ['U Card refund', '667 payments', '20,627.07 USDT', 'Payment disclosure'],
+        posterWidth: 1080,
+        posterHeight: 1620,
+        attachments: [
+          {
+            label: 'Download USDT payment disclosure sheet',
+            href: '/announcements/usdt-payment-disclosure-20260730.xlsx',
+          },
+        ],
+        greeting: 'Dear GoldHouse users,',
+        paragraphs: [
+          'All refund work related to the original GoldHouse U Card has now been completed.',
+          'This refund covers the original U Card opening fees and card balances. All refunds were calculated and issued according to the highest standard to fully protect every user’s asset rights and ensure the final refund amount is no less than the amount due.',
+          'This refund round has completed 667 payments, totaling 20,627.07 USDT.',
+          'The funds have been returned to the corresponding GoldHouse wallet addresses. If a user created multiple GoldHouse wallet addresses, the refund was returned to the first wallet address created by that user according to the previously announced rules.',
+          'To keep the refund process open, transparent, and verifiable, we are publishing the USDT payment disclosure sheet at the same time.',
+        ],
+        listIntro: 'The disclosure sheet includes:',
+        listItems: [
+          'Payment wallet address',
+          'Actual payment amount',
+        ],
+        closingParagraphs: [
+          'To protect user privacy, wallet addresses in the disclosure sheet have been masked, with the middle characters uniformly shown as XXXXXX. Users may verify refund records using the visible beginning and ending characters of the wallet address together with the actual received amount.',
+          'Please check your wallet balance in time. If you have any questions, contact GoldHouse staff through official channels for verification.',
+          'The successful completion of this refund work was made possible by every user’s understanding, patience, and support. GoldHouse will continue to prioritize users’ asset rights, improve platform services and asset management systems, and provide a safer, more transparent, and more efficient experience.',
+          'Thank you for your continued support and trust.',
+        ],
+        signature: 'The GoldHouse Team',
+        signatureDate: 'July 30, 2026',
+      },
+      {
         id: 'ios-testflight-migration-20260729',
         date: '2026-07-29',
         title: 'Temporary Adjustment to Gold House iOS TestFlight Download Service',

@@ -1003,6 +1003,44 @@ const zhTW: Dictionary = {
     },
     notices: [
       {
+        id: 'ucard-refund-completion-20260730',
+        date: '2026-07-30',
+        title: '關於 U 卡退款全部完成及打款結果公示的公告',
+        bannerText: 'U 卡相關退款工作已全部完成，667 筆打款共計 20,627.07 USDT，公示表已開放下載核對',
+        poster: '/announcements/ucard-refund-completion-20260730.webp',
+        posterAlt: 'GoldHouse U 卡退款全部完成及打款結果公示公告海報',
+        posterTags: ['U 卡退款', '667 筆', '20,627.07 USDT', '打款公示'],
+        posterWidth: 1080,
+        posterHeight: 1620,
+        attachments: [
+          {
+            label: '下載 USDT 打款公示表',
+            href: '/announcements/usdt-payment-disclosure-20260730.xlsx',
+          },
+        ],
+        greeting: '親愛的黃金屋用戶：',
+        paragraphs: [
+          '黃金屋原有 U 卡相關退款工作現已全部完成。',
+          '本次退款涵蓋用戶原有 U 卡的開卡費用及卡內餘額。所有退款均按照最高標準進行核算與發放，充分保障每一位用戶的資產權益，確保最終退款金額只多不少。',
+          '本次退款共完成：打款總筆數 667 筆，打款總金額 20,627.07 USDT。',
+          '相關款項均已退回至用戶對應的黃金屋錢包地址。若用戶建立了多個黃金屋錢包地址，則按照此前公布的規則，預設退回至用戶建立的第一個錢包地址。',
+          '為保證本次退款流程公開、透明、可核查，現同步公布 USDT 打款公示表。',
+        ],
+        listIntro: '公示表中包含：',
+        listItems: [
+          '打款錢包地址',
+          '實際打款金額',
+        ],
+        closingParagraphs: [
+          '為保護用戶隱私，公示表中的錢包地址已進行脫敏處理，地址中間部分字元統一顯示為 XXXXXX。用戶可根據錢包地址前後字元及實際到帳金額，自行核對退款記錄。',
+          '請各位用戶及時查看錢包到帳情況。如有疑問，請透過黃金屋官方渠道聯絡工作人員進行核查。',
+          '本次退款工作的順利完成，離不開每一位用戶的理解、耐心與支持。黃金屋將繼續堅持用戶資產權益優先，不斷完善平台服務與資產管理體系，為用戶提供更加安全、透明、高效的服務體驗。',
+          '感謝所有用戶一直以來的支持與信任。',
+        ],
+        signature: '黃金屋團隊',
+        signatureDate: '2026 年 7 月 30 日',
+      },
+      {
         id: 'ios-testflight-migration-20260729',
         date: '2026-07-29',
         title: '關於 Gold House iOS 端 TestFlight 下載服務臨時調整的公告',
