@@ -1004,6 +1004,32 @@ const ko: Dictionary = {
     },
     notices: [
       {
+        id: 'ios-version-update-20260731',
+        date: '2026-07-31',
+        title: 'GoldHouse 버전 업데이트 안내',
+        bannerText: 'GoldHouse iOS 버전 업데이트가 완료되었습니다. Android 사용자는 업데이트가 필요 없으며 정상적으로 이용할 수 있습니다.',
+        poster: '/announcements/ios-version-update-20260731.webp',
+        posterAlt: 'GoldHouse 버전 업데이트 안내 포스터',
+        posterTags: ['iOS 업데이트', 'TestFlight', '해외 Apple Store', 'Android 영향 없음'],
+        posterWidth: 1080,
+        posterHeight: 1620,
+        greeting: 'GoldHouse 사용자 여러분께,',
+        paragraphs: [
+          '제품의 규정 준수와 서비스 안정성을 한층 높이기 위해 GoldHouse가 버전 업데이트를 완료했습니다.',
+          '이번 업데이트는 iOS 사용자에게만 해당됩니다. Android 사용자는 업데이트할 필요가 없으며 이번 업그레이드의 영향을 받지 않고 모든 기능을 정상적으로 이용할 수 있습니다.',
+        ],
+        listIntro: '이번 업데이트 내용:',
+        listItems: [
+          'Apple ID 개발자 주체의 업그레이드 및 교체가 완료되어 앱 규정 준수와 장기 서비스 보장을 강화하고 iOS 사용자 경험을 지속적으로 최적화합니다',
+          'iOS 사용자는 TestFlight 또는 해외 Apple Store에서 최신 버전으로 업데이트하여 더욱 안정적이고 안전한 사용 경험을 이용해 주세요',
+        ],
+        closingParagraphs: [
+          'GoldHouse에 보내주시는 변함없는 지원과 신뢰에 감사드립니다. 앞으로도 제품과 서비스를 지속적으로 개선하여 전 세계 사용자에게 더욱 안전하고 효율적이며 편리한 Web3 결제 경험을 제공하겠습니다.',
+        ],
+        signature: 'GoldHouse 팀',
+        signatureDate: '2026년 7월 31일',
+      },
+      {
         id: 'ucard-refund-completion-20260730',
         date: '2026-07-30',
         title: 'U 카드 환불 전체 완료 및 지급 결과 공시 안내',

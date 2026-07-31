@@ -1003,6 +1003,32 @@ const zhTW: Dictionary = {
     },
     notices: [
       {
+        id: 'ios-version-update-20260731',
+        date: '2026-07-31',
+        title: 'GoldHouse 版本更新公告',
+        bannerText: 'GoldHouse 已完成 iOS 版本更新，安卓用戶無需更新，可正常使用',
+        poster: '/announcements/ios-version-update-20260731.webp',
+        posterAlt: 'GoldHouse 版本更新公告海報',
+        posterTags: ['iOS 更新', 'TestFlight', '海外 Apple Store', '安卓無需更新'],
+        posterWidth: 1080,
+        posterHeight: 1620,
+        greeting: '尊敬的 GoldHouse 用戶：',
+        paragraphs: [
+          '為了進一步提升產品的合規性與服務穩定性，GoldHouse 已完成版本更新。',
+          '本次更新僅針對 iOS 用戶，安卓用戶無需更新，不受本次升級影響，可正常使用各項功能。',
+        ],
+        listIntro: '本次更新內容：',
+        listItems: [
+          'Apple ID 開發者主體完成升級更換，進一步提升應用合規性與長期服務保障，持續優化 iOS 用戶使用體驗',
+          '請 iOS 用戶前往 TestFlight 或海外 Apple Store 更新至最新版本，以獲得更穩定、安全的使用體驗',
+        ],
+        closingParagraphs: [
+          '感謝大家一直以來對 GoldHouse 的支持與信任。未來，我們將持續優化產品與服務，為全球用戶打造更加安全、高效、便捷的 Web3 支付體驗。',
+        ],
+        signature: 'GoldHouse 團隊',
+        signatureDate: '2026 年 7 月 31 日',
+      },
+      {
         id: 'ucard-refund-completion-20260730',
         date: '2026-07-30',
         title: '關於 U 卡退款全部完成及打款結果公示的公告',

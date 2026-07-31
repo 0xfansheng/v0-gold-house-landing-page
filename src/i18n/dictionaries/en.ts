@@ -1005,6 +1005,32 @@ const en: Dictionary = {
     },
     notices: [
       {
+        id: 'ios-version-update-20260731',
+        date: '2026-07-31',
+        title: 'GoldHouse Version Update Notice',
+        bannerText: 'GoldHouse has completed the iOS version update. Android users do not need to update and can continue using the app normally.',
+        poster: '/announcements/ios-version-update-20260731.webp',
+        posterAlt: 'GoldHouse version update announcement poster',
+        posterTags: ['iOS update', 'TestFlight', 'Overseas Apple Store', 'Android unaffected'],
+        posterWidth: 1080,
+        posterHeight: 1620,
+        greeting: 'Dear GoldHouse users,',
+        paragraphs: [
+          'To further improve product compliance and service stability, GoldHouse has completed a version update.',
+          'This update applies only to iOS users. Android users do not need to update, are not affected by this upgrade, and can continue using all features normally.',
+        ],
+        listIntro: 'Update details:',
+        listItems: [
+          'The Apple ID developer entity has completed its upgrade and replacement, further improving app compliance, long-term service assurance, and the iOS user experience',
+          'iOS users should update to the latest version through TestFlight or the overseas Apple Store for a more stable and secure experience',
+        ],
+        closingParagraphs: [
+          'Thank you for your continued support and trust in GoldHouse. We will keep improving our products and services to build a safer, more efficient, and more convenient Web3 payment experience for users worldwide.',
+        ],
+        signature: 'The GoldHouse Team',
+        signatureDate: 'July 31, 2026',
+      },
+      {
         id: 'ucard-refund-completion-20260730',
         date: '2026-07-30',
         title: 'Notice on Completion of All U Card Refunds and Payment Result Disclosure',
