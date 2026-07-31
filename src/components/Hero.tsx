@@ -7,7 +7,7 @@ import { useI18n } from '@/i18n/I18nProvider';
 const GOOGLE_PLAY_URL = 'https://play.google.com/store/apps/details?id=com.goldhouse.android&pcampaignid=web_share';
 const WEB_APP_URL = 'https://imweb.goldhouse.cc'; // GoldHouse 网页版（免安装）
 const DOWNLOAD_VERSION = 'v1.0.10'; // Android APK direct download
-const TESTFLIGHT_VERSION = 'v1.0.10'; // iOS TestFlight beta
+const TESTFLIGHT_VERSION = 'v1.0.11'; // iOS TestFlight beta
 const GOOGLE_PLAY_VERSION = 'v1.0.10'; // Android Google Play
 // App Store 入口暂时下线，保留常量以便将来恢复
 // const APP_STORE_VERSION = 'v1.0.4'; // iOS App Store official release
@@ -96,7 +96,7 @@ export default function Hero() {
             */}
             {/* iOS — TestFlight beta (live) */}
             <a
-              href="https://testflight.apple.com/join/6pVzHRZf"
+              href="https://testflight.apple.com/join/qvXguqA2"
               target="_blank"
               rel="noopener noreferrer"
               className="store-btn group inline-flex w-full lg:w-auto items-center justify-center gap-2.5 px-3.5 py-3 sm:gap-3 sm:px-5 rounded-xl"
