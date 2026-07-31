@@ -1128,6 +1128,22 @@ const en: Dictionary = {
     ],
     releases: [
       {
+        date: '2026-07-31',
+        version: 'v1.0.11',
+        title: 'App Publisher Upgrade for Stronger Compliance',
+        summary:
+          'This update upgrades the app to a more standardized publisher entity, further strengthening compliance and delivering a more stable, trustworthy service.',
+        groups: [
+          {
+            type: 'improvement',
+            items: [
+              'Upgraded to a more standardized app publisher entity',
+              'Improved application compliance',
+            ],
+          },
+        ],
+      },
+      {
         date: '2026-07-27',
         version: 'v1.0.10',
         title: 'Official Verification Badges, File Forwarding & Group Message Moderation',

@@ -1126,6 +1126,22 @@ const zhTW: Dictionary = {
     ],
     releases: [
       {
+        date: '2026-07-31',
+        version: 'v1.0.11',
+        title: 'App 主體升級，合規性進一步提升',
+        summary:
+          '本次更新將應用升級至更規範的 App 主體，進一步提升合規性，為使用者提供更穩定、可信賴的服務。',
+        groups: [
+          {
+            type: 'improvement',
+            items: [
+              '升級更規範的 App 主體',
+              '提升應用合規性',
+            ],
+          },
+        ],
+      },
+      {
         date: '2026-07-27',
         version: 'v1.0.10',
         title: '官方認證徽章上線，檔案轉發與群內訊息治理強化',
