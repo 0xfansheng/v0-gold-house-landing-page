@@ -1001,6 +1001,73 @@ const zhCN = {
     },
     notices: [
       {
+        id: 'ucard-refund-completion-20260730',
+        date: '2026-07-30',
+        title: '关于 U 卡退款全部完成及打款结果公示的公告',
+        bannerText: 'U 卡相关退款工作已全部完成，667 笔打款共计 20,627.07 USDT，公示表已开放下载核对',
+        poster: '/announcements/ucard-refund-completion-20260730.webp',
+        posterAlt: 'GoldHouse U 卡退款全部完成及打款结果公示公告海报',
+        posterTags: ['U 卡退款', '667 笔', '20,627.07 USDT', '打款公示'],
+        posterWidth: 1080,
+        posterHeight: 1620,
+        attachments: [
+          {
+            label: '下载 USDT 打款公示表',
+            href: '/announcements/usdt-payment-disclosure-20260730.xlsx',
+          },
+        ],
+        greeting: '亲爱的黄金屋用户：',
+        paragraphs: [
+          '黄金屋原有 U 卡相关退款工作现已全部完成。',
+          '本次退款涵盖用户原有 U 卡的开卡费用及卡内余额。所有退款均按照最高标准进行核算与发放，充分保障每一位用户的资产权益，确保最终退款金额只多不少。',
+          '本次退款共完成：打款总笔数 667 笔，打款总金额 20,627.07 USDT。',
+          '相关款项均已退回至用户对应的黄金屋钱包地址。若用户创建了多个黄金屋钱包地址，则按照此前公布的规则，默认退回至用户创建的第一个钱包地址。',
+          '为保证本次退款流程公开、透明、可核查，现同步公布 USDT 打款公示表。',
+        ],
+        listIntro: '公示表中包含：',
+        listItems: [
+          '打款钱包地址',
+          '实际打款金额',
+        ],
+        closingParagraphs: [
+          '为保护用户隐私，公示表中的钱包地址已进行脱敏处理，地址中间部分字符统一显示为 XXXXXX。用户可根据钱包地址前后字符及实际到账金额，自行核对退款记录。',
+          '请各位用户及时查看钱包到账情况。如有疑问，请通过黄金屋官方渠道联系工作人员进行核查。',
+          '本次退款工作的顺利完成，离不开每一位用户的理解、耐心与支持。黄金屋将继续坚持用户资产权益优先，不断完善平台服务与资产管理体系，为用户提供更加安全、透明、高效的服务体验。',
+          '感谢所有用户一直以来的支持与信任。',
+        ],
+        signature: '黄金屋团队',
+        signatureDate: '2026 年 7 月 30 日',
+      },
+      {
+        id: 'ios-testflight-migration-20260729',
+        date: '2026-07-29',
+        title: '关于 Gold House iOS 端 TestFlight 下载服务临时调整的公告',
+        bannerText: 'Gold House iOS 端 TestFlight 下载服务临时调整，预计 2–3 个工作日恢复',
+        poster: '/announcements/ios-testflight-migration-20260729.webp',
+        posterAlt: 'Gold House iOS 端 TestFlight 下载服务临时调整公告海报',
+        posterTags: ['TestFlight', 'iOS', '2–3 个工作日', '账号迁移'],
+        posterWidth: 1024,
+        posterHeight: 1536,
+        greeting: '尊敬的 Gold House 用户：',
+        paragraphs: [
+          '为进一步提升 Gold House iOS 端的服务稳定性与合规性，Gold House 目前正在将 iOS 应用由 TestFlight 个人开发者账号迁移至以新加坡公司为主体的 Apple Developer Program 正式开发者账号。',
+          '本次账号主体切换预计需要 2–3 个工作日。迁移期间，TestFlight 下载通道将暂时关闭，新用户可能无法通过 TestFlight 下载 Gold House iOS 应用。',
+        ],
+        listIntro: '请注意：',
+        listItems: [
+          '已完成下载并正在使用 Gold House iOS 应用的用户不受本次调整影响',
+          '现有用户可继续正常登录并使用相关功能',
+          'TestFlight 下载服务将在账号主体切换完成后恢复',
+          '具体恢复时间请以 Gold House 官方后续公告为准',
+        ],
+        closingParagraphs: [
+          '由此给您带来的不便，我们深表歉意。感谢您对 Gold House 的理解、耐心与支持。',
+          'Gold House 将持续完善产品与服务，为全球用户提供更加安全、稳定、合规的使用体验。',
+        ],
+        signature: 'Gold House 团队',
+        signatureDate: '2026 年 7 月 29 日',
+      },
+      {
         // id is locale-independent: it keys the banner dismissal in localStorage
         id: 'ucard-fee-subsidy-202607',
         date: '2026-07-28',

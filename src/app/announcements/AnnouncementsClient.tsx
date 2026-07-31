@@ -6,8 +6,8 @@ import Footer from '@/components/Footer';
 import { useI18n } from '@/i18n/I18nProvider';
 
 // Intrinsic size of the announcement posters shipped in /public/announcements.
-const POSTER_WIDTH = 941;
-const POSTER_HEIGHT = 1672;
+const DEFAULT_POSTER_WIDTH = 941;
+const DEFAULT_POSTER_HEIGHT = 1672;
 
 const categoryStyles: Record<string, { color: string; gradient: string }> = {
   feature: { color: '#FFC247', gradient: 'from-[#FFC247] to-[#FF8C00]' },
@@ -61,8 +61,8 @@ export default function AnnouncementsClient() {
                       <Image
                         src={n.poster}
                         alt={n.posterAlt}
-                        width={POSTER_WIDTH}
-                        height={POSTER_HEIGHT}
+                        width={n.posterWidth ?? DEFAULT_POSTER_WIDTH}
+                        height={n.posterHeight ?? DEFAULT_POSTER_HEIGHT}
                         sizes="(min-width: 640px) 640px, 100vw"
                         className="w-full h-auto rounded-2xl border border-white/10 shadow-[0_12px_48px_-16px_rgba(0,8,28,0.9)]"
                         priority
@@ -84,6 +84,29 @@ export default function AnnouncementsClient() {
                   {n.paragraphs.map((p) => (
                     <p key={p} className="text-sm text-white/70 leading-relaxed mb-3">{p}</p>
                   ))}
+                  {'attachments' in n && Array.isArray(n.attachments) && n.attachments.length > 0 && (
+                    <div className="my-5 flex flex-wrap gap-3">
+                      {n.attachments.map((attachment) => (
+                        <a
+                          key={attachment.href}
+                          href={attachment.href}
+                          download
+                          className="inline-flex items-center gap-2 rounded-full border border-[#FFC247]/40 bg-[#FFC247]/10 px-4 py-2 text-sm font-semibold text-[#FFD66B] transition-colors duration-200 hover:border-[#FFC247]/75 hover:bg-[#FFC247]/15 hover:text-white"
+                        >
+                          <svg
+                            className="h-4 w-4"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path d="M10.75 2.75a.75.75 0 0 0-1.5 0v8.69L6.03 8.22a.75.75 0 0 0-1.06 1.06l4.5 4.5a.75.75 0 0 0 1.06 0l4.5-4.5a.75.75 0 1 0-1.06-1.06l-3.22 3.22V2.75Z" />
+                            <path d="M3.5 13.75a.75.75 0 0 1 .75.75v1.25h11.5V14.5a.75.75 0 0 1 1.5 0v2A.75.75 0 0 1 16.5 17H3.5a.75.75 0 0 1-.75-.75v-1.75a.75.75 0 0 1 .75-.75Z" />
+                          </svg>
+                          <span>{attachment.label}</span>
+                        </a>
+                      ))}
+                    </div>
+                  )}
                   <p className="text-sm text-white/70 leading-relaxed mb-2">{n.listIntro}</p>
                   <ol className="list-decimal list-inside space-y-1.5 mb-4 text-sm text-[#FFD66B]/90 leading-relaxed marker:text-[#FFC247]">
                     {n.listItems.map((item) => (
