@@ -1004,6 +1004,35 @@ const ko: Dictionary = {
     },
     notices: [
       {
+        id: 'ucard-first-week-invite-reward-20260810',
+        date: '2026-08-10',
+        title: '신규 U 카드 첫 주 초대 보상 지급 결과 공시',
+        bannerText: '신규 U 카드 첫 주 초대 보상 지급 완료: 187개 지갑, 448회 초대, 총 2,240 USDT',
+        poster: '/announcements/ucard-first-week-invite-reward-20260810.png',
+        posterAlt: 'GoldHouse 신규 U 카드 첫 주 초대 보상 지급 결과 공시 포스터',
+        posterTags: ['신규 U 카드', '187개 지갑', '448회 초대', '2,240 USDT'],
+        posterWidth: 1600,
+        posterHeight: 10314,
+        greeting: 'GoldHouse 사용자 여러분께,',
+        paragraphs: [
+          '신규 U 카드 첫 주 초대 보상에 대한 집계, 검증 및 지급이 완료되었습니다. 보상 지급 과정을 공개적이고 투명하며 확인 가능하게 운영하기 위해 이번 지급 결과를 아래와 같이 공시합니다.',
+          '총 187개 지갑에 448회의 유효 초대 보상이 지급되었으며, 총 지급액은 2,240 USDT입니다. 보상 기준은 성공한 초대 1회당 5 USDT입니다.',
+        ],
+        listIntro: '이번 공시에는 다음 정보만 포함됩니다:',
+        listItems: [
+          '초대 횟수',
+          '보상 금액',
+          '지갑 주소',
+        ],
+        closingParagraphs: [
+          '사용자 개인정보 보호를 위해 공시된 모든 지갑 주소의 가운데 8개 문자는 XXXXXXXX로 대체되었습니다. 사용자는 주소의 앞뒤 문자, 초대 횟수 및 실제 입금 금액을 기준으로 보상 기록을 확인할 수 있습니다.',
+          '지갑 입금 내역을 확인해 주시기 바랍니다. 보상 기록이나 지급 금액에 관한 문의가 있는 경우 GoldHouse 공식 채널을 통해 담당자에게 확인을 요청해 주세요.',
+          'GoldHouse와 신규 U 카드에 보내주신 관심과 성원, 적극적인 참여에 감사드립니다. GoldHouse는 제품 경험과 사용자 보상 체계를 지속적으로 개선하여 전 세계 사용자에게 더욱 안전하고 투명하며 효율적인 Web3 결제 서비스를 제공하겠습니다.',
+        ],
+        signature: 'GoldHouse 팀',
+        signatureDate: '2026년 8월 10일',
+      },
+      {
         id: 'gold-house-2-release-20260802',
         date: '2026-08-02',
         title: 'Gold House 2.0 공식 출시 안내',

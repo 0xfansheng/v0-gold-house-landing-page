@@ -1005,6 +1005,35 @@ const en: Dictionary = {
     },
     notices: [
       {
+        id: 'ucard-first-week-invite-reward-20260810',
+        date: '2026-08-10',
+        title: 'New U Card: First-Week Referral Reward Payment Disclosure',
+        bannerText: 'First-week New U Card referral rewards paid: 187 wallets, 448 referrals, totaling 2,240 USDT',
+        poster: '/announcements/ucard-first-week-invite-reward-20260810.png',
+        posterAlt: 'GoldHouse New U Card first-week referral reward payment disclosure poster',
+        posterTags: ['New U Card', '187 wallets', '448 referrals', '2,240 USDT'],
+        posterWidth: 1600,
+        posterHeight: 10314,
+        greeting: 'Dear GoldHouse users,',
+        paragraphs: [
+          'The first-week New U Card referral rewards have been calculated, verified, and paid. To keep the reward distribution process open, transparent, and verifiable, we are publishing the payment results below.',
+          'Rewards were paid to 187 wallets for 448 valid referrals, with a total distribution of 2,240 USDT. The reward rate was 5 USDT for each successful referral.',
+        ],
+        listIntro: 'The disclosure includes only:',
+        listItems: [
+          'Referral count',
+          'Reward amount',
+          'Wallet address',
+        ],
+        closingParagraphs: [
+          'To protect user privacy, the middle eight characters of every disclosed wallet address have been replaced with XXXXXXXX. Users can verify their reward records using the visible address characters, referral count, and amount received.',
+          'Please check your wallet balance promptly. If you have questions about a reward record or payment amount, contact the team through an official GoldHouse channel for verification.',
+          'Thank you for your continued interest, support, and participation in GoldHouse and the New U Card. GoldHouse will continue improving the product experience and reward programs while providing safer, more transparent, and more efficient Web3 payment services worldwide.',
+        ],
+        signature: 'GoldHouse Team',
+        signatureDate: 'August 10, 2026',
+      },
+      {
         id: 'gold-house-2-release-20260802',
         date: '2026-08-02',
         title: 'Gold House 2.0 Official Release Announcement',

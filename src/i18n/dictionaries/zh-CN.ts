@@ -1001,6 +1001,35 @@ const zhCN = {
     },
     notices: [
       {
+        id: 'ucard-first-week-invite-reward-20260810',
+        date: '2026-08-10',
+        title: '关于新 U 卡第一周邀请奖励打款结果的公示',
+        bannerText: '新 U 卡第一周邀请奖励已完成打款：187 个钱包、448 次邀请、共计 2,240 USDT',
+        poster: '/announcements/ucard-first-week-invite-reward-20260810.png',
+        posterAlt: 'GoldHouse 新 U 卡第一周邀请奖励打款结果公示海报',
+        posterTags: ['新 U 卡', '187 个钱包', '448 次邀请', '2,240 USDT'],
+        posterWidth: 1600,
+        posterHeight: 10314,
+        greeting: '尊敬的 GoldHouse 用户：',
+        paragraphs: [
+          '新 U 卡第一周邀请奖励已完成统计、核算及打款。为确保奖励发放过程公开、透明、可核查，现将本期邀请奖励打款结果进行公示。',
+          '本期共向 187 个钱包发放奖励，累计有效邀请 448 次，奖励发放总额 2,240 USDT。奖励标准为每成功邀请 1 次奖励 5 USDT。',
+        ],
+        listIntro: '本次公示明细仅保留：',
+        listItems: [
+          '邀请次数',
+          '奖励金额',
+          '钱包地址',
+        ],
+        closingParagraphs: [
+          '为保护用户隐私，公示中的钱包地址正中 8 个字符已统一替换为 XXXXXXXX。用户可根据钱包地址前后字符、邀请次数及实际到账金额，自行核对奖励记录。',
+          '请相关用户及时查看钱包到账情况。如对奖励记录或到账金额存在疑问，请通过 GoldHouse 官方渠道联系工作人员进行核查。',
+          '感谢每一位用户对 GoldHouse 与新 U 卡的关注、支持和积极参与。GoldHouse 将继续完善产品体验与用户激励机制，为全球用户提供更加安全、透明、高效的 Web3 支付服务。',
+        ],
+        signature: 'GoldHouse 团队',
+        signatureDate: '2026 年 8 月 10 日',
+      },
+      {
         id: 'gold-house-2-release-20260802',
         date: '2026-08-02',
         title: '关于 Gold House 2.0 正式发布的公告',
