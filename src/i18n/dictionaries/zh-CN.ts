@@ -1002,8 +1002,7 @@ const zhCN = {
     noticeStatus: {
       publishedAt: '发布时间',
       utc8: 'UTC+8',
-      read: '已读',
-      unread: '未读',
+      views: '全网阅读',
     },
     notices: [
       {

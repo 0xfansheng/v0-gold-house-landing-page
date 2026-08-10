@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -9,7 +9,6 @@ import { useI18n } from '@/i18n/I18nProvider';
 // Intrinsic size of the announcement posters shipped in /public/announcements.
 const DEFAULT_POSTER_WIDTH = 941;
 const DEFAULT_POSTER_HEIGHT = 1672;
-const READ_NOTICES_STORAGE_KEY = 'gh-read-notices-v1';
 
 function formatUtc8Timestamp(value: string) {
   return value.slice(0, 19).replace('T', ' ');
@@ -24,47 +23,50 @@ const categoryStyles: Record<string, { color: string; gradient: string }> = {
 export default function AnnouncementsClient() {
   const { dict } = useI18n();
   const a = dict.announcements;
-  const [readNoticeIds, setReadNoticeIds] = useState<Set<string>>(() => new Set());
+  const [viewCounts, setViewCounts] = useState<Record<string, number>>({});
+  const recordedNoticeIds = useRef(new Set<string>());
 
   useEffect(() => {
-    let savedIds: string[] = [];
+    let cancelled = false;
+
+    fetch('/api/announcement-views', { cache: 'no-store' })
+      .then(async (response) => {
+        if (!response.ok) throw new Error('Unable to load announcement view counts.');
+        return (await response.json()) as { counts?: unknown };
+      })
+      .then((payload) => {
+        if (cancelled) return;
+        if (payload.counts && typeof payload.counts === 'object') {
+          setViewCounts(payload.counts as Record<string, number>);
+        }
+      })
+      .catch(() => {
+        // Keep the count placeholder when the service is temporarily unavailable.
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [a.notices]);
+
+  const recordNoticeView = useCallback(async (noticeId: string) => {
+    if (recordedNoticeIds.current.has(noticeId)) return;
+    recordedNoticeIds.current.add(noticeId);
+
     try {
-      const saved = localStorage.getItem(READ_NOTICES_STORAGE_KEY);
-      const parsed: unknown = saved ? JSON.parse(saved) : [];
-      if (Array.isArray(parsed)) {
-        savedIds = parsed.filter((value): value is string => typeof value === 'string');
+      const response = await fetch('/api/announcement-views', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: noticeId }),
+      });
+      if (!response.ok) throw new Error('Unable to record announcement view.');
+      const payload = (await response.json()) as { count?: unknown };
+      if (typeof payload.count === 'number') {
+        setViewCounts((current) => ({ ...current, [noticeId]: payload.count as number }));
       }
     } catch {
-      // localStorage may be unavailable or contain invalid legacy data.
+      recordedNoticeIds.current.delete(noticeId);
     }
-
-    const timeoutId = setTimeout(() => {
-      setReadNoticeIds((current) => {
-        const next = new Set([...savedIds, ...current]);
-        try {
-          localStorage.setItem(READ_NOTICES_STORAGE_KEY, JSON.stringify([...next]));
-        } catch {
-          // Keep the in-memory state when localStorage is unavailable.
-        }
-        return next;
-      });
-    }, 0);
-    return () => clearTimeout(timeoutId);
-  }, []);
-
-  const markNoticeRead = useCallback((noticeId: string) => {
-    setReadNoticeIds((current) => {
-      if (current.has(noticeId)) return current;
-
-      const next = new Set(current);
-      next.add(noticeId);
-      try {
-        localStorage.setItem(READ_NOTICES_STORAGE_KEY, JSON.stringify([...next]));
-      } catch {
-        // Keep the in-memory state when localStorage is unavailable.
-      }
-      return next;
-    });
   }, []);
 
   useEffect(() => {
@@ -75,7 +77,10 @@ export default function AnnouncementsClient() {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return;
           const noticeId = (entry.target as HTMLElement).dataset.noticeObserverId;
-          if (noticeId) markNoticeRead(noticeId);
+          if (noticeId) {
+            observer.unobserve(entry.target);
+            void recordNoticeView(noticeId);
+          }
         });
       },
       { threshold: 0.7 },
@@ -84,7 +89,7 @@ export default function AnnouncementsClient() {
     const markers = document.querySelectorAll<HTMLElement>('[data-notice-observer-id]');
     markers.forEach((marker) => observer.observe(marker));
     return () => observer.disconnect();
-  }, [a.notices, markNoticeRead]);
+  }, [a.notices, recordNoticeView]);
 
   return (
     <>
@@ -126,19 +131,13 @@ export default function AnnouncementsClient() {
                       {a.noticeStatus.publishedAt}：{formatUtc8Timestamp(n.publishedAt)} · {a.noticeStatus.utc8}
                     </time>
                     <span
-                      className={`ml-auto inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold ${
-                        readNoticeIds.has(n.id)
-                          ? 'border-emerald-400/25 bg-emerald-400/10 text-emerald-300'
-                          : 'border-[#19B7FF]/35 bg-[#0A6CFF]/15 text-[#7DD8FF]'
-                      }`}
+                      className="ml-auto inline-flex items-center gap-1.5 rounded-full border border-[#19B7FF]/35 bg-[#0A6CFF]/15 px-2.5 py-1 text-xs font-semibold text-[#7DD8FF]"
                     >
-                      <span
-                        className={`h-1.5 w-1.5 rounded-full ${
-                          readNoticeIds.has(n.id) ? 'bg-emerald-400' : 'bg-[#19B7FF]'
-                        }`}
-                        aria-hidden="true"
-                      />
-                      {readNoticeIds.has(n.id) ? a.noticeStatus.read : a.noticeStatus.unread}
+                      <svg className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path d="M10 3.5c-4.2 0-7.26 3.45-8.28 5.06a2.7 2.7 0 0 0 0 2.88C2.74 13.05 5.8 16.5 10 16.5s7.26-3.45 8.28-5.06a2.7 2.7 0 0 0 0-2.88C17.26 6.95 14.2 3.5 10 3.5Zm0 10.25A3.75 3.75 0 1 1 10 6.25a3.75 3.75 0 0 1 0 7.5Zm0-1.75a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                      </svg>
+                      {a.noticeStatus.views}{' '}
+                      {viewCounts[n.id] === undefined ? '—' : viewCounts[n.id].toLocaleString()}
                     </span>
                   </div>
 

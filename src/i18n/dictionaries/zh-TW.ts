@@ -1004,8 +1004,7 @@ const zhTW: Dictionary = {
     noticeStatus: {
       publishedAt: '發布時間',
       utc8: 'UTC+8',
-      read: '已讀',
-      unread: '未讀',
+      views: '全網閱讀',
     },
     notices: [
       {

@@ -1005,8 +1005,7 @@ const ko: Dictionary = {
     noticeStatus: {
       publishedAt: '게시 시간',
       utc8: 'UTC+8',
-      read: '읽음',
-      unread: '읽지 않음',
+      views: '전체 조회',
     },
     notices: [
       {

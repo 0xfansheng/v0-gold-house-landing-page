@@ -1006,8 +1006,7 @@ const en: Dictionary = {
     noticeStatus: {
       publishedAt: 'Published',
       utc8: 'UTC+8',
-      read: 'Read',
-      unread: 'Unread',
+      views: 'Views',
     },
     notices: [
       {
