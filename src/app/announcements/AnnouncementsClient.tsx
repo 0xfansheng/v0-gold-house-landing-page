@@ -1,5 +1,6 @@
 'use client';
 
+import { useCallback, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -8,6 +9,11 @@ import { useI18n } from '@/i18n/I18nProvider';
 // Intrinsic size of the announcement posters shipped in /public/announcements.
 const DEFAULT_POSTER_WIDTH = 941;
 const DEFAULT_POSTER_HEIGHT = 1672;
+const READ_NOTICES_STORAGE_KEY = 'gh-read-notices-v1';
+
+function formatUtc8Timestamp(value: string) {
+  return value.slice(0, 19).replace('T', ' ');
+}
 
 const categoryStyles: Record<string, { color: string; gradient: string }> = {
   feature: { color: '#FFC247', gradient: 'from-[#FFC247] to-[#FF8C00]' },
@@ -18,6 +24,67 @@ const categoryStyles: Record<string, { color: string; gradient: string }> = {
 export default function AnnouncementsClient() {
   const { dict } = useI18n();
   const a = dict.announcements;
+  const [readNoticeIds, setReadNoticeIds] = useState<Set<string>>(() => new Set());
+
+  useEffect(() => {
+    let savedIds: string[] = [];
+    try {
+      const saved = localStorage.getItem(READ_NOTICES_STORAGE_KEY);
+      const parsed: unknown = saved ? JSON.parse(saved) : [];
+      if (Array.isArray(parsed)) {
+        savedIds = parsed.filter((value): value is string => typeof value === 'string');
+      }
+    } catch {
+      // localStorage may be unavailable or contain invalid legacy data.
+    }
+
+    const timeoutId = setTimeout(() => {
+      setReadNoticeIds((current) => {
+        const next = new Set([...savedIds, ...current]);
+        try {
+          localStorage.setItem(READ_NOTICES_STORAGE_KEY, JSON.stringify([...next]));
+        } catch {
+          // Keep the in-memory state when localStorage is unavailable.
+        }
+        return next;
+      });
+    }, 0);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  const markNoticeRead = useCallback((noticeId: string) => {
+    setReadNoticeIds((current) => {
+      if (current.has(noticeId)) return current;
+
+      const next = new Set(current);
+      next.add(noticeId);
+      try {
+        localStorage.setItem(READ_NOTICES_STORAGE_KEY, JSON.stringify([...next]));
+      } catch {
+        // Keep the in-memory state when localStorage is unavailable.
+      }
+      return next;
+    });
+  }, []);
+
+  useEffect(() => {
+    if (typeof IntersectionObserver === 'undefined') return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const noticeId = (entry.target as HTMLElement).dataset.noticeObserverId;
+          if (noticeId) markNoticeRead(noticeId);
+        });
+      },
+      { threshold: 0.7 },
+    );
+
+    const markers = document.querySelectorAll<HTMLElement>('[data-notice-observer-id]');
+    markers.forEach((marker) => observer.observe(marker));
+    return () => observer.disconnect();
+  }, [a.notices, markNoticeRead]);
 
   return (
     <>
@@ -45,13 +112,34 @@ export default function AnnouncementsClient() {
                   key={n.id}
                   className="relative rounded-3xl p-6 sm:p-8 border border-[#FFC247]/30 bg-linear-to-br from-[#FFC247]/[0.10] via-[#FFC247]/[0.04] to-transparent backdrop-blur-xl shadow-[0_8px_40px_rgba(255,194,71,0.08)]"
                 >
-                  <div className="flex flex-wrap items-center gap-2.5 mb-4">
+                  <div
+                    data-notice-observer-id={n.id}
+                    className="flex flex-wrap items-center gap-2.5 mb-4"
+                  >
                     <span className="px-2.5 py-1 rounded-lg bg-linear-to-r from-[#FFC247] to-[#FF8C00] text-[#001A5C] text-xs font-bold tracking-wide">
                       {a.noticesLabel}
                     </span>
-                    <time className="text-xs text-white/40 font-medium tracking-wide tabular-nums">
-                      {n.date}
+                    <time
+                      dateTime={n.publishedAt}
+                      className="text-xs text-white/45 font-medium tracking-wide tabular-nums"
+                    >
+                      {a.noticeStatus.publishedAt}：{formatUtc8Timestamp(n.publishedAt)} · {a.noticeStatus.utc8}
                     </time>
+                    <span
+                      className={`ml-auto inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold ${
+                        readNoticeIds.has(n.id)
+                          ? 'border-emerald-400/25 bg-emerald-400/10 text-emerald-300'
+                          : 'border-[#19B7FF]/35 bg-[#0A6CFF]/15 text-[#7DD8FF]'
+                      }`}
+                    >
+                      <span
+                        className={`h-1.5 w-1.5 rounded-full ${
+                          readNoticeIds.has(n.id) ? 'bg-emerald-400' : 'bg-[#19B7FF]'
+                        }`}
+                        aria-hidden="true"
+                      />
+                      {readNoticeIds.has(n.id) ? a.noticeStatus.read : a.noticeStatus.unread}
+                    </span>
                   </div>
 
                   <h2 className="text-xl sm:text-2xl font-black text-white mb-4">{n.title}</h2>

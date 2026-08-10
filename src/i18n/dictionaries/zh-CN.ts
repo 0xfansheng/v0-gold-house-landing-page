@@ -999,10 +999,17 @@ const zhCN = {
       viewDetails: '查看详情',
       dismissAriaLabel: '关闭公告',
     },
+    noticeStatus: {
+      publishedAt: '发布时间',
+      utc8: 'UTC+8',
+      read: '已读',
+      unread: '未读',
+    },
     notices: [
       {
         id: 'ucard-first-week-invite-reward-20260810',
         date: '2026-08-10',
+        publishedAt: '2026-08-10T16:06:05+08:00',
         title: '关于新 U 卡第一周邀请奖励打款结果的公示',
         bannerText: '新 U 卡第一周邀请奖励已完成打款：187 个钱包、448 次邀请、共计 2,240 USDT',
         poster: '/announcements/ucard-first-week-invite-reward-20260810.png',
@@ -1032,6 +1039,7 @@ const zhCN = {
       {
         id: 'gold-house-2-release-20260802',
         date: '2026-08-02',
+        publishedAt: '2026-08-02T15:12:30+08:00',
         title: '关于 Gold House 2.0 正式发布的公告',
         bannerText: 'Gold House 2.0 正式发布：U 卡、1 对 1 红包与转账、会议 VIP 等全面升级',
         poster: '/announcements/gold-house-2.0-release-20260802.webp',
@@ -1068,6 +1076,7 @@ const zhCN = {
       {
         id: 'ios-version-update-20260731',
         date: '2026-07-31',
+        publishedAt: '2026-07-31T11:55:35+08:00',
         title: 'GoldHouse 版本更新公告',
         bannerText: 'GoldHouse 已完成 iOS 版本更新，安卓用户无需更新，可正常使用',
         poster: '/announcements/ios-version-update-20260731.webp',
@@ -1094,6 +1103,7 @@ const zhCN = {
       {
         id: 'ucard-refund-completion-20260730',
         date: '2026-07-30',
+        publishedAt: '2026-07-30T20:06:16+08:00',
         title: '关于 U 卡退款全部完成及打款结果公示的公告',
         bannerText: 'U 卡相关退款工作已全部完成，667 笔打款共计 20,627.07 USDT，公示表已开放下载核对',
         poster: '/announcements/ucard-refund-completion-20260730.webp',
@@ -1132,6 +1142,7 @@ const zhCN = {
       {
         id: 'ios-testflight-migration-20260729',
         date: '2026-07-29',
+        publishedAt: '2026-07-30T13:18:48+08:00',
         title: '关于 Gold House iOS 端 TestFlight 下载服务临时调整的公告',
         bannerText: 'Gold House iOS 端 TestFlight 下载服务临时调整，预计 2–3 个工作日恢复',
         poster: '/announcements/ios-testflight-migration-20260729.webp',
@@ -1162,6 +1173,7 @@ const zhCN = {
         // id is locale-independent: it keys the banner dismissal in localStorage
         id: 'ucard-fee-subsidy-202607',
         date: '2026-07-28',
+        publishedAt: '2026-07-28T22:06:10+08:00',
         title: 'GoldHouse 百万 U 消费手续费补贴活动开启',
         bannerText: 'U 卡百万 U 消费手续费补贴计划已开启，单笔消费满 20U 即享手续费减免',
         poster: '/announcements/ucard-fee-subsidy-202607.webp',
@@ -1191,6 +1203,7 @@ const zhCN = {
       {
         id: 'ucard-upgrade-202607',
         date: '2026-07-12',
+        publishedAt: '2026-07-12T23:18:40+08:00',
         title: 'GoldHouse 关于 U 卡升级优化的公告',
         bannerText: 'U 卡功能升级优化中，升级期间请暂勿进行 U 卡相关操作',
         poster: null,

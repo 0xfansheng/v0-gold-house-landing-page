@@ -1003,10 +1003,17 @@ const en: Dictionary = {
       viewDetails: 'View details',
       dismissAriaLabel: 'Dismiss notice',
     },
+    noticeStatus: {
+      publishedAt: 'Published',
+      utc8: 'UTC+8',
+      read: 'Read',
+      unread: 'Unread',
+    },
     notices: [
       {
         id: 'ucard-first-week-invite-reward-20260810',
         date: '2026-08-10',
+        publishedAt: '2026-08-10T16:06:05+08:00',
         title: 'New U Card: First-Week Referral Reward Payment Disclosure',
         bannerText: 'First-week New U Card referral rewards paid: 187 wallets, 448 referrals, totaling 2,240 USDT',
         poster: '/announcements/ucard-first-week-invite-reward-20260810.png',
@@ -1036,6 +1043,7 @@ const en: Dictionary = {
       {
         id: 'gold-house-2-release-20260802',
         date: '2026-08-02',
+        publishedAt: '2026-08-02T15:12:30+08:00',
         title: 'Gold House 2.0 Official Release Announcement',
         bannerText: 'Gold House 2.0 is here with a fully upgraded U Card, one-to-one red envelopes and transfers, Conference VIP benefits, and more.',
         poster: '/announcements/gold-house-2.0-release-20260802.webp',
@@ -1072,6 +1080,7 @@ const en: Dictionary = {
       {
         id: 'ios-version-update-20260731',
         date: '2026-07-31',
+        publishedAt: '2026-07-31T11:55:35+08:00',
         title: 'GoldHouse Version Update Notice',
         bannerText: 'GoldHouse has completed the iOS version update. Android users do not need to update and can continue using the app normally.',
         poster: '/announcements/ios-version-update-20260731.webp',
@@ -1098,6 +1107,7 @@ const en: Dictionary = {
       {
         id: 'ucard-refund-completion-20260730',
         date: '2026-07-30',
+        publishedAt: '2026-07-30T20:06:16+08:00',
         title: 'Notice on Completion of All U Card Refunds and Payment Result Disclosure',
         bannerText: 'U Card refunds are complete: 667 payments totaling 20,627.07 USDT. The disclosure sheet is available for download.',
         poster: '/announcements/ucard-refund-completion-20260730.webp',
@@ -1136,6 +1146,7 @@ const en: Dictionary = {
       {
         id: 'ios-testflight-migration-20260729',
         date: '2026-07-29',
+        publishedAt: '2026-07-30T13:18:48+08:00',
         title: 'Temporary Adjustment to Gold House iOS TestFlight Download Service',
         bannerText: 'Gold House iOS TestFlight downloads are temporarily unavailable and are expected to resume in 2–3 business days',
         poster: '/announcements/ios-testflight-migration-20260729.webp',
@@ -1165,6 +1176,7 @@ const en: Dictionary = {
       {
         id: 'ucard-fee-subsidy-202607',
         date: '2026-07-28',
+        publishedAt: '2026-07-28T22:06:10+08:00',
         title: 'GoldHouse Launches the 1,000,000 U Spending Fee Subsidy Program',
         bannerText: 'The 1,000,000 U spending fee subsidy is live — spend 20U or more per transaction to get your fee waived',
         poster: '/announcements/ucard-fee-subsidy-202607.webp',
@@ -1194,6 +1206,7 @@ const en: Dictionary = {
       {
         id: 'ucard-upgrade-202607',
         date: '2026-07-12',
+        publishedAt: '2026-07-12T23:18:40+08:00',
         title: 'GoldHouse Notice: U Card Upgrade & Optimization',
         bannerText: 'U Card upgrade in progress — please avoid U Card operations for now',
         poster: null,

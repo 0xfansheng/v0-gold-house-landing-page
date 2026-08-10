@@ -1002,10 +1002,17 @@ const ko: Dictionary = {
       viewDetails: '자세히 보기',
       dismissAriaLabel: '공지 닫기',
     },
+    noticeStatus: {
+      publishedAt: '게시 시간',
+      utc8: 'UTC+8',
+      read: '읽음',
+      unread: '읽지 않음',
+    },
     notices: [
       {
         id: 'ucard-first-week-invite-reward-20260810',
         date: '2026-08-10',
+        publishedAt: '2026-08-10T16:06:05+08:00',
         title: '신규 U 카드 첫 주 초대 보상 지급 결과 공시',
         bannerText: '신규 U 카드 첫 주 초대 보상 지급 완료: 187개 지갑, 448회 초대, 총 2,240 USDT',
         poster: '/announcements/ucard-first-week-invite-reward-20260810.png',
@@ -1035,6 +1042,7 @@ const ko: Dictionary = {
       {
         id: 'gold-house-2-release-20260802',
         date: '2026-08-02',
+        publishedAt: '2026-08-02T15:12:30+08:00',
         title: 'Gold House 2.0 공식 출시 안내',
         bannerText: 'Gold House 2.0이 공식 출시되었습니다. U 카드, 1:1 선물 및 송금, 회의 VIP 혜택 등이 전면 업그레이드되었습니다.',
         poster: '/announcements/gold-house-2.0-release-20260802.webp',
@@ -1071,6 +1079,7 @@ const ko: Dictionary = {
       {
         id: 'ios-version-update-20260731',
         date: '2026-07-31',
+        publishedAt: '2026-07-31T11:55:35+08:00',
         title: 'GoldHouse 버전 업데이트 안내',
         bannerText: 'GoldHouse iOS 버전 업데이트가 완료되었습니다. Android 사용자는 업데이트가 필요 없으며 정상적으로 이용할 수 있습니다.',
         poster: '/announcements/ios-version-update-20260731.webp',
@@ -1097,6 +1106,7 @@ const ko: Dictionary = {
       {
         id: 'ucard-refund-completion-20260730',
         date: '2026-07-30',
+        publishedAt: '2026-07-30T20:06:16+08:00',
         title: 'U 카드 환불 전체 완료 및 지급 결과 공시 안내',
         bannerText: 'U 카드 관련 환불이 모두 완료되었습니다. 총 667건, 20,627.07 USDT 지급 내역 공시표를 다운로드할 수 있습니다.',
         poster: '/announcements/ucard-refund-completion-20260730.webp',
@@ -1135,6 +1145,7 @@ const ko: Dictionary = {
       {
         id: 'ios-testflight-migration-20260729',
         date: '2026-07-29',
+        publishedAt: '2026-07-30T13:18:48+08:00',
         title: 'Gold House iOS TestFlight 다운로드 서비스 임시 조정 안내',
         bannerText: 'Gold House iOS TestFlight 다운로드 서비스가 임시 중단되며 2–3영업일 내 재개될 예정입니다',
         poster: '/announcements/ios-testflight-migration-20260729.webp',
@@ -1164,6 +1175,7 @@ const ko: Dictionary = {
       {
         id: 'ucard-fee-subsidy-202607',
         date: '2026-07-28',
+        publishedAt: '2026-07-28T22:06:10+08:00',
         title: 'GoldHouse 100만 U 결제 수수료 지원 이벤트 시작',
         bannerText: 'U 카드 100만 U 결제 수수료 지원 프로그램 시작 — 건당 20U 이상 결제 시 수수료 면제',
         poster: '/announcements/ucard-fee-subsidy-202607.webp',
@@ -1193,6 +1205,7 @@ const ko: Dictionary = {
       {
         id: 'ucard-upgrade-202607',
         date: '2026-07-12',
+        publishedAt: '2026-07-12T23:18:40+08:00',
         title: 'GoldHouse U 카드 업그레이드 및 최적화 안내',
         bannerText: 'U 카드 기능 업그레이드 진행 중 — 기간 중 U 카드 관련 조작을 잠시 멈춰 주세요',
         poster: null,

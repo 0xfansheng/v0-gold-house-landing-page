@@ -1001,10 +1001,17 @@ const zhTW: Dictionary = {
       viewDetails: '查看詳情',
       dismissAriaLabel: '關閉公告',
     },
+    noticeStatus: {
+      publishedAt: '發布時間',
+      utc8: 'UTC+8',
+      read: '已讀',
+      unread: '未讀',
+    },
     notices: [
       {
         id: 'ucard-first-week-invite-reward-20260810',
         date: '2026-08-10',
+        publishedAt: '2026-08-10T16:06:05+08:00',
         title: '關於新 U 卡第一週邀請獎勵打款結果的公示',
         bannerText: '新 U 卡第一週邀請獎勵已完成打款：187 個錢包、448 次邀請、共計 2,240 USDT',
         poster: '/announcements/ucard-first-week-invite-reward-20260810.png',
@@ -1034,6 +1041,7 @@ const zhTW: Dictionary = {
       {
         id: 'gold-house-2-release-20260802',
         date: '2026-08-02',
+        publishedAt: '2026-08-02T15:12:30+08:00',
         title: '關於 Gold House 2.0 正式發布的公告',
         bannerText: 'Gold House 2.0 正式發布：U 卡、1 對 1 紅包與轉帳、會議 VIP 等全面升級',
         poster: '/announcements/gold-house-2.0-release-20260802.webp',
@@ -1070,6 +1078,7 @@ const zhTW: Dictionary = {
       {
         id: 'ios-version-update-20260731',
         date: '2026-07-31',
+        publishedAt: '2026-07-31T11:55:35+08:00',
         title: 'GoldHouse 版本更新公告',
         bannerText: 'GoldHouse 已完成 iOS 版本更新，安卓用戶無需更新，可正常使用',
         poster: '/announcements/ios-version-update-20260731.webp',
@@ -1096,6 +1105,7 @@ const zhTW: Dictionary = {
       {
         id: 'ucard-refund-completion-20260730',
         date: '2026-07-30',
+        publishedAt: '2026-07-30T20:06:16+08:00',
         title: '關於 U 卡退款全部完成及打款結果公示的公告',
         bannerText: 'U 卡相關退款工作已全部完成，667 筆打款共計 20,627.07 USDT，公示表已開放下載核對',
         poster: '/announcements/ucard-refund-completion-20260730.webp',
@@ -1134,6 +1144,7 @@ const zhTW: Dictionary = {
       {
         id: 'ios-testflight-migration-20260729',
         date: '2026-07-29',
+        publishedAt: '2026-07-30T13:18:48+08:00',
         title: '關於 Gold House iOS 端 TestFlight 下載服務臨時調整的公告',
         bannerText: 'Gold House iOS 端 TestFlight 下載服務臨時調整，預計 2–3 個工作日恢復',
         poster: '/announcements/ios-testflight-migration-20260729.webp',
@@ -1163,6 +1174,7 @@ const zhTW: Dictionary = {
       {
         id: 'ucard-fee-subsidy-202607',
         date: '2026-07-28',
+        publishedAt: '2026-07-28T22:06:10+08:00',
         title: 'GoldHouse 百萬 U 消費手續費補貼活動開啟',
         bannerText: 'U 卡百萬 U 消費手續費補貼計畫已開啟，單筆消費滿 20U 即享手續費減免',
         poster: '/announcements/ucard-fee-subsidy-202607.webp',
@@ -1192,6 +1204,7 @@ const zhTW: Dictionary = {
       {
         id: 'ucard-upgrade-202607',
         date: '2026-07-12',
+        publishedAt: '2026-07-12T23:18:40+08:00',
         title: 'GoldHouse 關於 U 卡升級優化的公告',
         bannerText: 'U 卡功能升級優化中，升級期間請暫勿進行 U 卡相關操作',
         poster: null,
