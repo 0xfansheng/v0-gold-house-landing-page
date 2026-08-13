@@ -1006,6 +1006,36 @@ const zhCN = {
     },
     notices: [
       {
+        id: 'goldhouse-investment-warning-20260813',
+        date: '2026-08-13',
+        publishedAt: '2026-08-13T16:29:04+08:00',
+        title: 'GoldHouse 关于警惕假冒投资公告的声明',
+        bannerText: 'GoldHouse 未参与任何第三方项目投资、认购、代投或资金募集活动，请警惕假冒官方名义的投资宣传',
+        poster: '/announcements/goldhouse-investment-warning-20260813.webp',
+        posterAlt: 'GoldHouse 关于警惕假冒投资公告的声明海报',
+        posterTags: ['郑重声明', '警惕假冒投资', '非投资机构', 'Web3 工具与服务平台'],
+        posterWidth: 1024,
+        posterHeight: 1536,
+        greeting: '尊敬的 GoldHouse 用户及全球生态伙伴：',
+        paragraphs: [
+          '近期，市场上出现部分项目对外宣称获得“黄金屋投资”“黄金屋孵化”，或与“黄金屋官方”达成投资合作，并以此开展项目宣传、认购、代投及资金募集等相关活动。',
+          '对此，GoldHouse 特此郑重声明：',
+          '目前，GoldHouse 未参与任何第三方项目的投资、认购、代投、募资或资金募集活动。',
+          '任何以“黄金屋投资项目”“黄金屋官方投资”“黄金屋孵化项目”等名义进行的资金募集、投资认购及相关活动，均非 GoldHouse 官方行为。请广大用户及生态伙伴提高警惕，谨防不法机构或个人冒用 GoldHouse 名义实施诈骗。',
+          'GoldHouse 从来不是投资机构。GoldHouse 长期坚持的核心定位，是 Web3 工具与服务平台。',
+          '我们始终坚持一个长期不变的理念：让 Web3 服务于 Web2 商业，让技术真正进入现实商业场景。',
+        ],
+        listIntro: '再次提醒：',
+        listItems: [
+          '凡是以 GoldHouse 名义要求用户进行投资、认购、转账、代投或参与资金募集的行为，请务必谨慎核实，并以 GoldHouse 官方渠道发布的信息为准。',
+        ],
+        closingParagraphs: [
+          '感谢全球用户及生态伙伴一直以来对 GoldHouse 的支持与信任。',
+        ],
+        signature: 'GoldHouse 团队',
+        signatureDate: '2026 年 8 月 13 日',
+      },
+      {
         id: 'ucard-first-week-invite-reward-20260810',
         date: '2026-08-10',
         publishedAt: '2026-08-10T16:06:05+08:00',

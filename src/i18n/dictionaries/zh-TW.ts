@@ -1008,6 +1008,36 @@ const zhTW: Dictionary = {
     },
     notices: [
       {
+        id: 'goldhouse-investment-warning-20260813',
+        date: '2026-08-13',
+        publishedAt: '2026-08-13T16:29:04+08:00',
+        title: 'GoldHouse 關於警惕假冒投資公告的聲明',
+        bannerText: 'GoldHouse 未參與任何第三方項目投資、認購、代投或資金募集活動，請警惕假冒官方名義的投資宣傳',
+        poster: '/announcements/goldhouse-investment-warning-20260813.webp',
+        posterAlt: 'GoldHouse 關於警惕假冒投資公告的聲明海報',
+        posterTags: ['鄭重聲明', '警惕假冒投資', '非投資機構', 'Web3 工具與服務平台'],
+        posterWidth: 1024,
+        posterHeight: 1536,
+        greeting: '尊敬的 GoldHouse 用戶及全球生態夥伴：',
+        paragraphs: [
+          '近期，市場上出現部分項目對外宣稱獲得「黃金屋投資」「黃金屋孵化」，或與「黃金屋官方」達成投資合作，並以此開展項目宣傳、認購、代投及資金募集等相關活動。',
+          '對此，GoldHouse 特此鄭重聲明：',
+          '目前，GoldHouse 未參與任何第三方項目的投資、認購、代投、募資或資金募集活動。',
+          '任何以「黃金屋投資項目」「黃金屋官方投資」「黃金屋孵化項目」等名義進行的資金募集、投資認購及相關活動，均非 GoldHouse 官方行為。請廣大用戶及生態夥伴提高警惕，謹防不法機構或個人冒用 GoldHouse 名義實施詐騙。',
+          'GoldHouse 從來不是投資機構。GoldHouse 長期堅持的核心定位，是 Web3 工具與服務平台。',
+          '我們始終堅持一個長期不變的理念：讓 Web3 服務於 Web2 商業，讓技術真正進入現實商業場景。',
+        ],
+        listIntro: '再次提醒：',
+        listItems: [
+          '凡是以 GoldHouse 名義要求用戶進行投資、認購、轉帳、代投或參與資金募集的行為，請務必謹慎核實，並以 GoldHouse 官方渠道發布的信息為準。',
+        ],
+        closingParagraphs: [
+          '感謝全球用戶及生態夥伴一直以來對 GoldHouse 的支持與信任。',
+        ],
+        signature: 'GoldHouse 團隊',
+        signatureDate: '2026 年 8 月 13 日',
+      },
+      {
         id: 'ucard-first-week-invite-reward-20260810',
         date: '2026-08-10',
         publishedAt: '2026-08-10T16:06:05+08:00',

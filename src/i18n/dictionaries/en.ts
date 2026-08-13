@@ -1010,6 +1010,36 @@ const en: Dictionary = {
     },
     notices: [
       {
+        id: 'goldhouse-investment-warning-20260813',
+        date: '2026-08-13',
+        publishedAt: '2026-08-13T16:29:04+08:00',
+        title: 'GoldHouse Statement on Fraudulent Investment Claims',
+        bannerText: 'GoldHouse is not involved in any third-party investment, subscription, proxy investment, fundraising, or capital solicitation activities.',
+        poster: '/announcements/goldhouse-investment-warning-20260813.webp',
+        posterAlt: 'GoldHouse statement warning against fraudulent investment claims poster',
+        posterTags: ['Official statement', 'Fraud warning', 'Not an investment institution', 'Web3 tools and services'],
+        posterWidth: 1024,
+        posterHeight: 1536,
+        greeting: 'Dear GoldHouse users and global ecosystem partners,',
+        paragraphs: [
+          'Recently, certain projects have publicly claimed to have received “GoldHouse investment” or “GoldHouse incubation,” or to have entered into an investment partnership with “GoldHouse officials,” using such claims to promote projects, solicit subscriptions, conduct proxy investments, or raise funds.',
+          'GoldHouse hereby issues the following formal statement:',
+          'GoldHouse is not currently involved in the investment, subscription, proxy investment, fundraising, or capital solicitation activities of any third-party project.',
+          'Any fundraising, investment subscription, or related activity conducted under names such as “GoldHouse Investment Project,” “Official GoldHouse Investment,” or “GoldHouse Incubation Project” is not an official GoldHouse activity. Users and ecosystem partners should remain vigilant against organizations or individuals fraudulently using the GoldHouse name.',
+          'GoldHouse is not an investment institution. Our longstanding core position is to be a Web3 tools and services platform.',
+          'We remain committed to a lasting principle: enabling Web3 to serve Web2 businesses and bringing technology into real-world commercial scenarios.',
+        ],
+        listIntro: 'Important reminder:',
+        listItems: [
+          'Exercise caution and verify through official GoldHouse channels whenever anyone using the GoldHouse name requests an investment, subscription, transfer, proxy investment, or participation in fundraising.',
+        ],
+        closingParagraphs: [
+          'Thank you to users and ecosystem partners worldwide for your continued support and trust in GoldHouse.',
+        ],
+        signature: 'GoldHouse Team',
+        signatureDate: 'August 13, 2026',
+      },
+      {
         id: 'ucard-first-week-invite-reward-20260810',
         date: '2026-08-10',
         publishedAt: '2026-08-10T16:06:05+08:00',

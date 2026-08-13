@@ -1009,6 +1009,36 @@ const ko: Dictionary = {
     },
     notices: [
       {
+        id: 'goldhouse-investment-warning-20260813',
+        date: '2026-08-13',
+        publishedAt: '2026-08-13T16:29:04+08:00',
+        title: 'GoldHouse 사칭 투자 홍보 주의 공식 성명',
+        bannerText: 'GoldHouse는 어떠한 제3자 프로젝트의 투자, 청약, 대리 투자 또는 자금 모집 활동에도 참여하지 않습니다.',
+        poster: '/announcements/goldhouse-investment-warning-20260813.webp',
+        posterAlt: 'GoldHouse 사칭 투자 홍보 주의 공식 성명 포스터',
+        posterTags: ['공식 성명', '사칭 투자 주의', '투자기관 아님', 'Web3 도구 및 서비스 플랫폼'],
+        posterWidth: 1024,
+        posterHeight: 1536,
+        greeting: 'GoldHouse 사용자 및 전 세계 생태계 파트너 여러분께,',
+        paragraphs: [
+          '최근 일부 프로젝트가 “GoldHouse 투자” 또는 “GoldHouse 인큐베이팅”을 받았거나 “GoldHouse 공식” 측과 투자 협력을 체결했다고 주장하며, 이를 이용해 프로젝트 홍보, 청약, 대리 투자 및 자금 모집 활동을 진행하는 사례가 나타나고 있습니다.',
+          '이에 GoldHouse는 다음과 같이 공식적으로 밝힙니다.',
+          '현재 GoldHouse는 어떠한 제3자 프로젝트의 투자, 청약, 대리 투자, 모금 또는 자금 모집 활동에도 참여하지 않습니다.',
+          '“GoldHouse 투자 프로젝트”, “GoldHouse 공식 투자”, “GoldHouse 인큐베이팅 프로젝트” 등의 명칭으로 진행되는 자금 모집, 투자 청약 및 관련 활동은 모두 GoldHouse의 공식 활동이 아닙니다. 불법 기관이나 개인이 GoldHouse 명의를 도용한 사기에 각별히 주의해 주시기 바랍니다.',
+          'GoldHouse는 투자기관이 아닙니다. GoldHouse가 장기적으로 지켜 온 핵심 정체성은 Web3 도구 및 서비스 플랫폼입니다.',
+          'GoldHouse는 Web3가 Web2 비즈니스를 지원하고 기술이 현실의 상업 현장에 실제로 적용되도록 한다는 변함없는 원칙을 지켜 나갑니다.',
+        ],
+        listIntro: '다시 한번 안내드립니다.',
+        listItems: [
+          'GoldHouse 명의로 투자, 청약, 송금, 대리 투자 또는 자금 모집 참여를 요구하는 경우 반드시 신중하게 확인하고 GoldHouse 공식 채널의 정보만을 기준으로 판단해 주십시오.',
+        ],
+        closingParagraphs: [
+          '전 세계 사용자와 생태계 파트너 여러분의 지속적인 지지와 신뢰에 감사드립니다.',
+        ],
+        signature: 'GoldHouse 팀',
+        signatureDate: '2026년 8월 13일',
+      },
+      {
         id: 'ucard-first-week-invite-reward-20260810',
         date: '2026-08-10',
         publishedAt: '2026-08-10T16:06:05+08:00',

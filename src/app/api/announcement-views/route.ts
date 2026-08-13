@@ -6,6 +6,7 @@ export const dynamic = 'force-dynamic';
 const READER_COOKIE = 'gh-reader-id';
 const COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 const NOTICE_IDS = [
+  'goldhouse-investment-warning-20260813',
   'ucard-first-week-invite-reward-20260810',
   'gold-house-2-release-20260802',
   'ios-version-update-20260731',
