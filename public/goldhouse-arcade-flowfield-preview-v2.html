@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GoldHouse · Arcade FlowField V2</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fbfdff}
+*{box-sizing:border-box}
+#stage{position:fixed;inset:0;overflow:hidden;background:#fbfdff}
+canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+#status,.note{display:none!important}
+#status{
+  position:absolute;right:16px;top:16px;z-index:20;padding:7px 10px;border-radius:999px;
+  font:600 10px/1.25 ui-monospace,SFMono-Regular,Menlo,monospace;
+  color:#2452c9;background:rgba(255,255,255,.72);
+  border:1px solid rgba(190,213,246,.72);backdrop-filter:blur(10px)
+}
+#status.fallback{color:#3f669f}
+#status.error{color:#b42318;background:#fff3f2;max-width:min(680px,calc(100vw - 32px));white-space:pre-wrap;border-radius:12px}
+.note{
+ position:absolute;left:18px;bottom:16px;z-index:10;
+ font:500 10px/1.4 system-ui,sans-serif;color:rgba(13,45,100,.42);
+ background:rgba(255,255,255,.48);border:1px solid rgba(205,220,244,.55);
+ padding:7px 10px;border-radius:999px;backdrop-filter:blur(10px)
+}
+</style>
+</head>
+<body>
+<div id="stage">
+  <canvas id="canvas"></canvas>
+  <div id="status">Initializing…</div>
+  <div class="note">Arcade public flowField parameters · GoldHouse blue/white artwork</div>
+</div>
+
+<script>
+(() => {
+"use strict";
+
+const CFG = Object.freeze({
+  fps:60,
+  dpi:1.5,
+  speed:0.09,
+  iterations:16,
+  anchor:[0.5232338079423056,0.5125724788662569],
+  spread:0.21,
+  amount:0.89,
+  stepAmount:0.0089,
+  uvMix:0.26,
+  angleParam:0.4644,
+  angleMultiplier:6.0,
+  sourceW:1536,
+  sourceH:935
+});
+
+const canvas=document.getElementById("canvas");
+const status=document.getElementById("status");
+const setStatus=(s,c="")=>{status.textContent=s;status.className=c};
+let parentActive=true;
+let motionActive=!document.hidden;
+let resumeMotion=()=>{};
+document.documentElement.dataset.motionActive=String(motionActive);
+function syncMotion(){
+  const next=parentActive&&!document.hidden;
+  if(next===motionActive)return;
+  motionActive=next;
+  document.documentElement.dataset.motionActive=String(motionActive);
+  if(motionActive)resumeMotion();
+}
+addEventListener("message",event=>{
+  if(event.origin!==location.origin||event.source!==parent)return;
+  if(event.data?.type!=="goldhouse-flowfield-active")return;
+  parentActive=Boolean(event.data.active);
+  syncMotion();
+});
+document.addEventListener("visibilitychange",syncMotion);
+
+function makeBaseArtwork(){
+  const c=document.createElement("canvas");
+  c.width=CFG.sourceW;c.height=CFG.sourceH;
+  const x=c.getContext("2d");
+
+  const bg=x.createLinearGradient(0,0,0,c.height);
+  bg.addColorStop(0,"#ffffff");
+  bg.addColorStop(.48,"#fbfdff");
+  bg.addColorStop(1,"#eef8ff");
+  x.fillStyle=bg;x.fillRect(0,0,c.width,c.height);
+
+  function ellipse(cx,cy,rx,ry,stops,blur=0,alpha=1,rot=0){
+    x.save();x.globalAlpha=alpha;x.filter=blur?`blur(${blur}px)`:"none";
+    x.translate(cx,cy);x.rotate(rot);x.scale(rx,ry);
+    const g=x.createRadialGradient(0,0,.02,0,0,1);
+    stops.forEach(v=>g.addColorStop(v[0],v[1]));
+    x.fillStyle=g;x.beginPath();x.arc(0,0,1,0,Math.PI*2);x.fill();x.restore();
+  }
+
+  // left pale cyan pool
+  ellipse(90,760,560,315,[
+    [0,"rgba(205,245,255,.98)"],[.48,"rgba(159,226,255,.76)"],[1,"rgba(159,226,255,0)"]
+  ],28,.96,-.1);
+
+  // long ribbon
+  x.save();x.filter="blur(32px)";
+  const g=x.createLinearGradient(140,650,1460,570);
+  g.addColorStop(0,"rgba(195,243,255,.10)");
+  g.addColorStop(.16,"rgba(122,218,255,.48)");
+  g.addColorStop(.36,"rgba(56,164,255,.77)");
+  g.addColorStop(.57,"rgba(17,99,255,.93)");
+  g.addColorStop(.79,"rgba(8,73,222,.96)");
+  g.addColorStop(1,"rgba(74,165,255,.64)");
+  x.fillStyle=g;
+  x.beginPath();
+  x.moveTo(-130,850);
+  x.bezierCurveTo(170,620,430,675,710,590);
+  x.bezierCurveTo(980,505,1270,430,1660,565);
+  x.lineTo(1660,1040);x.lineTo(-130,1040);x.closePath();x.fill();
+  x.restore();
+
+  // center cyan pressure bulge
+  ellipse(650,700,220,195,[
+    [0,"rgba(105,230,255,.98)"],[.44,"rgba(49,182,255,.85)"],[1,"rgba(34,144,255,0)"]
+  ],24,.96,.06);
+
+  // right dense blue mass
+  ellipse(1280,625,550,420,[
+    [0,"rgba(4,62,202,.99)"],[.35,"rgba(8,78,226,.96)"],[.67,"rgba(37,128,255,.87)"],[1,"rgba(85,178,255,0)"]
+  ],48,1,.06);
+
+  // deep core
+  ellipse(1120,650,360,275,[
+    [0,"rgba(3,48,165,.78)"],[.56,"rgba(5,69,215,.45)"],[1,"rgba(5,69,215,0)"]
+  ],30,.9,-.04);
+
+  // top white veil
+  ellipse(720,190,700,330,[
+    [0,"rgba(255,255,255,1)"],[.56,"rgba(255,255,255,.75)"],[1,"rgba(255,255,255,0)"]
+  ],28,.98,0);
+
+  // soft cyan bridge
+  ellipse(365,600,340,175,[
+    [0,"rgba(200,246,255,.76)"],[.58,"rgba(137,222,255,.34)"],[1,"rgba(137,222,255,0)"]
+  ],24,.9,-.1);
+
+  // subtle grain
+  const img=x.getImageData(0,0,c.width,c.height),d=img.data;
+  for(let i=0;i<d.length;i+=4){
+    const n=(Math.random()-.5)*3.0;
+    d[i]=Math.max(0,Math.min(255,d[i]+n));
+    d[i+1]=Math.max(0,Math.min(255,d[i+1]+n));
+    d[i+2]=Math.max(0,Math.min(255,d[i+2]+n));
+  }
+  x.putImageData(img,0,0);
+  return c;
+}
+
+const base=makeBaseArtwork();
+
+function tryWebGL(){
+  let gl;
+  try{
+    gl=canvas.getContext("webgl2",{alpha:false,antialias:false,preserveDrawingBuffer:false,powerPreference:"high-performance"});
+  }catch(e){return false}
+  if(!gl)return false;
+
+  const VS=`#version 300 es
+  precision highp float;
+  const vec2 POS[3]=vec2[3](vec2(-1.,-1.),vec2(3.,-1.),vec2(-1.,3.));
+  out vec2 vUv;
+  void main(){vec2 p=POS[gl_VertexID];vUv=p*.5+.5;gl_Position=vec4(p,0.,1.);}`;
+
+  const FS=`#version 300 es
+  precision highp float;
+  in vec2 vUv;out vec4 fragColor;
+  uniform sampler2D uTexture;uniform float uTime;uniform vec2 uResolution;uniform float uMix;
+
+  vec3 hash33(vec3 p3){
+    p3=fract(p3*vec3(.1031,.11369,.13787));
+    p3+=dot(p3,p3.yxz+19.19);
+    return -1.+2.*fract(vec3((p3.x+p3.y)*p3.z,(p3.x+p3.z)*p3.y,(p3.y+p3.z)*p3.x));
+  }
+  float perlin_noise(vec3 p){
+    vec3 pi=floor(p),pf=p-pi,w=pf*pf*(3.-2.*pf);
+    float n000=dot(pf-vec3(0),hash33(pi+vec3(0)));
+    float n100=dot(pf-vec3(1,0,0),hash33(pi+vec3(1,0,0)));
+    float n010=dot(pf-vec3(0,1,0),hash33(pi+vec3(0,1,0)));
+    float n110=dot(pf-vec3(1,1,0),hash33(pi+vec3(1,1,0)));
+    float n001=dot(pf-vec3(0,0,1),hash33(pi+vec3(0,0,1)));
+    float n101=dot(pf-vec3(1,0,1),hash33(pi+vec3(1,0,1)));
+    float n011=dot(pf-vec3(0,1,1),hash33(pi+vec3(0,1,1)));
+    float n111=dot(pf-vec3(1),hash33(pi+vec3(1)));
+    float nx00=mix(n000,n100,w.x),nx01=mix(n001,n101,w.x);
+    float nx10=mix(n010,n110,w.x),nx11=mix(n011,n111,w.x);
+    return mix(mix(nx00,nx10,w.y),mix(nx01,nx11,w.y),w.z);
+  }
+  vec2 coverUv(vec2 uv,float s,float d){
+    if(d>s){float k=s/d;uv.y=(uv.y-.5)*k+.5;}
+    else{float k=d/s;uv.x=(uv.x-.5)*k+.5;}
+    return uv;
+  }
+  vec2 flow(vec2 st){
+    float ar=uResolution.x/uResolution.y;
+    vec2 pos=vec2(.5232338079423056,.5125724788662569);
+    vec2 invPos=1.-pos;
+    float sprd=(.2100+.01)/((ar+1.)/2.);
+    float freq=5.*sprd;
+    float amt=.8900*.01;
+    float t=5.+uTime/60.;
+    float radians=(360.*(.4644*6.))*3.1415926/180.;
+    for(int i=0;i<16;i++){
+      vec2 scaled=(st-.5)*vec2(ar,1.)+invPos;
+      float perlin=perlin_noise(vec3((scaled-.5)*freq,t))-.5;
+      float ang=perlin*radians;
+      st+=vec2(cos(ang),sin(ang))*amt;
+      st=clamp(st,0.,1.);
+    }
+    return st;
+  }
+  void main(){
+    vec2 uv=mix(vUv,flow(vUv),uMix);
+    uv=coverUv(uv,1.6427807486631016,uResolution.x/uResolution.y);
+    fragColor=vec4(texture(uTexture,uv).rgb,1.);
+  }`;
+
+  function compile(type,src){
+    const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);
+    if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw new Error(gl.getShaderInfoLog(s));
+    return s;
+  }
+
+  try{
+    const p=gl.createProgram();
+    gl.attachShader(p,compile(gl.VERTEX_SHADER,VS));
+    gl.attachShader(p,compile(gl.FRAGMENT_SHADER,FS));
+    gl.linkProgram(p);
+    if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(p));
+    gl.useProgram(p);
+    gl.bindVertexArray(gl.createVertexArray());
+
+    const tex=gl.createTexture();
+    gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,tex);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);
+    gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);
+    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL,true);
+    gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,gl.RGBA,gl.UNSIGNED_BYTE,base);
+
+    const ut=gl.getUniformLocation(p,"uTime"),ur=gl.getUniformLocation(p,"uResolution"),um=gl.getUniformLocation(p,"uMix");
+    gl.uniform1i(gl.getUniformLocation(p,"uTexture"),0);gl.uniform1f(um,CFG.uvMix);
+
+    function resize(){
+      const r=Math.min(devicePixelRatio||1,CFG.dpi);
+      const w=Math.max(1,Math.floor(innerWidth*r)),h=Math.max(1,Math.floor(innerHeight*r));
+      if(canvas.width!==w||canvas.height!==h){
+        canvas.width=w;canvas.height=h;gl.viewport(0,0,w,h);gl.uniform2f(ur,w,h);
+      }
+    }
+    resize();addEventListener("resize",resize,{passive:true});
+
+    const start=performance.now();let last=0,frame=0;
+    function loop(now){
+      frame=0;
+      if(!motionActive)return;
+      if(now-last<1000/CFG.fps){frame=requestAnimationFrame(loop);return}
+      last=now;resize();
+      gl.uniform1f(ut,((now-start)/1000)*60*CFG.speed);
+      gl.drawArrays(gl.TRIANGLES,0,3);
+      frame=requestAnimationFrame(loop);
+    }
+    resumeMotion=()=>{if(motionActive&&!frame)frame=requestAnimationFrame(loop)};
+    setStatus("WebGL2 · Arcade flowField","")
+    resumeMotion();
+    return true;
+  }catch(err){
+    console.error(err);
+    return false;
+  }
+}
+
+function startCanvasFallback(){
+  const ctx=canvas.getContext("2d");
+  setStatus("Canvas 2D fallback · preview mode","fallback");
+  const tmp=document.createElement("canvas");
+  tmp.width=CFG.sourceW;tmp.height=CFG.sourceH;
+  const tx=tmp.getContext("2d");
+  let start=performance.now(),frame=0;
+
+  function resize(){
+    const r=Math.min(devicePixelRatio||1,1.5);
+    canvas.width=Math.max(1,Math.floor(innerWidth*r));
+    canvas.height=Math.max(1,Math.floor(innerHeight*r));
+    canvas.style.width=innerWidth+"px";canvas.style.height=innerHeight+"px";
+  }
+  resize();addEventListener("resize",resize,{passive:true});
+
+  function draw(now){
+    frame=0;
+    if(!motionActive)return;
+    const t=(now-start)/1000*CFG.speed;
+    tx.clearRect(0,0,tmp.width,tmp.height);
+
+    // Slice-warp fallback: slow, broad deformation matching Arcade's low speed and no mouse interaction.
+    const bands=72;
+    const bandH=CFG.sourceH/bands;
+    for(let i=0;i<bands;i++){
+      const y=i*bandH;
+      const ny=i/(bands-1);
+      const a=Math.sin(ny*5.2+t*.95)+.48*Math.sin(ny*11.7-t*.62)+.27*Math.sin(ny*23.1+t*.38);
+      const dx=a*30;
+      const sx=Math.max(0,-dx), sw=CFG.sourceW-Math.abs(dx);
+      tx.drawImage(base,sx,y,sw,bandH+1,Math.max(0,dx),y,sw,bandH+1);
+    }
+
+    // Vertical secondary pass creates organic pressure rather than simple wave translation.
+    ctx.save();
+    ctx.setTransform(1,0,0,1,0,0);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    const cw=canvas.width,ch=canvas.height;
+    const srcAspect=CFG.sourceW/CFG.sourceH,dstAspect=cw/ch;
+    let dw,dh,ox,oy;
+    if(dstAspect>srcAspect){dw=cw;dh=cw/srcAspect;ox=0;oy=(ch-dh)/2}
+    else{dh=ch;dw=ch*srcAspect;oy=0;ox=(cw-dw)/2}
+    ctx.imageSmoothingEnabled=true;
+    ctx.imageSmoothingQuality="high";
+    ctx.drawImage(tmp,ox,oy,dw,dh);
+    ctx.restore();
+    frame=requestAnimationFrame(draw);
+  }
+  resumeMotion=()=>{if(motionActive&&!frame)frame=requestAnimationFrame(draw)};
+  resumeMotion();
+}
+
+if(!tryWebGL()) startCanvasFallback();
+
+})();
+</script>
+</body>
+</html>
