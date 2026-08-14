@@ -1,6 +1,5 @@
 import SplashScreen from "@/components/SplashScreen";
 import Navbar from "@/components/Navbar";
-import AnnouncementBar from "@/components/AnnouncementBar";
 import Hero from "@/components/Hero";
 import Pillars from "@/components/Pillars";
 import Modules from "@/components/Modules";
@@ -20,7 +19,6 @@ export default function Home() {
     <>
       <SplashScreen />
       <Navbar />
-      <AnnouncementBar />
       <main id="main-content">
         <Hero />
         <Pillars />
