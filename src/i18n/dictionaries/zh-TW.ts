@@ -315,10 +315,10 @@ const zhTW: Dictionary = {
         name: 'Astarter',
         desc: 'Web4 AI 網路基礎設施平台，融合 AI 代理、DePIN 與 DeFAI 技術，投資方包括 OKX Ventures 與 EMURGO。',
       },
-      {
-        name: 'GANA',
-        desc: '基於 BNB Chain 的去中心化 PayFi 支付基礎設施，專注 Web3 支付、流動性與生態建設，目標打造全球無縫支付網路。',
-      },
+      // {
+      //   name: 'GANA',
+      //   desc: '基於 BNB Chain 的去中心化 PayFi 支付基礎設施，專注 Web3 支付、流動性與生態建設，目標打造全球無縫支付網路。',
+      // },
     ],
   },
   architecture: {

@@ -315,10 +315,10 @@ const ko: Dictionary = {
         name: 'Astarter',
         desc: 'AI 에이전트·DePIN·DeFAI 기술을 결합한 Web4 AI 네트워크 인프라 플랫폼으로, 투자자로 OKX Ventures와 EMURGO가 참여했습니다.',
       },
-      {
-        name: 'GANA',
-        desc: 'BNB Chain 기반의 탈중앙화 PayFi 결제 인프라로, Web3 결제·유동성·생태계 구축에 집중하며 글로벌 심리스 결제 네트워크 구축을 목표로 합니다.',
-      },
+      // {
+      //   name: 'GANA',
+      //   desc: 'BNB Chain 기반의 탈중앙화 PayFi 결제 인프라로, Web3 결제·유동성·생태계 구축에 집중하며 글로벌 심리스 결제 네트워크 구축을 목표로 합니다.',
+      // },
     ],
   },
   architecture: {

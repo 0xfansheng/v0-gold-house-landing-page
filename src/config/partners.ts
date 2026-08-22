@@ -12,5 +12,5 @@ export const partners: readonly Partner[] = [
   { name: "X-Agent", icon: "/assets/figma/x-agent.png", profileUrl: "https://x.com/XAgent_official", announcementUrl: "https://x.com/goldhousedotcc/status/2073271442939289604" },
   { name: "Alphio AI", icon: "/assets/figma/alphio.png", profileUrl: "https://x.com/AlphioAI" },
   { name: "Astarter", icon: "/assets/figma/astarter.png", profileUrl: "https://x.com/AstarterDefiHub" },
-  { name: "GANA Insight", icon: "/assets/figma/gana.png", profileUrl: "https://x.com/GANA_Insight" },
+  // { name: "GANA Insight", icon: "/assets/figma/gana.png", profileUrl: "https://x.com/GANA_Insight" },
 ];

@@ -315,10 +315,10 @@ const en: Dictionary = {
         name: 'Astarter',
         desc: 'A Web4 AI network infrastructure platform combining AI agents, DePIN and DeFAI technologies, backed by OKX Ventures and EMURGO.',
       },
-      {
-        name: 'GANA',
-        desc: 'A decentralized PayFi payment infrastructure on BNB Chain, focused on Web3 payments, liquidity and ecosystem building, aiming to create a seamless global payment network.',
-      },
+      // {
+      //   name: 'GANA',
+      //   desc: 'A decentralized PayFi payment infrastructure on BNB Chain, focused on Web3 payments, liquidity and ecosystem building, aiming to create a seamless global payment network.',
+      // },
     ],
   },
   architecture: {

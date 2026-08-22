@@ -313,10 +313,10 @@ const zhCN = {
         name: 'Astarter',
         desc: 'Web4 AI 网络基础设施平台，融合 AI 代理、DePIN 与 DeFAI 技术，投资方包括 OKX Ventures 与 EMURGO。',
       },
-      {
-        name: 'GANA',
-        desc: '基于 BNB Chain 的去中心化 PayFi 支付基础设施，专注 Web3 支付、流动性与生态建设，目标打造全球无缝支付网络。',
-      },
+      // {
+      //   name: 'GANA',
+      //   desc: '基于 BNB Chain 的去中心化 PayFi 支付基础设施，专注 Web3 支付、流动性与生态建设，目标打造全球无缝支付网络。',
+      // },
     ],
   },
   architecture: {
