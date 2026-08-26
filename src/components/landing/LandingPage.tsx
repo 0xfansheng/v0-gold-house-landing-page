@@ -446,6 +446,18 @@ function DownloadModal({ locale, close }: { locale: Locale; close: () => void })
               </a>
             </div>
             <div className="download-option">
+              <a className="download-qr" href={links.iosAppStore} target="_blank" rel="noreferrer" aria-label={`${copy.ios} App Store`}>
+                <QRCodeSVG value={links.iosAppStore} size={122} level="M" title={`${copy.ios} App Store QR code`} />
+              </a>
+              <a className="download-store-button" href={links.iosAppStore} target="_blank" rel="noreferrer" aria-label={`App Store ${appVersions.iosAppStore}, ${copy.iosDevice}`}>
+                <svg className="apple-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.7 12.9c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.2-2-3.9-2-1.7-.2-3.2 1-4 1-1 0-2.5-1-4.1-.9-2.1 0-4 1.2-5.1 3-2.2 3.8-.6 9.4 1.6 12.5 1.1 1.5 2.3 3.2 3.9 3.1 1.6-.1 2.2-1 4.1-1s2.4 1 4.1 1c1.7 0 2.8-1.5 3.8-3.1 1.2-1.8 1.7-3.5 1.7-3.6-.1 0-4.3-1.6-4.3-6.1ZM13.9 5.2c.9-1.1 1.5-2.7 1.3-4.2-1.3.1-2.9.9-3.8 2-.8.9-1.5 2.5-1.3 4 1.5.1 2.9-.7 3.8-1.8Z" /></svg>
+                <span className="download-store-copy">
+                  <small>App Store <span aria-hidden="true">·</span> {appVersions.iosAppStore}</small>
+                  <strong>{copy.iosDevice}</strong>
+                </span>
+              </a>
+            </div>
+            <div className="download-option">
               <a className="download-qr" href={links.androidApk} target="_blank" rel="noreferrer" aria-label={`${copy.android} APK`}>
                 <QRCodeSVG value={links.androidApk} size={122} level="M" title={`${copy.android} APK QR code`} />
               </a>

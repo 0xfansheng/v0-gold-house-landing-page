@@ -1607,7 +1607,7 @@
   .download-copy { gap: 30px; }
   .download-copy h2 { max-width: calc(100% - 36px); font-size: 35px; }
   .download-copy p { margin-top: 14px; font-size: 15px; line-height: 1.55; }
-  .download-options { width: 100%; gap: 14px; }
+  .download-options { width: 100%; flex-wrap: wrap; justify-content: center; gap: 14px; }
   .download-option { min-width: 0; width: calc(50% - 7px); gap: 11px; }
   .download-qr { width: 100%; height: auto; aspect-ratio: 1; padding: 8px; border-radius: 14px; }
   .download-store-button { width: 100%; min-height: 52px; padding-inline: 10px; gap: 8px; }
