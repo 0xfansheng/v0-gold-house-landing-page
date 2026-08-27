@@ -426,9 +426,10 @@ function DownloadChannelMark({ icon }: { icon: DownloadChannelIcon }) {
   return <img className="download-channel-mark" src="/assets/download/app-store.png" alt="" aria-hidden="true" />;
 }
 
-function DownloadOption({ name, version, versionLabel, href, icon }: { name: string; version?: string; versionLabel: string; href: string; icon: DownloadChannelIcon }) {
+function DownloadOption({ name, platform, version, versionLabel, href, icon }: { name: string; platform: "iOS" | "Android"; version?: string; versionLabel: string; href: string; icon: DownloadChannelIcon }) {
   const displayVersion = version?.replace(/^(v?\d+\.\d+\.\d+)-\d+$/, "$1");
-  const label = displayVersion ? `${name}, ${versionLabel} ${displayVersion}` : name;
+  const formattedVersion = displayVersion ? (displayVersion.startsWith("v") ? displayVersion : `v${displayVersion}`) : undefined;
+  const label = displayVersion ? `${name}, ${platform}, ${versionLabel} ${displayVersion}` : `${name}, ${platform}`;
 
   return (
     <div className="download-option">
@@ -439,7 +440,7 @@ function DownloadOption({ name, version, versionLabel, href, icon }: { name: str
         <DownloadChannelMark icon={icon} />
         <span className="download-store-copy">
           <strong>{name}</strong>
-          {displayVersion ? <small>{versionLabel}: {displayVersion}</small> : null}
+          <small>{platform}{formattedVersion ? <> <span aria-hidden="true">·</span> {formattedVersion}</> : null}</small>
         </span>
       </a>
     </div>
@@ -452,11 +453,11 @@ function DownloadModal({ locale, close, appVersions }: { locale: Locale; close: 
   const androidVersion = appVersions.find((item) => item.platform === "android")?.latestVersionCode;
   const iosAppStoreVersion = appVersions.find((item) => item.platform === "ios_app_store")?.latestVersionCode;
   const downloads = [
-    { name: "TestFlight", version: iosVersion, href: links.iosTestFlight, icon: "testflight" },
-    { name: "App Store", version: iosAppStoreVersion, href: links.iosAppStore, icon: "apple" },
-    { name: "Android APK", version: androidVersion, href: links.androidApk, icon: "android" },
+    { name: "TestFlight", platform: "iOS", version: iosVersion, href: links.iosTestFlight, icon: "testflight" },
+    { name: "App Store", platform: "iOS", version: iosAppStoreVersion, href: links.iosAppStore, icon: "apple" },
+    { name: "Android APK", platform: "Android", version: androidVersion, href: links.androidApk, icon: "android" },
     // Google Play 下载入口暂时隐藏；重新开放时恢复 android_google_play 版本和此下载选项。
-  ] satisfies Array<{ name: string; version?: string; href: string; icon: DownloadChannelIcon }>;
+  ] satisfies Array<{ name: string; platform: "iOS" | "Android"; version?: string; href: string; icon: DownloadChannelIcon }>;
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
