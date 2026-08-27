@@ -179,7 +179,7 @@
   white-space: nowrap;
 }
 .download-store-copy strong { color: #fff; font-size: 14px; font-weight: 620; }
-.download-store-copy small { color: rgba(255, 255, 255, .62); font-size: 9px; font-weight: 500; letter-spacing: .01em; }
+.download-store-copy small { color: rgba(255, 255, 255, .62); font-size: 11px; font-weight: 500; letter-spacing: .01em; }
 .download-channel-mark { width: 23px; height: 23px; flex: 0 0 auto; color: #fff; fill: currentColor; object-fit: contain; }
 
 .download-preview {

@@ -427,7 +427,8 @@ function DownloadChannelMark({ icon }: { icon: DownloadChannelIcon }) {
 }
 
 function DownloadOption({ name, version, versionLabel, href, icon }: { name: string; version?: string; versionLabel: string; href: string; icon: DownloadChannelIcon }) {
-  const label = version ? `${name}, ${versionLabel} ${version}` : name;
+  const displayVersion = version?.replace(/^(v?\d+\.\d+\.\d+)-\d+$/, "$1");
+  const label = displayVersion ? `${name}, ${versionLabel} ${displayVersion}` : name;
 
   return (
     <div className="download-option">
@@ -438,7 +439,7 @@ function DownloadOption({ name, version, versionLabel, href, icon }: { name: str
         <DownloadChannelMark icon={icon} />
         <span className="download-store-copy">
           <strong>{name}</strong>
-          {version ? <small>{versionLabel}: {version}</small> : null}
+          {displayVersion ? <small>{versionLabel}: {displayVersion}</small> : null}
         </span>
       </a>
     </div>
