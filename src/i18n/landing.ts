@@ -9,7 +9,7 @@ export const localeNames: Record<Locale, string> = {
 
 type Copy = {
   nav: { product: string; ucard: string; ecosystem: string; about: string; open: string; download: string; menu: string };
-  download: { title: string; description: string; ios: string; android: string; iosDevice: string; androidDevice: string; close: string };
+  download: { title: string; description: string; ios: string; android: string; iosDevice: string; androidDevice: string; version: string; close: string };
   hero: { title: string; description: string };
   core: {
     eyebrow: string; title: string; description: string;
@@ -36,7 +36,7 @@ type Copy = {
 export const translations: Record<Locale, Copy> = {
   "zh-CN": {
     nav: { product: "产品", ucard: "U Card", ecosystem: "生态", about: "关于", open: "打开 Web", download: "下载 App", menu: "菜单" },
-    download: { title: "下载移动版 GoldHouse", description: "下载 GoldHouse，体验 Web2 级别的流畅入口，开启你的 Web3 社交与资产之旅。", ios: "iOS", android: "Android", iosDevice: "iPhone / iPad", androidDevice: "Android", close: "关闭下载窗口" },
+    download: { title: "下载移动版 GoldHouse", description: "下载 GoldHouse，体验 Web2 级别的流畅入口，开启你的 Web3 社交与资产之旅。", ios: "iOS", android: "Android", iosDevice: "iPhone / iPad", androidDevice: "Android", version: "版本", close: "关闭下载窗口" },
     hero: {
       title: "To hold ! The world !",
       description: "GoldHouse 不只是「IM + 钱包」—— 一个社交账户，统一身份、资产、治理与应用。以 Web2 级的无缝体验，承载 Web3 的完整去中心化价值。",
@@ -110,7 +110,7 @@ export const translations: Record<Locale, Copy> = {
   },
   "zh-TW": {
     nav: { product: "產品", ucard: "U Card", ecosystem: "生態", about: "關於", open: "開啟 Web", download: "下載 App", menu: "選單" },
-    download: { title: "下載行動版 GoldHouse", description: "下載 GoldHouse，體驗 Web2 級別的流暢入口，開啟你的 Web3 社交與資產之旅。", ios: "iOS", android: "Android", iosDevice: "iPhone / iPad", androidDevice: "Android", close: "關閉下載視窗" },
+    download: { title: "下載行動版 GoldHouse", description: "下載 GoldHouse，體驗 Web2 級別的流暢入口，開啟你的 Web3 社交與資產之旅。", ios: "iOS", android: "Android", iosDevice: "iPhone / iPad", androidDevice: "Android", version: "版本", close: "關閉下載視窗" },
     hero: {
       title: "To hold ! The world !",
       description: "GoldHouse 不只是「IM + 錢包」—— 一個社交帳戶，統一身分、資產、治理與應用。以 Web2 級的無縫體驗，承載 Web3 的完整去中心化價值。",
@@ -166,7 +166,7 @@ export const translations: Record<Locale, Copy> = {
   },
   ko: {
     nav: { product: "제품", ucard: "U Card", ecosystem: "생태계", about: "소개", open: "Web 열기", download: "앱 다운로드", menu: "메뉴" },
-    download: { title: "모바일 GoldHouse 다운로드", description: "GoldHouse를 다운로드하고 Web2처럼 매끄러운 진입 경험으로 Web3 소셜과 자산 여정을 시작하세요.", ios: "iOS", android: "Android", iosDevice: "iPhone / iPad", androidDevice: "Android", close: "다운로드 창 닫기" },
+    download: { title: "모바일 GoldHouse 다운로드", description: "GoldHouse를 다운로드하고 Web2처럼 매끄러운 진입 경험으로 Web3 소셜과 자산 여정을 시작하세요.", ios: "iOS", android: "Android", iosDevice: "iPhone / iPad", androidDevice: "Android", version: "버전", close: "다운로드 창 닫기" },
     hero: {
       title: "To hold ! The world !",
       description: "GoldHouse는 단순한 ‘IM + Wallet’이 아닙니다. 하나의 소셜 계정으로 정체성, 자산, 거버넌스, 앱을 연결하고 Web2 수준의 매끄러운 경험으로 Web3의 가치를 담습니다.",
@@ -222,7 +222,7 @@ export const translations: Record<Locale, Copy> = {
   },
   en: {
     nav: { product: "Product", ucard: "U Card", ecosystem: "Ecosystem", about: "About", open: "Open Web", download: "Download App", menu: "Menu" },
-    download: { title: "Download GoldHouse mobile", description: "Download GoldHouse for a Web2-smooth entry into your Web3 social and asset journey.", ios: "iOS", android: "Android", iosDevice: "iPhone / iPad", androidDevice: "Android", close: "Close download dialog" },
+    download: { title: "Download GoldHouse mobile", description: "Download GoldHouse for a Web2-smooth entry into your Web3 social and asset journey.", ios: "iOS", android: "Android", iosDevice: "iPhone / iPad", androidDevice: "Android", version: "Version", close: "Close download dialog" },
     hero: {
       title: "To hold ! The world !",
       description: "GoldHouse is not just ‘IM + Wallet’ — it’s one social account that unifies identity, assets, governance, and apps. A Web2-grade seamless experience carrying the full decentralized value of Web3.",

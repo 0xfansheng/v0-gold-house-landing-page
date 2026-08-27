@@ -14,10 +14,3 @@ export const links = {
   androidGooglePlay: requiredPublicEnv(process.env.NEXT_PUBLIC_ANDROID_GOOGLE_PLAY_URL, "NEXT_PUBLIC_ANDROID_GOOGLE_PLAY_URL"),
   x: requiredPublicEnv(process.env.NEXT_PUBLIC_X_URL, "NEXT_PUBLIC_X_URL"),
 } as const;
-
-export const appVersions = {
-  iosAppStore: requiredPublicEnv(process.env.NEXT_PUBLIC_IOS_APP_STORE_VERSION, "NEXT_PUBLIC_IOS_APP_STORE_VERSION"),
-  iosTestFlight: requiredPublicEnv(process.env.NEXT_PUBLIC_IOS_TESTFLIGHT_VERSION, "NEXT_PUBLIC_IOS_TESTFLIGHT_VERSION"),
-  androidApk: requiredPublicEnv(process.env.NEXT_PUBLIC_ANDROID_APK_VERSION, "NEXT_PUBLIC_ANDROID_APK_VERSION"),
-  androidGooglePlay: requiredPublicEnv(process.env.NEXT_PUBLIC_ANDROID_GOOGLE_PLAY_VERSION, "NEXT_PUBLIC_ANDROID_GOOGLE_PLAY_VERSION"),
-} as const;

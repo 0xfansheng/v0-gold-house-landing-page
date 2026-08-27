@@ -6,7 +6,8 @@
 import { useEffect, useRef, useState } from "react";
 import { QRCodeSVG } from "qrcode.react";
 import FlowField from "./FlowField";
-import { appVersions, links } from "@/config/links";
+import type { AppVersion } from "@/api";
+import { links } from "@/config/links";
 import { partners as brands } from "@/config/partners";
 import { localeNames, translations, type Locale } from "@/i18n/landing";
 
@@ -407,8 +408,54 @@ function Closing({ locale, openDownload }: { locale: Locale; openDownload: () =>
   );
 }
 
-function DownloadModal({ locale, close }: { locale: Locale; close: () => void }) {
+type DownloadChannelIcon = "testflight" | "apple" | "android" | "google-play";
+
+function DownloadChannelMark({ icon }: { icon: DownloadChannelIcon }) {
+  if (icon === "android") {
+    return <img className="download-channel-mark" src="/assets/download/android.svg" alt="" aria-hidden="true" />;
+  }
+
+  if (icon === "testflight") {
+    return <img className="download-channel-mark" src="/assets/download/testflight.png" alt="" aria-hidden="true" />;
+  }
+
+  if (icon === "google-play") {
+    return <img className="download-channel-mark" src="/assets/download/google-play.svg" alt="" aria-hidden="true" />;
+  }
+
+  return <img className="download-channel-mark" src="/assets/download/app-store.png" alt="" aria-hidden="true" />;
+}
+
+function DownloadOption({ name, version, versionLabel, href, icon }: { name: string; version?: string; versionLabel: string; href: string; icon: DownloadChannelIcon }) {
+  const label = version ? `${name}, ${versionLabel} ${version}` : name;
+
+  return (
+    <div className="download-option">
+      <a className="download-qr" href={href} target="_blank" rel="noreferrer" aria-label={`${name} QR code`}>
+        <QRCodeSVG value={href} size={122} level="M" title={`${name} QR code`} />
+      </a>
+      <a className="download-store-button" href={href} target="_blank" rel="noreferrer" aria-label={label}>
+        <DownloadChannelMark icon={icon} />
+        <span className="download-store-copy">
+          <strong>{name}</strong>
+          {version ? <small>{versionLabel}: {version}</small> : null}
+        </span>
+      </a>
+    </div>
+  );
+}
+
+function DownloadModal({ locale, close, appVersions }: { locale: Locale; close: () => void; appVersions: AppVersion[] }) {
   const copy = translations[locale].download;
+  const iosVersion = appVersions.find((item) => item.platform === "ios")?.latestVersionCode;
+  const androidVersion = appVersions.find((item) => item.platform === "android")?.latestVersionCode;
+  const iosAppStoreVersion = appVersions.find((item) => item.platform === "ios_app_store")?.latestVersionCode;
+  const downloads = [
+    { name: "TestFlight", version: iosVersion, href: links.iosTestFlight, icon: "testflight" },
+    { name: "App Store", version: iosAppStoreVersion, href: links.iosAppStore, icon: "apple" },
+    { name: "Android APK", version: androidVersion, href: links.androidApk, icon: "android" },
+    // Google Play 下载入口暂时隐藏；重新开放时恢复 android_google_play 版本和此下载选项。
+  ] satisfies Array<{ name: string; version?: string; href: string; icon: DownloadChannelIcon }>;
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -433,42 +480,9 @@ function DownloadModal({ locale, close }: { locale: Locale; close: () => void })
             <p>{copy.description}</p>
           </div>
           <div className="download-options">
-            <div className="download-option">
-              <a className="download-qr" href={links.iosTestFlight} target="_blank" rel="noreferrer" aria-label={`${copy.ios} TestFlight`}>
-                <QRCodeSVG value={links.iosTestFlight} size={122} level="M" title={`${copy.ios} TestFlight QR code`} />
-              </a>
-              <a className="download-store-button" href={links.iosTestFlight} target="_blank" rel="noreferrer" aria-label={`TestFlight ${appVersions.iosTestFlight}, ${copy.iosDevice}`}>
-                <svg className="apple-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.7 12.9c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.2-2-3.9-2-1.7-.2-3.2 1-4 1-1 0-2.5-1-4.1-.9-2.1 0-4 1.2-5.1 3-2.2 3.8-.6 9.4 1.6 12.5 1.1 1.5 2.3 3.2 3.9 3.1 1.6-.1 2.2-1 4.1-1s2.4 1 4.1 1c1.7 0 2.8-1.5 3.8-3.1 1.2-1.8 1.7-3.5 1.7-3.6-.1 0-4.3-1.6-4.3-6.1ZM13.9 5.2c.9-1.1 1.5-2.7 1.3-4.2-1.3.1-2.9.9-3.8 2-.8.9-1.5 2.5-1.3 4 1.5.1 2.9-.7 3.8-1.8Z" /></svg>
-                <span className="download-store-copy">
-                  <small>TestFlight <span aria-hidden="true">·</span> {appVersions.iosTestFlight}</small>
-                  <strong>{copy.iosDevice}</strong>
-                </span>
-              </a>
-            </div>
-            <div className="download-option">
-              <a className="download-qr" href={links.iosAppStore} target="_blank" rel="noreferrer" aria-label={`${copy.ios} App Store`}>
-                <QRCodeSVG value={links.iosAppStore} size={122} level="M" title={`${copy.ios} App Store QR code`} />
-              </a>
-              <a className="download-store-button" href={links.iosAppStore} target="_blank" rel="noreferrer" aria-label={`App Store ${appVersions.iosAppStore}, ${copy.iosDevice}`}>
-                <svg className="apple-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.7 12.9c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.2-2-3.9-2-1.7-.2-3.2 1-4 1-1 0-2.5-1-4.1-.9-2.1 0-4 1.2-5.1 3-2.2 3.8-.6 9.4 1.6 12.5 1.1 1.5 2.3 3.2 3.9 3.1 1.6-.1 2.2-1 4.1-1s2.4 1 4.1 1c1.7 0 2.8-1.5 3.8-3.1 1.2-1.8 1.7-3.5 1.7-3.6-.1 0-4.3-1.6-4.3-6.1ZM13.9 5.2c.9-1.1 1.5-2.7 1.3-4.2-1.3.1-2.9.9-3.8 2-.8.9-1.5 2.5-1.3 4 1.5.1 2.9-.7 3.8-1.8Z" /></svg>
-                <span className="download-store-copy">
-                  <small>App Store <span aria-hidden="true">·</span> {appVersions.iosAppStore}</small>
-                  <strong>{copy.iosDevice}</strong>
-                </span>
-              </a>
-            </div>
-            <div className="download-option">
-              <a className="download-qr" href={links.androidApk} target="_blank" rel="noreferrer" aria-label={`${copy.android} APK`}>
-                <QRCodeSVG value={links.androidApk} size={122} level="M" title={`${copy.android} APK QR code`} />
-              </a>
-              <a className="download-store-button" href={links.androidApk} aria-label={`APK ${appVersions.androidApk}, ${copy.androidDevice}`}>
-                <img className="android-mark" src="/assets/download/android.svg" alt="" aria-hidden="true" />
-                <span className="download-store-copy">
-                  <small>APK <span aria-hidden="true">·</span> {appVersions.androidApk}</small>
-                  <strong>{copy.androidDevice}</strong>
-                </span>
-              </a>
-            </div>
+            {downloads.map((download) => (
+              <DownloadOption key={download.name} {...download} versionLabel={copy.version} />
+            ))}
           </div>
         </div>
         <div className="download-preview" aria-hidden="true">
@@ -532,7 +546,7 @@ function Footer({ locale, openDownload }: { locale: Locale; openDownload: () => 
   );
 }
 
-export default function App() {
+export default function App({ appVersions }: { appVersions: AppVersion[] }) {
   const [locale, setLocale] = useState<Locale>("en");
   const [downloadOpen, setDownloadOpen] = useState(false);
   const localeRestored = useRef(false);
@@ -577,7 +591,7 @@ export default function App() {
         <Closing locale={locale} openDownload={() => setDownloadOpen(true)} />
       </main>
       <Footer locale={locale} openDownload={() => setDownloadOpen(true)} />
-      {downloadOpen ? <DownloadModal locale={locale} close={() => setDownloadOpen(false)} /> : null}
+      {downloadOpen ? <DownloadModal locale={locale} close={() => setDownloadOpen(false)} appVersions={appVersions} /> : null}
     </div>
   );
 }

@@ -117,11 +117,11 @@
 .download-options {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 12px;
 }
 
 .download-option {
-  width: 172px;
+  width: 157px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -129,8 +129,8 @@
 }
 
 .download-qr {
-  width: 140px;
-  height: 140px;
+  width: 132px;
+  height: 132px;
   display: grid;
   place-items: center;
   padding: 9px;
@@ -149,13 +149,13 @@
 .download-qr svg { width: 100%; height: 100%; border-radius: 8px; }
 
 .download-store-button {
-  width: 172px;
+  width: 157px;
   min-height: 52px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 11px;
-  padding: 8px 14px;
+  gap: 8px;
+  padding: 8px 10px;
   color: #fff;
   border-radius: 14px;
   background: #000;
@@ -174,14 +174,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 3px;
+  gap: 4px;
   line-height: 1;
   white-space: nowrap;
 }
-.download-store-copy small { color: rgba(255, 255, 255, .62); font-size: 10px; font-weight: 500; letter-spacing: .01em; margin-bottom: 2px; }
 .download-store-copy strong { color: #fff; font-size: 14px; font-weight: 620; }
-.apple-mark { width: 21px; height: 23px; flex: 0 0 auto; fill: currentColor; }
-.android-mark { width: 23px; height: 23px; flex: 0 0 auto; }
+.download-store-copy small { color: rgba(255, 255, 255, .62); font-size: 9px; font-weight: 500; letter-spacing: .01em; }
+.download-channel-mark { width: 23px; height: 23px; flex: 0 0 auto; color: #fff; fill: currentColor; object-fit: contain; }
 
 .download-preview {
   position: relative;
