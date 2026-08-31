@@ -10,6 +10,7 @@ import AnnouncementsPage from "@/components/announcements/AnnouncementsPage";
 import FlowField from "./FlowField";
 import { appVersions, links } from "@/config/links";
 import { partners as brands } from "@/config/partners";
+import { useLandingLocale } from "@/i18n/LandingLocaleProvider";
 import { localeNames, translations, type Locale } from "@/i18n/landing";
 
 type FooterDestination =
@@ -548,24 +549,9 @@ function Footer({ locale, openDownload, page = "home" }: { locale: Locale; openD
 }
 
 export default function LandingPage({ page = "home" }: { page?: "home" | "announcements" }) {
-  const [locale, setLocale] = useState<Locale>("en");
+  const { locale, setLocale } = useLandingLocale();
   const [downloadOpen, setDownloadOpen] = useState(false);
-  const localeRestored = useRef(false);
   const copy = translations[locale];
-
-  useEffect(() => {
-    if (!localeRestored.current) {
-      localeRestored.current = true;
-      const storedLocale = window.localStorage.getItem("goldhouse-locale");
-      if (storedLocale && storedLocale in translations && storedLocale !== locale) {
-        const frame = window.requestAnimationFrame(() => setLocale(storedLocale as Locale));
-        return () => window.cancelAnimationFrame(frame);
-      }
-    }
-
-    document.documentElement.lang = locale;
-    window.localStorage.setItem("goldhouse-locale", locale);
-  }, [locale]);
 
   return (
     <div className="goldhouse-landing">
