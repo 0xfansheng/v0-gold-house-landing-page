@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { siteConfig } from "@/config/site";
+import { LandingLocaleProvider } from "@/i18n/LandingLocaleProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -39,7 +40,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
-      <body>{children}</body>
+      <body>
+        <LandingLocaleProvider>{children}</LandingLocaleProvider>
+      </body>
     </html>
   );
 }

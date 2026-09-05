@@ -4,11 +4,14 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { QRCodeSVG } from "qrcode.react";
+import AnnouncementsPage from "@/components/announcements/AnnouncementsPage";
 import FlowField from "./FlowField";
 import type { AppVersion } from "@/api";
 import { links } from "@/config/links";
 import { partners as brands } from "@/config/partners";
+import { useLandingLocale } from "@/i18n/LandingLocaleProvider";
 import { localeNames, translations, type Locale } from "@/i18n/landing";
 
 type FooterDestination =
@@ -62,14 +65,14 @@ const productTabMedia = [
 
 function Brand() {
   return (
-    <a className="brand" href="#top" aria-label="GoldHouse home">
+    <Link className="brand" href="/#top" aria-label="GoldHouse home">
       <img src="/assets/figma/goldhouse-logo.svg?v=2" alt="" />
       <span>GoldHouse</span>
-    </a>
+    </Link>
   );
 }
 
-function Header({ locale, setLocale, openDownload }: { locale: Locale; setLocale: (locale: Locale) => void; openDownload: () => void }) {
+function Header({ locale, setLocale, openDownload, page = "home" }: { locale: Locale; setLocale: (locale: Locale) => void; openDownload: () => void; page?: "home" | "announcements" }) {
   const [languageOpen, setLanguageOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -116,13 +119,14 @@ function Header({ locale, setLocale, openDownload }: { locale: Locale; setLocale
   }, [menuOpen]);
 
   return (
-    <header className={`site-header${scrolled ? " is-scrolled" : ""}${menuOpen ? " menu-open" : ""}`}>
+    <header className={`site-header${scrolled ? " is-scrolled" : ""}${menuOpen ? " menu-open" : ""}${page === "announcements" ? " announcement-header" : ""}`}>
       <Brand />
       <nav className="desktop-nav" aria-label="Primary navigation">
-        <a href="#product">{copy.product}</a>
-        <a href="#ucard">{copy.ucard}</a>
-        <a href="#ecosystem">{copy.ecosystem}</a>
-        <a href="#about">{copy.about}</a>
+        <Link href="/#product">{copy.product}</Link>
+        <Link href="/#ucard">{copy.ucard}</Link>
+        <Link href="/#ecosystem">{copy.ecosystem}</Link>
+        <Link className={page === "announcements" ? "is-active" : undefined} href="/announcements">{copy.announcements}</Link>
+        <Link href="/#about">{copy.about}</Link>
       </nav>
       <div className="header-actions">
         <div className="language-control">
@@ -159,10 +163,11 @@ function Header({ locale, setLocale, openDownload }: { locale: Locale; setLocale
       </button>
       {menuOpen && (
         <nav id="mobile-navigation" className="mobile-menu" aria-label="Mobile navigation">
-          <a href="#product" onClick={() => setMenuOpen(false)}>{copy.product}</a>
-          <a href="#ucard" onClick={() => setMenuOpen(false)}>{copy.ucard}</a>
-          <a href="#ecosystem" onClick={() => setMenuOpen(false)}>{copy.ecosystem}</a>
-          <a href="#about" onClick={() => setMenuOpen(false)}>{copy.about}</a>
+          <Link href="/#product" onClick={() => setMenuOpen(false)}>{copy.product}</Link>
+          <Link href="/#ucard" onClick={() => setMenuOpen(false)}>{copy.ucard}</Link>
+          <Link href="/#ecosystem" onClick={() => setMenuOpen(false)}>{copy.ecosystem}</Link>
+          <Link href="/announcements" onClick={() => setMenuOpen(false)}>{copy.announcements}</Link>
+          <Link href="/#about" onClick={() => setMenuOpen(false)}>{copy.about}</Link>
           <label className="mobile-language-control">
             <span className="sr-only">Language</span>
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -359,34 +364,44 @@ function UCard({ locale }: { locale: Locale }) {
 
 function Ecosystem({ locale }: { locale: Locale }) {
   const copy = translations[locale].ecosystem;
-  const cards = brands.map((brand, index) => ({ ...brand, description: copy.cards[index] }));
+  const [activeBrand, setActiveBrand] = useState<string | null>(null);
   return (
     <section className="ecosystem" id="ecosystem">
       <SectionHeading eyebrow={copy.eyebrow} title={copy.title} description={copy.description} />
       <div className="ecosystem-glow" aria-hidden="true" />
-      <div className="ecosystem-carousel" aria-label={copy.title} tabIndex={0}>
-        <div className="ecosystem-track">
-          {[0, 1].map((group) => (
-            <div className="ecosystem-group" key={group} aria-hidden={group === 1}>
-              {cards.map((card) => (
-                <article className="ecosystem-card" key={card.name}>
-                  <div className="ecosystem-card-frame">
-                    <a href={card.profileUrl} target="_blank" rel="noreferrer" aria-label={`${card.name} on X`}>
-                      <img src={card.icon} alt="" />
-                      <h3>{card.name}</h3>
-                    </a>
-                    <p>{card.description}</p>
-                  </div>
-                  {card.announcementUrl ? (
-                    <a href={card.announcementUrl} target="_blank" rel="noreferrer">{copy.announcement}<span aria-hidden="true">→</span></a>
-                  ) : (
-                    <span className="ecosystem-coming-soon">{copy.comingSoon}</span>
-                  )}
-                </article>
-              ))}
-            </div>
-          ))}
-        </div>
+      <div className="ecosystem-grid" aria-label={copy.title}>
+        {brands.map((brand, index) => {
+          const isActive = activeBrand === brand.name;
+          const linkGroupId = `ecosystem-links-${index}`;
+          return (
+            <article className={`ecosystem-brand${isActive ? " is-open" : ""}`} aria-label={brand.name} key={brand.name}>
+              <button
+                className="ecosystem-brand-main"
+                type="button"
+                aria-expanded={isActive}
+                aria-controls={linkGroupId}
+                onClick={() => setActiveBrand((current) => current === brand.name ? null : brand.name)}
+              >
+                <img src={brand.icon} alt="" loading="lazy" decoding="async" />
+                <span>{brand.name}</span>
+              </button>
+              <div className="ecosystem-brand-links" id={linkGroupId} aria-label={`${brand.name} links`}>
+                {brand.goldHouseUrl ? (
+                  <a className="ecosystem-entry ecosystem-entry-goldhouse" href={brand.goldHouseUrl} target="_blank" rel="noreferrer" aria-label={`Open ${brand.name} in GoldHouse`} title="GoldHouse">
+                    <img src="/assets/figma/goldhouse-logo.svg?v=2" alt="" aria-hidden="true" />
+                    <span>GoldHouse</span>
+                  </a>
+                ) : null}
+                <a className="ecosystem-entry ecosystem-entry-x" href={brand.profileUrl} target="_blank" rel="noreferrer" aria-label={`Open ${brand.name} on X`} title="X">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77Z" />
+                  </svg>
+                  <span>X</span>
+                </a>
+              </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
@@ -498,10 +513,10 @@ function DownloadModal({ locale, close, appVersions }: { locale: Locale; close: 
   );
 }
 
-function Footer({ locale, openDownload }: { locale: Locale; openDownload: () => void }) {
+function Footer({ locale, openDownload, page = "home" }: { locale: Locale; openDownload: () => void; page?: "home" | "announcements" }) {
   const copy = translations[locale].footer;
   return (
-    <footer className="footer">
+    <footer className={`footer${page === "announcements" ? " footer-announcements" : ""}`}>
       <div className="footer-inner">
         <div className="footer-brand">
           <Brand />
@@ -520,10 +535,11 @@ function Footer({ locale, openDownload }: { locale: Locale; openDownload: () => 
                 }
 
                 const external = destination.kind === "external";
-                const capabilityLink = destination.href.startsWith("#product-");
+                const href = destination.kind === "internal" && page === "announcements" ? `/${destination.href}` : destination.href;
+                const capabilityLink = page === "home" && destination.href.startsWith("#product-");
                 return (
                   <a
-                    href={destination.href}
+                    href={href}
                     target={external ? "_blank" : undefined}
                     rel={external ? "noreferrer" : undefined}
                     onClick={capabilityLink ? (event) => {
@@ -548,29 +564,17 @@ function Footer({ locale, openDownload }: { locale: Locale; openDownload: () => 
   );
 }
 
-export default function App({ appVersions }: { appVersions: AppVersion[] }) {
-  const [locale, setLocale] = useState<Locale>("en");
+export default function LandingPage({ page = "home", appVersions }: { page?: "home" | "announcements"; appVersions: AppVersion[] }) {
+  const { locale, setLocale } = useLandingLocale();
   const [downloadOpen, setDownloadOpen] = useState(false);
-  const localeRestored = useRef(false);
   const copy = translations[locale];
-
-  useEffect(() => {
-    if (!localeRestored.current) {
-      localeRestored.current = true;
-      const storedLocale = window.localStorage.getItem("goldhouse-locale");
-      if (storedLocale && storedLocale in translations && storedLocale !== locale) {
-        const frame = window.requestAnimationFrame(() => setLocale(storedLocale as Locale));
-        return () => window.cancelAnimationFrame(frame);
-      }
-    }
-
-    document.documentElement.lang = locale;
-    window.localStorage.setItem("goldhouse-locale", locale);
-  }, [locale]);
 
   return (
     <div className="goldhouse-landing">
-      <Header locale={locale} setLocale={setLocale} openDownload={() => setDownloadOpen(true)} />
+      <Header locale={locale} setLocale={setLocale} openDownload={() => setDownloadOpen(true)} page={page} />
+      {page === "announcements" ? (
+        <AnnouncementsPage locale={locale} />
+      ) : (
       <main>
         <section className="hero" id="top">
           <FlowField />
@@ -592,7 +596,8 @@ export default function App({ appVersions }: { appVersions: AppVersion[] }) {
         <Ecosystem locale={locale} />
         <Closing locale={locale} openDownload={() => setDownloadOpen(true)} />
       </main>
-      <Footer locale={locale} openDownload={() => setDownloadOpen(true)} />
+      )}
+      <Footer locale={locale} openDownload={() => setDownloadOpen(true)} page={page} />
       {downloadOpen ? <DownloadModal locale={locale} close={() => setDownloadOpen(false)} appVersions={appVersions} /> : null}
     </div>
   );

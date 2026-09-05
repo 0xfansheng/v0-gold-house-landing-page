@@ -1126,8 +1126,8 @@
 
 .ecosystem {
   position: relative;
-  min-height: 780px;
-  padding: 98px 0 70px;
+  min-height: 690px;
+  padding: 98px 20px 110px;
   overflow: hidden;
   background: #fff;
 }
@@ -1136,142 +1136,161 @@
   position: absolute;
   z-index: 0;
   left: 50%;
-  top: 128px;
+  top: 110px;
   width: min(1060px, 90vw);
-  height: 610px;
+  height: 520px;
   transform: translateX(-50%);
   border-radius: 50%;
   background: radial-gradient(ellipse, rgba(194,230,255,.75), rgba(224,243,255,.36) 48%, transparent 72%);
 }
 
-.ecosystem-carousel {
+.ecosystem-grid {
   position: relative;
   z-index: 2;
-  width: 100%;
-  margin-top: 36px;
-  padding: 32px 0 52px;
-  overflow: hidden;
-  mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+  width: min(1180px, 100%);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  margin: 54px auto 0;
 }
 
-.ecosystem-track {
-  width: max-content;
-  display: flex;
-  animation: ecosystem-scroll 56s linear infinite;
-  will-change: transform;
-}
-
-.ecosystem-group { display:flex; gap:12px; padding-right:12px; }
-
-.ecosystem-carousel:hover .ecosystem-track {
-  animation-play-state: paused;
-}
-
-@keyframes ecosystem-scroll {
-  from { transform: translate3d(0,0,0); }
-  to { transform: translate3d(-50%,0,0); }
-}
-
-.ecosystem-card {
+.ecosystem-brand {
   position: relative;
-  width: 258px;
-  height: 270px;
-  flex: 0 0 auto;
-  padding: 4px;
-  overflow: hidden;
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 0 0 1px rgba(17,24,39,.08);
-  transition: box-shadow .2s cubic-bezier(.6,.6,0,1), transform .2s cubic-bezier(.6,.6,0,1);
-}
-
-.ecosystem-card-frame {
-  height: 262px;
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-  padding:20px;
-  border-radius:12px;
-  background:rgba(255,255,255,.9);
-  transition: height .2s cubic-bezier(.6,.6,0,1);
-}
-
-.ecosystem-card-frame > a {
+  min-height: 164px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 24px 16px;
+  border-top: 1px solid #e3e6eb;
+  border-right: 1px solid #e3e6eb;
+  background: rgba(255,255,255,.32);
+  transition: background 180ms ease;
+}
+
+.ecosystem-brand:nth-child(-n + 5) { border-top: 0; }
+.ecosystem-brand:nth-child(5n) { border-right: 0; }
+
+.ecosystem-brand:hover,
+.ecosystem-brand:focus-within {
+  outline: none;
+  background: rgba(255,255,255,.82);
+}
+
+.ecosystem-brand-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 12px;
-  width: fit-content;
-  border-radius: 9px;
-  transition: color 180ms ease, transform 180ms ease;
+  padding: 0;
+  color: inherit;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
 }
 
-.ecosystem-card-frame > a:hover,
-.ecosystem-card-frame > a:focus-visible {
-  color: var(--brand);
-  transform: translateY(-1px);
+.ecosystem-brand-main:focus-visible {
+  outline: 2px solid rgba(0,122,255,.72);
+  outline-offset: 5px;
+  border-radius: 8px;
 }
 
-.ecosystem-card img {
-  width: 28px;
-  height: 28px;
-  object-fit: cover;
+.ecosystem-brand-main > img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
   border-radius: 999px;
 }
 
-.ecosystem-card h3 {
-  margin: 0;
-  color: #000;
-  font-size: 17px;
-  line-height: 1.55;
-  font-weight: 740;
+.ecosystem-brand-main > span {
+  color: #0e1730;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 700;
+  text-align: center;
 }
 
-.ecosystem-card p {
-  margin: 0;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 14px;
-  line-height: 1.55;
-}
-
-.ecosystem-card > a,
-.ecosystem-coming-soon {
+.ecosystem-brand-links {
   position: absolute;
-  left: 4px;
-  right: 4px;
-  bottom: -60px;
-  height: 52px;
+  z-index: 2;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 14px;
+  background: linear-gradient(145deg, rgba(255,255,255,.5), rgba(237,245,255,.36));
+  backdrop-filter: blur(12px) saturate(.92);
+  -webkit-backdrop-filter: blur(12px) saturate(.92);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(.97);
+  transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+}
+
+.ecosystem-brand.is-open .ecosystem-brand-links {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ecosystem-brand:hover .ecosystem-brand-links {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+}
+
+.ecosystem-entry {
+  width: 128px;
+  min-width: 128px;
+  height: 42px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 14px 0 20px;
-  border-radius: 12px;
-  background: #f7f8fa;
-  font-size: 13px;
-  transition: transform .2s cubic-bezier(.6,.6,0,1);
-}
-
-.ecosystem-coming-soon {
-  color: rgba(0, 0, 0, 0.46);
-}
-
-.ecosystem-card > a span {
-  width: 28px;
-  height: 28px;
-  display: grid;
-  place-items: center;
+  justify-content: flex-start;
+  gap: 9px;
+  padding: 0 14px;
+  border: 0;
   border-radius: 999px;
-  background: white;
+  background: rgba(255,255,255,.72);
+  box-shadow: inset 0 0 0 1px rgba(14,23,48,.08), 0 8px 24px rgba(39,72,125,.09);
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
 }
 
-.ecosystem-card:hover,
-.ecosystem-card:focus-within { transform:translateY(-2px); box-shadow:0 2px 6px rgba(36,62,99,.025),0 8px 20px rgba(36,62,99,.035),0 18px 36px rgba(36,62,99,.045),0 0 0 1px rgba(17,24,39,.08); }
-.ecosystem-card:hover .ecosystem-card-frame,
-.ecosystem-card:focus-within .ecosystem-card-frame { height:198px; }
-.ecosystem-card:hover > a,
-.ecosystem-card:focus-within > a,
-.ecosystem-card:hover > .ecosystem-coming-soon,
-.ecosystem-card:focus-within > .ecosystem-coming-soon { transform:translateY(-64px); }
+.ecosystem-entry span {
+  color: #0e1730;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.ecosystem-entry:hover,
+.ecosystem-entry:focus-visible {
+  outline: none;
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.94);
+  box-shadow: inset 0 0 0 1px rgba(0,122,255,.18), 0 10px 26px rgba(31,80,155,.14);
+}
+
+.ecosystem-entry-goldhouse img {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+}
+
+.ecosystem-entry-x svg {
+  width: 15px;
+  height: 15px;
+  fill: #0e1730;
+}
 
 .closing {
   min-height: 410px;
@@ -1332,6 +1351,8 @@
   padding: 56px 0 24px;
   border-top: 1px solid #e7edf6;
 }
+
+.footer-announcements .footer-inner { border-top: 0; }
 
 .footer-brand > p {
   width: 280px;
@@ -1578,7 +1599,13 @@
   .ucard-section { height: 960px; min-height: 960px; padding: 0; }
   .ucard-stage { padding: 166px 20px 0; }
   .ucard-device { top: 610px; }
-  .ecosystem { min-height: 740px; padding-top: 82px; }
+  .ecosystem { min-height: auto; padding: 82px 20px 90px; }
+  .ecosystem-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ecosystem-brand { border-top: 1px solid #e3e6eb; border-right: 1px solid #e3e6eb; }
+  .ecosystem-brand:nth-child(-n + 5) { border-top: 1px solid #e3e6eb; }
+  .ecosystem-brand:nth-child(5n) { border-right: 1px solid #e3e6eb; }
+  .ecosystem-brand:nth-child(-n + 3) { border-top: 0; }
+  .ecosystem-brand:nth-child(3n) { border-right: 0; }
 
   .footer { height: auto; min-height: 660px; }
   .footer-inner { grid-template-columns: 1fr; gap: 50px; padding-inline: 12px; }
@@ -1652,7 +1679,7 @@
   .capability-list { margin-top: 34px; }
   .capability-row,
   .capability-row.is-open {
-    min-height: 104px;
+    min-height: 142px;
     grid-template-columns: minmax(0, 1fr) 38px;
     grid-template-areas:
       "label plus"
@@ -1801,42 +1828,43 @@
     top: 585px;
   }
 
-  .ecosystem { min-height: 690px; padding: 72px 0 56px; }
-  .ecosystem-carousel {
-    margin-top: 20px;
-    padding: 32px 16px 46px;
-    overflow-x: auto;
-    overflow-y: visible;
-    overscroll-behavior-inline: contain;
-    scroll-padding-inline: 16px;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    touch-action: pan-x pinch-zoom;
-    cursor: grab;
-    mask-image: none;
-    -webkit-mask-image: none;
-    -webkit-overflow-scrolling: touch;
+  .ecosystem { min-height: auto; padding: 72px 16px; }
+  .ecosystem-glow { top: 100px; width: 120vw; height: 480px; }
+  .ecosystem-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 36px;
   }
-  .ecosystem-carousel:active { cursor: grabbing; }
-  .ecosystem-carousel::-webkit-scrollbar { display: none; }
-  .ecosystem-track {
-    animation: none;
-    transform: none;
-    will-change: auto;
+  .ecosystem-brand,
+  .ecosystem-brand:nth-child(-n + 5),
+  .ecosystem-brand:nth-child(5n),
+  .ecosystem-brand:nth-child(-n + 3),
+  .ecosystem-brand:nth-child(3n) {
+    min-width: 0;
+    min-height: 104px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 8px;
+    border-top: 1px solid #e3e6eb;
+    border-right: 1px solid #e3e6eb;
   }
-  .ecosystem-group { gap: 12px; padding-right: 0; }
-  .ecosystem-group:nth-child(2) { display: none; }
-  .ecosystem-card {
-    width: min(78vw, 280px);
-    height: 262px;
-    padding: 4px;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
+  .ecosystem-brand:nth-child(-n + 2) { border-top: 0; }
+  .ecosystem-brand:nth-child(2n) { border-right: 0; }
+  .ecosystem-brand-main { gap: 9px; }
+  .ecosystem-brand-main > img { width: 36px; height: 36px; flex: 0 0 36px; }
+  .ecosystem-brand-main > span {
+    min-width: 0;
+    font-size: 13px;
+    line-height: 1.25;
+    text-align: center;
+    overflow-wrap: anywhere;
   }
-  .ecosystem-card-frame { height:254px; padding:17px; }
-  .ecosystem-card:hover .ecosystem-card-frame,
-  .ecosystem-card:focus-within .ecosystem-card-frame { height:190px; }
-  .ecosystem-card p { font-size: 13px; }
+  .ecosystem-brand-links { gap: 7px; padding: 10px; backdrop-filter: blur(10px) saturate(.92); -webkit-backdrop-filter: blur(10px) saturate(.92); }
+  .ecosystem-entry { width: 112px; min-width: 112px; height: 38px; gap: 8px; padding-inline: 11px; }
+  .ecosystem-entry span { font-size: 12px; }
+  .ecosystem-entry-goldhouse img { width: 18px; height: 18px; }
+  .ecosystem-entry-x svg { width: 14px; height: 14px; }
 
   .closing { min-height: 470px; padding: 46px 14px 60px; }
   .closing-card { min-height: 360px; padding: 56px 22px 34px; border-radius: 28px; }
@@ -1873,8 +1901,7 @@
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
-  .logo-track,
-  .ecosystem-track { transform: none; }
+  .logo-track { transform: none; }
   .ucard-section { height:930px; min-height:930px; }
   .ucard-stage { position:relative; height:930px; }
   .ucard-device { opacity:1; transition:none; }
