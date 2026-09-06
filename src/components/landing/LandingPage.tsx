@@ -467,12 +467,11 @@ function DownloadModal({ locale, close, appVersions }: { locale: Locale; close: 
   const iosVersion = appVersions.find((item) => item.platform === "ios")?.latestVersionCode;
   const androidVersion = appVersions.find((item) => item.platform === "android")?.latestVersionCode;
   const iosAppStoreVersion = appVersions.find((item) => item.platform === "ios_app_store")?.latestVersionCode;
-  const googlePlayVersion = appVersions.find((item) => item.platform === "android_google_play")?.latestVersionCode;
   const downloads = [
     { name: "TestFlight", platform: "iOS", version: iosVersion, href: links.iosTestFlight, icon: "testflight" },
     { name: "App Store", platform: "iOS", version: iosAppStoreVersion, href: links.iosAppStore, icon: "apple" },
     { name: "Android APK", platform: "Android", version: androidVersion, href: links.androidApk, icon: "android" },
-    { name: "Google Play", platform: "Android", version: googlePlayVersion, href: links.androidGooglePlay, icon: "google-play" },
+    // Google Play 下载入口暂时隐藏；重新开放时恢复 android_google_play 版本和此下载选项。
   ] satisfies Array<{ name: string; platform: "iOS" | "Android"; version?: string; href: string; icon: DownloadChannelIcon }>;
 
   useEffect(() => {
