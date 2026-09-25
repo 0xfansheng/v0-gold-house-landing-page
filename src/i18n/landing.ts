@@ -28,7 +28,8 @@ type Copy = {
   ecosystem: { eyebrow: string; title: string; description: string };
   cta: { title: string; description: string };
   footer: {
-    tagline: string; copyright: string;
+    tagline: string; copyright: string; home: string; language: string; about: string; updates: string;
+    privacy: string; terms: string;
     groups: Array<{ title: string; links: string[] }>;
   };
 };
@@ -86,9 +87,15 @@ export const translations: Record<Locale, Copy> = {
     cta: { title: "你的 Web3 旅程，从 GoldHouse 开始", description: "一个账户，承载聊天、身份、资产、治理与应用。" },
     footer: {
       tagline: "连接、身份、所有权与社区的 Web3 枢纽。",
-      copyright: "© 2026 GoldHouse. 保留所有权利。",
+      copyright: "© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.",
+      home: "GoldHouse 首页",
+      language: "切换语言",
+      about: "关于我们",
+      updates: "更新公告",
+      privacy: "隐私政策",
+      terms: "服务条款",
       groups: [
-        { title: "产品", links: ["GoldHouse", "一个账户", "一体化体验", "U Card"] },
+        { title: "产品", links: ["GoldHouse", "U Card"] },
         { title: "核心能力", links: ["社交身份", "社交支付", "社交治理", "社交应用"] },
         { title: "生态", links: ["社区经济", "生态伙伴"] },
         { title: "访问", links: ["Web App", "下载 App"] },
@@ -129,9 +136,15 @@ export const translations: Record<Locale, Copy> = {
     ecosystem: { eyebrow: "生態", title: "共同構建", description: "與 Web3 專案一起，構建開放的生態系統。" },
     cta: { title: "你的 Web3 旅程，從 GoldHouse 開始", description: "一個帳戶，承載聊天、身分、資產、治理與應用。" },
     footer: {
-      tagline: "連接、身分、所有權與社群的 Web3 樞紐。", copyright: "© 2026 GoldHouse. 保留所有權利。",
+      tagline: "連接、身分、所有權與社群的 Web3 樞紐。", copyright: "© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.",
+      home: "GoldHouse 首頁",
+      language: "切換語言",
+      about: "關於我們",
+      updates: "更新公告",
+      privacy: "隱私政策",
+      terms: "服務條款",
       groups: [
-        { title: "產品", links: ["GoldHouse", "一個帳戶", "一體化體驗", "U Card"] },
+        { title: "產品", links: ["GoldHouse", "U Card"] },
         { title: "核心能力", links: ["社交身分", "社交支付", "社交治理", "社交應用"] },
         { title: "生態", links: ["社群經濟", "生態夥伴"] },
         { title: "存取", links: ["Web App", "下載 App"] },
@@ -172,9 +185,15 @@ export const translations: Record<Locale, Copy> = {
     ecosystem: { eyebrow: "생태계", title: "함께 구축합니다", description: "Web3 프로젝트와 열린 생태계를 함께 만듭니다." },
     cta: { title: "GoldHouse에서 Web3 여정을 시작하세요", description: "채팅, 정체성, 자산, 거버넌스와 앱을 위한 하나의 계정." },
     footer: {
-      tagline: "연결, 정체성, 소유권과 커뮤니티를 위한 Web3 허브.", copyright: "© 2026 GoldHouse. All rights reserved.",
+      tagline: "연결, 정체성, 소유권과 커뮤니티를 위한 Web3 허브.", copyright: "© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.",
+      home: "GoldHouse 홈",
+      language: "언어 변경",
+      about: "소개",
+      updates: "업데이트 공지",
+      privacy: "개인정보 처리방침",
+      terms: "이용약관",
       groups: [
-        { title: "제품", links: ["GoldHouse", "하나의 계정", "통합 경험", "U Card"] },
+        { title: "제품", links: ["GoldHouse", "U Card"] },
         { title: "핵심 기능", links: ["소셜 아이덴티티", "소셜 결제", "소셜 거버넌스", "소셜 앱"] },
         { title: "생태계", links: ["커뮤니티 경제", "생태계 파트너"] },
         { title: "접속", links: ["Web App", "앱 다운로드"] },
@@ -215,9 +234,15 @@ export const translations: Record<Locale, Copy> = {
     ecosystem: { eyebrow: "ECOSYSTEM", title: "Built Together", description: "Build an open ecosystem together with Web3 projects." },
     cta: { title: "Your Web3 journey starts with GoldHouse", description: "One account for chat, identity, assets, governance, and apps." },
     footer: {
-      tagline: "Your Web3 hub for connection, identity, ownership, and community.", copyright: "© 2026 GoldHouse. All rights reserved.",
+      tagline: "Your Web3 hub for connection, identity, ownership, and community.", copyright: "© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.",
+      home: "GoldHouse Home",
+      language: "Switch Language",
+      about: "About Us",
+      updates: "Release Notes",
+      privacy: "Privacy Policy",
+      terms: "Terms of Service",
       groups: [
-        { title: "Product", links: ["GoldHouse", "One Account", "All-in-One Experience", "U Card"] },
+        { title: "Product", links: ["GoldHouse", "U Card"] },
         { title: "Core Capabilities", links: ["Social Identity", "Social Payments", "Social Governance", "Social Apps"] },
         { title: "Ecosystem", links: ["Community Economy", "Ecosystem Partners"] },
         { title: "Access", links: ["Web App", "Download App"] },
