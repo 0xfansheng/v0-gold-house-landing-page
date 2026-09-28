@@ -979,7 +979,7 @@ const zhTW: Dictionary = {
         title: '6. 合規與公開',
         intro:
           '本兒童安全標準已公開發布，全球任何人皆可存取。本標準符合適用的兒童保護法律以及 Google Play 的「兒童安全標準」政策。我們會定期審查並更新本標準。',
-        bullets: ['已發布標準：https://goldhouse.cc/child-safety'],
+        bullets: ['已發布標準：https://goldhouse.vip/child-safety'],
       },
     ],
     copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',

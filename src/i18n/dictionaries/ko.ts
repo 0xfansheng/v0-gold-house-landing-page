@@ -979,7 +979,7 @@ const ko: Dictionary = {
         title: '6. 규정 준수 및 공개',
         intro:
           '본 아동 안전 기준은 공개되어 전 세계 누구나 접근할 수 있습니다. 본 기준은 관련 아동 보호 법률 및 Google Play의 아동 안전 기준 정책을 준수합니다. 우리는 본 기준을 정기적으로 검토하고 업데이트합니다.',
-        bullets: ['게시된 기준: https://goldhouse.cc/child-safety'],
+        bullets: ['게시된 기준: https://goldhouse.vip/child-safety'],
       },
     ],
     copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
