@@ -977,7 +977,7 @@ const zhCN = {
         title: '6. 合规与公开',
         intro:
           '本儿童安全标准已公开发布，全球任何人均可访问。本标准符合适用的儿童保护法律以及 Google Play 的「儿童安全标准」政策。我们会定期审查并更新本标准。',
-        bullets: ['已发布标准：https://goldhouse.cc/child-safety'],
+        bullets: ['已发布标准：https://goldhouse.vip/child-safety'],
       },
     ],
     copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',

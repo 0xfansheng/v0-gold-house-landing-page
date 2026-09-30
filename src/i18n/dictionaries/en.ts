@@ -980,7 +980,7 @@ const en: Dictionary = {
         title: '6. Compliance and Publication',
         intro:
           'These Child Safety Standards are published and accessible to anyone worldwide. They align with applicable child-protection laws and with Google Play’s Child Safety Standards policy. We review and update these standards regularly.',
-        bullets: ['Published standards: https://goldhouse.cc/child-safety'],
+        bullets: ['Published standards: https://goldhouse.vip/child-safety'],
       },
     ],
     copyright: '© 2026 GoldHouse · AUROWAVE TECHNOLOGIES PTE. LTD. All rights reserved.',
